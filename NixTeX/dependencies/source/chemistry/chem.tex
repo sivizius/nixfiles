@@ -1,0 +1,7 @@
+\directlua{includeCode("chemistry/chem")}
+\inputCode{chemistry/compounds}
+\inputCode{chemistry/figures}
+\inputCode{chemistry/substances}
+
+\newcommand{\ch}[1]{\directlua{chem.printSimple([[#1]])}}
+

@@ -1,0 +1,94 @@
+\directlua{includeCode("floats/enumerations")}
+\newcommand{\enumeration}[2][]
+{
+  \ifthenelse{\isempty{#1}}
+  {
+    \begin{enumerate}
+      #2
+    \end{enumerate}
+  }
+  {
+    \begin{enumerate}[#1]
+      #2
+    \end{enumerate}
+  }
+}
+\newcommand{\renumeration}[2][]
+{
+  \ifthenelse{\isempty{#1}}
+  {
+    \begin{etaremune}
+      #2
+    \end{etaremune}
+  }
+  {
+    \begin{etaremune}[#1]
+      #2
+    \end{etaremune}
+  }
+}
+\newcommand{\itemisation}[2][]
+{
+  \ifthenelse{\isempty{#1}}
+  {
+    \begin{itemize}
+      #2
+    \end{itemize}
+  }
+  {
+    \begin{enumerate}[#1]
+      #2
+    \end{enumerate}
+  }
+}
+\def\@ItemList{true}
+\def\enableItemList{\def\@ItemList{true}}
+\def\disableItemList{\def\@ItemList{false}}
+\def\mayComma{,}
+\def\mayPeriod{.}
+\def\mayUppercase#1{\ifthenelse{\equal{\@ItemList}{true}}{#1}{\directlua{tex.print(([[#1]]):upper())}}}
+\def\semicolonOrPeriod{\ifthenelse{\equal{\@ItemList}{true}}{:}{.}}
+\def\noComma{}
+\def\noPeriod{}
+\def\@period{.}
+
+\def\@EnumItem  {\directlua{enumerations.item()}\@EnumItemNext}%
+\def\EnumArabic {\directlua{enumerations.arabic()}}
+\def\EnumAlphaL {\directlua{enumerations.alphaLower()}}
+\def\EnumAlphaU {\directlua{enumerations.alphaUpper()}}
+\def\EnumRomanL {\directlua{enumerations.romanLower()}}
+\def\EnumRomanU {\directlua{enumerations.romanUpper()}}
+
+\newcommand{\@EnumInit}[1]
+{%
+  \edef\@EnumItemNext{\directlua{enumerations.init([[\detokenize{#1}]])}}%
+  \def\mayComma{}%
+  \def\mayPeriod{}%
+}
+\newcommand{\itemlist}[2][]
+{
+  \ifthenelse{\equal{\@ItemList}{true}}
+    {\itemisation[#1]{#2}}
+    {{%
+      \@EnumInit{#1}%
+      \def\noComma{\def\item{\def\item{, \@EnumItem~}\@EnumItem~} }%
+      \def\noPeriod{\def\@period{}}%
+      \noComma\trim@post@space{#2}\@period%
+    }}
+}
+\newcommand{\Itemlist}[2][]
+{
+  \ifthenelse{\equal{\@ItemList}{true}}
+    {\itemisation[#1]{#2}}
+    {{%
+      \@EnumInit{#1}%
+      \def\noPeriod{\def\item{\def\item{ \@EnumItem~}\@EnumItem~} }%
+      \noPeriod\trim@post@space{#2}%
+    }}
+}
+\newcommand{\descriptions}[1]
+{
+  \begin{description}
+    #1
+  \end{description}
+}

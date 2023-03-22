@@ -1,0 +1,12 @@
+\directlua{tex.enableprimitives("luatex",tex.extraprimitives("luatex"))}
+
+% Language or Country Related Macros
+% Flags
+\newcommand{\countryFlag}[1]{\faFlag}
+
+% Quotes
+\newcommand{\q}[2][]{»#2«\ifthenelse{\equal{#1}{}}{}{(»#1«)}}
+\newcommand{\Q}[2][]{›#2‹\ifthenelse{\equal{#1}{}}{}{(›#1‹)}}
+
+\newcommand{\fromHebrew}[3][]{\acrshort{hebrew}~\texthebrew{#2}\ifnotempty{#1}{ \textit{#1}}\ifnotempty{#3}{: \Q{#3}}}
+\newcommand{\fromEnglish}[3][]{\acrshort{english}~#2\ifnotempty{#1}{ \textit{#1}}\ifnotempty{#3}{: \Q{#3}}}

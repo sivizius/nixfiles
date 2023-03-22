@@ -1,0 +1,4 @@
+{ intrinsics, ... }:
+{
+  get                                   =   intrinsics.getFlake;
+}

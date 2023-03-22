@@ -1,0 +1,4 @@
+[
+  ./funny.nix
+  ./graphical
+]

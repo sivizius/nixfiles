@@ -1,0 +1,13 @@
+\directlua{includeCode("text/spelling")}
+\newcommand{\loadDictionary}[1]{\directlua{spellChecker.loadDictionary([[#1]])}}
+\def\@SpellCheckerFlag{false}
+\def\enableSpellChecker{\def\@SpellCheckerFlag{true}}
+\def\disableSpellChecker{\def\@SpellCheckerFlag{false}}
+\newcommand{\spellCheck}[2][de/common]
+{%
+  \ifthenelse{\equal{\@SpellCheckerFlag}{true}}%
+    {\expandafter\directlua{spellChecker.check([[#1]], [[\detokenize{#2}]])}}%
+    {#2}%
+}
+
+\newcommand{\correct}[1]{\ifthenelse{\equal{\@SpellCheckerFlag}{true}}{\PDFmarkupComment{Marked as Correct}{#1}{Correct}{green}}{#1}}

@@ -1,0 +1,33 @@
+\def\MessageBreak{\directlua{tex.print(newline)}}%
+
+\newcommand{\logHelp  } [1] {\directlua { log.help  ( [[#1]]          ) }}
+\newcommand{\logDebug } [2] {\directlua { log.debug ( [[#1]], [[#2]]  ) }}
+\newcommand{\logError } [2] {\directlua { log.error ( [[#1]], [[#2]]  ) }}
+\newcommand{\logFatal } [2] {\directlua { log.fatal ( [[#1]], [[#2]]  ) }}
+\newcommand{\logInfo  } [2] {\directlua { log.info  ( [[#1]], [[#2]]  ) }}
+\newcommand{\logTrace } [2] {\directlua { log.trace ( [[#1]], [[#2]]  ) }}
+\newcommand{\logWarn  } [2] {}
+
+\def\logBreak   {\directlua{log.stepping=true}}
+\def\logUnbreak {\directlua{log.stepping=false}}
+
+\newcommand{\todo}[1]{\directlua{log.todo([[#1]])}\textbf{<{\color{red} ToDo: »#1«}>}}
+
+% Hook LaTeX Output
+\let\oldMessage=\message
+\let\@oldError=\errmessage
+
+\newcommand{\@HookInfo}[2]{\logInfo{#1}{#2. }}
+\newcommand{\@HookWarn}[2]{\logWarn{#1}{#2. }}
+\newcommand{\@HookError}[2]{\logError{#1}{#2. }\@oldError{}}
+
+\renewcommand{\@latex@warning }[1]{\logWarn   {LaTeX}         {#1. }}
+\renewcommand{\message        }[1]{\logInfo   {LaTeX/message} {#1. }}
+\renewcommand{\ClassInfo      }[2]{\logInfo   {Class #1}      {#2. }}
+\renewcommand{\ClassWarning   }[2]{\logWarn   {Class #1}      {#2. }}
+\renewcommand{\ClassError     }[3]{\logError  {Class #1}      {#2. }}
+\renewcommand{\PackageInfo    }[2]{\logInfo   {Package #1}    {#2. }}
+\renewcommand{\PackageWarning }[2]{\logWarn   {Package #1}    {#2. }}
+\renewcommand{\PackageError   }[3]{\logError  {Package #1}    {#2. }}
+\renewcommand{\typeout        }[1]{\logInfo   {LaTeX/typeout} {#1. }}
+\renewcommand{\wlog           }[1]{\logTrace  {LaTeX/wlog}    {#1. }}

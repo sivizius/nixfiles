@@ -1,0 +1,285 @@
+\makeatletter
+% Variables in Alphanumeric Order
+\def\@LetterEnclosureBody               {}
+\def\@LetterEnclosureList               {}
+\def\@LetterEnclosureTitle              {}
+\def\@LetterAfter                       {}
+\def\@LetterBefore                      {}
+\def\@LetterClosing                     {}
+\def\@LetterConfigurations              {}
+\def\@LetterContent                     {}
+\def\@LetterCopies                      {}
+\def\@LetterDate                        {}
+\def\@LetterOpening                     {}
+\def\@LetterReceiverCountry             {}
+\def\@LetterReceiverFirstName           {}
+\def\@LetterReceiverInstituteLong       {}
+\def\@LetterReceiverInstituteShort      {}
+\def\@LetterReceiverLastName            {}
+\def\@LetterReceiverMunicipality        {}
+\def\@LetterReceiverPostalCode          {}
+\def\@LetterReceiverStreet              {}
+\def\@LetterReceiverStreetExtra         {}
+\def\@LetterReceiverStreetNumber        {}
+\def\@LetterReceiverTitle               {}
+\def\@LetterSenderCountry               {}
+\def\@LetterSenderEMail                 {}
+\def\@LetterSenderFax                   {}
+\def\@LetterSenderFirstName             {}
+\def\@LetterSenderHomepage              {}
+\def\@LetterSenderKey                   {}
+\def\@LetterSenderLastName              {}
+\def\@LetterSenderLogo                  {}
+\def\@LetterSenderMobile                {}
+\def\@LetterSenderMunicipality          {}
+\def\@LetterSenderNickName              {}
+\def\@LetterSenderPostalCode            {}
+\def\@LetterSenderStreet                {}
+\def\@LetterSenderStreetExtra           {}
+\def\@LetterSenderStreetNumber          {}
+\def\@LetterSenderTelephone             {}
+\def\@LetterSenderTitle                 {}
+\def\@LetterSignature                   {}
+\def\@LetterSubject                     {}
+\def\@LetterStyle                       {}
+\def\@LetterType                        {}
+
+% Frontend
+\newcommand{\makeLetter                 }[1]
+{
+  % load letter style
+  \@for\tmp:=\@LetterStyle\do           {\input{\source/styles/letter/\tmp.tex}}
+
+  \constPDF
+    {\@LetterSenderFirstName\ \@LetterSenderLastName}
+    {\@LetterSubject vom \@LetterDate}
+    {\@LetterType}
+    {}
+    {}
+    {}
+
+  % Positons, Lengths, Alingments, etc.
+  \MSonehalfspacing
+  \newgeometry
+  {
+    textwidth = 16.5cm,
+    left      = 2.5cm,
+  }
+  \@setplength{lochpos}{1.0cm}
+  \@setplength{locwidth}{7.5cm}
+  \newlength{\@signatureHeight}
+  \newlength{\@signaturePadding}
+  \newlength{\@signatureBefore}
+  \setlength{\@signatureHeight}{1.2cm}
+  \setlength{\@signaturePadding}{.3\normalbaselineskip}
+  \setlength{\@signatureBefore}{\@signatureHeight+\normalbaselineskip}
+
+  % Input Variables are set now, lets use them
+  % set pdf metadata
+  \KOMAoptions
+  {
+    foldmarks = H,
+    subject   = titled,
+  }
+  \setkomavar{backaddress}
+  {
+    \@LetterSenderFirstName\ \@LetterSenderLastName\\
+    \@LetterSenderStreet~\@LetterSenderStreetNumber\\
+    \ifnotempty{\@LetterSenderStreetExtra}{\@LetterSenderStreetExtra\\}
+    \ifnotempty{\@LetterSenderCountry\,}\@LetterSenderPostalCode~\@LetterSenderMunicipality
+  }
+  \setkomavar{backaddressseparator}     {\,·\,}
+  \setkomavar{date}                     {\@LetterDate}
+  \setkomavar{location}
+  {{
+    \scriptsize
+    \ifthenelse{\equal{}{\@LetterSenderStreetExtra}}
+      {\def\@fromExtra{}}
+      {\def\@fromExtra{\multicolumn{3}{l}{\@LetterSenderStreetExtra}\\}}
+    \begin{tabular}{r@{}ll}
+      \multicolumn{3}{l}{\@LetterSenderFirstName\ \@LetterSenderLastName}                                         \\
+      \multicolumn{3}{l}{\@LetterSenderStreet~\@LetterSenderStreetNumber}                                         \\
+      \@fromExtra
+      \multicolumn{3}{l}{\ifnotempty{\@LetterSenderCountry\,}\@LetterSenderPostalCode~\@LetterSenderMunicipality} \\
+      \ifnotempty{\@LetterSenderTelephone}  {\phoneicon\,     & \IfLanguageName{ngerman}{Telefon}{Telephone}:   & \@LetterSenderTelephone               \\}
+      \ifnotempty{\@LetterSenderFax}        {\faxicon\,       & \IfLanguageName{ngerman}{Fax}{Telefax}:         & \@LetterSenderFax                     \\}
+      \ifnotempty{\@LetterSenderMobile}     {\mobileicon\,    & \IfLanguageName{ngerman}{Mobil}{Mobile Phone}:  & \@LetterSenderMobile                  \\}
+      \ifnotempty{\@LetterSenderEMail}      {\emailicon\,     & E-Mail:                                         & \emaillink{\@LetterSenderEMail}       \\}
+      \ifnotempty{\@LetterSenderKey}        {\keyicon\,       & PGP:                                            & \httpslink{\@LetterSenderKey}         \\}
+      \ifnotempty{\@LetterSenderHomepage}   {\homepageicon\,  & Homepage:                                       & \httpslink{\@LetterSenderHomepage}    \\}
+    \end{tabular}
+  }}
+  \ifnotempty{\@LetterSenderLogo}
+    {
+      \KOMAoptions{fromlogo=true}
+      \setkomavar{fromlogo}             {\includegraphics[width=0.23\linewidth]{\@LetterSenderLogo}}
+    }
+  \setkomavar{place}                    {\@LetterSenderMunicipality}
+  \setkomavar{signature}
+  {
+    \ifnotempty{\@LetterSignature}
+      {
+        \\[-\@signatureBefore]
+        \includegraphics[height=\@signatureHeight]{\@LetterSignature}\\[-\@signaturePadding]
+      }
+    \@LetterSenderFirstName~\@LetterSenderLastName
+  }
+  \setkomavar{subject}                  []{\@LetterSubject}
+
+  % set default values of variables of other modules
+  \@ResumeFromLetter
+
+  % some custom configuration, might override defaults
+  \@LetterConfigurations
+
+  \begin{document}
+    % cover letter
+    \noWordBreaks
+    \addsectiontocentry{}{Anschreiben}
+    \def\@institute                     {}
+    \ifnotempty{\@LetterReceiverInstituteLong}
+      {\def\@institute                  {\@LetterReceiverInstituteLong\\}}
+    \def\@lastName                      {}
+    \ifnotempty{\@LetterReceiverLastName}
+      {\def\@lastName                   { \@LetterReceiverLastName}}
+    \def\@streetExtra                   {}
+    \ifnotempty{\@LetterReceiverStreetExtra}
+      {\def\@streetExtra                {\@LetterReceiverStreetExtra\\}}
+    \def\@country                       {}
+    \ifnotempty{\@LetterReceiverCountry}
+      {\def\@country                    {\@LetterReceiverCountry\,}}
+    \begin{letter}
+      {
+        \@institute
+        \@LetterReceiverFirstName\@lastName\\
+        \@LetterReceiverStreet~\@LetterReceiverStreetNumber\\
+        \@streetExtra
+        \@country\@LetterReceiverPostalCode~\@LetterReceiverMunicipality
+      }
+      \@LetterBefore
+      \opening{\@LetterOpening\IfLanguageName{ngerman}{,}{.}}
+      \@LetterContent\par
+      \closing{\@LetterClosing}
+      \vfill
+      \ifnotempty{\@LetterEnclosureList}
+        {
+          \setkomavar*{enclseparator}{\@LetterEnclosureTitle}
+          \encl{\@LetterEnclosureList}
+        }
+      \ifnotempty{\@LetterCopies}
+        {
+          \cc{\@LetterCopies}
+        }
+      \@LetterAfter
+    \end{letter}
+
+    % main matter
+    #1
+
+    % enclosure, e.g. documents
+    \ifempty{\@LetterEnclosureBody}
+    {%
+      \clearpage%
+      \markboth{}{}%
+      \thispagestyle                    {empty}%
+      \mbox{}%
+      \cleardoublepage%
+      \mbox{}%
+      \phantomsection%
+      \mbox{}\\[-\normalbaselineskip]\nopagebreak%
+      \addsectiontocentry{}             {\@LetterEnclosureTitle}%
+      \unskip\ignorespaces\@LetterEnclosureBody%
+    }%
+  \end{document}
+}
+
+%% Set Enclosure
+\newcommand{\theEnclosure               }[3][\IfLanguageNeme{ngerman}{Anlage}{Enclosure}]
+{
+  \def\@LetterEnclosureTitle            {#1}
+  \def\@LetterEnclosureList             {#2}
+  \def\@LetterEnclosureBody             {#3}
+}
+
+\newcommand{\enclosureSection           }[2]%
+{%
+  \phantomsection%
+  \mbox{}\\[-\normalbaselineskip]\nopagebreak%
+  \addsubsectiontocentry{}              {#1}%
+  \markleft                             {#1}%
+  \ignorespaces#2\clearpage%
+}%
+
+%% Set Receiver
+\newcommand{\theReceiver                }[5][]
+{
+  \def\@LetterReceiverInstituteShort    {#1}
+  \def\@LetterReceiverInstituteLong     {#2}
+  \theReceiverName                      #3{}{}{}
+  \theReceiverStreet                    #4{}{}
+  \theReceiverCity                      #5{}{}
+}
+
+\newcommand{\theReceiverCity            }[3][]
+{
+  \def\@LetterReceiverCountry           {#1}
+  \def\@LetterReceiverPostalCode        {#2}
+  \def\@LetterReceiverMunicipality      {#3}
+}
+
+\newcommand{\theReceiverName            }[3][]
+{
+  \def\@LetterReceiverTitle             {#1}
+  \def\@LetterReceiverFirstName         {#2}
+  \def\@LetterReceiverLastName          {#3}
+}
+
+\newcommand{\theReceiverStreet          }[3][]
+{
+  \def\@LetterReceiverStreetExtra       {#1}
+  \def\@LetterReceiverStreet            {#2}
+  \def\@LetterReceiverStreetNumber      {#3}
+}
+
+%% Set Sender
+\newcommand{\theSender                  }[9][]
+{
+  \def\@LetterSenderLogo                {#1}
+  \theSenderName                        #2{}{}{}
+  \theSenderStreet                      #3{}{}
+  \theSenderCity                        #4{}{}
+  \def\@LetterSenderTelephone           {#5}
+  \def\@LetterSenderFax                 {#6}
+  \def\@LetterSenderMobile              {#7}
+  \theSenderEMail                       #8{}
+  \def\@LetterSenderHomepage            {#9}
+}
+
+\newcommand{\theSenderCity              }[3][]
+{
+  \def\@LetterSenderCountry             {#1}
+  \def\@LetterSenderPostalCode          {#2}
+  \def\@LetterSenderMunicipality        {#3}
+}
+
+\newcommand{\theSenderEMail             }[2][]
+{
+  \def\@LetterSenderKey                 {#1}
+  \def\@LetterSenderEMail               {#2}
+}
+
+\newcommand{\theSenderName              }[4][]
+{
+  \def\@LetterSenderTitle               {#1}
+  \def\@LetterSenderFirstName           {#2}
+  \def\@LetterSenderLastName            {#3}
+  \def\@LetterSenderNickName            {#4}
+}
+
+\newcommand{\theSenderStreet            }[3][]
+{
+  \def\@LetterSenderStreetExtra         {#1}
+  \def\@LetterSenderStreet              {#2}
+  \def\@LetterSenderStreetNumber        {#3}
+}
+\makeatother

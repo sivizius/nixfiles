@@ -1,0 +1,23 @@
+\renewcommand{\@ResumeSubEntry          }[6]
+{
+  % 1 – date
+  % 2 – optional: position
+  % 3 – title
+  % 4 – location
+  % 5 – optional: grades
+  % 6 – optional: comment/description
+  \setlength\tabcolsep{0pt}
+  \setlength{\extrarowheight}{0pt}
+  \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 4.5cm} R{4.5cm}}
+    \setlength\leftskip{0.2cm}
+    \subentrytitlestyle{#3}                             & \ifempty{#2}{\subentrydatestyle{#1}}                                                                \\
+    \ifnotempty{#2}
+      {
+        \subentrypositionstyle{#2\ifnotempty{#5}{, #5}} & \subentrydatestyle{#1}                                                                              \\
+      }
+    \ifnotempty{#6}
+      {
+        \multicolumn{2}{L{17.0cm}}{\subdescriptionstyle{#6}}                                                                                                  \\
+      }
+  \end{tabular*}
+}

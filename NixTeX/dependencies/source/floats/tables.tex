@@ -1,0 +1,232 @@
+% special rules
+\newlength\oriarrayrulewidth
+\newcount\orilowpenalty
+\newcommand\Midrule%
+{%
+  \noalign%
+  {%
+    \global\oriarrayrulewidth\arrayrulewidth\relax%
+    \global\orilowpenalty\@lowpenalty\relax%
+    \global\@lowpenalty=\numexpr-10000\relax%
+    \global\arrayrulewidth\lightrulewidth\relax%
+  }%
+  \hline%
+  \noalign%
+  {%
+    \global\@lowpenalty=\orilowpenalty\relax%
+    \global\arrayrulewidth\oriarrayrulewidth\relax%
+  }%
+}
+\newcommand{\raisedrule}[2][0em]{\leaders\hbox{\rule[#1]{1pt}{#2}}\hfill}
+
+% special table columns
+\newcolumntype{d}[1]{D{.}{\cdot}{#1}}
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{P}{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}X}
+\newcolumntype{Z}{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}X}
+\newcolumntype{T}[3]{>{\textfont0=\the\font\DC@{#1}{#2}{#3}}c<{\DC@end}}
+\newcolumntype{.}{T{.}{.}{-1}}
+\newcommand{\thead}[1]{\multicolumn{1}{c}{#1}}
+\newcommand{\Thead}[1]{\multicolumn{1}{c|}{#1}}
+\newcommand{\tHead}[1]{\multicolumn{1}{@{}c@{}}{#1}}
+\newcommand{\THead}[1]{\multicolumn{1}{@{}c@{}|@{}}{#1}}
+
+% notes for tables
+\newcommand{\tblNote}[2][]{\directlua{tableNote([[#1]], [[#2]])}}
+\newcommand{\theNote}[1]{\directlua{theNote([[#1]])}}
+\newcommand{\aNote}[1]{\directlua{if (tblNoteText=="") then else tblNoteText=tblNoteText..[[; ]] end tblNoteText=tblNoteText..[[#1]] end}}
+
+% make font size in a table smaller
+\newcommand{\smallTable}{\directlua{tblSmall = true}}
+\newcommand{\normalTable}{\directlua{tblSmall = false}}
+
+\newcommand{\ctable  }[1][]{\@ctable {h}{#1}}%(short caption, config, body, long caption, label)
+\newcommand{\htable  }[1][]{\@ctable {H}{#1}}%(short caption, config, body, long caption, label)
+
+\newcommand{\@ctable}[6]
+{
+  %1 – float
+  %2 – short caption
+  %3 – config
+  %4 – body
+  %5 – long caption
+  %6 – label
+  \directlua
+  {
+    tblNotes      = 0
+    tblNamedNotes = {}
+    tblNoteText   = [[]]
+    if tblSmall == true
+    then
+    end
+  }
+  \begin{table}[#1]%
+    \robfamily%
+    \centering%
+    {%
+      \directlua
+      {
+        if tblSmall == true
+        then
+          tex.print([[\noexpand\footnotesize]])
+        end
+      }%
+      \ifthenelse{\isempty{#5}}%
+      {}%
+      {%
+        \ifthenelse{\isempty{#2}}%
+          {\caption[\nolink{#5}]{\adjustCaption{#5}}}%
+          {\caption[\nolink{#2}]{\adjustCaption{#5}}}%
+      }%
+      \labelTable{#6}%
+      \ifthenelse{\isempty{#3}}%
+        {\begin{tabular}{l*{255}{c}}}%
+        {\begin{tabular}{#3}}%
+        \toprule%
+          #4%
+        \bottomrule%
+      \end{tabular}%
+    }%
+    {%
+      \directlua
+      {
+        if not ( tblNoteText == [[]] )
+        then
+          tex.print(bs..[[begin{flushleft}]]..bs..[[small]]..tblNoteText..[[.]]..bs..[[end{flushleft}]])
+        end
+      }%
+    }%
+  \end{table}%
+}
+
+\newcommand{\ltable}[9][]
+{
+  %1 – short caption
+  %2 – config
+  %3 – first header
+  %4 – other header
+  %5 – body
+  %6 – other footer
+  %7 – final footer
+  %8 – long caption
+  %9 – label
+  \directlua
+  {
+    tblNotes      = 0
+    tblNamedNotes = {}
+    tblNoteText   = [[]]
+    if tblSmall == true
+    then
+    end
+  }%
+  \ifthenelse{\isempty{#3}}%
+    {\def\tableHeadFirst{}}%
+    {\def\tableHeadFirst{#3\midrule}}%
+  \ifthenelse{\isempty{#4}}%
+    {\def\tableHeadOther{}}%
+    {\def\tableHeadOther{#4\midrule}}%
+  \ifthenelse{\isempty{#6}}%
+    {\def\tableFootOther{}}%
+    {\def\tableFootOther{\midrule#6}}%
+  \ifthenelse{\isempty{#7}}%
+    {\def\tableFootFinal{}}%
+    {\def\tableFootFinal{\midrule#7}}%
+  \ifthenelse{\isempty{#9}}%
+    {%
+      %\directlua{print([[table »#1« needs label!]]) unlabeledTab = unlabeledTab + 1}%
+      \def\tableLabel{}%
+    }%
+    {%
+      \def\tableLabel{\labelTable{#9}}%
+    }%
+  \ifthenelse{\isempty{#8}}%
+    {%
+      \def\tableCaptionFirst{\tableLabel}%
+      \def\tableCaptionOther{}%
+    }%
+    {%
+      \ifthenelse{\isempty{#1}}%
+        {\def\tableCaptionFirst{\caption[\nolink{#8}]{\adjustCaption{#8}\tableLabel}\\}}%
+        {\def\tableCaptionFirst{\caption[\nolink{#1}]{\adjustCaption{#8}\tableLabel}\\}}%
+      \def\tableCaptionOther{\caption[]{\adjustCaption{#8 (Fortsetzung)}}\\} %
+    }%
+  \begin{center}%
+    \ifthenelse{\isempty{#2}}%
+      {\begin{longtable}{l*{255}{c}}}%
+      {\begin{longtable}{#2}}%
+    \tableCaptionFirst%
+    \toprule%
+    \tableHeadFirst%
+    \endfirsthead%
+    \tableCaptionOther%
+    \toprule%
+    \tableHeadOther%
+    \endhead%
+    \tableFootOther%
+    \bottomrule%
+    \endfoot%
+    \tableFootFinal%
+    \bottomrule%
+    \endlastfoot%
+    #5%
+    %{%
+    %  \directlua
+    %  {
+    %    if not ( tblNoteText == [[]] )
+    %    then
+    %      tex.print(bs..[[begin{flushleft}]]..bs..[[small]]..tblNoteText..[[.]]..bs..[[end{flushleft}]])
+    %    end
+    %  }%
+    %}%
+    \end{longtable}%
+  \end{center}%
+}
+
+\newcommand{\LTable}[2]
+{
+  %1 – config
+  %2 – body
+  \directlua
+  {
+    tblNotes      = 0
+    tblNamedNotes = {}
+    tblNoteText   = [[]]
+    if tblSmall == true
+    then
+    end
+  }%
+  %\begin{center}%
+    \ifthenelse{\isempty{#1}}%
+      {\begin{longtable}{l*{255}{c}}}%
+      {\begin{longtable}{#1}}%
+    \directlua
+    {
+      if tblSmall == true
+      then
+        tex.print([[\noexpand\footnotesize]])
+      end
+    }%
+    \toprule%
+    \endfirsthead%
+    \toprule%
+    \endhead%
+    \bottomrule%
+    \endfoot%
+    \bottomrule%
+    \endlastfoot%
+    #2
+    %{%
+    %  \directlua
+    %  {
+    %    if not ( tblNoteText == [[]] )
+    %    then
+    %      tex.print(bs..[[begin{flushleft}]]..bs..[[small]]..tblNoteText..[[.]]..bs..[[end{flushleft}]])
+    %    end
+    %  }%
+    %}%
+    \end{longtable}%
+  %\end{center}%
+}%
+%            tex.print(bs..[[newline{]]..bs..[[centering]]..bs..[[mbox[][l]{]]..bs..[[small]]..tblNoteText..[[.}}]])%

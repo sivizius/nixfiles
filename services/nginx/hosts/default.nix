@@ -1,0 +1,4 @@
+{
+  aleph                                 =   ./aleph;
+  bet                                   =   {};
+}

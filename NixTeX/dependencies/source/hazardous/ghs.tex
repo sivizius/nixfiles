@@ -1,0 +1,2 @@
+\directlua{includeCode("hazardous/ghs/ghs")}
+\newcommand{\ghsPictogram}[2][]{\makeatletter\directlua{tex.print(ghsNamedPictogram([[#2]], [[#1]]))}\makeatother}

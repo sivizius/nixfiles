@@ -1,0 +1,67 @@
+\directlua
+{
+  class                                 =   "slides"
+  fontSize                              =   "10pt"
+}
+\input{\source/code/common}
+\input{\source/code/slides}
+
+\newcommand{\theSlides}[9][tuc]
+{
+  %1 – Fakultät
+  %2 – title
+  %3 – subtitle
+  %4 – author
+  %5 – date
+  %6 – logo
+  %7 – before document
+  %8 – content
+  %9 – appendix
+  \directlua
+  {
+    fakultaet = "#1"
+  }
+  \usepackage{\source/tuc/source/beamerthemetuc2014}
+  \mode<article>{\usepackage{\source/tuc/source/beamerarticletuc2014}}
+  \title{#2}
+  \subtitle{#3}
+  \author{#4}
+  \date{#5}
+  %\makeglossaries
+  #7
+  \setbeameroption{\directlua{if hazDualScreen then tex.print([[show notes on second screen]]) end}}
+  \setbeamertemplate{note page}[plain]
+  \beamertemplatenavigationsymbolsempty
+  \begin{document}
+    \robfamily
+    %\let\oldprintslidenumber=\printslidenumber
+    %\renewcommand{\printslidenumber}[2]{\oldprintslidenumber{1}{1337}}
+    %\begingroup
+      %\section*{Titelseite}%\bookmarkthis
+      \setbeamertemplate{tuc2 headlines}[title]
+      \frame{\titlepage #6}
+      \setbeamertemplate{tuc2 headlines}[section]
+    %\endgroup
+    %\let\printslidenumber=\oldprintslidenumber
+    \newcommand{\slide}[4][t]
+    {
+      \begin{frame}[##1]
+        \ifthenelse{\isempty{##2}}{}{\frametitle{##2}}
+        \ifthenelse{\isempty{##3}}{}{\framesubtitle{##3}}
+        ##4
+      \end{frame}
+    }
+    #8
+    \renewcommand{\printslidenumber}[2]{Extra}
+    \renewcommand{\slide}[4][t]
+    {
+      \begin{frame}[noframenumbering,##1]
+        \ifthenelse{\isempty{##2}}{}{\frametitle{##2}}
+        \ifthenelse{\isempty{##3}}{}{\framesubtitle{##3}}
+        ##4
+      \end{frame}
+    }
+    \section*{Extra}%\bookmarkthis
+    #9
+  \end{document}
+}

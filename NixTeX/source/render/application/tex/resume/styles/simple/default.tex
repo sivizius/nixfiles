@@ -1,0 +1,153 @@
+\renewcommand{\@ResumeAfter             }
+{
+  \restoregeometry
+}
+
+\renewcommand{\@ResumeBefore            }
+{
+  \ifthenelse{\equal  {\@ResumePictureEdge}   {edge}}
+    {\def\@ResumePictureBorder          {gray}}
+    {\def\@ResumePictureBorder          {none}}
+  \ifthenelse{\equal  {\@ResumePictureShape}  {circle}}
+    {\def\@ResumePictureDimension       {1.5cm}}
+    {\def\@ResumePictureDimension       {2.0cm}}
+  \newgeometry
+  {
+    footskip    = 30pt,
+    includefoot,
+    margin      = 2.0cm,
+  }
+  \small
+}
+
+% TODO: Internationalising
+\renewcommand{\@ResumeContent           }[1]
+{
+  \begin{longtabu}[l]{r|X}
+    \toprule
+    \endfirsthead
+    \toprule
+    \endhead
+    \bottomrule
+    \endfoot
+    \bottomrule
+    \endlastfoot
+    \multicolumn{2}{l}{{\huge\textbf{\@ResumeFirstName\ \@ResumeLastName}}}\raisedrule[0.2em]{2pt}
+    \ungroup\ifnotempty{\@ResumePicture}{\\*&\raggedleft\@@ResumePicture\\*[-4.2cm]}
+    \ungroup\ifnotempty{\@ResumeBirthDay}                                       {\@ResumeEntry  {}  {}  {\@@ResumeBirth}            {}{}{}}
+    \ungroup\ifnotempty{\@ResumeNationality}                                    {\@ResumeEntry  {}  {}  {\@@ResumeNationality}      {}{}{}}
+    \ungroup\ifnotempty{\@ResumeTelephone}                                      {\@ResumeEntry  {}  {}  {\@@ResumeTelephone}        {}{}{}}
+    \ungroup\ifnotempty{\@ResumeFax}                                            {\@ResumeEntry  {}  {}  {\@@ResumeFax}              {}{}{}}
+    \ungroup\ifnotempty{\@ResumeMobile}                                         {\@ResumeEntry  {}  {}  {\@@ResumeMobile}           {}{}{}}
+    \ungroup\ifnotempty{\@ResumeEMail}                                          {\@ResumeEntry  {}  {}  {\@@ResumeEMail}            {}{}{}}
+    \ungroup\ifnotempty{\@ResumeKey}                                            {\@ResumeEntry  {}  {}  {\@@ResumeKey}              {}{}{}}
+    \ungroup\ifnotempty{\@ResumeHomepage}                                       {\@ResumeEntry  {}  {}  {\@@ResumeHomepage}         {}{}{}}
+    \ungroup\ifnotempty{\@ResumeGit}                                            {\@ResumeEntry  {}  {}  {\@@ResumeGit}              {}{}{}}
+    \ungroup\ifnotempty{\@ResumeGithub}                                         {\@ResumeEntry  {}  {}  {\@@ResumeGithub}           {}{}{}}
+    \ungroup\ifnotempty{\@ResumeGitlab}                                         {\@ResumeEntry  {}  {}  {\@@ResumeGitlab}           {}{}{}}
+    \ungroup\ifnotempty{\@ResumeStackOverflowID}                                {\@ResumeEntry  {}  {}  {\@@ResumeStackOverflow}    {}{}{}}
+    \ungroup\ifnotempty{\@ResumeLinkedin}                                       {\@ResumeEntry  {}  {}  {\@@ResumeLinkedin}         {}{}{}}
+    \ungroup\ifnotempty{\@ResumeTwitter}                                        {\@ResumeEntry  {}  {}  {\@@ResumeTwitter}          {}{}{}}
+    \ungroup\ifnotempty{\@ResumeSkype}                                          {\@ResumeEntry  {}  {}  {\@@ResumeSkype}            {}{}{}}
+    \ungroup\ifnotempty{\@ResumeReddit}                                         {\@ResumeEntry  {}  {}  {\@@ResumeReddit}           {}{}{}}
+    \ungroup\ifnotempty{\@ResumeXing}                                           {\@ResumeEntry  {}  {}  {\@@ResumeXing}             {}{}{}}
+    \ungroup\ifnotempty{\@ResumeMedium}                                         {\@ResumeEntry  {}  {}  {\@@ResumeMedium}           {}{}{}}
+    \ungroup\ifnotempty{\@ResumeWikipediaName}                                  {\@ResumeEntry  {}  {}  {\@@ResumeWikipedia}        {}{}{}}
+    \ungroup\ifnotempty{\@ResumeGoogleScholarID}                                {\@ResumeEntry  {}  {}  {\@@ResumeGoogleSchoolar}   {}{}{}}
+    \ungroup\ifnotempty{\@ResumeExtra}                                          {\@ResumeEntry  {}  {}  {\@ResumeExtra}             {}{}{}}
+    \ungroup\ifnotempty{\@ResumeAddressBusinessRoad\@ResumeAddressPrivateCity}  {\@ResumeEntry  {}  {}  {\@@ResumeAddressPrivate}   {}{}{}}
+    \ungroup\ifnotempty{\@ResumeAddressBusinessRoad\@ResumeAddressBusinessCity} {\@ResumeEntry  {}  {}  {\@@ResumeAddressBusiness}  {}{}{}}
+    \ungroup\ifnotempty{\@ResumeAddressBusinessRoad\@ResumeAddressBusinessCity} {\@ResumeEntry  {}  {}  {\@@ResumeAddressBusiness}  {}{}{}}
+    #1\\
+  \end{longtabu}
+}
+
+\renewcommand{\@ResumeEntry             }[6]
+{
+  % 1 – date
+  % 2 – optional: position
+  % 3 – institution
+  % 4 – optional: location
+  % 5 – optional: grades
+  % 6 – optional: comment/description
+  \\*{#1}  & {\ifnotempty{#2}{\textbf{#2:\newline}}#3\ifnotempty{#4}{ (#4)}\ifnotempty{#5}{\newline #5}\ifnotempty{#6}{\newline #6}}
+}
+
+\renewcommand{\@ResumeHonor             }[4]
+{
+  % 1 – date
+  % 2 – optional: position
+  % 3 – title
+  % 4 – location
+  \\*{#1}  & {\ifthenelse{\equal{}{#2}}{\textbf{#3}}{\textbf{#2}, #3}, #4}
+}
+
+\renewcommand{\@ResumeItem              }[2]
+{
+  % 1 – optional: title
+  % 2 – body
+  \\*{}    & {\bullet\parbox[t][][]{\linewidth}{\ifnotempty{#1}{\textbf{#1}\newline}#2}}
+}
+
+\renewcommand{\@ResumeItemisation       }[2]
+{
+  % 1 – optional: config
+  % 2 – body
+  \itemisation[#1]{#2}
+}
+
+\renewcommand{\@ResumeLanguage          }[4]
+{
+  % 1 – optional: numeric level 0–1
+  % 2 – name
+  % 3 – short level ([ABC][12]+?|–)?
+  % 4 – optional: comment/description
+  \\*{#2}  & {\textbf{#3}\newline\rateHalfStars{#1-0}{5}\ifnotempty{#4}{~#4}}
+}
+
+\renewcommand{\@ResumeNote              }[1]
+{
+  % 1 – note
+  \\*\multicolumn{\LT@cols}{l}{{\footnotesize #1}}
+}
+
+\renewcommand{\@ResumeSection           }[3]
+{
+  % 1 – ignored: environment
+  % 2 – title
+  % 3 – body
+  \\\multicolumn{2}{l}{{\large\textbf{#2}}\raisedrule[0.2em]{1pt}}
+  \ifnum\pdf@strcmp{#1}{cvparagraph}=\z@
+    \\\multicolumn{2}{p{\linewidth}}{#3\par}
+  \else
+    #3
+  \fi
+}
+
+\renewcommand{\@ResumeSkill             }[3]
+{
+  % 1 – optional: comment, link to repository, …
+  % 2 – category
+  % 3 – software/language/skill
+  \\*{#2}  & {#3\ifnotempty{#1}{(#1)}}
+}
+
+\renewcommand{\@ResumeSubEntry          }[6]
+{
+  % 1 – date
+  % 2 – position
+  % 3 – institution
+  % 4 – optional: location
+  % 5 – optional: grades
+  % 6 – optional: comment/description
+  \\*{#1}  & {\quad\textbf{#2:}\newline #3\ifnotempty{#4}{ (#4)}\ifnotempty{#5}{\newline #5}\ifnotempty{#6}{\newline #6}}
+}
+
+\renewcommand{\@ResumeSubSection        }[3]
+{
+  % 1 – ignored: environment
+  % 2 – title
+  % 3 – body
+  \\*\multicolumn{2}{l}{{\quad\textbf{#2}}}\raisedrule[0.1em]{0.25pt}
+  #3
+}

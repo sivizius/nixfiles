@@ -1,0 +1,9 @@
+\newdimen\spaceleft
+\def\textheightleft{\dimexpr\textheight-\pagetotal\relax}
+\setlength{\parindent}{0pt}
+\newlength{\newtextheight}
+\newlength{\heightOfBox}
+
+\def\relativetextheightleft{\numexpr12*\textheightleft/\textheight\relax}
+\def\clearPageOnLastQuarter{\ifnum\relativetextheightleft<4\ifnum\textheight>\pagetotal\clearpage\fi\fi}
+\def\clearPageOnLastThird{\ifnum\relativetextheightleft<5\ifnum\textheight>\pagetotal\clearpage\fi\fi}

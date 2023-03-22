@@ -1,0 +1,357 @@
+\definesubmol\nobond{-[,0.2,,,draw=none]}
+\def\hammond{\text{\textit{\ddag}}}
+\def\rotate{0}
+\newcommand{\setpolymerdelim}[2]
+{%
+  \def\delimleft{#1}%
+  \def\delimright{#2}%
+}
+\setpolymerdelim[]
+\newcommand{\reaction}[2]{\arrow{->[\tiny\begin{tabular}{@{}l@{\,}l@{}}#1\end{tabular}][\tiny\begin{tabular}{@{}l@{\,}l@{}}#2\end{tabular}]}}
+
+\let\@chemfig=\chemfig
+\let\@chemmove=\chemmove
+\renewcommand{\chemfig}[1]{{\@ResetSymbols\@chemfig{#1}}}
+\renewcommand{\chemmove}[1]{{\@ResetSymbols\@chemmove{#1}}}
+
+\def\@WrapChemSide{o}
+\def\@WrappedOrScheme{wrapped}
+\def\enableWrapped{\def\@WrappedOrScheme{wrapped}}
+\def\disableWrapped{\def\@WrappedOrScheme{scheme}}
+\newcommand{\initAngle}[2]{[:#2]}
+\def\MayHorizontalChem{\quad}
+\def\@WrappendEnvironment{\renewcommand{\initAngle}[2]{[:##1]}\def\MayHorizontalChem{\arrow{0}[-90,0.1]}}
+\def\@Cheme@DefaultScale{1.5}
+\newcommand{\chemeDefaultScale}[1][1.5]{\def\@Cheme@DefaultScale{#1}}
+
+\definesubmol\nobond{[,0.2,,,draw=none]}
+%\definesubmol\numAtom{-[,0.4,,,draw=none]\scriptstyle}
+\newcommand{\NumAtom}[2]{}
+\newcommand{\numAtom}[1]{\NumAtom{,0.4}{#1}}
+\newcommand{\numAtomWith}[2]{\NumAtom{::#1,0.4}{#2}}
+\def\numAtoms{\renewcommand{\NumAtom}[2]{-[##1,,,draw=none]{##2}}}
+
+\setchemfig
+{
+  atom sep                              =   14.4pt,
+  double bond sep                       =    2.6pt,
+  bond style                            =   {line width=0.6pt},
+  cram rectangle                        =   false,
+  cram width                            =    2.0pt,
+  cram dash width                       =    0.6pt,
+  cram dash sep                         =    1.0pt,
+  bond offset                           =    1.6pt,
+  bond join                             =   true,
+  lewis length                          =    1.0ex,
+  compound sep                          =    5.0em,
+  arrow offset                          =    5.0pt,
+  scheme debug                          =   false,
+}
+\renewcommand*\printatom[1]{{\scriptsize\ensuremath{\mathsf{#1}}}}
+
+%\AtBeginDocument
+%{
+%  \RenewDocumentCommand\ch{O{}m}{\directlua
+%  {
+%    if  chLevel ==  0
+%    then
+%      tex.print
+%      (
+%        bs.."csname chemformula_ch:nn"..bs.."endcsname {#1}"
+%      )
+%    end
+%    chLevel                             =   chLevel + 1
+%  }{#2}\directlua
+%  {
+%    chLevel                             =   chLevel - 1
+%  }}
+%}
+
+\tikzset
+{
+  onehalf/.style args={#1}
+  {
+    draw=none,
+    decoration=
+    {
+      markings,
+      mark=at position 0 with
+      {
+        \coordinate (CF@startdeloc) at (0,\dimexpr#1\CF@double@sep/2) coordinate (CF@startaxis) at (0,\dimexpr-#1\CF@double@sep/2);
+      },
+      mark=at position 1 with
+      {
+        \coordinate (CF@enddeloc) at (0,\dimexpr#1\CF@double@sep/2) coordinate (CF@endaxis) at (0,\dimexpr-#1\CF@double@sep/2);
+        \draw[dash pattern=on 2pt off 1.5pt] (CF@startdeloc)--(CF@enddeloc);
+        \draw (CF@startaxis)--(CF@endaxis);
+      }
+    },
+    postaction={decorate}
+  }
+}
+
+\newcommand{\arrowText}[1]{\begin{tabular}{@{}c@{\,}l@{}}#1\end{tabular}}
+\newcommand{\cheme}[3][\@Cheme@DefaultScale]
+{%sorry for this pun :D
+  \scalebox{#1}%
+  {%
+    %\setchemfig{scheme debug=true}%
+    \schemestart#2\schemestop%
+    \chemmove{#3}%
+  }%
+  \chemnameinit{}%
+}
+%\newcommand{\chem}[3][\@Cheme@DefaultScale]
+%{
+%  \begin{subfigure}[b]{\linewidth}
+%    \centering
+%    \cheme[#1]{#2}{#3}
+%  \end{subfigure}
+%}
+\newcommand{\thecchem}[5]
+{
+  %1 – float
+  %2 – short caption
+  %3 – content
+  %4 – long caption
+  %5 – label
+  \begin{scheme}[#1]
+    \centering
+    #3
+    \ifthenelse{\isempty{#4}}
+    {}
+    {
+      \ifthenelse{\isempty{#2}}
+        {\caption[\nolink{#4}]{\adjustCaption{#4}}}
+        {\caption[\nolink{#2}]{\adjustCaption{#4}}}
+    }
+    \labelScheme{#5}
+  \end{scheme}
+}
+\newcommand{\thelchem}[5]
+{
+  %1 – float
+  %2 – short caption
+  %3 – content
+  %4 – long caption
+  %5 – label
+  \begin{scheme}[#1]
+    #3
+    \ifthenelse{\isempty{#4}}
+    {}
+    {
+      \ifthenelse{\isempty{#2}}
+        {\caption[\nolink{#4}]{\adjustCaption{#4}}}
+        {\caption[\nolink{#2}]{\adjustCaption{#4}}}
+    }
+    \labelScheme{#5}
+  \end{scheme}
+}
+\newcommand{\cchem}[1][]{\thecchem{!htbp}{#1}}
+\newcommand{\hchem}[1][]{\thecchem{H}{#1}}
+\newcommand{\lchem}[1][]{\thelchem{H}{#1}}
+
+\newcommand{\thesubchem}[5]
+{
+  %1 – float
+  %2 – relative width
+  %3 – content
+  %4 – long caption
+  %5 – beamer settings
+  \begin{subfigure}[#1]{#2}%
+    \centering%
+    \ifthenelse{\isempty{#5}}%
+    {%
+      \cheme#3%
+      \ifthenelse{\isempty{#4}}{}{\caption[\nolink{#4}]{\adjustCaption{#4}}}%
+    }%
+    {%
+      \uncover#5%
+      {%
+        \cheme#3%
+        \ifthenelse{\isempty{#4}}{}{\caption[\nolink{#4}]{\adjustCaption{#4}}}%
+      }%
+    }%
+  \end{subfigure}%
+}
+\newcommand{\subchem}[4][b]{\thesubchem{#1}{#2}{#3}{#4}{}}
+
+\newcommand{\Wrapchem}[3][]
+{{
+  \@WrappendEnvironment%
+  %\begin{samepage}
+  \ifthenelse{\equal{#1}{}}
+    {\begin{wrapfigure}{\@WrapChemSide}{\widthof{\cheme{#2}{}}}\cheme{#2}{}\end{wrapfigure}}
+    {\begin{wrapfigure}{\@WrapChemSide}{#1\linewidth}\centering\cheme{#2}{}\end{wrapfigure}}%
+  #3\par
+  %\end{samepage}
+}}
+\newcommand{\wrapchem}[3][]{\Wrapchem[#1]{\chemfig{#2}}{#3}}
+
+\newcommand{\MayWrapchem}[5][]
+{%
+  \ifthenelse{\equal{\@WrappedOrScheme}{wrapped}}%
+    {\Wrapchem[#1]{#2}{#5}}%
+    {\hchem{\cheme{#2}{}}{#3}{#4}#5\par}%
+}
+\newcommand{\MayRefchem}[1]
+{%
+  \ifthenelse{\equal{\@WrappedOrScheme}{wrapped}}%
+    {}%
+    { (\refScheme{#1})}%
+}
+
+\def\makebraces(#1,#2)#3#4#5%
+{%
+  % 1 – Offset 1
+  % 2 – Offset 2
+  % 3 – Index
+  % 4 – Left Node
+  % 5 – Right Node
+  %\edef\delimhalfdim{\the\dimexpr(#1+#2)/2}%
+  %\edef\delimvshift{\the\dimexpr(#1-#2)/2}%
+  %\node[at=(#4),yshift=(\delimvshift)]
+  %{$\left\delimleft\vrule height\delimhalfdim depth\delimhalfdim width0pt\right.$};%
+  %\node[at=(#5),yshift=(\delimvshift)]%
+  %{$\left.\vrule height\delimhalfdim depth\delimhalfdim width0pt\right\delimright_{\rlap{$\scriptstyle#3$}}$};%
+  \polymerdelim[delimiters ={[]}, height = 5pt, depth = 10pt, indice = #3]{#4}{#5}%
+}
+\def\Makebraces(#1,#2)#3#4#5%
+{%
+  % 1 – Offset 1
+  % 2 – Offset 2
+  % 3 – Index
+  % 4 – Left Node
+  % 5 – Right Node
+  \edef\delimhalfdim{\the\dimexpr(#1+#2)/2}%
+  \edef\delimvshift{\the\dimexpr(#1-#2)/2}%
+  \node[at=(#4),yshift=(\delimvshift)]
+  {$\left\delimleft\vrule height\delimhalfdim depth\delimhalfdim width0pt\right.$};%
+  \node[at=(#5),yshift=(\delimvshift)]%
+  {$\left.\vrule height\delimhalfdim depth\delimhalfdim width0pt\right\delimright^{\rlap{$\scriptstyle#3$}}$};%
+}
+
+\catcode`\_11
+\definearrow3{s>}{%
+\ifx\empty#1\empty
+  \expandafter\draw\expandafter[\CF_arrowcurrentstyle,-CF](\CF_arrowstartnode)--(\CF_arrowendnode);%
+\else
+  \def\curvedarrow_style{shorten <=\CF_arrowoffset,shorten >=\CF_arrowoffset,}%
+  \CF_eaddtomacro\curvedarrow_style\CF_arrowcurrentstyle
+  \expandafter\draw\expandafter[\curvedarrow_style,-CF](\CF_arrowstartname)..controls#1..(\CF_arrowendname);
+  \ifx\empty#2\empty\else
+    abc
+  \fi
+\fi
+}
+\definearrow7{-u>}{%
+	\CF_arrowshiftnodes{#3}%
+	\CF_expafter{\draw[}\CF_arrowcurrentstyle](\CF_arrowstartnode)--(\CF_arrowendnode)node[midway](Uarrow@arctangent){};%
+	\CF_ifempty{#4}
+		{\def\CF_Uarrowradius{0.333}}
+		{\def\CF_Uarrowradius{#4}}%
+	\CF_ifempty{#5}%
+		{\def\CF_Uarrowabsangle{60}}
+		{\pgfmathsetmacro\CF_Uarrowabsangle{abs(#5)}}
+	\expandafter\draw\expanded{[\CF_ifempty{#1}{draw=none}{\unexpanded\expandafter{\CF_arrowcurrentstyle}},-]}(Uarrow@arctangent)%
+		arc[radius=\CF_compoundsep*\CF_currentarrowlength*\CF_Uarrowradius,start angle=\CF_arrowcurrentangle+90,delta angle=\CF_Uarrowabsangle]node(Uarrow@start){};
+	\expandafter\draw\expanded{[\CF_ifempty{#2}{draw=none}{\unexpanded\expandafter{\CF_arrowcurrentstyle}}]}(Uarrow@arctangent)%
+		arc[radius=\CF_compoundsep*\CF_currentarrowlength*\CF_Uarrowradius,start angle=\CF_arrowcurrentangle+90,delta angle=-\CF_Uarrowabsangle]node(Uarrow@end){};
+	\pgfmathsetmacro\CF_temp{\CF_Uarrowradius*cos(\CF_arrowcurrentangle)<0?"+":"-"}%
+	\ifdim\CF_Uarrowradius pt>0pt
+		\CF_arrowdisplaylabel{#1}{0}\CF_temp{Uarrow@start}{#2}{1}\CF_temp{Uarrow@end}%
+	\else
+		\CF_arrowdisplaylabel{#2}{0}\CF_temp{Uarrow@start}{#1}{1}\CF_temp{Uarrow@end}%
+	\fi%
+  \CF_arrowdisplaylabel{#6}{0.5}+\CF_arrowstartnode{#7}{0.5}-\CF_arrowendnode
+}
+\definearrow7{-U>}{%
+	\CF_arrowshiftnodes{#3}%
+	\CF_expafter{\draw[}\CF_arrowcurrentstyle](\CF_arrowstartnode)--(\CF_arrowendnode)node[midway](Uarrow@arctangent){};%
+	\CF_ifempty{#4}
+		{\def\CF_Uarrowradius{0.333}}
+		{\def\CF_Uarrowradius{#4}}%
+	\CF_ifempty{#5}%
+		{\def\CF_Uarrowabsangle{60}}
+		{\pgfmathsetmacro\CF_Uarrowabsangle{abs(#5)}}% ne prendre en compte que la valeur absolue de l'angle
+	\expandafter\draw\expanded{[\CF_ifempty{#1}{draw=none}{\unexpanded\expandafter{\CF_arrowcurrentstyle}},-]}(Uarrow@arctangent)%
+		arc[radius=\CF_compoundsep*\CF_currentarrowlength*\CF_Uarrowradius,start angle=\CF_arrowcurrentangle-90,delta angle=-\CF_Uarrowabsangle]node(Uarrow@start){};
+	\expandafter\draw\expanded{[\CF_ifempty{#2}{draw=none}{\unexpanded\expandafter{\CF_arrowcurrentstyle}}]}(Uarrow@arctangent)%
+		arc[radius=\CF_compoundsep*\CF_currentarrowlength*\CF_Uarrowradius,start angle=\CF_arrowcurrentangle-90,delta angle=\CF_Uarrowabsangle]node(Uarrow@end){};
+	\pgfmathsetmacro\CF_temp{\CF_Uarrowradius*cos(\CF_arrowcurrentangle)<0?"-":"+"}%
+	\ifdim\CF_Uarrowradius pt>0pt
+		\CF_arrowdisplaylabel{#1}{0}\CF_temp{Uarrow@start}{#2}{1}\CF_temp{Uarrow@end}%
+	\else
+		\CF_arrowdisplaylabel{#2}{0}\CF_temp{Uarrow@start}{#1}{1}\CF_temp{Uarrow@end}%
+	\fi%
+  \CF_arrowdisplaylabel{#6}{0.5}+\CF_arrowstartnode{#7}{0.5}-\CF_arrowendnode
+}
+\catcode`\_8
+
+% From https://tex.stackexchange.com/questions/260884/chemfig-how-to-do-these-wavy-markings
+\pgfdeclaredecoration{complete sines}{initial}{
+  \state{initial}[
+    width=+0pt,
+    next state=sine,
+    persistent precomputation={
+      \pgfmathsetmacro\matchinglength{
+        \pgfdecoratedinputsegmentlength /
+        int(\pgfdecoratedinputsegmentlength/\pgfdecorationsegmentlength)
+      }
+      \setlength{\pgfdecorationsegmentlength}{\matchinglength pt}
+    }]{}
+  \state{sine}[width=\pgfdecorationsegmentlength]{
+      \pgfpathsine{
+        \pgfpoint
+          {0.125\pgfdecorationsegmentlength}
+          {0.25\pgfdecorationsegmentamplitude}
+      }
+      \pgfpathcosine{
+        \pgfpoint
+          {0.125\pgfdecorationsegmentlength}
+          {-0.25\pgfdecorationsegmentamplitude}
+      }
+      \pgfpathsine{
+        \pgfpoint
+          {0.125\pgfdecorationsegmentlength}
+          {-0.25\pgfdecorationsegmentamplitude}
+      }
+      \pgfpathcosine{
+        \pgfpoint
+          {0.125\pgfdecorationsegmentlength}
+          {0.25\pgfdecorationsegmentamplitude}
+      }
+  }
+  \state{final}{}
+}
+\tikzset{wv/.style={decorate,decoration=complete sines}}
+\definesubmol{chainRest}2{#1[#2,.5]((-[::90,1,,,wv])-[::-90,1,,,wv])}
+\definesubmol{chainStart}2{[#2](-[::90,1,,,wv])(-[::-90,1,,,wv])#1[,.5]}
+\definesubmol{weakBond}2{-[#1,#2,,,dash pattern=on 2pt off 2pt]}
+
+
+%ferrocene
+%\wrapchem
+%{
+%  -[:\rotate-303.51,0.4476]%(-[::96.755]4')%
+%  -[::303.51,,,,]%(-[::26.755]5')%
+%  -[::303.51,0.4476]%(-[::35.835]1')%
+%  <[::251.67,0.7741]@{r5}{}%(-[::74.820]2')%
+%  >[::329.64,0.7741]%(-[::35.835]3')%
+%  -[::205.18,0.7472,,,draw=none]@{r1}{}-[::80,0.70]%
+%  Fe
+%  -[::  0,0.85]\ -[::0,0]@{r2}{}-[::85,0.7472,,,draw=none]
+%  <[::128.51,0.4476]@{r3}{}%(-[::263.245]3)%
+%  -[:: 56.49,,,,line width=2pt]@{r4}{}%(-[::333.245]2)%
+%  >[:: 56.49,0.4476]%(-[::324.165]1)%
+%  -[::108.33,0.7741]%(-[::285.180]5)%
+%  -[::30.36,0.7741]%(-[::334.255]4)
+%}
+%{
+%  \draw[rotate=\rotate] (r1) ellipse (6pt and 2pt);
+%  \draw[rotate=\rotate] (r2) ellipse (6pt and 2pt);
+%  \draw[-,rotate=\rotate,line width=0.6pt] (r2) -- ++(270:2pt);
+%  \fill[rotate=\rotate] (r3) ellipse (1.3pt and 1pt);
+%  \fill[rotate=\rotate] (r4) ellipse (1.3pt and 1pt);
+%  \fill[rotate=\rotate] (r5) ellipse (1pt and 1.3pt);
+%}

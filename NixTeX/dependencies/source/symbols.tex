@@ -1,0 +1,69 @@
+\protected\def\zero         {0}
+\protected\def\one          {1}
+\protected\def\two          {2}
+\protected\def\three        {3}
+\protected\def\four         {4}
+\protected\def\five         {5}
+\protected\def\six          {6}
+\protected\def\seven        {7}
+\protected\def\eight        {8}
+\protected\def\nine         {9}
+
+\protected\def\dash         {-}
+
+\def\addressicon            {\faHome}
+%\def\cdot                   {·}
+\def\birthicon              {\faBirthdayCake}
+\def\emailicon              {\faEnvelope}
+\def\facebookicon           {\faFacebook}
+\def\faxicon                {\faFax}
+\def\giticon                {\faGit}
+\def\githubicon             {\faGithubSquare}
+\def\gitlabicon             {\faGitlab}
+\def\googlescholaricon      {\faGraduationCap}
+\def\homepageicon           {\faGlobe}
+\def\keyicon                {{\ForkAwesome^^^^f2f7}}
+%\def\keyicon                {{\FontAwesomeSolid^^^^f084}}
+\def\lightning              {{\fontspec{DejaVuSans}↯\relax}}
+\def\linkedinicon           {\faLinkedinSquare}
+\def\matrixicon             {{\ForkAwesome^^^^f313}}
+\def\mediumicon             {\faMedium}
+\def\mobileicon             {\faMobile}
+\def\officeicon             {\faBuilding}
+\def\orcidicon              {{\FontAwesomeBrands^^^^f8d2}}
+\def\phoneicon              {\faPhone}
+\def\plus                   {+}
+\def\redditicon             {\faReddit}
+\def\skypeicon              {\faSkype}
+\def\stackoverflowicon      {\faStackOverflow}
+\def\twittericon            {\faTwitter}
+\def\wikipediaicon          {\faWikipediaW}
+\def\xingicon               {\faXingSquare}
+
+\def\radioactivity
+{%
+  \resizebox{1.5em}{1.5em}%
+  {%
+    \begin{tikzpicture}%
+      \node [ white, opacity  = 0 ] at  ( 0,  0 ) {\Huge\DejaVuSans^^^^2622};
+      \fill ( 0,  0 ) circle  ( .1  );
+      \fill (  60:.15 ) arc (  60:120:.15 ) --  ( 120:.5  ) arc ( 120: 60:.5  ) -- cycle;
+      \fill ( 180:.15 ) arc ( 180:240:.15 ) --  ( 240:.5  ) arc ( 240:180:.5  ) -- cycle;
+      \fill ( 300:.15 ) arc ( 300:360:.15 ) --  ( 360:.5  ) arc ( 360:300:.5  ) -- cycle;
+    \end{tikzpicture}%
+  }%
+}
+
+\def\Radioactivity
+{%
+  \resizebox{1.5em}{1.5em}%
+  {%
+    \begin{tikzpicture}%
+      \node [ white, opacity  = 0 ] at  ( 0,  0 ) {\Huge\DejaVuSans^^^^2622};
+      \fill ( 0,  0 ) circle  ( .1  );
+      \fill (   0:.15 ) arc (   0: 60:.15 ) --  (  60:.5  ) arc (  60: 00:.5  ) -- cycle;
+      \fill ( 120:.15 ) arc ( 120:180:.15 ) --  ( 180:.5  ) arc ( 180:120:.5  ) -- cycle;
+      \fill ( 240:.15 ) arc ( 240:300:.15 ) --  ( 300:.5  ) arc ( 300:240:.5  ) -- cycle;
+    \end{tikzpicture}%
+  }%
+}

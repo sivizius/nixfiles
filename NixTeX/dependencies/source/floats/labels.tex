@@ -1,0 +1,31 @@
+\directlua{includeCode("floats/labels")}
+
+\newcommand{\refAppendix        }[1]{\directlua{labels.reference  (labels.appendices,     [[#1]])}}
+\newcommand{\refEquation        }[1]{\directlua{labels.reference  (labels.equations,      [[#1]])}}
+\newcommand{\refFigure          }[1]{\directlua{labels.reference  (labels.figures,        [[#1]])}}
+\newcommand{\refScheme          }[1]{\directlua{labels.reference  (labels.schemes,        [[#1]])}}
+\newcommand{\refTable           }[1]{\directlua{labels.reference  (labels.tables,         [[#1]])}}
+
+\newcommand{\refPart            }[1]{\directlua{labels.reference  (labels.parts,          [[#1]])}}
+\newcommand{\refChapter         }[1]{\directlua{labels.reference  (labels.chapters,       [[#1]])}}
+\newcommand{\refSection         }[1]{\directlua{labels.reference  (labels.sections,       [[#1]])}}
+\newcommand{\refSubsection      }[1]{\directlua{labels.reference  (labels.subsections,    [[#1]])}}
+\newcommand{\refSubsubsection   }[1]{\directlua{labels.reference  (labels.subsubsections, [[#1]])}}
+\newcommand{\refParagraph       }[1]{\directlua{labels.reference  (labels.paragraphs,     [[#1]])}}
+\newcommand{\refSubparagraph    }[1]{\directlua{labels.reference  (labels.subparagraphs,  [[#1]])}}
+\newcommand{\refSentence        }[1]{\directlua{labels.reference  (labels.sentences,      [[#1]])}}
+
+\newcommand{\labelAppendix      }[1]{\directlua{labels.declare    (labels.appendices,     [[#1]])}}
+\newcommand{\labelEquation      }[1]{\directlua{labels.declare    (labels.equations,      [[#1]], true)}}
+\newcommand{\labelFigure        }[1]{\directlua{labels.declare    (labels.figures,        [[#1]])}}
+\newcommand{\labelScheme        }[1]{\directlua{labels.declare    (labels.schemes,        [[#1]])}}
+\newcommand{\labelTable         }[1]{\directlua{labels.declare    (labels.tables,         [[#1]])}}
+
+\newcommand{\labelPart          }[1]{\directlua{labels.declare    (labels.parts,          [[#1]])}}
+\newcommand{\labelChapter       }[1]{\directlua{labels.declare    (labels.chapters,       [[#1]])}}
+\newcommand{\labelSection       }[1]{\directlua{labels.declare    (labels.sections,       [[#1]])}}
+\newcommand{\labelSubsection    }[1]{\directlua{labels.declare    (labels.subsections,    [[#1]])}}
+\newcommand{\labelSubsubsection }[1]{\directlua{labels.declare    (labels.subsubsections, [[#1]])}}
+\newcommand{\labelParagraph     }[1]{\directlua{labels.declare    (labels.paragraphs,     [[#1]])}}
+\newcommand{\labelSentence      }[1]{\directlua{labels.declare    (labels.sentences,      [[#1]])}}
+\newcommand{\labelSubparagraph  }[1]{\directlua{labels.declare    (labels.subparagraphs,  [[#1]])}}

@@ -1,0 +1,180 @@
+\inputCode{hazardous/adr}
+\inputCode{hazardous/ghs/ghs}
+\inputCode{hazardous/nfpa}
+\directlua{includeCode("hazardous/hazardous")}
+\addbibresource{\source/assets/bibliography/hazardous.bib}
+
+\newlength{\@HazardousLength}
+\setlength{\@HazardousLength}         {\linewidth}
+\newlength{\@HazardousPictogramSep}
+\setlength{\@HazardousPictogramSep}   {0.1em}
+\newlength{\@HazardousPictogramSize}
+\setlength{\@HazardousPictogramSize}  {3.0cm}
+
+\def\@HazardousColumns      {1}
+\def\@HazardousOrientation  {}
+\def\@HazardousScale        {1}
+\def\@HazardousUsage        {}
+\newcommand{\@HazardousConfig}[4]
+{%
+  \ifthenelse{\isempty{#1}}%
+    {\def\@HazardousOrientation     {left}}%
+    {\def\@HazardousOrientation     {#1}}%
+  \ifthenelse{\isempty{#2}}%
+    {\def\@HazardousColumns         {1}}%
+    {\def\@HazardousColumns         {#2}}%
+  \ifthenelse{\isempty{#3}}%
+    {\def\@HazardousScale           {1}}%
+    {\def\@HazardousScale           {#3}}%
+  \ifthenelse{\isempty{#4}}%
+    {\setlength{\@HazardousLength}  {\linewidth}}%
+    {\setlength{\@HazardousLength}  {#4}}%
+}
+
+\newcommand{\@Hazardous}[6]
+{{\unskip%
+  %1  – citations?
+  %2  – substance
+  %3  – amount
+  %4  – purity
+  %5  – manufacturer
+  %6  – usage
+  \directlua
+  {
+    if      [[#1]]  ==  "true"
+    then
+      citations                         =   true
+    elseif  [[#1]]  ==  "false"
+    then
+      citations                         =   false
+    else%
+      citations                         =   not noCitations
+    end
+    hazardousData                       =   getHazardous  ( [[#2]]  )
+  }%
+  \framebox[\@HazardousLength]%
+  {%
+    \scalebox{\@HazardousScale}%
+    {%
+      \setlength{\@HazardousLength}{1pt*\ratio{\@HazardousLength}{\@HazardousScale pt}}%
+      \def\@HazardousContent%
+      {%
+        \def\@HazardousUsage{}%
+        \ifnotempty{#6}%
+          {%
+            \def\@HazardousUsage%
+            {%
+              \midrule[1pt]                                                                                                   \\[-1.5\normalbaselineskip]%
+              \multicolumn{4}{@{}l@{}}{\parbox[t][][c]{\linewidth}{\scriptsize #6}}                                           \\%
+            }%
+          }%
+        {\LARGE\textbf{\directlua{hazardousTitle(hazardousData)}}}                                                            \newline%
+        \begin{tabularx}{\linewidth}{@{}l@{}X@{}l@{}R{45pt}@{}}%
+          \footnotesize\directlua{hazardousUFIorECtitle(hazardousData)}                                                       &%
+          \footnotesize\directlua{hazardousUFIorECident(hazardousData)}                                                       &%
+          \footnotesize\textbf{\directlua{hazardousUFIorCAStitle(hazardousData)}}                                             &%
+          \footnotesize\hfill\directlua{hazardousUFIorCASident(hazardousData)}                                                \\%
+          \multicolumn{3}{@{}p{\linewidth-45pt}@{}}%
+          {%
+            \scriptsize%
+            \ifthenelse{\isempty{#4}}%
+              {\directlua   { hazardousPhysicals  ( false,  hazardousData ) }}%
+              {#4\directlua { hazardousPhysicals  ( true,   hazardousData ) }}%
+          }                                                                                                                   &%
+          \textbf{#3}                                                                                                         \\%
+          \midrule[1pt]                                                                                                       \\[-1.5\normalbaselineskip]%
+          \multicolumn{4}{@{}l@{}}{\parbox[t][][c]{\linewidth}
+          {\noWordBreaks\scriptsize\directlua{hazardousStatements(hazardousData)}}}                                           \\%
+          \midrule[1pt]                                                                                                       \\[-1.5\normalbaselineskip]%
+          \multicolumn{4}{@{}l@{}}{\parbox[t][][c]{\linewidth}{\scriptsize #5}}                                               \\%
+          \@HazardousUsage%
+        \end{tabularx}%
+      }%
+      \fourCases[\@HazardousOrientation]
+        {top}
+          {%
+            \begin{tabularx}%
+              {\@HazardousLength}%
+              {X}%
+              \multicolumn{1}{Z}%
+              {%
+                \mbox{}\newline%
+                \directlua{hazardousPictograms(hazardousData,[[\@HazardousColumns]])}\mbox{}\newline[0.5\normalbaselineskip]%
+                {\LARGE\directlua{hazardousSignal(hazardousData)}}%
+              }                                                                                                               \\%
+              \midrule[1pt]%
+              \@HazardousContent                                                                                              \\%
+            \end{tabularx}%
+          }%
+        {down}
+          {%
+            \begin{tabularx}%
+              {\@HazardousLength}%
+              {X}%
+              \@HazardousContent                                                                                              \\%
+              \midrule[1pt]%
+              \multicolumn{1}{Z}%
+              {%
+                \mbox{}\newline%
+                \directlua{hazardousPictograms(hazardousData,[[\@HazardousColumns]])}\mbox{}\newline[0.5\normalbaselineskip]%
+                {\LARGE\directlua{hazardousSignal(hazardousData)}}%
+              }                                                                                                               \\%
+            \end{tabularx}%
+          }%
+        {left}
+          {%
+            \begin{tabularx}%
+              {\@HazardousLength}%
+              {@{\hspace{\@HazardousPictogramSep}}C{\@HazardousColumns\@HazardousPictogramSize+\@HazardousColumns\@HazardousPictogramSep}@{}!{\vrule width 1pt}X}%
+              \parbox[t][][s]{\linewidth}
+              {
+                \centering%
+                ~\newline[-.7\normalbaselineskip]
+                \directlua{hazardousPictograms(hazardousData,[[\@HazardousColumns]])}\newline
+                {\LARGE ~}\newline[0.5\normalbaselineskip]
+              }                                                                                                               &%
+              \@HazardousContent                                                                                              \\[-\normalbaselineskip]%
+              {\LARGE\directlua{hazardousSignal(hazardousData)}}&                                                             \\%
+            \end{tabularx}%
+          }%
+        {right}
+          {%
+            \begin{tabularx}%
+              {\@HazardousLength}%
+              {X!{\vrule width 1pt}@{\hspace{\@HazardousPictogramSep}}C{\@HazardousColumns\@HazardousPictogramSize+\@HazardousColumns\@HazardousPictogramSep}@{}}%
+              \@HazardousContent                                                                                              &%
+              \parbox[t][][s]{\linewidth}
+              {
+                \centering%
+                ~\newline[-.7\normalbaselineskip]
+                \directlua{hazardousPictograms(hazardousData,[[\@HazardousColumns]])}\newline
+                {\LARGE ~}\newline[0.5\normalbaselineskip]
+              }                                                                                                               \\[-\normalbaselineskip]%
+              &{\LARGE\directlua{hazardousSignal(hazardousData)}}                                                             \\%
+            \end{tabularx}%
+          }%
+    }%
+  }\hspace{0pt}%
+}}
+
+% frontend for use in protocols
+\newcommand{\hazardous}[2][]
+{%
+  %1  – config
+  %2  – substance
+  \@HazardousConfig           #1{}{}{}%
+  \@Hazardous                 {true}{#2}{}{}{}{}%
+}
+
+% frontend for use in labels
+\newcommand{\Hazardous}[6][]
+{%
+  %1  – config
+  %2  – substance
+  %3  – amount
+  %4  – purity
+  %5  – manufacturer
+  %6  – usage
+  \@HazardousConfig#1{}{}{}%
+  \@Hazardous{false}{#2}{#3}{#4}{#5}{#6}\relax%
+}

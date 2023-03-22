@@ -1,0 +1,9 @@
+\newboolean{@plainText}
+\setboolean{@plainText}{false}
+\def\enablePlainText{\setboolean{@plainText}{true}\directlua{plainText=true}}
+\def\disablePlainText{\setboolean{@plainText}{false}\directlua{plainText=false}}
+\newcommand{\ifPlainText}[2]{\if@plainText #1\else#2\fi}
+
+\let\@textbf=\textbf\renewcommand{\textbf}[1]{\ifPlainText{**#1**}{\@textbf{#1}}}
+\let\@textit=\textit\renewcommand{\textit}[1]{\ifPlainText{*#1*}{\@textit{#1}}}
+\let\@textsc=\textsc\renewcommand{\textsc}[1]{\ifPlainText{+#1+}{\@textsc{#1}}}

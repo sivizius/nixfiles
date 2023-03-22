@@ -1,0 +1,60 @@
+\directlua{includeCode("text/text")}
+\inputCode{text/gender}
+\inputCode{text/languages}
+\inputCode{text/plain}
+\inputCode{text/spelling}
+
+\newcommand\thinkDash[1][]{\directlua{text.thinkDash.setThreshold([[#1]])}}
+\newcommand{\thd}[1][]{\directlua{text.thd([[#1]])} }
+\newcommand{\elaborate}[1][]{\directlua{text.elaborate([[#1]])}}
+\newcommand{\detailed }[2][]{}
+\newcommand{\takeFirst}[2]{#1}
+\newcommand{\PDFmarkupComment}[4]
+{
+  % 1 – comment
+  % 2 – text
+  % 3 – title
+  % 4 – colour
+  %\pdfmarkupcomment[markup=Highlight,author={#3},color={#4}]{#2}{#1}%
+  \pdfmargincomment[icon=Comment,author={#3},color={#4},date={\pdfDay}]{#1}\highLight[#4]{\trim@spaces{#2}}%
+}
+\newcommand{\PDFblockComment}[4]
+{
+  % 1 – comment
+  % 2 – text
+  % 3 – title
+  % 4 – colour
+  %\pdfmarkupcomment[markup=Highlight,author={#3},color={#4}]{#2}{#1}%
+  \pdfmargincomment[icon=Comment,author={#3},color={#4},date={\pdfDay}]{#1}%
+  \newline\noindent\textcolor{#4}{\rule{\textwidth}{0.5pt}}\newline\trim@spaces{#2}\newline\noindent\textcolor{#4}{\rule{\textwidth}{0.5pt}}%
+}
+\newcommand{\@reviewSide}[3]{\pdfmargincomment[icon=Comment,author={#2},color={#3},date={\pdfDay}]{\trim@spaces{#1}}}
+\newcommand{\reviewSide }[2][]
+{%
+  \ifthenelse{\equal{\@Annotations}{true}}%
+    {\ifthenelse{\equal{\@AnnotationsSolved|#1}{false|solved}}{}{\@reviewSide{#2}{#1}{\directlua{text.reviewColour([[#1]],[[#2]])}}}}%
+    {}%
+}
+
+\newcommand{\reviewBlock  }[3][]
+{%
+  \ifthenelse{\equal{\@Annotations}{true}}%
+    {\ifthenelse{\equal{\@AnnotationsSolved|#1}{false|solved}}{#3}{\PDFblockComment{#2}{#3}{#1}{\directlua{text.reviewColour([[#1]],[[#2]])}}}}%
+    {#3}%
+}
+
+\newcommand{\review     }[3][]
+{%
+  \ifthenelse{\equal{\@Annotations}{true}}%
+    {\ifthenelse{\equal{\@AnnotationsSolved|#1}{false|solved}}{#3}{\PDFmarkupComment{#2}{#3}{#1}{\directlua{text.reviewColour([[#1]],[[#2]])}}}}%
+    {#3}%
+}
+
+\def\@Annotations{false}
+\def\@AnnotationsSolved{true}
+\def\disableAnnotations {\def\@Annotations{false}\directlua{text.annotate ( "false" )}}
+\def\enableAnnotations  {\def\@Annotations{true}\directlua{text.annotate ( "true"  )}}
+\def\hideSolved         {\def\@AnnotationsSolved{false}}
+\def\showSolved         {\def\@AnnotationsSolved{true}}
+
+\newcommand{\organism}[2][]{\ifthenelse{\equal{#1}{}}{\textit{#2}}{(#1 \textit{#2})}}

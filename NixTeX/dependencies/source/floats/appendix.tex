@@ -1,0 +1,118 @@
+\newcommand{\appendGnuplot}[4][]{\appendFigure{#2}{\begin{adjustbox}%
+  {#1,min width=\textwidth,min totalheight=\textheightleft,max width=\textwidth,max totalheight=\textheightleft}\agnuplot#3{}{}{}{}\end{adjustbox}}{#4}}%
+\newcommand{\AppendGnuplot}[4][]{\AppendFigure{#2}{\begin{adjustbox}%
+  {#1,min width=\textwidth,min totalheight=\textheightleft,max width=\textwidth,max totalheight=\textheightleft}\agnuplot#3{}{}{}{}\end{adjustbox}}{#4}}%
+\newcommand{\appendGnuplotSideways}[4][]{\appendFigureSideways{#2}{\begin{adjustbox}%
+  {#1,min width=\textheightleft,min totalheight=\textwidth,,max totalheight=\textwidth}\agnuplot#3{}{}{}{}\end{adjustbox}}{#4}}%
+\newcommand{\AppendGnuplotSideways}[4][]{\AppendFigureSideways{#2}{\begin{adjustbox}%
+  {#1,min width=\textheightleft,min totalheight=\textwidth,max width=\textheightleft,max totalheight=\textwidth}\agnuplot#3{}{}{}{}\end{adjustbox}}{#4}}%
+\newcommand{\appendPDF}[4][]{\appendFigure{#2}{\directlua{markFileAsUsed([[#3]])}%
+  \includegraphics[#1,width=\textwidth,height=\textheight,keepaspectratio]{#3}}{#4}}%
+\newcommand{\AppendPDF}[4][]{\AppendFigure{#2}{\directlua{markFileAsUsed([[#3]])}%
+  \includegraphics[#1,width=\textwidth,height=.96\textheight,keepaspectratio]{#3}}{#4}}%
+\newcommand{\appendPDFsideways}[4][]{\appendFigureSideways{#2}{\directlua{markFileAsUsed([[#3]])}%
+  \includegraphics[#1,width=\textwidth,height=\textheight,keepaspectratio,angle=-90]{#3}}{#4}}%
+\newcommand{\AppendPDFsideways}[4][]{\AppendFigureSideways{#2}{\directlua{markFileAsUsed([[#3]])}%
+  \includegraphics[#1,width=\textwidth,height=.96\textheight,keepaspectratio,angle=-90]{#3}}{#4}}%
+
+\gdef\@rotatedPage{false}
+\newcommand{\@RotatePages}[1]{\ifthenelse{\equal{\directlua{tex.print(neverRotatePages)}}{true}}{}{\global\pdfpageattr\expandafter{\the\pdfpageattr/Rotate #1}}}
+%\newcommand{\@RotatePages}[1]{}
+\def\rotatePages  {\ifthenelse{\equal{\@rotatedPage}{true}}{}{\@RotatePages{90}\gdef\@rotatedPage{true}}}
+\def\unrotatePages{\ifthenelse{\equal{\@rotatedPage}{true}}{\@RotatePages{0}\gdef\@rotatedPage{false}}{}}
+
+\ifthenelse{\isundefined{\chapter}}
+  {\ifthenelse{\isundefined{\section}}
+    {\newcounter{ctrAppendix}}
+    {\newcounter{ctrAppendix}[section]}}
+  {
+    \newcounter{ctrAppendix}[chapter]
+    \renewcommand*\thectrAppendix{\thechapter.\arabic{ctrAppendix}}%
+  }
+
+\def\@CaptionedAppendix{false}
+\def\enableCaptionedAppendix{\def\@CaptionedAppendix{true}}
+\def\disableCaptionedAppendix{\def\@CaptionedAppendix{false}}
+
+\newcommand{\@MaybeCaptioned}[2]
+{%
+  \begin{figure}[H]%
+    %\centering%
+    \ifthenelse{\equal{\@CaptionedAppendix}{true}}%
+      {%
+        \scalebox{.95}{#2}
+        \caption{#1}%
+      }%
+      {#2}%
+  \end{figure}%
+}
+\newcommand{\@MaybeCaptionedRotated}[2]
+{\vfill\rotatebox{90}{\parbox[c][\textwidth][c]{0px}{\@MaybeCaptioned{#1}{#2}}}}
+
+\newcommand{\appendFigure}[3]%
+{%
+  %1  – title%
+  %2  – content%
+  %3  – label%
+  \clearpage%
+  \unrotatePages%
+  \refstepcounter{ctrAppendix}%
+  \ifthenelse{\isempty{#1}}{}{\expandafter\subsubsection{#1}}%
+  \labelAppendix{#3}%
+  \expandafter\belowpdfbookmark{\nolink{#1}}{page:\thepage}%
+  \expandafter\addxcontentsline{toc}{section}{\nolink{#1}}%
+  \@MaybeCaptioned{#1}{#2}%
+}%
+
+\newcommand{\appendFigureSideways}[3]%
+{%
+  %1  – title%
+  %2  – content%
+  %3  – label%
+  \clearpage%
+  \rotatePages%
+  \refstepcounter{ctrAppendix}%
+  \ifthenelse{\isempty{#1}}{}{\expandafter\subsubsection{#1}}%
+  \labelAppendix{#3}%
+  \expandafter\belowpdfbookmark{\nolink{#1}}{page:\thepage}%
+  \expandafter\addxcontentsline{toc}{section}{\nolink{#1}}%
+  \@MaybeCaptionedRotated{#1}{#2}%
+  %\leavevmode\unrotatePages%
+}%
+
+\newcommand{\AppendFigure}[3]%
+{%
+  %1  – title%
+  %2  – content%
+  %3  – label%
+  %\newpage%
+  %\clearpage%
+  %\refstepcounter{ctrAppendix}
+  %\ifthenelse{\isempty{#3}}%
+  %  {}%
+  %  {\label{#3}}%
+  \unrotatePages%
+  \expandafter\subsubsection*{#1}%
+  %\expandafter\belowpdfbookmark{\nolink{#1}}{page:\thepage}%
+  %\expandafter\addxcontentsline{toc}{section}{\nolink{#1}}%
+  \@MaybeCaptioned{#1}{#2}%
+}%
+
+\newcommand{\AppendFigureSideways}[3]%
+{%
+  %1  – title%
+  %2  – content%
+  %3  – label%
+  %\newpage%
+  %\clearpage%
+  %\refstepcounter{ctrAppendix}
+  %\ifthenelse{\isempty{#3}}%
+  %  {}%
+  %  {\label{#3}}%
+  \rotatePages%
+  \expandafter\subsubsection*{#1}%
+  %\expandafter\belowpdfbookmark{\nolink{#1}}{page:\thepage}%
+  %\expandafter\addxcontentsline{toc}{section}{\nolink{#1}}%
+  \@MaybeCaptionedRotated{#1}{#2}%
+  %\leavevmode\unrotatePages%
+}%

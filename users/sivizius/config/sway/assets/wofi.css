@@ -1,0 +1,39 @@
+/* This stylesheet originated by PetaByteBoy https://pbb.lc/ */
+
+#input
+{
+  color:            white;
+  padding:          .5em;
+  margin-bottom:    2em;
+  border:           1px solid white;
+  border-radius:    2px;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+#outer-box
+{
+  padding:          2em;
+}
+
+#window
+{
+  background:       rgba(0, 0, 0, .8);
+  color:            white;
+  border:           2px solid white;
+}
+
+expander
+{
+  margin-left:      -15px;
+}
+
+.entry > *
+{
+  padding: .5em;
+}
+
+#entry:selected
+{
+  background: rgba(255, 255, 255, .1);
+  border: none;
+}

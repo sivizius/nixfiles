@@ -1,0 +1,52 @@
+syntax "purebasic" "\.(pb|pbi)$"
+## variables
+icolor  green         "[A-Za-z_][0-9A-Za-z_]*"
+icolor  green         "[A-Za-z_][0-9A-Za-z_]*\$"
+icolor  green         "\*[A-Za-z_][0-9A-Za-z_]*"
+icolor  brightgreen   "\#[A-Za-z_][0-9A-Za-z_]*"
+## keywords
+### abc_
+icolor  brightred     "(includefile|xincludefile|debug|swap|define|dim|redim|array|newlist|list|newmap|map|goto|gosub|compilererror)[[:space:]]"
+icolor  brightred     "(not|declare|if|elseif|select|case|while|for|repeat|procedure|procedurec|procedureunknown|runtime|threaded|global|protected|shared)[[:space:]]"
+icolor  brightred     "(static|procedurereturn|macro|prototype|structure|interface|data|pseudotype|import|with|declaremodule)[[:space:]]"
+icolor  brightred     "(module|usemodule|unusemodule|compilerif|compilerselect|compilercase|compilerelseif|includepath|includebinary)[[:space:]]"
+### abc
+icolor  brightred     "(use16|use32|use64|enumeration|compilerendif|compilerendselect|return|fakereturn|default|break|continue|structureunion|datasection|wend)"
+icolor  brightred     "(endselect|until|endprocedure|endprocedurec|endprocedureunknownendmacro|endstructureunion|endstructure|endinterface|enddatasection|else|compilerelse)"
+icolor  brightred     "(calldebugger|debuglevel|disabledebugger|enabledebugger|endenumeration|enddatasection|enddeclaremodule|endmodul|endwith)"
+icolor  brightred     "(next|end|endif|enableexplicit|disableexplicit|enableasm|disableasm|endimport|endmacro)"
+### _abc_
+icolor  brightred     "[[:space:]](to|step|extends)[[:space:]]"
+icolor  brightred     "[[:space:]](or|xor|and)([[:space:]]|$)"
+## types
+icolor  brightgreen   "\.[A-Za-z_][0-9A-Za-z_]*"
+## special
+icolor  brightmagenta  "([[:space:]]|\@|\?|\[|^)([A-Za-z]|\*self|self|\*this|this|tmp|\*void|void|void\$)([[:space:]]|,|\\|\]|\.|$)"
+## number
+icolor  brightyellow  "[[:space:]]\%[01]+"
+icolor  brightyellow  "[[:space:]][0-9]*"
+icolor  brightyellow  "[[:space:]]\$[0-9A-Fa-f]+"
+icolor  brightyellow  "\[\%[01]+\]"
+icolor  brightyellow  "\[[0-9]+\]"
+icolor  brightyellow  "\[\$[0-9A-Fa-f]+\]"
+icolor  brightyellow  "\{\%[01]+\}"
+icolor  brightyellow  "\{[0-9]+\}"
+icolor  brightyellow  "\{\$[0-9A-Fa-f]+\}"
+## operators
+icolor  brightcyan    "[A-Za-z_][0-9A-Za-z_]*[[:space:]]*\(\)?"
+icolor  brightcyan    "[[:space:]](-|<|<<|<=|<>|=>|>>|>|\%|\!|\?|\&|\:|\@|\=|\+|\*|\/|[\(]*|[\)]*|\|)"
+icolor  brightcyan    "(,|\.|\\|\[*|\]*)"
+## assembler
+icolor  magenta       "^[[:space:]]*\!.*$"
+## labels
+icolor  brightred     "[A-Za-z_][0-9A-Za-z_]*\:"
+## strings
+icolor  brightyellow  "[[:space:]]\"[^"]*\""
+icolor  brightyellow  "[[:space:]]\'[^']*\'"
+## remarks
+icolor  white         ";.*$"
+icolor  brightwhite   ";(\{|\}|\(|\)|\[|\]|;).*$"
+## useless spaces
+color   ,green        "[[:space:]]+$"
+
+#icolor red "HALLO"

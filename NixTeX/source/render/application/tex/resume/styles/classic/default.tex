@@ -1,0 +1,201 @@
+\renewcommand{\@ResumeAfter             }
+{
+}
+
+\renewcommand{\@ResumeBefore            }
+{
+  \def\@ResumeIconSeperator             {\space}
+  \ifthenelse{\equal  {\@ResumePictureEdge}   {edge}}
+    {\def\@ResumePictureBorder          {darkgray}}
+    {\def\@ResumePictureBorder          {none}}
+  \ifthenelse{\equal  {\@ResumePictureShape}  {circle}}
+    {\def\@ResumePictureDimension       {1.3cm}}
+    {\def\@ResumePictureDimension       {1.8cm}}
+  \markboth
+    {}
+    {}
+}
+
+\renewcommand{\@ResumeContent           }[1]
+{
+  \begin{tabularx}{\linewidth}{XR{5cm}L{3.1cm}}
+    {
+      {\Huge \@ResumeFirstName~\@ResumeLastName}\newline
+      {\large\textit{Lebenslauf}}
+    } &
+    {
+      \footnotesize
+      \ifnotempty{\@ResumeMobile}           {\@@ResumeMobile\newline}
+      \ifnotempty{\@ResumeEMail}            {\@@ResumeEMail\newline}
+      \ifnotempty{\@ResumeKey}              {\@@ResumeKey\newline}
+      \ifnotempty{\@ResumeHomepage}         {\@@ResumeHomepage\newline}
+      \ifnotempty{\@ResumeGit}              {\@@ResumeGit\newline}
+      \ifnotempty{\@ResumeGithub}           {\@@ResumeGithub\newline}
+      \ifnotempty{\@ResumeGitlab}           {\@@ResumeGitlab\newline}
+      \ifnotempty{\@ResumeStackOverflowID}  {\@@ResumeStackOverflow\newline}
+      \ifnotempty{\@ResumeLinkedin}         {\@@ResumeLinkedin\newline}
+      \ifnotempty{\@ResumeTwitter}          {\@@ResumeTwitter\newline}
+      \ifnotempty{\@ResumeSkype}            {\@@ResumeSkype\newline}
+      \ifnotempty{\@ResumeReddit}           {\@@ResumeReddit\newline}
+      \ifnotempty{\@ResumeXing}             {\@@ResumeXing\newline}
+      \ifnotempty{\@ResumeMedium}           {\@@ResumeMedium\newline}
+      \ifnotempty{\@ResumeWikipediaName}    {\@@ResumeWikipedia\newline}
+      \ifnotempty{\@ResumeGoogleScholarID}  {\@@ResumeGoogleSchoolar\newline}
+      \ifnotempty{\@ResumeExtra}            {\@ResumeExtra\newline}
+    } &
+    {
+      \ifnotempty{\@ResumePicture}{\@@ResumePicture}
+    } \\
+  \end{tabularx}
+  \ifnotempty{\@ResumeQuote}
+  {
+    \begin{center}
+      \color{main}\@ResumeQuote
+    \end{center}
+  }
+  \begin{longtabu}[l]{R{3.5cm}p{\linewidth-9cm}p{4cm}}
+    #1\\
+  \end{longtabu}
+}
+
+\renewcommand{\@ResumeEntry             }[6]
+{
+  % 1 – when
+  % 2 – what
+  % 3 – institution
+  % 4 – where
+  % 5 – optional: grades
+  % 6 – optional: comment/description
+  \\*
+  #1  &
+  \multicolumn{2}{p{\linewidth-4cm}}
+  {
+    \noWordBreaks
+    \textbf{#2}, \textit{#3}, #4\ifnotempty{#5}{, \textit{#5}}
+    \ifnotempty{#6}{\newline#6}
+  }
+}
+
+\renewcommand{\@ResumeHonor             }[4]
+{
+  % 1 – date
+  % 2 – position
+  % 3 – title
+  % 4 – location
+  \\*
+  #1  &
+  \noWordBreaks
+  {
+    \textbf{#2}, \textit{#3}
+  }   &
+  #4
+}
+
+\renewcommand{\@ResumeItem              }[2]
+{
+  % 1 – title (optional)
+  % 2 – body
+  \\*
+  #1  &
+  \multicolumn{2}{p{\linewidth-3.5cm}}
+  {
+    \noWordBreaks
+    #2
+  }
+}
+
+\renewcommand{\@ResumeItemisation       }[2]
+{
+  % 1 – optional: config
+  % 2 – body
+  \itemisation[#1]
+  {
+    #2
+  }
+}
+
+\renewcommand{\@ResumeLanguage          }[4]
+{
+  % 1 – optional: numeric level 0–1
+  % 2 – name
+  % 3 – level
+  % 4 – optional: comment/description
+  \\*
+  #2                        &
+  \rateHalfStars{#1}{6} #3  &
+  #4
+}
+
+\renewcommand{\@ResumeNote              }[1]
+{
+  % 1 – note
+  \\*&
+  \multicolumn{2}{p{\linewidth-4cm}}
+  {
+    \noWordBreaks
+    #1
+  }
+}
+
+\renewcommand{\@ResumeSection           }[3]
+{
+  % 1 – optional: environment
+  % 2 – title
+  % 3 – body
+  \def\@PreviousCategory{}
+  \def\@PreviousProgram{}
+  \def\@ResumeSectionName{#2}%
+  {\color{main}\rule[-0.5em]{\linewidth}{0.4em}}  &
+  {\large\color{main}#2}
+  \ifnum\pdf@strcmp{#1}{cvparagraph}=\z@
+    \\*\expandafter\multicolumn{3}{p{\linewidth}}{#3}
+  \else
+    \expandafter#3
+  \fi\\
+}
+
+\renewcommand{\@ResumeSkill             }[3]
+{
+  % 1 – optional: comment, link to repository, …
+  % 2 – category
+  % 3 – software/language/skill
+  \\*
+  #2  &
+  #3  &
+  #1
+}
+
+\renewcommand{\@ResumeSubEntry          }[6]
+{
+  % 1 – date
+  % 2 – optional: position
+  % 3 – title
+  % 4 – location
+  % 5 – optional: grades
+  % 6 – optional: comment/description
+  \\*
+  #1  &
+  {
+    \noWordBreaks
+    \ifnotempty{#2}{#2, }#3\ifnotempty{#5}{, #5}\newline
+    #6
+  }   &
+  #4
+}
+
+\renewcommand{\@ResumeSubSection        }[3]
+{
+  % 1 – ignored: environment
+  % 2 – title
+  % 3 – body
+  \def\@PreviousCategory{}
+  \def\@PreviousProgram{}
+  \def\@ResumeSectionName{#2}%
+  \\&
+  {\large\color{main}#2}
+  \ifnum\pdf@strcmp{#1}{cvparagraph}=\z@
+    \\*\expandafter\multicolumn{3}{p{\linewidth}}{#3}
+  \else
+    \expandafter#3
+  \fi\\
+}

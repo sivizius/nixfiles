@@ -1,0 +1,80 @@
+\directlua{includeCode("utils")}
+
+\newcommand{\ifnotempty }[2]{\ifthenelse{\equal{}{#1}}{}{#2}}
+\newcommand{\ifempty    }[2]{\ifthenelse{\equal{}{#1}}{#2}{}}
+\newcommand{\ifnotEmpty }[2]{\ifthenelse{\isempty{#1}}{}{#2}}
+\newcommand{\ifnotequal }[3]{\ifthenelse{\equal{#1}{#2}}{}{#3}}
+\newcommand{\ifequal    }[3]{\ifthenelse{\equal{#1}{#2}}{#3}{}}
+\newcommand{\fourCases  }[9][]{\ifthenelse{\equal{#1}{#2}}{#3}{}\ifthenelse{\equal{#1}{#4}}{#5}{\ifthenelse{\equal{#1}{#6}}{#7}{\ifthenelse{\equal{#1}{#8}}{#9}{}}}}
+
+\newcommand{\noWordBreaks}[1][500]
+{%
+  % Maximum Badness tex is allowed to use while setting the paragraph,
+  %   that is it inserts breakpoints allowing white space to stretch and penalties to be taken,
+  %   so long as the badness keeps below this threshold.
+  % If it can not do that then you get overfull boxes.
+  % So different values produce different typeset result.
+  \tolerance #1%
+  % Used if TeX can not set the paragraph below the \tolerance badness,
+  %   but rather than make overfull boxes it tries an extra pass "pretending"
+  %     that every line has an additional \emergencystretch of stretchable glue,
+  %       this allows the overall badness to be kept below 1000 and stops TeX "giving up" and
+  %       putting all stretch into one line.
+  % So \emergencystretch does not change the setting of "good" paragraphs,
+  %   it only changes the setting of paragraphs that would have produced overfull boxes.
+  % Note that you get warnings about the real badness calculation from TeX
+  %   even though it retries with \emergencystretch the extra stretch is used
+  %   to control the typesetting but it is not considered as good for the purposes of logging.
+  \emergencystretch 3em%
+  % Only Warn of Overfull \hbox, if Above This Value
+  \hfuzz=2pt%
+  % Only Warn of Overfull \vbox, if Above This Value
+  \vfuzz=2pt%
+  % Prevent Hyphenation
+  \hyphenchar\font=-1%
+}
+
+\newcommand{\constPDF}[6]
+{
+  \pdfvariable suppressoptionalinfo \numexpr32+64+512\relax
+  \AtBeginDocument
+  {
+    \hypersetup
+    {
+      pdfauthor={#1},
+      pdftitle={%
+        \directlua
+        {
+          if ( documentTitle == "" )
+          then
+            tex.print([[#2]])
+          else
+            tex.print(documentTitle)
+          end
+        }%
+      },
+      pdfsubject={#3},
+      pdfkeywords={#4},
+      pdfproducer={#5},
+      pdfcreator={#6},
+    }
+  }
+}
+
+\newcommand{\unchapter}[3][]
+{%
+  \cleardoublepage%
+  \begingroup%
+    \let\@makechapterhead\@gobble % make \@makechapterhead do nothing
+    \chapter{#2}{#3}%
+  \endgroup%
+}%
+
+\newcommand{\Cleardoublepage}[1][]
+{%
+  \newpage%
+  %\ifthenelse{\equal{#1}{rotate}}{\rotatePages}{\unrotatePages}%
+  \thispagestyle{empty}%
+  %\leavevmode
+  \phantomsection%
+}

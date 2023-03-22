@@ -1,0 +1,33 @@
+\directlua{includeCode("glossaries/glossaries")}
+\let\numColumns\LT@cols
+\newcommand{\printAcronyms} [1][single-line]{\directlua{  acronyms.printList        ( [[#1]]                        )}}
+\newcommand{\printPeople  } [1][people]     {\directlua{  people.printList          ( [[#1]]                        )}}
+
+\newcommand{\acruse      } [1]             {\directlua{acronyms.use([[#1]])}}
+\newcommand{\acrtext     } [2][]           {\directlua{  acronyms.printText        ( [[#1]], [[\detokenize{#2}]]   )}}
+\newcommand{\acrshort    } [1]             {\directlua{  acronyms.printShortText   ( [[#1]]                        )}}
+\newcommand{\acrchem     } [1]             {\directlua{  acronyms.printChemical    ( [[#1]]                        )}}
+\newcommand{\acrlong     } [1]             {\expandafter\directlua{  acronyms.printLongText    ( [[#1]]                        )}}
+\newcommand{\acrfull     } [1]             {\directlua{  acronyms.printFullText    ( [[#1]]                        )}}
+\newcommand{\acrdesc     } [1]             {\directlua{  acronyms.printDescription ( [[#1]]                        )}}
+\newcommand{\Acrtext     } [2]             {\directlua{  acronyms.printText        ( [[#1]], [[#2]], [[#2]], true  )}}
+\newcommand{\Acrshort    } [1]             {\directlua{  acronyms.printShortText   ( [[#1]], true                  )}}
+\newcommand{\Acrlong     } [1]             {\directlua{  acronyms.printLongText    ( [[#1]], true                  )}}
+\newcommand{\Acrfull     } [1]             {\directlua{  acronyms.printFullText    ( [[#1]], true                  )}}
+\newcommand{\Acrdesc     } [1]             {\directlua{  acronyms.printDescription ( [[#1]], true                  )}}
+\newcommand{\acrexplain  } [1]             {\directlua{  acronyms.printExplanation ( [[#1]]                        )}}
+\newcommand{\person      } [2][]           {\directlua{  people.print              ( [[#1]], [[#2]]                )}}
+
+\newcommand*{\loadAcronyms} [1]             {\directlua{  dofile                    ( [[#1]]                        )}}
+\def\afteracronyms{}
+
+% Some parts of the Name might be usefull inside the acronym-table but not in the text itself.
+\newcommand{\AcrOptional}[1]{}
+
+\newcommand{\acrWithOptional}[1]
+{{%
+  \renewcommand{\AcrOptional}[1]{\-#1}
+  #1%
+}}
+
+\def\underlineAcronyms{\directlua{acronyms.underline=true}}

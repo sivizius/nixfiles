@@ -1,0 +1,71 @@
+\directlua{includeCode("floats/gnuplot")}
+\newcommand{\cgnuplot}[1][]{\@gnuplot{!htbp}{}{#1}}%
+\newcommand{\hgnuplot}[1][]{\@gnuplot{H}{}{#1}}%
+\newcommand{\subgnuplot}[6][b]{\@subgnuplot{#1}{#2}{#3}{#4}{#5}{#6}{}}%
+\newcommand{\Subgnuplot}[6][b]{\@Subgnuplot{#1}{#2}{#3}{#4}{#5}{#6}{}}%
+\newcommand{\subGnuplot}[7][b]{\@subGnuplot{#1}{#2}{#3}{#4}{#5}{#6}{#7}{}}%
+\newcommand{\SubGnuplot}[7][b]{\@SubGnuplot{#1}{#2}{#3}{#4}{#5}{#6}{#7}{}}%
+
+\newcommand{\agnuplot}[4]{\directlua{gnuplot.draw([[#1]],[[#2]],[[#3]],[[#4]])}}
+\newcommand{\@gnuplot}[8]%
+{%
+  %1 – float
+  %2 – beamer overlay
+  %3 – short caption
+  %4 – config
+  %5 – path
+  %6 – content
+  %7 – long caption
+  %8 – label
+  \begin{figure}[#1]%
+    \robfamily%
+    \centering%
+    \directlua{gnuplot.draw([[#4]],[[#5]],[[#6]],[[#2]])}%
+    \ifthenelse{\isempty{#7}}%
+    {}%
+    {%
+      \ifthenelse{\isempty{#3}}%
+      {\caption[\nolink{#7}]{\adjustCaption{#7}}}%
+      {\caption[\nolink{#3}]{\adjustCaption{#7}}}%
+    }%
+    \labelFigure{#8}%
+  \end{figure}%
+}
+
+\newcommand{\@subgnuplot}[7]
+{
+  \begin{subfigure}[#1]{#2}%
+    \centering%
+    %\directlua{print([[»»\noexpand#5««]])}%
+    \agnuplot{#3 size \directlua{tex.print(convert([[\the\linewidth]], "cm")..[[,]]..convert([[\the\linewidth]], "cm"))}}{#4}{#5}{#7}%
+    \ifthenelse{\equal{#6}{}}{}{\caption[\nolink{#6}]{\adjustCaption{#6}}}%
+  \end{subfigure}%
+}
+
+\newcommand{\@Subgnuplot}[7]
+{
+  \begin{subfigure}[#1]{#2}%
+    \centering%
+    \agnuplot{#3 size \directlua{tex.print(convert([[\the\linewidth]], "cm")..[[,]]..convert([[\the\linewidth]], "cm"))}}{#4}{#5}{#7}%
+    \ifthenelse{\equal{#6}{}}{}{\caption*{\adjustCaption{#6}}}%
+  \end{subfigure}%
+}
+
+\newcommand{\@subGnuplot}[8]
+{
+  \begin{subfigure}[#1]{#2}%
+    \centering%
+    %\directlua{print([[»»\noexpand#5««]])}%
+    \agnuplot{#4 size \directlua{tex.print(convert([[\the\linewidth]], "cm")..[[,]]..convert([[\the\linewidth]], "cm", [[#3]]))}}{#5}{#6}{#8}%
+    \ifthenelse{\equal{#7}{}}{}{\caption[\nolink{#7}]{\adjustCaption{#7}}}%
+  \end{subfigure}%
+}
+
+\newcommand{\@SubGnuplot}[8]
+{
+  \begin{subfigure}[#1]{#2}%
+    \centering%
+    \agnuplot{#4 size \directlua{tex.print(convert([[\the\linewidth]], "cm")..[[,]]..convert([[\the\linewidth]], "cm", [[#3]]))}}{#5}{#6}{#8}%
+    \ifthenelse{\equal{#7}{}}{}{\caption*{\adjustCaption{#7}}}%
+  \end{subfigure}%
+}

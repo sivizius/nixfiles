@@ -1,0 +1,19 @@
+\newlength\replength
+\newcommand\repfrac{.33}
+\newcommand\dashfrac[1]{\renewcommand\repfrac{#1}}
+\setlength\replength{1.5pt}
+\newcommand\rulewidth{.6pt}
+\newcommand\tdashfill[1][\repfrac]{\cleaders\hbox to \replength{%
+  \smash{\rule[\arraystretch\ht\strutbox]{\repfrac\replength}{\rulewidth}}}\hfill}
+\newcommand\tabdashline{%
+  \makebox[0pt][r]{\makebox[\tabcolsep]{\tdashfill\hfil}}\tdashfill\hfil%
+  \makebox[0pt][l]{\makebox[\tabcolsep]{\tdashfill\hfil}}%
+  \\[-\arraystretch\dimexpr\ht\strutbox+\dp\strutbox\relax]%
+}
+\newcommand\tdotfill[1][\repfrac]{\cleaders\hbox to \replength{%
+  \smash{\raisebox{\arraystretch\dimexpr\ht\strutbox-.1ex\relax}{.}}}\hfill}
+\newcommand\tabdotline{%
+  \makebox[0pt][r]{\makebox[\tabcolsep]{\tdotfill\hfil}}\tdotfill\hfil%
+  \makebox[0pt][l]{\makebox[\tabcolsep]{\tdotfill\hfil}}%
+  \\[-\arraystretch\dimexpr\ht\strutbox+\dp\strutbox\relax]%
+}

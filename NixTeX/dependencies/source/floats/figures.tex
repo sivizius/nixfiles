@@ -1,0 +1,226 @@
+\newcommand{\cfigure }[1][]{\thecfigure{!htbp}{}{#1}}%
+\newcommand{\hfigure }[1][]{\thecfigure{H}{}{#1}}%
+\newcommand{\cFigure }[1][]{\Thecfigure{!htbp}{}{#1}}%
+\newcommand{\hFigure }[1][]{\Thecfigure{H}{}{#1}}%
+\newcommand{\cscheme }[1][]{\thecscheme{!htbp}{}{#1}}%
+\newcommand{\hscheme }[1][]{\thecscheme{H}{}{#1}}%
+\newcommand{\cScheme }[1][]{\Thecscheme{!htbp}{}{#1}}%
+\newcommand{\hScheme }[1][]{\Thecscheme{H}{}{#1}}%
+\newcommand{\subfig}[4][b]{\thesubfig{#1}{#2}{#3}{#4}{}}%
+\newcommand{\Subfig}[4][b]{\theSubfig{#1}{#2}{#3}{#4}{}}%
+\newcommand{\SubFig}[4][b]{\theSubFig{#1}{#2}{#3}{#4}{}}%
+\newcommand{\wrapfig}[6][0.3]{\thewrapfig{#1}{#2}{#3}{#4}{#5}{#6}{}}%
+
+\def\WrapFigSide{o}
+
+\newcommand{\thecfigure}[7]
+{
+  %1 – float
+  %2 – beamer overlay
+  %3 – short caption
+  %4 – config
+  %5 – content
+  %6 – long caption
+  %7 – label
+  \begin{figure}[#1]
+    \robfamily
+    %\directlua{print() print([[figure]]) print([[float:    #1]]) print([[tlabel:   #7]])}%
+    \centering%
+    \ifthenelse{\isempty{#2}}%
+    {%
+      \ifthenelse{\equal{#5}{}}%
+      {#4}%
+      {%
+        \directlua{markFileAsUsed([[#5]])}%
+        \ifthenelse{\isempty{#4}}%
+        {\includegraphics{#5}}%
+        {\includegraphics[#4]{#5}}%
+      }%
+      \ifthenelse{\isempty{#6}}%
+      {}%
+      {%
+        \ifthenelse{\isempty{#3}}%
+        {\caption[\nolink{#6}]{\adjustCaption{#6}}}%
+        {\caption[\nolink{#3}]{\adjustCaption{#6}}}%
+      }%
+    }%
+    {%
+      \uncover#2%
+      {%
+        \ifthenelse{\equal{#5}{}}%
+        {#4}%
+        {%
+          \directlua{markFileAsUsed([[#5]])}%
+          \uncoverincludegraphics[#4]{#5}{#2}%
+        }%
+        \ifthenelse{\isempty{#6}}%
+        {}%
+        {%
+          \ifthenelse{\isempty{#3}}%
+          {\caption[\nolink{#6}]{\adjustCaption{#6}}}%
+          {\caption[\nolink{#3}]{\adjustCaption{#6}}}%
+        }%
+      }%
+    }%
+    \labelFigure{#7}%
+  \end{figure}%
+}
+
+\newcommand{\Thecfigure}[7]
+{
+  %1 – float
+  %2 – beamer overlay
+  %3 – short caption
+  %4 – config
+  %5 – content
+  %6 – long caption
+  %7 – label
+  \begin{figure}[#1]%
+    \robfamily
+    %\directlua{print() print([[label: #7]])}%
+    \centering%
+    \ifthenelse{\equal{#5}{}}%
+    {#4}%
+    {%
+      \directlua{markFileAsUsed([[#5]])}%
+      \ifthenelse{\isempty{#4}}%
+      {\includegraphics{#5}}%
+      {\includegraphics[#4]{#5}}%
+    }%
+    \ifthenelse{\isempty{#6}}%
+    {}%
+    {%
+      \caption*{\adjustCaption{#6}}%
+    }%
+    \labelFigure{#7}%
+  \end{figure}%
+}
+
+\newcommand{\thesubfig}[5]
+{
+  \begin{subfigure}[#1]{\widthof{\includegraphics[#2]{#3}}}%
+    \directlua{markFileAsUsed([[#3]])}%
+    \centering%
+    \ifthenelse{\isempty{#5}}%
+    {%
+      \includegraphics[width=\textwidth]{#3}%
+      \caption[\nolink{#4}]{\adjustCaption{#4}}%
+    }%
+    {%
+      \uncover#5%
+      {%
+        \uncoverincludegraphics[width=\textwidth]{#3}{#5}%
+        \caption[\nolink{#4}]{\adjustCaption{#4}}%
+      }%
+    }%
+  \end{subfigure}%
+}
+
+\newcommand{\theSubfig}[5]%
+{%
+  \begin{subfigure}[#1]{\widthof{\includegraphics[#2]{#3}}}%
+    \directlua{markFileAsUsed([[#3]])}%
+    \centering%
+    \ifthenelse{\isempty{#5}}%
+    {%
+      \includegraphics[width=\textwidth]{#3}%
+      \caption*{\adjustCaption{#4}}%
+    }%
+    {%
+      \uncover#5%
+      {%
+        \uncoverincludegraphics[width=\textwidth]{#3}{#5}%
+        \caption*{\adjustCaption{#4}}%
+      }%
+    }%
+  \end{subfigure}%
+}
+
+\newcommand{\theSubFig}[5]
+{
+  \begin{subfigure}[#1]{#2}
+    \directlua{markFileAsUsed([[#3]])}%
+    \centering%
+    \ifthenelse{\isempty{#5}}%
+    {%
+      \includegraphics[width=\textwidth]{#3}%
+      \caption*{\adjustCaption{#4}}%
+    }%
+    {%
+      \uncover#5%
+      {%
+        \uncoverincludegraphics[width=\textwidth]{#3}{#5}%
+        \caption*{\adjustCaption{#4}}%
+      }%
+    }%
+  \end{subfigure}%
+}
+
+\newcommand{\thewrapfig}[7]
+{
+  %1 – relative width
+  %2 – short caption
+  %3 – config
+  %4 – content
+  %5 – long caption
+  %6 – label
+  %7 – beamer overlay
+  \begin{wrapfigure}{\WrapFigSide}{#1\linewidth}%
+    %\directlua{print() print([[figure]]) print([[float:    #1]]) print([[tlabel:   #6]])}%
+    \centering%
+    \ifthenelse{\isempty{#7}}%
+    {%
+      \ifthenelse{\equal{#4}{}}%
+      {#3}%
+      {%
+        \directlua{markFileAsUsed([[#4]])}%
+        \ifthenelse{\isempty{#3}}%
+        {\includegraphics{#4}}%
+        {\includegraphics[#3]{#4}}%
+      }%
+      \ifthenelse{\isempty{#5}}%
+      {}%
+      {%
+        \ifthenelse{\isempty{#2}}%
+        {\caption[\nolink{#5}]{\adjustCaption{#5}}}%
+        {\caption[\nolink{#2}]{\adjustCaption{#5}}}%
+      }%
+    }%
+    {%
+      \uncover#7%
+      {%
+        \ifthenelse{\equal{#4}{}}%
+        {#3}%
+        {%
+          \directlua{markFileAsUsed([[#4]])}%
+          \uncoverincludegraphics[#3]{#4}%
+        }%
+        \ifthenelse{\isempty{#5}}%
+        {}%
+        {%
+          \ifthenelse{\isempty{#2}}%
+          {\caption[\nolink{#5}]{\adjustCaption{#5}}}%
+          {\caption[\nolink{#2}]{\adjustCaption{#5}}}%
+        }%
+      }%
+    }%
+    \labelFigure{#6}%
+  \end{wrapfigure}%
+}
+
+% for beamer
+\def\uncovergraphicsopacity{0.9}
+\def\uncovergraphicsbackground{white}
+\newcommand{\uncoverincludegraphics}[3][]
+{
+  \alt#3
+  {
+    \ifthenelse{\isempty{#1}}{\includegraphics{#2}}{\includegraphics[#1]{#2}}
+  }
+  {
+    \begin{tikzpicture}
+      \node[anchor=south west,inner sep=0] (B) at (4,0) {\ifthenelse{\isempty{#1}}{\includegraphics{#2}}{\includegraphics[#1]{#2}}};
+      \fill [draw=none, fill=\uncovergraphicsbackground, fill opacity=\uncovergraphicsopacity] (B.north west) -- (B.north east) -- (B.south east) -- (B.south west) -- (B.north west) -- cycle;
+    \end{tikzpicture}
+  }
+}

@@ -1,0 +1,133 @@
+\directlua{includeCode("document")}
+\setlength{\stockheight}{29.7cm}
+
+\ifdefined\part
+  \let\@oldPart=\part
+  \let\part=\undefined
+  \NewDocumentCommand\part{soom}
+  {%
+    \logInfo{Part}
+    {%
+      Title:  #4\MessageBreak
+      Star?:  \IfBooleanTF#1{true}{false}
+      \IfNoValueTF{#2}{}{\MessageBreak Header: #2}
+      \IfNoValueTF{#3}{}{\MessageBreak TOC:    #3}
+    }%
+    \FloatBarrier%
+    \IfBooleanTF#1
+      {\IfNoValueTF{#2}{\@oldPart*{#4}}{\IfNoValueTF{#3}{\@oldPart*[#2]{#4}}{\@oldPart*[#2][#3]{#4}}}}
+      {\IfNoValueTF{#2}{\@oldPart{#4}}{\IfNoValueTF{#3}{\@oldPart[#2]{#4}}{\@oldPart[#2][#3]{#4}}}}%
+  }
+\fi
+
+\ifdefined\chapter
+  \let\@oldChapter=\chapter
+  \let\chapter=\undefined
+  \NewDocumentCommand\chapter{soom}
+  {%
+    \logTrace{Chapter}
+    {%
+      Title:  #4\MessageBreak
+      Star?:  \IfBooleanTF#1{true}{false}
+      \IfNoValueTF{#2}{}{\MessageBreak Header: #2}
+      \IfNoValueTF{#3}{}{\MessageBreak TOC:    #3}
+    }%
+    \FloatBarrier%
+    \IfBooleanTF#1
+      {\IfNoValueTF{#2}{\@oldChapter*{#4}}{\IfNoValueTF{#3}{\@oldChapter*[#2]{#4}}{\@oldChapter*[#2][#3]{#4}}}}
+      {\IfNoValueTF{#2}{\@oldChapter{#4}}{\IfNoValueTF{#3}{\@oldChapter[#2]{#4}}{\@oldChapter[#2][#3]{#4}}}}%
+  }
+\fi
+
+\ifdefined\section
+  \let\@oldSection=\section
+  \let\section=\undefined
+  \NewDocumentCommand\section{soom}
+  {%
+    \logTrace{Section}
+    {%
+      Title:  #4\MessageBreak
+      Star?:  \IfBooleanTF#1{true}{false}
+      \IfNoValueTF{#2}{}{\MessageBreak Header: #2}
+      \IfNoValueTF{#3}{}{\MessageBreak TOC:    #3}
+    }%
+    \FloatBarrier%
+    \IfBooleanTF#1
+      {\IfNoValueTF{#2}{\@oldPart*{#4}}{\IfNoValueTF{#3}{\@oldPart*[#2]{#4}}{\@oldPart*[#2][#3]{#4}}}}
+      {\IfNoValueTF{#2}{\@oldPart{#4}}{\IfNoValueTF{#3}{\@oldPart[#2]{#4}}{\@oldPart[#2][#3]{#4}}}}%
+  }
+\fi
+
+\ifdefined\subsection
+  \let\@oldSubSection=\subsection
+  \let\subsection=\undefined
+  \NewDocumentCommand\subsection{soom}
+  {%
+    \logTrace{SubSection}
+    {%
+      Title:  #4\MessageBreak
+      Star?:  \IfBooleanTF#1{true}{false}
+      \IfNoValueTF{#2}{}{\MessageBreak Header: #2}
+      \IfNoValueTF{#3}{}{\MessageBreak TOC:    #3}
+    }%
+    \FloatBarrier%
+    \IfBooleanTF#1
+      {\IfNoValueTF{#2}{\@oldSubSection*{#4}}{\IfNoValueTF{#3}{\@oldSubSection*[#2]{#4}}{\@oldSubSection*[#2][#3]{#4}}}}
+      {\IfNoValueTF{#2}{\@oldSubSection{#4}}{\IfNoValueTF{#3}{\@oldSubSection[#2]{#4}}{\@oldSubSection[#2][#3]{#4}}}}%
+  }
+\fi
+
+\ifdefined\subsubsection
+  \let\@oldSubSubSection=\subsubsection
+  \let\subsubsection=\undefined
+  \NewDocumentCommand\subsubsection{soom}
+  {%
+    \logTrace{SubSubSection}
+    {%
+      Title:  #4\MessageBreak
+      Star?:  \IfBooleanTF#1{true}{false}
+      \IfNoValueTF{#2}{}{\MessageBreak Header: #2}
+      \IfNoValueTF{#3}{}{\MessageBreak TOC:    #3}
+    }%
+    \FloatBarrier%
+    \IfBooleanTF#1
+      {\IfNoValueTF{#2}{\@oldSubSubSection*{#4}}{\IfNoValueTF{#3}{\@oldSubSubSection*[#2]{#4}}{\@oldSubSubSection*[#2][#3]{#4}}}}
+      {\IfNoValueTF{#2}{\@oldSubSubSection{#4}}{\IfNoValueTF{#3}{\@oldSubSubSection[#2]{#4}}{\@oldSubSubSection[#2][#3]{#4}}}}%
+  }
+\fi
+
+\ifdefined\paragraph
+  \let\@oldParagraph=\paragraph
+  \let\paragraph=\undefined
+  \NewDocumentCommand\paragraph{soom}
+  {%
+    \logTrace{Paragraph}
+    {%
+      Title:  #4\MessageBreak
+      Star?:  \IfBooleanTF#1{true}{false}
+      \IfNoValueTF{#2}{}{\MessageBreak Header: #2}
+      \IfNoValueTF{#3}{}{\MessageBreak TOC:    #3}
+    }%
+    \IfBooleanTF#1
+      {\IfNoValueTF{#2}{\@oldParagraph*{#4}}{\IfNoValueTF{#3}{\@oldParagraph*[#2]{#4}}{\@oldParagraph*[#2][#3]{#4}}}}
+      {\IfNoValueTF{#2}{\@oldParagraph{#4}}{\IfNoValueTF{#3}{\@oldParagraph[#2]{#4}}{\@oldParagraph[#2][#3]{#4}}}}%
+  }
+\fi
+
+\ifdefined\subparagraph
+  \let\@oldSubParagraph=\subparagraph
+  \let\subparagraph=\undefined
+  \NewDocumentCommand\subparagraph{soom}
+  {%
+    \logTrace{SubParagraph}
+    {%
+      Title:  #4\MessageBreak
+      Star?:  \IfBooleanTF#1{true}{false}
+      \IfNoValueTF{#2}{}{\MessageBreak Header: #2}
+      \IfNoValueTF{#3}{}{\MessageBreak TOC:    #3}
+    }%
+    \IfBooleanTF#1
+      {\IfNoValueTF{#2}{\@oldSubParagraph*{#4}}{\IfNoValueTF{#3}{\@oldSubParagraph*[#2]{#4}}{\@oldSubParagraph*[#2][#3]{#4}}}}
+      {\IfNoValueTF{#2}{\@oldSubParagraph{#4}}{\IfNoValueTF{#3}{\@oldSubParagraph[#2]{#4}}{\@oldSubParagraph[#2][#3]{#4}}}}%
+  }
+\fi

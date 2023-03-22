@@ -1,0 +1,59 @@
+{
+  enable                                =   true;
+  domain                                =   "sivizius.eu";
+  ttl                                   =   3600;
+
+
+  "@"
+  =
+}
+
+
+$ORIGIN   sivizius.eu.
+$TTL      3600
+@               A     95.217.131.201            ; IPv4
+                AAAA  2a01:4f9:c010:6bf5::23    ; IPv6
+                CAA   (
+                        0                       ; flags
+                        issue "letsencrypt.org" ; authority
+                      )
+                NS    ns1.sivizius.eu.          ; primary
+                NS    ns1.pbb.lc.               ; secondaries
+                NS    ns2.pbb.lc.
+                NS    ns3.pbb.lc.
+                SOA   (
+                        ns1.sivizius.eu.        ; primary dns-server
+                        dns.sivizius.eu.        ; e-mail
+                        2020052400              ; serial: YYYYMMDDxx
+                        1d                      ; refresh
+                        2h                      ; retry
+                        4w                      ; expire
+                        1h                      ; minimum TTL
+                      )
+
+; =#= mail-stuff =#=
+@               MX    (
+                        10                      ; priority
+                        sivizius.eu.            ; domain of webserver
+                      )
+                TXT   "v=spf1 ip4:95.217.131.201 ip6:2a01:4f9:c010:6bf5::23 -all"
+mail._domainkey TXT   "v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDL44g8A5mH06tScjiaiY5UUK14lxiuIefyFhS5+BQFq6oaZEn9xfJQU8R3b+WpGrM3sbBUyl5IziS95x+0LwnAxs9p9mCYm72ffhvhKD5qvR5C3f5vWcWXaGqvZ6xe+vABa0huIfj3laXje3M9muokqDUg3SZN1Ccabznnd8XvoQIDAQAB"
+_dmarc          TXT   "v=DMARC1;p=reject;pct=100;ruf=mailto:dmarc@sivizius.eu;adkim=s;aspf=s"
+_token._dnswl   TXT   "c960bmrmw5qp5gnrjlufyjbuw29art04"
+
+; =#= services/applications =#=
+blog            CNAME @
+git             CNAME @
+grafana         CNAME @
+mail            CNAME @
+prometheus      CNAME @
+
+; =#= hosts =#=
+aleph           CNAME @
+;bet
+gimel           A     95.217.131.201
+                AAAA  2a01:4f9:c010:6bf5::23
+
+; =#= nameservers =#=
+ns1             A     95.217.131.201
+                AAAA  2a01:4f9:c010:6bf5::23

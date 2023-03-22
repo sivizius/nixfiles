@@ -1,0 +1,65 @@
+\directlua{includeCode("floats/equations")}
+
+%\setmathfont[]{Roboto-Light}
+
+\newcommand{\Newunit  }[3][]{\ensuremath{\ifthenelse{\isempty{#1}}{}{10^{#1}\,}\text{\directlua{tex.print(unit2string([[#2]], false))}}\ifthenelse{\isempty{#3}}{}{{}^{#3}}}}
+\newcommand{\Physical }[5][]{\directlua{physical([[#1]],[[#2]],[[#3]],[[#4]],[[#5]])}}
+\newcommand{\Unit     }[2]{\directlua{unit([[#1]],[[#2]],true)}}
+
+%\texorpdfstring{\ensuremath{\text{·\directlua{tex.print(unit2string([[#1]], false))}}\directlua{if not ([[#2]] == [[]]) then tex.print([[{}^{]]..bs..[[text{#2}}]]) end}}}{·\directlua{tex.print(unit2string([[#1]], false))}\^{\text{#2}}}}
+
+\newcommand{\defineVar}[2]{\ensuremath{#1 & ....\text{#2} \nonumber}}
+\newcommand{\assignVar}[2]{\ensuremath{#1 & = #2 \nonumber}}
+\newcommand{\assign   }[3][]{\ensuremath{\ifthenelse{\equal{#1}{}}{}{\labelEquation{#1}}#2 & = #3}}
+\newcommand{\explainVar}[1]{\defineVar{\acrshort{#1}}{\acrlong{#1}}}
+
+\newcommand{\equations}[1]
+{
+  \begin{align}
+    #1
+  \end{align}
+}
+
+\newcommand{\calculations}[1]
+{
+  \begin{align*}
+    #1
+  \end{align*}
+}
+
+\def\defaultdecimals{4}
+\newcommand{\putlua}[2][\defaultdecimals]{\directlua{tex.print(string.format(string.char(37).."."..[[#1]].."f", #2))}}
+
+\let\oldr@@t\r@@t
+\def\r@@t#1#2{%
+\setbox0=\hbox{$\oldr@@t#1{#2\,}$}\dimen0=\ht0
+\advance\dimen0-0.2\ht0
+\setbox2=\hbox{\vrule height\ht0 depth -\dimen0}%
+{\box0\lower0.4pt\box2}}
+\LetLtxMacro{\oldsqrt}{\sqrt}
+\renewcommand*{\sqrt}[2][\ ]{\oldsqrt[#1]{#2}}
+
+\AtBeginDocument{\renewcommand{\d}{\mathrm{d}}}
+
+%\newcommand{\physical }[5][]{\ifthenelse{\isempty{#1}}{\directlua{fun = load("return "..[[#2]]) if ( fun == nil ) then tex.print([[2]]) else tex.print(fun()) end}}{\directlua{tex.print(string.format(string.char(37).."."..[[#1]].."f", load("return "..[[#2]])()))}}\ensuremath{\ifthenelse{\isempty{#3}}{}{\cdot10^{#3}}\ifthenelse{\isempty{#4}}{}{\,\text{#4}\ifthenelse{\isempty{#5}}{}{{}^{#5}}}}}
+%\newcommand{\newunit  }[3][]{\ensuremath{\ifthenelse{\isempty{#1}}{}{10^{#1}\,}\text{#2}\ifthenelse{\isempty{#3}}{}{{}^{#3}}}}
+%\newcommand{\unit     }[2]{\ensuremath{\cdot\text{#1}\ifthenelse{\isempty{#2}}{}{{}^{#2}}}}
+%{\texorpdfstring{\ensuremath{\cdot\text{\directlua{tex.print(unit2string([[#1]], false))}}\ifthenelse{\isempty{#2}}{}{{}^{#2}}}}{·\directlua{tex.print(unit2string([[#1]], false))}#2}}
+%\newcommand{\UNIT     }[2]{\ensuremath{\cdot\text{\directlua{tex.print(unit2string([[#1]], false))}}^{#2}}}
+%  \ifthenelse
+%    {\isempty{#2}}
+%    {123}
+%    {123}
+%    %{\ensuremath{\cdot\text{\acrshort{#1}}}}
+%    %{\ensuremath{\cdot\text{\acrshort{#1}}}}
+%\input{\source/tex/square_roots.def}
+% New definition of square root:
+% it renames \sqrt as \oldsqrt
+%\let\oldsqrt\sqrt
+% it defines the new \sqrt in terms of the old one
+%\def\sqrt{\mathpalette\DHLhksqrt}
+%\def\DHLhksqrt#1#2{%
+%\setbox0=\hbox{$#1\oldsqrt{#2\,}$}\dimen0=\ht0
+%\advance\dimen0-0.2\ht0
+%\setbox2=\hbox{\vrule height\ht0 depth -\dimen0}%
+%{\box0\lower0.4pt\box2}}

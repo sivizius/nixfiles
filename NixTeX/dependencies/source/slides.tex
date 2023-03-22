@@ -1,0 +1,37 @@
+\renewcommand<>{\cfigure}[1][]{\thecfigure{h}{#2}{#1}}
+\renewcommand<>{\hfigure}[1][]{\thecfigure{H}{#2}{#1}}
+\renewcommand<>{\cgnuplot}[1][]{\thegnuplot{h}{#2}{#1}}
+\renewcommand<>{\hgnuplot}[1][]{\thegnuplot{H}{#2}{#1}}
+\renewcommand<>{\cFigure}[1][]{\Thecfigure{h}{#2}{#1}}
+\renewcommand<>{\hFigure}[1][]{\Thecfigure{H}{#2}{#1}}
+\renewcommand<>{\subchem}[4][b]{\thesubchem{#1}{#2}{#3}{#4}{#5}}
+\renewcommand<>{\subfig}[4][b]{\thesubfig{#1}{#2}{#3}{#4}{#5}}
+\renewcommand<>{\Subfig}[4][b]{\theSubfig{#1}{#2}{#3}{#4}{#5}}
+\renewcommand<>{\subgnuplot}[6][b]{\thesubgnuplot{#1}{#2}{#3}{#4}{#5}{#6}{#7}}
+\renewcommand<>{\Subgnuplot}[6][b]{\theSubgnuplot{#1}{#2}{#3}{#4}{#5}{#6}{#7}}
+\renewcommand<>{\wrapfig}[6][0.3]{\thewrapfig{#1}{#2}{#3}{#4}{#5}{#6}{#7}}
+\renewcommand<>{\footcite}[1]{\footnote#2[frame]{\fullcite{#1}}}
+\renewcommand{\thefootnote}{\relax\textsuperscript{[\arabic{footnote}]}}
+
+\makeatletter
+  \def\setfixbeamer
+  {
+    \def\fix@beamer@close{\ifnum\beamer@trivlistdepth>0\beamer@closeitem\fi}
+    \def\fix@beamer@open{\ifnum\beamer@trivlistdepth>0\gdef\beamer@closeitem{}\fi}
+  }
+  \def\clrfixbeamer
+  {
+    \def\fix@beamer@close{}
+    \def\fix@beamer@open{}
+  }
+
+  \BeforeBeginEnvironment{enumerate}{\fix@beamer@close}
+  \AfterEndEnvironment{enumerate}{\fix@beamer@open}
+  \BeforeBeginEnvironment{itemize}{\fix@beamer@close}
+  \AfterEndEnvironment{itemize}{\fix@beamer@open}
+  \BeforeBeginEnvironment{description}{\fix@beamer@close}
+  \AfterEndEnvironment{description}{\fix@beamer@open}
+  %\newcommand{\bookmarkthis}[1][2]{\bookmark[page=\the\c@page,level=#1]{\GetTitleStringResult}}
+  \let\footnoterule\relax
+\makeatother
+\setfixbeamer

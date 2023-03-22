@@ -1,0 +1,25 @@
+\newcommand{\pictogramOther}[1]
+{%
+  \makeatletter%
+  \ifthenelse{\equal{\@PictogramInverted}{true}}
+  {%
+    \includegraphics
+      [height=\normalbaselineskip]
+      {./\source/assets/pictograms/other/#1_inverted.pdf}%
+  }%
+  {%
+    \includegraphics
+      [height=\normalbaselineskip]
+      {./\source/assets/pictograms/other/#1.pdf}%
+  }%
+  \makeatother%
+}
+\def\pictogramCorrosive     {\pictogramOther{corrosive}}
+\def\pictogramEcoHazard     {\pictogramOther{ecoHazard}}
+\def\pictogramExplosive     {\pictogramOther{explosive}}
+\def\pictogramFlammable     {\pictogramOther{flammable}}
+\def\pictogramGasBottle     {\pictogramOther{gasBottle}}
+\def\pictogramLithiumCells  {\pictogramOther{lithiumCells}}
+\def\pictogramOxidiser      {\pictogramOther{oxidiser}}
+\def\pictogramSkull         {\pictogramOther{skull}}
+\def\@PictogramInverted     {false}

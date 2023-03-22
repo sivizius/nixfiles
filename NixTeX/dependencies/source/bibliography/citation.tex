@@ -1,0 +1,14 @@
+\directlua{includeCode("bibliography/citation")}
+\newtotcounter{citenum}
+\AtEveryBibitem{\stepcounter{citenum}}
+\def\@ResetSymbols{}
+
+\let\@cite=\cite
+\renewcommand{\cite}[2][]{\textsuperscript{\mbox{\ifthenelse{\equal{#2}{}}{\href{https://xkcd.com/285/}{[\todo{citation needed}]}}{\@cite[#1]{#2}}}}}
+\newcommand{\citeHere}[1]{\directlua{citations.clear([[#1]])}}
+\renewcommand{\footcite}[1]{\footnote{\fullcite{#1}}}
+\newcommand{\loadReferences}[2][]{\directlua{citations.load([[#1]],[[#2]])}}
+
+\def\referenceMyself{???}
+\newcommand{\setSelfReference}[2]{\def\referenceMyself{\underline{#2, \directlua{tex.print(([[#1]]):sub(1,1))}.}}}
+

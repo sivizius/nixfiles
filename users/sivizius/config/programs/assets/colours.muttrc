@@ -1,0 +1,50 @@
+# Basics
+color normal        default             default
+color indicator     brightyellow        red
+color tree          default             default
+color status        brightgreen         blue
+color error         brightred           default
+color message       red                 default
+color signature     red                 default
+color attachment    yellow              default
+color search        brightyellow        red
+color tilde         brightmagenta       default
+color markers       red                 default
+color hdrdefault    cyan                default
+color bold          green               black
+color underline     yellow              black
+
+# Index
+#color index_flags   black               white               ~D
+#color index_flags   green               default             ~g
+#color index_flags   brightgreen         default             ~G
+#color index_author  brightdefault       color035            ~P
+#color index_author  blue                brightred           ~F
+#color index_author  yellow              default             ~l
+#color index_flags   yellow              default             ~N
+#color index_flags   yellow              default             ~l
+#color index_date    cyan                default
+#color index_size    cyan                default
+#color index_number  green               default
+
+# Pager
+color header        brightcyan          default             '^From:'
+color header        brightyellow        default             '^Subject:'
+color header        black               brightgreen         '^User-Agent:.*Mutt'
+color header        black               green               '^User-Agent: Mozilla/5.0.*Linux'
+
+color body          brightcyan          default             "[-a-z_0-9.+]+@[-a-z_0-9.]+"
+color body          cyan                default             "((ftp|http|https)://|news:)[^ >)\"\t]+"
+color body          white               brightblue          "\\[[0-9]+\\]"
+color body          yellow              default             "\\[\\.\\.\\.?\\]"
+
+color quoted        magenta             default             # Quoting Layer 0
+color quoted1       red                 default             # Quoting Layer 1
+color quoted2       green               default             # Quoting Layer 2
+color quoted3       magenta             default             # Quoting Layer 3
+color quoted4       blue                default             # Quoting Layer 4
+color quoted5       cyan                default             # Quoting Layer 5
+color quoted6       green               default             # Quoting Layer 6
+color quoted7       red                 default             # Quoting Layer 7
+color quoted8       magenta             default             # Quoting Layer 8
+color quoted9       blue                default             # Quoting Layer 9

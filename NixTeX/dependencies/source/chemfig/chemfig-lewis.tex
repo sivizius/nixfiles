@@ -1,0 +1,129 @@
+\ifdefined\CFname\else
+	\errmessage{Chemfig is not loaded, lewis cannot work}%
+	\expandafter\endinput
+\fi
+
+\csname lewisloadonce\endcsname
+\let\lewisloadonce\endinput
+
+\begingroup
+	\def\X#1{\catcode\number`#1=\number\catcode`#1\relax}
+	\xdef\CFrestorecatcode{\X\[\X\]\X\:\X\(\X\)\X\,\X\-\X\=\X\~\X\!\X\?\X\<\X\>\X\;\X\*\X\|\X\@\X\ \X\_}%
+\endgroup
+
+\catcode`\[12 \catcode`\]12 \catcode`\:12 \catcode`\(12
+\catcode`\)12 \catcode`\,12 \catcode`\-12 \catcode`\=12
+\catcode`\~12 \catcode`\!12 \catcode`\?12 \catcode`\<12
+\catcode`\>12 \catcode`\;12 \catcode`\*12 \catcode`\|12
+\catcode`\@12 \catcode`\#6  \catcode`\ 10 \catcode`\_11
+
+\newif\ifCF_lewisoverlay
+\newbox\CF_boxlewis
+
+\defKV[chemfig]{%
+	lewis | width       = \CF_defifempty\CF_lewiswidthdouble   {#1}{0.3ex},
+	lewis sep           = \CF_defifempty\CF_lewisoffset        {#1}{0.4ex},
+	lewis length        = \CF_defifempty\CF_lewislength        {#1}{1.5ex},
+	lewis style         = \def\CF_lewisstyle                   {#1},
+	lewis dist          = \CF_defifempty\CF_lewisdist          {#1}{0.3em},
+	lewis radius        = \CF_defifempty\CF_lewisradius        {#1}{0.15ex},
+	lewis diag coeff    = \CF_defifempty\CF_lewisdiagcoeff     {#1}{1}
+	}
+\setKVdefault[chemfig]{%
+	lewis | width       = 0.3ex,
+	lewis sep           = 0.4ex,
+	lewis length        = 1.5ex,
+	lewis style         = {},
+	lewis dist          = 0.3em,
+	lewis radius        = 0.15ex,
+	lewis diag coeff    = 1
+	}
+
+\def\Lewis{%
+	\CF_lewisoverlayfalse
+	\CF_testopt\CF_lewisa{}%
+}
+
+\def\lewis{%
+	\CF_lewisoverlaytrue
+	\CF_testopt\CF_lewisa{}%
+}
+
+\def\CF_lewisa[#1]{%
+	\begingroup
+		\CF_doifnotempty{#1}{\setchemfig{#1}}%
+		\ifCF_lewisoverlay
+			\CF_addtomacro\CF_lewisstyle{,overlay}%
+		\fi
+		\CF_lewisb
+}
+
+\def\CF_lewisb#1{%
+		\CF_lewisc#1\_nil
+	\endgroup
+}
+
+\def\CF_lewisc#1,#2\_nil{%
+	\setbox\CF_boxlewis\hbox{\printatom{#2}}% mettre en dehors de tikzpicture (si \printatom ne passe pas en mode math)
+	\CF_ifinsidetikz
+		{\pgfinterruptpicture
+		\let\CF_atendoflewis\endpgfinterruptpicture
+		}
+		{\let\CF_atendoflewis\relax
+		}%
+	\tikzpicture[every node/.style={anchor=base,inner sep=0pt,outer sep=0pt,minimum size=0pt},baseline]%
+		\CF_makeother;\CF_makeother:%
+		\node(CF_lewis@anchor){};
+		\def\CF_lewisremainpos{#1}%
+		\let\CF_lewispreviouspos\empty
+		\loop
+			\unless\ifx\CF_lewisremainpos\empty
+				\edef\CF_lewiscurrentpos{\expandafter\CF_firsttonil\CF_lewisremainpos\_nil}%
+				\edef\CF_lewisremainpos{\expandafter\CF_gobarg\CF_lewisremainpos}%
+				\pgfmathsetmacro\CF_lewisx{\wd\CF_boxlewis/2+\ifcase\CF_lewiscurrentpos\space1\or1\or0\or-1\or-1\or-1\or0\or1\fi*(\wd\CF_boxlewis/2)}%
+				\pgfmathsetmacro\CF_lewisy{\ht\CF_boxlewis/2+\ifcase\CF_lewiscurrentpos\space0\or1\or1\or1\or0\or-1\or-1\or-1\fi*(\ht\CF_boxlewis/2\ifnum\CF_lewiscurrentpos>4 +\dp\CF_boxlewis\fi)}%
+				\edef\CF_lewisxoffset{\ifcase\CF_lewiscurrentpos\space1\or0.70711\or0\or-0.70711\or-1\or-0.70711\or0\or0.70711\fi}%
+				\edef\CF_lewisyoffset{\ifcase\CF_lewiscurrentpos\space0\or0.70711\or1\or0.70711\or0\or-0.70711\or-1\or-0.70711\fi}%
+				\ifodd\CF_lewiscurrentpos\relax
+					\pgfmathsetmacro\CF_lewiscurrentoffset{\CF_lewisoffset*\CF_lewisdiagcoeff}%%
+				\else
+					\let\CF_lewiscurrentoffset\CF_lewisoffset
+				\fi
+				\if.\expandafter\CF_firsttonil\CF_lewisremainpos\relax\_nil
+					\edef\CF_lewisremainpos{\expandafter\CF_gobarg\CF_lewisremainpos}%
+					\CF_expafter{\draw[fill,black,}{\CF_lewisstyle]}%
+						(\CF_lewisx pt+\CF_lewisxoffset*\CF_lewiscurrentoffset,\CF_lewisy pt+\CF_lewisyoffset*\CF_lewiscurrentoffset)circle(\CF_lewisradius);%
+				\else
+					\if|\expandafter\CF_firsttonil\CF_lewisremainpos\relax\_nil
+						\edef\CF_lewisremainpos{\expandafter\CF_gobarg\CF_lewisremainpos}%
+						\pgfmathsetmacro\CF_lewisx{\CF_lewisx pt+\CF_lewisxoffset*\CF_lewiscurrentoffset}%
+						\pgfmathsetmacro\CF_lewisy{\CF_lewisy pt+\CF_lewisyoffset*\CF_lewiscurrentoffset}%
+						\CF_expafter{\draw[}\CF_lewisstyle]%
+							(\CF_lewisx pt+\CF_lewislength*\CF_lewisyoffset/2 pt,\CF_lewisy-\CF_lewislength*\CF_lewisxoffset/2 pt)--
+							(\CF_lewisx pt+\CF_lewislength*\CF_lewisyoffset/2 pt+\CF_lewisxoffset*\CF_lewiswidthdouble,\CF_lewisy-\CF_lewislength*\CF_lewisxoffset/2 pt+\CF_lewisyoffset*\CF_lewiswidthdouble)--
+							(\CF_lewisx pt-\CF_lewislength*\CF_lewisyoffset/2 pt+\CF_lewisxoffset*\CF_lewiswidthdouble,\CF_lewisy+\CF_lewislength*\CF_lewisxoffset/2 pt+\CF_lewisyoffset*\CF_lewiswidthdouble)--
+							(\CF_lewisx pt-\CF_lewislength*\CF_lewisyoffset/2 pt,\CF_lewisy+\CF_lewislength*\CF_lewisxoffset/2 pt)--cycle;%
+					\else
+						\if:\expandafter\CF_firsttonil\CF_lewisremainpos\relax\_nil
+							\edef\CF_lewisremainpos{\expandafter\CF_gobarg\CF_lewisremainpos}%
+							\pgfmathsetmacro\CF_lewisx{\CF_lewisx pt+\CF_lewisxoffset*\CF_lewiscurrentoffset}%
+							\pgfmathsetmacro\CF_lewisy{\CF_lewisy pt+\CF_lewisyoffset*\CF_lewiscurrentoffset}%
+							\CF_expafter{\draw[fill,black,}{\CF_lewisstyle]}%
+								(\CF_lewisx pt+\CF_lewisdist*\CF_lewisyoffset/2 pt,\CF_lewisy-\CF_lewisdist*\CF_lewisxoffset/2 pt)circle(\CF_lewisradius)%
+								(\CF_lewisx pt-\CF_lewisdist*\CF_lewisyoffset/2 pt,\CF_lewisy+\CF_lewisdist*\CF_lewisxoffset/2 pt)circle(\CF_lewisradius);%
+						\else
+							\pgfmathsetmacro\CF_lewisx{\CF_lewisx pt+\CF_lewisxoffset*\CF_lewiscurrentoffset}%
+							\pgfmathsetmacro\CF_lewisy{\CF_lewisy pt+\CF_lewisyoffset*\CF_lewiscurrentoffset}%
+							\CF_expafter{\draw[}\CF_lewisstyle]%
+								(\CF_lewisx pt+\CF_lewislength*\CF_lewisyoffset/2 pt,\CF_lewisy-\CF_lewislength*\CF_lewisxoffset/2 pt)--%
+								(\CF_lewisx pt-\CF_lewislength*\CF_lewisyoffset/2 pt,\CF_lewisy+\CF_lewislength*\CF_lewisxoffset/2 pt);%
+						\fi
+					\fi
+				\fi
+		\repeat
+		\node[anchor=base west]at(CF_lewis@anchor){\box\CF_boxlewis};%
+	\endtikzpicture
+	\CF_atendoflewis
+}
+\CFrestorecatcode
+\endinput

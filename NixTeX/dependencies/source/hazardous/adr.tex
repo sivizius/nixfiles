@@ -1,0 +1,435 @@
+\directlua{includeCode("hazardous/adr")}
+
+\newlength{\@ADRpictogramRadius}
+\newlength{\@ADRpictogramStep}
+
+\definecolor{adrBlack}  {RGB}{  0,  0,  0}
+\definecolor{adrBlue}   {RGB}{  0,146,221}
+\definecolor{adrGreen}  {RGB}{ 75,176, 51}
+\definecolor{adrOrange} {RGB}{252,126, 12}
+\definecolor{adrPlate}  {RGB}{254,153,  0}
+\definecolor{adrRed}    {RGB}{239, 46, 51}
+\definecolor{adrWhite}  {RGB}{255,255,255}
+\definecolor{adrYellow} {RGB}{245,240, 20}
+
+\def\@AdrColour       {adrBlack}
+\def\@AdrLowerBright  {}
+\def\@AdrLowerColour  {}
+\def\@AdrLowerInner   {}
+\def\@AdrLowerPattern {}
+\def\@AdrUpperBright  {}
+\def\@AdrUpperColour  {}
+\def\@AdrUpperInner   {}
+\def\@AdrUpperPattern {}
+
+\def\adrInverted{\makeatletter\def\@AdrColour{adrWhite}\makeatother}
+\def\adrNormal  {\makeatletter\def\@AdrColour{adrBlack}\makeatother}
+
+\newcommand{\adrPlate}[3][1cm]
+{{%
+  \resizebox{#1}{!}%
+  {%
+    \fontsize{14cm}{14cm}\selectfont%
+    \begin{tikzpicture}[every node/.style={inner sep=0,outer sep=0}]%
+      \fill [ black     ] ( 0.00cm,  0.00cm ) rectangle ( 40.00cm,  30.00cm );%
+      \fill [ adrPlate  ] ( 1.50cm,  1.50cm ) rectangle ( 38.50cm,  14.25cm );%
+      \fill [ adrPlate  ] ( 1.50cm, 15.75cm ) rectangle ( 38.50cm,  28.50cm );%
+      \node at  ( 20cm,  7.5cm  ) {\textbf{#3}};%
+      \node at  ( 20cm, 22.5cm  ) {\textbf{#2}};%
+    \end{tikzpicture}%
+  }%
+}}
+
+\newcommand{\adrPictogram}[9][1cm]
+{{%
+  % 1 – width and height
+  % 2 – upper half colour or pattern
+  % 3 – lower half colour or pattern
+  % 4 – inner half colour (adrBlack, adrWhite or adrYellow)
+  % 5 – pictogram
+  % 6 – class
+  % 7 – subclass
+  % 8 – compatibility group
+  % 9 – text
+  \setlength{\@ADRpictogramRadius}{70.71067811865476pt}%
+  \setlength{\@ADRpictogramStep}{10.878565864408424pt}%
+  % Upper Half
+  \def\@AdrUpperBright    {false}%
+  \def\@AdrUpperColour    {\@AdrColour}%
+  \def\@PictogramInverted {false}%
+  \ifequal{#2}{adrWhite}                {\def\@AdrUpperColour{adrBlack}\def\@AdrUpperBright{true}}%
+  \ifequal{#2}{adrYellow}               {\def\@AdrUpperColour{adrBlack}\def\@AdrUpperBright{true}}%
+  \ifequal{\@AdrUpperColour}{adrWhite}  {\def\@PictogramInverted{true}}%
+  % Lower Half
+  \def\@AdrLowerBright    {false}%
+  \def\@AdrLowerColour    {\@AdrColour}%
+  \ifequal{#3}{}                        {\def\@AdrLowerColour{\@AdrUpperColour}\def\@AdrLowerBright{\@AdrUpperBright}}%
+  \ifequal{#3}{adrWhite}                {\def\@AdrLowerColour{adrBlack}\def\@AdrLowerBright{true}}%
+  \ifequal{#3}{adrYellow}               {\def\@AdrLowerColour{adrBlack}\def\@AdrLowerBright{true}}%
+  % Inner Half
+  \def\@AdrLowerInner     {}%
+  \def\@AdrUpperInner     {}%
+  \ifequal{#4}{adrBlack}                {\def\@AdrLowerColour{adrWhite}\def\@AdrLowerInner{#4}}%
+  \ifequal{#4}{adrWhite}                {\def\@AdrLowerColour{adrBlack}\def\@AdrUpperInner{#4}}%
+  \ifequal{#4}{adrYellow}               {\def\@AdrLowerColour{adrBlack}\def\@AdrUpperInner{#4}}%
+  \ifequal{#4}{adrBlackStripes}
+  {%
+    \def\@AdrUpperPattern{adrBlack}%
+    \def\@AdrUpperColour{adrBlack}%
+    \def\@AdrUpperBright{true}%
+  }%
+  \ifequal{#4}{adrRedStripes}
+  {%
+    \def\@AdrLowerPattern{adrRed}%
+    \def\@AdrLowerColour{adrBlack}%
+    \def\@AdrLowerBright{true}%
+    \def\@AdrUpperPattern{adrRed}%
+    \def\@AdrUpperColour{adrBlack}%
+    \def\@AdrUpperBright{true}%
+  }%
+  % Resize Pictogram to given size.
+  \resizebox{#1}{!}%
+  {%
+    \begin{tikzpicture}[line width=1pt]
+      \clip (0,0) rectangle (2\@ADRpictogramRadius, 2\@ADRpictogramRadius);
+      \fill
+      [ #2                  ] ( 0\@ADRpictogramRadius,      1\@ADRpictogramRadius     )
+      --                      ( 1\@ADRpictogramRadius,      2\@ADRpictogramRadius     )
+      --                      ( 2\@ADRpictogramRadius,      1\@ADRpictogramRadius     )
+      --                      ( 1\@ADRpictogramRadius,      0\@ADRpictogramRadius     )
+      --                      cycle;
+      \ifnotempty{#3}
+      {
+        \fill
+        [ #3                ] ( 0\@ADRpictogramRadius,      1\@ADRpictogramRadius     )
+        --                    ( 2\@ADRpictogramRadius,      1\@ADRpictogramRadius     )
+        --                    ( 1\@ADRpictogramRadius,      0\@ADRpictogramRadius     )
+        --                    cycle;
+      }
+      \ifnotempty{\@AdrUpperPattern}
+      {
+        \fill
+        [ \@AdrUpperPattern ] (  0\@ADRpictogramStep,        6.5\@ADRpictogramStep    )
+        --                    (  1\@ADRpictogramStep,        6.5\@ADRpictogramStep    )
+        --                    (  1\@ADRpictogramStep,        7.5\@ADRpictogramStep    )
+        --                    cycle;
+        \fill
+        [ \@AdrUpperPattern ] (  2\@ADRpictogramStep,        6.5\@ADRpictogramStep    )
+        --                    (  3\@ADRpictogramStep,        6.5\@ADRpictogramStep    )
+        --                    (  3\@ADRpictogramStep,        9.5\@ADRpictogramStep    )
+        --                    (  2\@ADRpictogramStep,        8.5\@ADRpictogramStep    )
+        --                    cycle;
+        \fill
+        [ \@AdrUpperPattern ] (  4\@ADRpictogramStep,        6.5\@ADRpictogramStep    )
+        --                    (  5\@ADRpictogramStep,        6.5\@ADRpictogramStep    )
+        --                    (  5\@ADRpictogramStep,       11.5\@ADRpictogramStep    )
+        --                    (  4\@ADRpictogramStep,       10.5\@ADRpictogramStep    )
+        --                    cycle;
+        \fill
+        [ \@AdrUpperPattern ] (  6.0\@ADRpictogramStep,      6.5\@ADRpictogramStep    )
+        --                    (  7.0\@ADRpictogramStep,      6.5\@ADRpictogramStep    )
+        --                    (  7.0\@ADRpictogramStep,     12.5\@ADRpictogramStep    )
+        --                    (  6.5\@ADRpictogramStep,     13.0\@ADRpictogramStep    )
+        --                    (  6.0\@ADRpictogramStep,     12.5\@ADRpictogramStep    )
+        --                    cycle;
+        \fill
+        [ \@AdrUpperPattern ] (  8\@ADRpictogramStep,        6.5\@ADRpictogramStep    )
+        --                    (  9\@ADRpictogramStep,        6.5\@ADRpictogramStep    )
+        --                    (  9\@ADRpictogramStep,       10.5\@ADRpictogramStep    )
+        --                    (  8\@ADRpictogramStep,       11.5\@ADRpictogramStep    )
+        --                    cycle;
+        \fill
+        [ \@AdrUpperPattern ] ( 10\@ADRpictogramStep,        6.5\@ADRpictogramStep    )
+        --                    ( 11\@ADRpictogramStep,        6.5\@ADRpictogramStep    )
+        --                    ( 11\@ADRpictogramStep,        8.5\@ADRpictogramStep    )
+        --                    ( 10\@ADRpictogramStep,        9.5\@ADRpictogramStep    )
+        --                    cycle;
+        \fill
+        [ \@AdrUpperPattern ] ( 12\@ADRpictogramStep,        6.5\@ADRpictogramStep    )
+        --                    ( 13\@ADRpictogramStep,        6.5\@ADRpictogramStep    )
+        --                    ( 12\@ADRpictogramStep,        7.5\@ADRpictogramStep    )
+        --                    cycle;
+      }
+      \ifnotempty{\@AdrLowerPattern}
+      {
+        \fill
+        [ \@AdrLowerPattern ] (  0\@ADRpictogramStep,        6.5\@ADRpictogramStep    )
+        --                    (  1\@ADRpictogramStep,        6.5\@ADRpictogramStep    )
+        --                    (  1\@ADRpictogramStep,        5.5\@ADRpictogramStep    )
+        --                    cycle;
+        \fill
+        [ \@AdrLowerPattern ] (  2\@ADRpictogramStep,        6.5\@ADRpictogramStep    )
+        --                    (  3\@ADRpictogramStep,        6.5\@ADRpictogramStep    )
+        --                    (  3\@ADRpictogramStep,        3.5\@ADRpictogramStep    )
+        --                    (  2\@ADRpictogramStep,        4.5\@ADRpictogramStep    )
+        --                    cycle;
+        \fill
+        [ \@AdrLowerPattern ] (  4\@ADRpictogramStep,        6.5\@ADRpictogramStep    )
+        --                    (  5\@ADRpictogramStep,        6.5\@ADRpictogramStep    )
+        --                    (  5\@ADRpictogramStep,        1.5\@ADRpictogramStep    )
+        --                    (  4\@ADRpictogramStep,        2.5\@ADRpictogramStep    )
+        --                    cycle;
+        \fill
+        [ \@AdrLowerPattern ] (  6.0\@ADRpictogramStep,      6.5\@ADRpictogramStep    )
+        --                    (  7.0\@ADRpictogramStep,      6.5\@ADRpictogramStep    )
+        --                    (  7.0\@ADRpictogramStep,      0.5\@ADRpictogramStep    )
+        --                    (  6.5\@ADRpictogramStep,      0.0\@ADRpictogramStep    )
+        --                    (  6.0\@ADRpictogramStep,      0.5\@ADRpictogramStep    )
+        --                    cycle;
+        \fill
+        [ \@AdrLowerPattern ] (  8\@ADRpictogramStep,        6.5\@ADRpictogramStep    )
+        --                    (  9\@ADRpictogramStep,        6.5\@ADRpictogramStep    )
+        --                    (  9\@ADRpictogramStep,        2.5\@ADRpictogramStep    )
+        --                    (  8\@ADRpictogramStep,        1.5\@ADRpictogramStep    )
+        --                    cycle;
+        \fill
+        [ \@AdrLowerPattern ] ( 10\@ADRpictogramStep,        6.5\@ADRpictogramStep    )
+        --                    ( 11\@ADRpictogramStep,        6.5\@ADRpictogramStep    )
+        --                    ( 11\@ADRpictogramStep,        4.5\@ADRpictogramStep    )
+        --                    ( 10\@ADRpictogramStep,        3.5\@ADRpictogramStep    )
+        --                    cycle;
+        \fill
+        [ \@AdrLowerPattern ] ( 12\@ADRpictogramStep,        6.5\@ADRpictogramStep    )
+        --                    ( 13\@ADRpictogramStep,        6.5\@ADRpictogramStep    )
+        --                    ( 12\@ADRpictogramStep,        5.5\@ADRpictogramStep    )
+        --                    cycle;
+      }
+      \ifnotempty{\@AdrUpperInner}
+      {
+        \fill
+        [ \@AdrUpperInner   ] ( 0\@ADRpictogramRadius+5pt,  1\@ADRpictogramRadius     )
+        --                    ( 1\@ADRpictogramRadius,      2\@ADRpictogramRadius-5pt )
+        --                    ( 2\@ADRpictogramRadius-5pt,  1\@ADRpictogramRadius     )
+        --                    cycle;
+        \draw
+        [ adrBlack          ] ( 0\@ADRpictogramRadius+5pt,  1\@ADRpictogramRadius     )
+        --                    ( 2\@ADRpictogramRadius-5pt,  1\@ADRpictogramRadius     );
+      }
+      \ifnotequal{\@AdrUpperPattern}{\@AdrLowerPattern}
+      {
+        \draw
+        [ adrBlack          ] ( 0\@ADRpictogramRadius+5pt,  1\@ADRpictogramRadius     )
+        --                    ( 2\@ADRpictogramRadius-5pt,  1\@ADRpictogramRadius     );
+      }
+      \ifnotempty{\@AdrLowerInner}
+      {
+        \fill
+        [ \@AdrLowerInner   ] ( 0\@ADRpictogramRadius+5pt,  1\@ADRpictogramRadius     )
+        --                    ( 1\@ADRpictogramRadius,      0\@ADRpictogramRadius+5pt )
+        --                    ( 2\@ADRpictogramRadius-5pt,  1\@ADRpictogramRadius     )
+        --                    cycle;
+      }
+      \ifthenelse{\equal{\@AdrLowerBright}{true}}
+      {
+        \ifthenelse{\equal{\@AdrUpperBright}{true}}
+        {
+          % Upper and lower half need a dashed line.
+          \draw
+          [
+            adrBlack,
+            dash pattern={on 6.25pt off 4.166666666666667pt},
+          ]                   ( 0\@ADRpictogramRadius,      1\@ADRpictogramRadius     )
+          --                  ( 1\@ADRpictogramRadius,      2\@ADRpictogramRadius     );
+          \draw
+          [
+            adrBlack,
+            dash pattern={on 6.25pt off 4.166666666666667pt},
+          ]                   ( 1\@ADRpictogramRadius,      2\@ADRpictogramRadius     )
+          --                  ( 2\@ADRpictogramRadius,      1\@ADRpictogramRadius     );
+          \draw
+          [
+            adrBlack,
+            dash pattern={on 6.25pt off 4.166666666666667pt},
+          ]                   ( 2\@ADRpictogramRadius,      1\@ADRpictogramRadius     )
+          --                  ( 1\@ADRpictogramRadius,      0\@ADRpictogramRadius     );
+          \draw
+          [
+            adrBlack,
+            dash pattern={on 6.25pt off 4.166666666666667pt},
+          ]                   ( 1\@ADRpictogramRadius,      0\@ADRpictogramRadius     )
+          --                  ( 0\@ADRpictogramRadius,      1\@ADRpictogramRadius     );
+          % Therefore the solid line must be black.
+          \draw
+          [ adrBlack        ] ( 0\@ADRpictogramRadius+5pt,  1\@ADRpictogramRadius     )
+          --                  ( 1\@ADRpictogramRadius,      2\@ADRpictogramRadius-5pt )
+          --                  ( 2\@ADRpictogramRadius-5pt,  1\@ADRpictogramRadius     )
+          --                  ( 1\@ADRpictogramRadius,      0\@ADRpictogramRadius+5pt )
+          --                  cycle;
+        }
+        {
+          % Only lower half needs a dashed line.
+          \draw
+          [
+            adrBlack,
+            dash pattern={on 6.25pt off 4.166666666666667pt},
+          ]                   ( 0\@ADRpictogramRadius,      1\@ADRpictogramRadius     )
+          --                  ( 1\@ADRpictogramRadius,      0\@ADRpictogramRadius     );
+          \draw
+          [
+            adrBlack,
+            dash pattern={on 6.25pt off 4.166666666666667pt},
+          ]                   ( 1\@ADRpictogramRadius,      0\@ADRpictogramRadius     )
+          --                  ( 2\@ADRpictogramRadius,      1\@ADRpictogramRadius     );
+          % Therefore the solid line must be black.
+          \draw
+          [ adrBlack        ] ( 0\@ADRpictogramRadius+5pt,  1\@ADRpictogramRadius     )
+          --                  ( 1\@ADRpictogramRadius,      2\@ADRpictogramRadius-5pt )
+          --                  ( 2\@ADRpictogramRadius-5pt,  1\@ADRpictogramRadius     )
+          --                  ( 1\@ADRpictogramRadius,      0\@ADRpictogramRadius+5pt )
+          --                  cycle;
+        }
+      }
+      {
+        \ifthenelse{\equal{\@AdrUpperBright}{true}}
+        {
+          % Only upper half needs a dashed line.
+          \draw
+          [
+            adrBlack,
+            dash pattern={on 6.25pt off 4.166666666666667pt},
+          ]                   ( 0\@ADRpictogramRadius,      1\@ADRpictogramRadius     )
+          --                  ( 1\@ADRpictogramRadius,      2\@ADRpictogramRadius     );
+          \draw
+          [
+            adrBlack,
+            dash pattern={on 6.25pt off 4.166666666666667pt},
+          ]                   ( 1\@ADRpictogramRadius,      2\@ADRpictogramRadius     )
+          --                  ( 2\@ADRpictogramRadius,      1\@ADRpictogramRadius     );
+          % Therefore the solid line must be black.
+          \draw
+          [ adrBlack        ] ( 0\@ADRpictogramRadius+5pt,  1\@ADRpictogramRadius     )
+          --                  ( 1\@ADRpictogramRadius,      2\@ADRpictogramRadius-5pt )
+          --                  ( 2\@ADRpictogramRadius-5pt,  1\@ADRpictogramRadius     )
+          --                  ( 1\@ADRpictogramRadius,      0\@ADRpictogramRadius+5pt )
+          --                  cycle;
+        }
+        {
+          % No half need a dashed line.
+          % Solid line could be white or black.
+          \draw
+          [ \@AdrColour     ] ( 0\@ADRpictogramRadius+5pt,  1\@ADRpictogramRadius     )
+          --                  ( 1\@ADRpictogramRadius,      2\@ADRpictogramRadius-5pt )
+          --                  ( 2\@ADRpictogramRadius-5pt,  1\@ADRpictogramRadius     )
+          --                  ( 1\@ADRpictogramRadius,      0\@ADRpictogramRadius+5pt )
+          --                  cycle;
+        }
+      }
+      \node
+      [
+        text centered,
+        text width  =   2.00\@ADRpictogramRadius,
+      ]     at  ( 1\@ADRpictogramRadius,  1.40\@ADRpictogramRadius  )
+                {{\color{\@AdrUpperColour}\fontsize{50pt}{50pt}\selectfont #5}};
+      \node
+      [
+        text centered,
+        text depth  =   0.45\@ADRpictogramRadius,
+        text height =   0.50\@ADRpictogramRadius,
+        text width  =   2.00\@ADRpictogramRadius,
+      ]     at  ( 1\@ADRpictogramRadius,  0.85\@ADRpictogramRadius  ) {\color{\@AdrLowerColour}\large #9};
+      \node at  ( 1\@ADRpictogramRadius,  0.35\@ADRpictogramRadius  ) {\color{\@AdrLowerColour}\Large #6};
+      \node at  ( 1\@ADRpictogramRadius,  0.55\@ADRpictogramRadius  ) {\color{\@AdrLowerColour}\small #8};
+      \node at  ( 1\@ADRpictogramRadius,  0.70\@ADRpictogramRadius  ) {\color{\@AdrLowerColour}\small #7};
+    \end{tikzpicture}%
+  }%
+}}
+
+\newcommand{\adrExplosive                 }[3][1cm]
+  {\adrPictogram[#1]{adrOrange} {}          {}                {\fontsize{45pt}{45pt}\selectfont\pictogramExplosive}   {1}   {1.#2~} {#3}
+  {\LARGE EXPLOSIVE}}
+\newcommand{\adrLessExplosive             }[3][1cm]
+  {\adrPictogram[#1]{adrOrange} {}          {}                {\fontsize{35pt}{35pt}\selectfont\textbf{1.#2}}         {1}   {}      {#3}
+  {\LARGE EXPLOSIVE}}
+\newcommand{\adrFlammableGas              }[1][1cm]
+  {\adrPictogram[#1]{adrRed}    {}          {}                {\fontsize{50pt}{50pt}\selectfont\pictogramFlammable}   {2}   {}      {}
+  {\LARGE FLAMMABLE\\\LARGE GAS}}
+\newcommand{\adrNonFlammableGas           }[1][1cm]
+  {\adrPictogram[#1]{adrGreen}  {}          {}                {\fontsize{20pt}{20pt}\selectfont\pictogramGasBottle}   {2}   {}      {}
+  {NON-FLAMMABLE\\\LARGE GAS}}
+\newcommand{\adrPoisonGas                 }[1][1cm]
+  {\adrPictogram[#1]{adrWhite}  {}          {}                {\fontsize{45pt}{45pt}\selectfont\pictogramSkull}       {2}   {}      {}
+  {\Huge POISON\\GAS}}
+\newcommand{\adrFlammableLiquid           }[1][1cm]
+  {\adrPictogram[#1]{adrRed}    {}          {}                {\fontsize{50pt}{50pt}\selectfont\pictogramFlammable}   {3}   {}      {}
+  {\LARGE FLAMMABLE\\\large LIQUID}}
+\newcommand{\adrFlammableSolid            }[1][1cm]
+  {\adrPictogram[#1]{adrWhite}  {}          {adrRedStripes}   {\fontsize{50pt}{50pt}\selectfont\pictogramFlammable}   {4}   {}      {}
+  {\LARGE FLAMMABLE\\\LARGE SOLID}}
+\newcommand{\adrSpontaneouslyCombustible  }[1][1cm]
+  {\adrPictogram[#1]{adrWhite}  {adrRed}    {}                {\fontsize{50pt}{50pt}\selectfont\pictogramFlammable}   {4}   {}      {}
+  {\large SPONTANEOUSLY\\\normalsize COMBUSTIBLE}}
+\newcommand{\adrDangerousWhenWet          }[1][1cm]
+  {\adrPictogram[#1]{adrBlue}   {}          {}                {\fontsize{50pt}{50pt}\selectfont\pictogramFlammable}   {4}   {}      {}
+  {\LARGE DANGEROUS\\\large WHEN WET}}
+\newcommand{\adrOxidiser                  }[1][1cm]
+  {\adrPictogram[#1]{adrYellow} {}          {}                {\fontsize{50pt}{50pt}\selectfont\pictogramOxidiser}    {5.1} {}      {}
+  {\\[-.8\normalbaselineskip]\Huge OXIDISER}}
+\newcommand{\adrPeroxide                  }[1][1cm]
+  {\adrPictogram[#1]{adrRed}    {adrYellow} {}                {\fontsize{50pt}{50pt}\selectfont\pictogramFlammable}   {5.2} {}      {}
+  {\large ORGANIC\\\LARGE PEROXID}}
+\newcommand{\adrToxic                     }[1][1cm]
+  {\adrPictogram[#1]{adrWhite}  {}          {}                {\fontsize{50pt}{50pt}\selectfont\pictogramSkull}       {6}   {}      {}
+  {\Huge TOXIC}}
+\newcommand{\adrInfectious                }[1][1cm]
+  {\adrPictogram[#1]{adrWhite}  {}          {}                {\fontsize{60pt}{60pt}\selectfont\DejaVuSans^^^^2623}   {6}   {}      {}
+  {%
+    \\[-1.3\normalbaselineskip]%
+    \normalsize INFECTIOUS SUBSTANCE\\%
+    \tiny IN CASE OF DAMAGE OR LEAKAGE\\IMMEDIATELY NOTIFY\\PUBLIC HEALTH AUTHORITY\\%
+  }}
+\newcommand{\adrRadioactiveI              }[3][1cm]
+  {\adrPictogram[#1]{adrWhite}  {}          {adrWhite}        {\fontsize{70pt}{70pt}\selectfont\Radioactivity}        {7}   {}      {}
+  {%
+    \large RADIOACTIVE \textbf{\color{adrRed}\selectfont I}\\%
+    \tiny CONTENTS: #2\\%
+    ACTIVITY: \Physical#3{}{}{}{}\\[-.9\normalbaselineskip]%
+  }}
+\newcommand{\adrRadioactiveII             }[4][1cm]
+  {\adrPictogram[#1]{adrWhite}  {}          {adrYellow}       {\fontsize{70pt}{70pt}\selectfont\Radioactivity}        {7}   {}      {}
+  {%
+    \large RADIOACTIVE \textbf{\color{adrRed}\selectfont II}\\%
+    \tiny CONTENTS: #2\\%
+    ACTIVITY: \Physical#3{}{}{}{}\\[-.9\normalbaselineskip]%
+    \setlength{\fboxsep}{0pt}%
+    \fbox{\parbox[][.08\linewidth][b]{.37\linewidth}
+    {%
+      \centering%
+      \fontsize{8pt}{8pt}\selectfont #4\\%
+      \fontsize{5pt}{5pt}\selectfont TRANSPORT INDEX}%
+    }%
+  }}
+\newcommand{\adrRadioactiveIII            }[4][1cm]
+  {\adrPictogram[#1]{adrWhite}  {}          {adrYellow}       {\fontsize{70pt}{70pt}\selectfont\Radioactivity}        {7}   {}      {}
+  {%
+    \large RADIOACTIVE \textbf{\color{adrRed}\selectfont III}\\%
+    \tiny CONTENTS: #2\\%
+    ACTIVITY: \Physical#3{}{}{}{}\\[-.9\normalbaselineskip]%
+    \setlength{\fboxsep}{0pt}%
+    \fbox{\parbox[][.08\linewidth][b]{.37\linewidth}
+    {%
+      \centering%
+      \fontsize{8pt}{8pt}\selectfont #4\\%
+      \fontsize{5pt}{5pt}\selectfont TRANSPORT INDEX}%
+    }%
+  }}
+\newcommand{\adrFissile                   }[2][1cm]
+  {\adrPictogram[#1]{adrWhite}  {}          {adrWhite}        {~\\[.4\normalbaselineskip]\Huge FISSILE\\}             {7}   {}      {}
+  {%
+    ~\\[-.5\normalbaselineskip]%
+    \setlength{\fboxsep}{0pt}%
+    \fbox{\parbox[][.2\linewidth][b]{.45\linewidth}
+    {%
+      \centering%
+      \fontsize{15pt}{15pt}\selectfont #2\\%
+      \fontsize{7pt}{7pt}\selectfont CRITICALITY\\ SAFETY INDEX}%
+    }%
+  }}
+\newcommand{\adrCorrosive                 }[1][1cm]
+  {\adrPictogram[#1]{adrWhite}  {}          {adrBlack}        {\fontsize{30pt}{30pt}\selectfont\pictogramCorrosive\,} {8}   {}      {}
+  {\\[-.5\normalbaselineskip]\Large CORROSIVE}}
+\newcommand{\adrOther                     }[1][1cm]
+  {\adrPictogram[#1]{adrWhite}  {}          {adrBlackStripes} {}                                                      {\underline{9}}
+  {}{}{}}
+\newcommand{\adrLithiumCells              }[1][1cm]
+  {\adrPictogram[#1]{adrWhite}  {}          {adrBlackStripes} {}                                                      {\underline{9}}
+  {\fontsize{30pt}{30pt}\selectfont\pictogramLithiumCells}{}{}}

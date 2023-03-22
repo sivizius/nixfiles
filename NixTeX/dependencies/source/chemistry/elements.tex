@@ -1,0 +1,75 @@
+\directlua{includeCode("chemistry/elements")}
+
+\def\printPeriodicTable{\unchapter[90]{Periodensystem der Elemente}
+{{%
+%  \newlength{\newtextheight}%
+  \setlength{\newtextheight}{\textheight}%
+  \addtolength{\newtextheight}{\footskip}%
+  \newgeometry
+  {
+    top                                 =   (\paperheight-\textheight+\headheight+\headsep+\footskip)/2 - 1in - 1.04765pt,
+    textheight                          =   \newtextheight,
+    footskip                            =   0cm,
+  }%
+  \newcommand{\x}[1]{\directlua{chem.elements.printEntry([[##1]])}}%
+  \let\m=\multicolumn%
+  \def\fieldLegend{
+    Ordnungszahl\hfill Atommasse\newline
+    \mbox{}\hfill\textbf{\small Symbol}\hfill\mbox{}\newline
+    \mbox{}\hfill{\fontsize{5}{6}\selectfont Name}\hfill\mbox{}\newline
+    Elektronegativität\hfill Aggregatzustand
+  }%
+  \newcommand{\s}[1]{\newline\textbf{\footnotesize ##1}}%
+  \def\colourLegend{\multirow{2}{*}{\parbox{2\linewidth}{\directlua{chem.elements.printColours()}}}}%
+  \def\aboutAsterisk{Ein Asterisk (*) am Symbol zeigt Radio\-aktivität aller Isotope an.}%
+  \setlength{\tabcolsep}{\widthof{\,}}%
+  \begin{table}
+    \robfamily%
+    \labelTable{PSE}%
+    \centering%
+    \tiny%
+    \begin{adjustbox}{angle=90}
+      \begin{tabularx}
+        {\textheightleft}
+        {|Z|Z|Z|Z|Z|Z|Z|Z|Z|Z|Z|Z|Z|Z|Z|Z|Z|Z|}
+        \toprule
+        \m{18}{c}{}\\[0.1\normalbaselineskip]
+        \m{18}{c}{\normalsize\textbf{Periodensystem der chemischen Elemente}}\\[1.1\normalbaselineskip]
+        \midrule
+        \m{1}{c}{\normalsize\textbf{1}}  & \m{1}{c}{\normalsize\textbf{2}}  & \m{1}{c}{\normalsize\textbf{3}}  & \m{1}{c}{\normalsize\textbf{4}}  &
+        \m{1}{c}{\normalsize\textbf{5}}  & \m{1}{c}{\normalsize\textbf{6}}  & \m{1}{c}{\normalsize\textbf{7}}  & \m{1}{c}{\normalsize\textbf{8}}  &
+        \m{1}{c}{\normalsize\textbf{9}}  & \m{1}{c}{\normalsize\textbf{10}} & \m{1}{c}{\normalsize\textbf{11}} & \m{1}{c}{\normalsize\textbf{12}} &
+        \m{1}{c}{\normalsize\textbf{13}} & \m{1}{c}{\normalsize\textbf{14}} & \m{1}{c}{\normalsize\textbf{15}} & \m{1}{c}{\normalsize\textbf{16}} &
+        \m{1}{c}{\normalsize\textbf{17}} & \m{1}{c}{\normalsize\textbf{18}} \\
+        \m{18}{l}{}\\[-.9\normalbaselineskip]
+        \cmidrule(l{.3em}r{.3em}){1-1}\cmidrule(l{.3em}r{.3em}){4-6}\cmidrule(l{.3em}r{.3em}){18-18}
+        \x{H}  & \m{2}{l|}{}         & \m{3}{p{3.2\TX@col@width}|}{\fieldLegend} & \m{1}{l}{} & \m{2}{X}{\colourLegend} & \m{8}{l|}{}                          & \x{He} \\
+        \cmidrule(l{.3em}r{.3em}){1-2}\cmidrule(l{.3em}r{.3em}){4-6}\cmidrule(l{.3em}r{.3em}){13-18}
+        \x{Li} & \x{Be} & \m{1}{l}{} & \m{3}{p{3.2\TX@col@width}}{\aboutAsterisk} & \m{6}{l|}{}                   & \x{B}  & \x{C}  & \x{N}  & \x{O}  & \x{F}  & \x{Ne} \\
+        \cmidrule(l{.3em}r{.3em}){1-2}\cmidrule(l{.3em}r{.3em}){13-18}
+        \x{Na} & \x{Mg} & \m{10}{l|}{}                                                                            & \x{Al} & \x{Si} & \x{P}  & \x{S}  & \x{Cl} & \x{Ar} \\
+        \cmidrule(l{.3em}r{.3em}){1-18}
+        \x{K}  & \x{Ca} & \x{Sc} & \x{Ti} & \x{V}  & \x{Cr} & \x{Mn} & \x{Fe} & \x{Co} & \x{Ni} & \x{Cu} & \x{Zn} & \x{Ga} & \x{Ge} & \x{As} & \x{Se} & \x{Br} & \x{Kr} \\
+        \cmidrule(l{.3em}r{.3em}){1-18}
+        \x{Rb} & \x{Sr} & \x{Y}  & \x{Zr} & \x{Nb} & \x{Mo} & \x{Tc} & \x{Ru} & \x{Rh} & \x{Pd} & \x{Ag} & \x{Cd} & \x{In} & \x{Sn} & \x{Sb} & \x{Te} & \x{I}  & \x{Xe} \\
+        \cmidrule(l{.3em}r{.3em}){1-18}
+        \x{Cs} & \x{Ba} & \s{*}  & \x{Hf} & \x{Ta} & \x{W}  & \x{Re} & \x{Os} & \x{Ir} & \x{Pt} & \x{Au} & \x{Hg} & \x{Tl} & \x{Pb} & \x{Bi} & \x{Po} & \x{At} & \x{Rn} \\
+        \cmidrule(l{.3em}r{.3em}){1-18}
+        \x{Fr} & \x{Ra} & \s{**} & \x{Rf} & \x{Db} & \x{Sg} & \x{Bh} & \x{Hs} & \x{Mt} & \x{Ds} & \x{Rg} & \x{Cn} & \x{Nh} & \x{Fl} & \x{Mc} & \x{Lv} & \x{Ts} & \x{Og} \\
+        \cmidrule(l{.3em}r{.3em}){1-18}
+        \m{18}{l}{}\\[-.9\normalbaselineskip]
+        \cmidrule(l{.3em}r{.3em}){3-17}
+        \m{1}{c}{}&\m{1}{Z|}{\s{*}}  & \x{La} & \x{Ce} & \x{Pr} & \x{Nd} & \x{Pm} & \x{Sm} & \x{Eu} & \x{Gd} & \x{Tb} & \x{Dy} & \x{Ho} & \x{Er} & \x{Tm} & \x{Yb} & \x{Lu} \\
+        \cmidrule(l{.3em}r{.3em}){3-17}
+        \m{1}{c}{}&\m{1}{Z|}{\s{**}} & \x{Ac} & \x{Th} & \x{Pa} & \x{U}  & \x{Np} & \x{Pu} & \x{Am} & \x{Cm} & \x{Bk} & \x{Cf} & \x{Es} & \x{Fm} & \x{Md} & \x{No} & \x{Lr} \\
+        \cmidrule(l{.3em}r{.3em}){3-17}
+        \bottomrule
+      \end{tabularx}%
+    \end{adjustbox}%
+  \end{table}%
+  \restoregeometry%
+}}}
+
+\def\@LinkToPSE{false}
+\def\enablePSE  {\def\@LinkToPSE{true}}
+\def\disablePSE {\def\@LinkToPSE{false}}

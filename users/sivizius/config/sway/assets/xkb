@@ -1,0 +1,69 @@
+default
+xkb_symbols "qwertz" {
+  name[Group1]="Hebrew (QWERTZ)";
+
+  key <AE01>  { [ 1,            exclam,             NoSymbol,             exclamdown                ] };
+  key <AE02>  { [ 2,            quotedbl,           NoSymbol,             NoSymbol                  ] };
+  key <AE03>  { [ 3,            section,            NoSymbol,             sterling                  ] };
+  key <AE04>  { [ 4,            dollar,             NoSymbol,             currency                  ] };
+  key <AE05>  { [ 5,            percent,            U2030 /* ‰ */,        U2031 /* ‱ */             ] };
+  key <AE06>  { [ 6,            ampersand,          notsign,              NoSymbol                  ] };
+  key <AE07>  { [ 7,            slash,              braceright,           NoSymbol                  ] };
+  key <AE08>  { [ 8,            parenright,         bracketright,         trademark                 ] };
+  key <AE09>  { [ 9,            parenleft,          bracketleft,          plusminus                 ] };
+  key <AE10>  { [ 0,            equal,              braceleft,            degree                    ] };
+  key <AE11>  { [ NoSymbol,     question,           backslash,            questiondown              ] };
+  key <AE12>  { [ NoSymbol,     NoSymbol,           NoSymbol,             NoSymbol                  ] };
+
+  key <AD01>  { [ hebrew_qoph,  at,                 U05BB /* Kubutz */,   Greek_OMEGA               ] };
+  key <AD02>  { [ hebrew_waw,   W,                  NoSymbol,             NoSymbol                  ] };
+  key <AD03>  { [ hebrew_ayin,  E,                  EuroSign,             cent                      ] };
+  key <AD04>  { [ hebrew_resh,  R,                  paragraph,            registered                ] };
+  key <AD05>  { [ hebrew_taw,   T,                  NoSymbol,             NoSymbol                  ] };
+  key <AD06>  { [ hebrew_zain,  Z,                  rightarrow,           yen                       ] };
+  key <AD07>  { [ hebrew_waw,   U,                  downarrow,            uparrow                   ] };
+  key <AD08>  { [ hebrew_yod,   I,                  leftarrow,            NoSymbol                  ] };
+  key <AD09>  { [ hebrew_waw,   O,                  U05B9 /* Holam */,    oslash                    ] };
+  key <AD10>  { [ hebrew_pe,    hebrew_finalpe,     U05B7 /* Patach */,   U05B2 /* Hataf Patach */  ] };
+  key <AD11>  { [ NoSymbol,     NoSymbol,           NoSymbol,             NoSymbol                  ] };
+  key <AD12>  { [ plus,         asterisk,           asciitilde,           macron                    ] };
+
+# hebrew_samech
+# hebrew_tet
+# hebrew_shin
+
+# U05B0 /* Sh'va */ shin
+# U05B1 /* Hataf Segol */ samech
+# U05B6 /* Segol */
+# U05C2 /* Shin Smalit */
+# U05C1 /* Shin Yimanit */
+
+  key <AC01>  { [ hebrew_aleph, A,                  U05B8 /* Kamatz */,   U05B3 /* Hataf Kamatz */  ] };
+  key <AC02>  { [ hebrew_,      S,                  NoSymbol,             section                   ] };
+  key <AC03>  { [ hebrew_dalet, D,                  U05BC /* Dagesh */,   NoSymbol                  ] };
+  key <AC04>  { [ hebrew_pe,    hebrew_finalpe,     NoSymbol,             ordfeminine               ] };
+  key <AC05>  { [ hebrew_gimel, G,                  NoSymbol,             NoSymbol                  ] };
+  key <AC06>  { [ hebrew_he,    U210F /* ℏ */,      U05B4 /* Hiriq  */,            ] };
+  key <AC07>  { [ hebrew_yod,   J,                  NoSymbol,             NoSymbol                  ] };
+  key <AC08>  { [ hebrew_kaph,  hebrew_finalkaph,     ] };
+  key <AC09>  { [ hebrew_lamed, L,                  NoSymbol,             NoSymbol                  ] };
+  key <AC10>  { [ NoSymbol,     NoSymbol,           NoSymbol,             NoSymbol                  ] };
+  key <AC11>  { [ NoSymbol,     NoSymbol,           NoSymbol,             NoSymbol                  ] };
+  key <TLDE>  { [ asciicircum,  NoSymbol,           NoSymbol,             NoSymbol                  ] };
+
+  key <BKSL>  { [ numbersign,   apostrophe,         NoSymbol,             grave                     ] };
+  key <AB01>  { [ hebrew_zade,  hebrew_finalzade,   guillemotleft,        U203A /* › */             ] };
+  key <AB02>  { [ hebrew_chet,  X,                  guillemotright,       U2039 /* ‹ */             ] };
+  key <AB03>  { [ c,            C,                  U05B5 /* Zeire */,    copyleft                  ] };
+  key <AB04>  { [ hebrew_bet,   V,                  doublelowquotemark,   singlelowquotemark        ] };
+  key <AB05>  { [ hebrew_bet,   B,                  rightdoublequotemark, rightsinglequotemark      ] };
+  key <AB06>  { [ hebrew_nun,   hebrew_finalnun,    leftdoublequotemark,  leftsinglequotemark       ] };
+  key <AB07>  { [ hebrew_mem,   hebrew_finalmem,    mu,                   masculine                 ] };
+  key <AB08>  { [ comma,        semicolon,          periodcentered,       multiply                  ] };
+  key <AB09>  { [ period,       colon,              U2026 /* … */,        division                  ] };
+  key <AB10>  { [ minus,        underscore,         endash,               emdash                    ] };
+  key <LSGT>  { [ less,         greater,            bar,                  NoSymbol                  ] };
+
+  include "kpdl(comma)"
+  include "level3(ralt_switch)"
+}

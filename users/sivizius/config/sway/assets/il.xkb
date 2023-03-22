@@ -1,0 +1,68 @@
+default
+xkb_symbols "qwertz" {
+  name[Group1]="Hebrew (QWERTZ)";
+
+  # UFB21 /* Wide Alef */
+  # UFB22 /* Wide Dalet */
+  # UFB23 /* Wide He */
+  # UFB24 /* Wide Kaf */
+  # UFB25 /* Wide Lamed */
+  # UFB26 /* Wide Final Mem */
+  # UFB27 /* Wide Resh */
+  # UFB28 /* Wide Taw */
+
+  key <AE01>  { [ 1,                            exclam,                           U05BD /* Meteg */,          exclamdown                        ] };
+  key <AE02>  { [ 2,                            quotedbl,                         U05F4 /* Gereshayim */,     NoSymbol                          ] };
+  key <AE03>  { [ 3,                            section,                          paragraph,                  sterling                          ] };
+  key <AE04>  { [ 4,                            dollar,                           cent,                       currency                          ] };
+  key <AE05>  { [ 5,                            percent,                          U2030 /* ‰ */,              U2031 /* ‱ */                     ] };
+  key <AE06>  { [ 6,                            ampersand,                        notsign,                    copyleft                          ] };
+  key <AE07>  { [ 7,                            slash,                            braceright,                 yen                               ] };
+  key <AE08>  { [ 8,                            parenright,                       bracketright,               trademark                         ] };
+  key <AE09>  { [ 9,                            parenleft,                        bracketleft,                plusminus                         ] };
+  key <AE10>  { [ 0,                            equal,                            braceleft,                  oslash                            ] };
+  key <AE11>  { [ U20AA /* ₪ */,                question,                         backslash,                  questiondown                      ] };
+  key <AE12>  { [ U05B5 /* Zeire ē */,          U05B6 /* Segol é */,              U05B1 /* Hataf Segol ĕ */,  UFB1E /* Varika */                ] };
+
+  key <AD01>  { [ hebrew_qoph,                  UFB47 /* Qof with dagesh */,      at,                         UFB4D /* Kaf with rafe */         ] };
+  key <AD02>  { [ hebrew_waw,                   UFB35 /* Waw with dagesh */,      NoSymbol,                   U05C2 /* Sin dot */               ] };
+  key <AD03>  { [ hebrew_ayin,                  UFB20 /* Alternative Ayin */,     EuroSign,                   U05C1 /* Shin dot */              ] };
+  key <AD04>  { [ hebrew_resh,                  UFB48 /* Resh with dagesh */,     U05BF /* Rafe */,           registered                        ] };
+  key <AD05>  { [ hebrew_taw,                   UFB4A /* Taw with dagesh */,      hebrew_tet,                 UFB38 /* Tet with dagesh */       ] };
+  key <AD06>  { [ hebrew_zade,                  UFB46 /* Zade with dagesh */,     hebrew_finalzade,           NoSymbol                          ] };
+  key <AD07>  { [ hebrew_waw,                   U05F0 /* Double Waw */,           UFB4B /* Waw with holam */, /* Holam for waw ō */             ] };
+  key <AD08>  { [ U05F1 /* Waw-Yod */,          UFB1D /* Yod with Hiriq */,       U05B4 /* Hiriq i */,        U05EF /* Yod Triangle */          ] };
+  key <AD09>  { [ hebrew_samech,                UFB41 /* Samech with dagesh */,   NoSymbol,                   NoSymbol                          ] };
+  key <AD10>  { [ hebrew_pe,                    UFB44 /* Pe with dagesh */,       UFB4E /* Pe with rafe */,   U05C3 /* Sof Pasuq ׃ */            ] };
+  key <AD11>  { [ U05BE /* Maqaf ־ */,          U05BB /* Kubutz ú */,             U05BC /* Shuruk û */,       NoSymbol                          ] };
+  key <AD12>  { [ plus,                         asterisk,                         asciitilde,                 UFB29 /* Alternative Plus */      ] };
+
+  key <AC01>  { [ hebrew_aleph,                 UFB2E /* Aleph Patach */,         UFB2F /* Aleph Kamatz */,   UFB30 /* Alef Mapiq */            ] };
+  key <AC02>  { [ hebrew_shin,                  UFB49 /* Shin/Sin with dagesh */, UFB2B /* Sin with dot */,   UFB2D /* Sin with dagesh */       ] };
+  key <AC03>  { [ hebrew_dalet,                 UFB33 /* Dalet with dagesh */,    UFB2A /* Shin with dot */,  UFB2C /* Shin with dagesh */      ] };
+  key <AC04>  { [ hebrew_finalpe,               UFB43 /* Final Pe with dagesh */, masculine,                  ordfeminine                       ] };
+  key <AC05>  { [ hebrew_gimel,                 UFB32 /* Gimel with dagesh */,    NoSymbol,                   NoSymbol                          ] };
+  key <AC06>  { [ hebrew_he,                    UFB34 /* He with mapiq */,        U210F /* Planck ℏ */,       NoSymbol                          ] };
+  key <AC07>  { [ hebrew_yod,                   UFB39 /* Yod with dagesh */,      U05F2 /* Double Yod */,     UFB1F /* Yod Yod Patach */        ] };
+  key <AC08>  { [ hebrew_kaph,                  UFB3B /* Kaf with dagesh */,      hebrew_finalkaph,           UFB3A /* Final Kaf with dagesh */ ] };
+  key <AC09>  { [ hebrew_lamed,                 UFB3C /* Lamed with dagesh */,    NoSymbol,                   UFB4F /* Alef-Lamed */            ] };
+  key <AC10>  { [ U05B9 /* Holam ō */,          U05C7 /* Kamatz Katan o */,       U05B3 /* Hataf Kamatz ŏ */, NoSymbol                          ] };
+  key <AC11>  { [ U05B8 /* Kamatz Gadol ā */,   U05B7 /* Patach á */,             U05B2 /* Hataf Patach ă */  NoSymbol                          ] };
+  key <TLDE>  { [ dead_circumflex,              degree,                           U05C5 /* Lower dot */,      U05C4 /* Upper dot */             ] };
+
+  key <BKSL>  { [ numbersign,                   apostrophe,                       U05F3 /* Geresh */,         grave                             ] };
+  key <AB01>  { [ U05B0 /* Sh'va */,            U05BC /* Dagesh */,               guillemotleft,              U203A /* › */                     ] };
+  key <AB02>  { [ hebrew_chet,                  NoSymbol,                         guillemotright,             U2039 /* ‹ */                     ] };
+  key <AB03>  { [ hebrew_zain,                  UFB36 /* Zayin with dagesh */,    doublelowquotemark,         singlelowquotemark                ] };
+  key <AB04>  { [ hebrew_bet,                   UFB4C /* Bet with rafe */,        leftdoublequotemark,        leftsinglequotemark               ] };
+  key <AB05>  { [ UFB31 /* Bet with dagesh */,  NoSymbol,                         rightdoublequotemark,       rightsinglequotemark              ] };
+  key <AB06>  { [ hebrew_nun,                   UFB40 /* Nun with dagesh */,      hebrew_finalnun,            U05C6 /* Nun Hafukha */           ] };
+  key <AB07>  { [ hebrew_mem,                   UFB3E /* Mem with dagesh */,      hebrew_finalmem,            masculine                         ] };
+  key <AB08>  { [ comma,                        semicolon,                        periodcentered,             multiply                          ] };
+  key <AB09>  { [ period,                       colon,                            U2026 /* … */,              division                          ] };
+  key <AB10>  { [ minus,                        underscore,                       endash,                     emdash                            ] };
+  key <LSGT>  { [ less,                         greater,                          bar,                        U05C0 /* Paseq ׀ */               ] };
+
+  include "kpdl(comma)"
+  include "level3(ralt_switch)"
+}

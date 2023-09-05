@@ -139,9 +139,15 @@
                   fc-list -f "%{file}\n" | while read fileName
                   do
                     base="$(basename "$fileName")"
-                    link="$(echo "$base" | sed "s/ /-/g")"
-                    ln -s "$fileName" "$out/fonts/$link"
+                    link="$(echo "$base" | sed "s/ /-/g" | sed 's/\[.*\]//g')"
+                    echo "$fileName <- $out/fonts/$link"
+                    if [ ! -f "$out/fonts/$link" ]
+                    then
+                      ln -s "$fileName" "$out/fonts/$link"
+                    fi
                   done
+
+                  ls "$out/fonts"
 
                   # compile document
                   bash $out/compile-${name}.sh "$out"

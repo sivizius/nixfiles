@@ -4,5 +4,5 @@
     jdk17
     prismlauncher
     sauerbraten
-    xonotic
+    #xonotic
   ]

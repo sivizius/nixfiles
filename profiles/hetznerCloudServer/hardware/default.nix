@@ -2,6 +2,6 @@
   ./boot.nix
   ./network.nix
   {
-    nix.settings.max-jobs               =   1;
+    nix.settings.max-jobs = 1;
   }
 ]

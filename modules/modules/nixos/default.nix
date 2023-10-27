@@ -1,4 +1,4 @@
 {
-  programs                              =   ./programs;
-  vault                                 =   ./vault;
+  programs = ./programs;
+  vault = ./vault;
 }

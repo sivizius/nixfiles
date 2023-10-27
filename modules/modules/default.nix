@@ -1,3 +1,3 @@
 {
-  nixos                                 =   ./nixos;
+  nixos = ./nixos;
 }

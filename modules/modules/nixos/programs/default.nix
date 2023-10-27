@@ -1,3 +1,3 @@
 {
-  nano                                  =   ./nano;
+  nano = ./nano;
 }

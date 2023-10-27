@@ -1,6 +1,6 @@
 { nix, ... }:
-  with nix;
-  [
-    avogadro
-    #mestrenova
-  ]
+with nix;
+[
+  #avogadro
+  #mestrenova
+]

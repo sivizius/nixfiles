@@ -1,6 +1,6 @@
 { physical, ... }:
 let
-  inherit(physical) formatValue;
+  inherit (physical) formatValue;
 in
 {
   boltzmannConstant = {

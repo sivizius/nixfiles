@@ -1,0 +1,15 @@
+[files]
+extend-exclude = [
+  "NixTeX",
+  "*.asc"
+]
+
+[default]
+extend-ignore-identifiers-re = [
+  "oder", "[Ee]lemente", "systematisch", "als", "B[aey]", "Nd", "[Tt]emperatur", "passt", "Modell",
+  "Produkt", "Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September",
+  "Oktober", "November", "Dezember", "[A-Z]?[a-z]*[äöüß][a-zäöüß]+", "[A-Z]?[a-zäöüß]+[äöüß]",
+  "Referenz", "signales", "[Tt]echnik", "BASF", "Feld", "graphie", "[Ff]aktor", "Effekt", "ist",
+  "[Oo]rganische", "nationales", "Adresse", "[0-9A-Za-z/]{64}", "nd", "[Aa]lle", "gir", "struc", "teh",
+  "Organismus", "Titel", "[A-Fa-f0-9]{4}", "unter", "Zink", "Probleme?"
+]

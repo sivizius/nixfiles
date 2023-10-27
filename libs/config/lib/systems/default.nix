@@ -1,49 +1,45 @@
 { configurations, core, nixpkgs, ... }:
-  let
-    inherit(configurations) Configuration';
-    inherit(core)           debug list path set string target type;
+let
+  inherit (configurations) Configuration';
+  inherit (core) debug list path set string target type;
 
-    SystemConfiguration                 =   Configuration'  "System";
+  SystemConfiguration = Configuration' "System";
 
-    collect
-    =   hostSystem:
-        [
-          (
-            SystemConfiguration
-            {
-              configuration
-              =   { registries, ... }:
+  collect = hostSystem:
+    [
+      (
+        SystemConfiguration
+          {
+            configuration = { registries, ... }:
+              {
+                nixpkgs = debug.info "collectSystem"
                   {
-                    nixpkgs
-                    =   debug.info "collectSystem"
-                        {
-                          text          =   "registries";
-                          data          =   set.names registries;
-                          nice          =   true;
-                        }
-                        {
-                          hostPlatform  =   string hostSystem;
-                          pkgs          =   registries.nix;
-                        };
+                    text = "registries";
+                    data = set.names registries;
+                    nice = true;
+                  }
+                  {
+                    hostPlatform = string hostSystem;
+                    pkgs = registries.nix;
                   };
-              inherit(hostSystem) source;
-            }
-          )
-        ];
+              };
+            inherit (hostSystem) source;
+          }
+      )
+    ];
 
-    prepare
-    =   environment:
-        host:
-        system:
-          let
-            system'                     =   target.System system;
-          in
-            {
-              source                    =   host.source "system";
-            }
-            //  system';
-  in
-  {
-    inherit SystemConfiguration;
-    inherit collect prepare;
-  }
+  prepare = environment:
+    host:
+    system:
+    let
+      system' = target.System system;
+    in
+    {
+      source = host.source "system";
+    }
+    // system';
+in
+{
+  inherit SystemConfiguration;
+  inherit collect prepare;
+}

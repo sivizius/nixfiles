@@ -1,6 +1,7 @@
 [
   "\\cleardoublepage"
-  "\\chapter*{Bibliografische Beschreibung}{" indentation.more
+  "\\chapter*{Bibliografische Beschreibung}{"
+  indentation.more
   "${authorList} \\\\ \\\\"
   "\\textbf{${title}}\\\\\\\\"
   "${thesis.organisation.name},"
@@ -18,5 +19,6 @@
   "Schlagworte  & \\textit{${string.concatCSV keywords}}"
   indentation.less
   "\\end{tabularx}"
-  indentation.less "{"
+  indentation.less
+  "{"
 ]

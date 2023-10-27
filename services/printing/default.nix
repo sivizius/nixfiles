@@ -1,12 +1,10 @@
 Service "Printing"
 {
-  configuration
-  =   { registries, ... }:
-      {
-        printing
-        =   {
-              drivers                   =   [ registries.nix.hplip ];
-              enable                    =   true;
-            };
+  configuration = { registries, ... }:
+    {
+      printing = {
+        drivers = [ registries.nix.hplip ];
+        enable = true;
       };
+    };
 }

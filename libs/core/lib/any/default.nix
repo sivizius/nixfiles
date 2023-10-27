@@ -1,5 +1,5 @@
 { type, ... }:
-  type "any"
-  {
-    isInstanceOf                        =   x: true;
-  }
+type "any"
+{
+  isInstanceOf = x: true;
+}

@@ -1,7 +1,4 @@
-{ glossaries, ... }:
-let
-#  inherit(glossaries.acronyms) Prefix;
-in
+{ ... }:
 {
   centi = {
     section = "Prefixes";

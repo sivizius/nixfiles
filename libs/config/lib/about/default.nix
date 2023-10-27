@@ -1,17 +1,16 @@
 { core, ... }:
-  let
-    inherit(core) debug string;
+let
+  inherit (core) string;
 
-    collect                             =   _: [];
-    prepare
-    =   environment:
-        host:
-        about:
-        {
-          about                         =   string.expect about;
-          source                        =   host.source "<About of Host ${host.name}>";
-        };
-  in
-  {
-    inherit collect prepare;
-  }
+  collect = _: [ ];
+  prepare = environment:
+    host:
+    about:
+    {
+      about = string.expect about;
+      source = host.source "<About of Host ${host.name}>";
+    };
+in
+{
+  inherit collect prepare;
+}

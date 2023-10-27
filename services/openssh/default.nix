@@ -1,7 +1,6 @@
 Service "OpenSSH."
 {
-  configuration
-  =   {
-        openssh.enable                  =   true;
-      };
+  configuration = {
+    openssh.enable = true;
+  };
 }

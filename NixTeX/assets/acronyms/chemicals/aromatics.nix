@@ -1,6 +1,6 @@
 { chemistry, ... }:
 let
-  inherit(chemistry) compound;
+  inherit (chemistry) compound;
 in
 {
   "benzo[12b:45b']dithiophene" = {

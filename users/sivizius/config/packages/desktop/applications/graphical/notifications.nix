@@ -1,6 +1,6 @@
 { nix, ... }:
-  with nix;
-  [
-    libnotify
-    mako
-  ]
+with nix;
+[
+  libnotify
+  mako
+]

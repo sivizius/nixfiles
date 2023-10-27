@@ -1,5 +1,5 @@
 {
-  common                                =   ./common;
-  desktop                               =   ./desktop;
-  hetznerCloudServer                    =   ./hetznerCloudServer;
+  common = ./common;
+  desktop = ./desktop;
+  hetznerCloudServer = ./hetznerCloudServer;
 }

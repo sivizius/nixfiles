@@ -619,7 +619,7 @@ function substances.use           ( source, identifier, withName, withNumber )
   local entry                           =   substances.list [ identifier  ]
   if  entry
   then
-    --log.info({ source, "useSubstance", }, "Use Subtance with Identifier »" ..  identifier  ..  "«")
+    --log.info({ source, "useSubstance", }, "Use Substance with Identifier »" ..  identifier  ..  "«")
     if  entry.number  ==  nil
     then
       substances.counter                =   substances.counter + 1
@@ -634,7 +634,7 @@ function substances.use           ( source, identifier, withName, withNumber )
         { source, "useSubstance", },
         "Substance was used, but not the Name.",
         "Consider to use \\substanceFull{"..identifier.."}"
-        .." to tell the reader the Name of the substance before refering to it"
+        .." to tell the reader the Name of the substance before referring to it"
       )
     end
     if  not entry.numberUsed
@@ -645,7 +645,7 @@ function substances.use           ( source, identifier, withName, withNumber )
         { source, "useSubstance", },
         "Substance was used, but not the Number.",
         "Consider to use \\substanceFull{"..identifier.."}"
-        .." to tell the reader the Name of the substance before refering to it"
+        .." to tell the reader the Name of the substance before referring to it"
       )
     end
   else

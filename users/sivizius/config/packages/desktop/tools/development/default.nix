@@ -12,7 +12,7 @@
   nix.patchelf
   nix.pkg-config
   nix.stdenv
-  nix.swift
+  #nix.swift
   texlive.combined.scheme-full
   nix.nil
 

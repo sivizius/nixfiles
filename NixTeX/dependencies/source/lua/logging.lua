@@ -1,7 +1,7 @@
 local logLevel
 =   {
       Trace                             =   6,  --  here I am, if you really want to go that deep
-      Debug                             =   5,  --  helpfull message for debugging, e.g. with values of variables
+      Debug                             =   5,  --  helpful message for debugging, e.g. with values of variables
       Info                              =   4,  --  should not result in unexpected output, will not fail to compile
       Warn                              =   3,  --  might result in unexpected output, should not fail to compile
       Error                             =   2,  --  will result in unexpected output, might fail to compile

@@ -1,6 +1,6 @@
 { core, ... }:
-  Library "libweb"
-    { inherit core; }
-    {
-      vCard                             =   ./vCard;
-    }
+Library "libweb"
+{ inherit core; }
+{
+  vCard = ./vCard;
+}

@@ -1,5 +1,5 @@
 { nix, ... }:
-  with nix;
-  [
-    ranger
-  ]
+with nix;
+[
+  ranger
+]

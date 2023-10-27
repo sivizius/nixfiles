@@ -1,6 +1,6 @@
 { chemistry, ... }:
 let
-  inherit(chemistry) compound;
+  inherit (chemistry) compound;
 in
 {
   polyE = {

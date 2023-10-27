@@ -1,18 +1,16 @@
 {
-  description                           =   "Build Websites.";
-  inputs
-  =   {
-        libcore.url                     =   "github:sivizius/nixfiles/development?dir=libs/core";
-        nixpkgs.url                     =   "github:sivizius/nixpkgs/master";
+  description = "Build Websites.";
+  inputs = {
+    libcore.url = "github:sivizius/nixfiles/development?dir=libs/core";
+    nixpkgs.url = "github:sivizius/nixpkgs/extend-fido2luks-config";
+  };
+  outputs = { self, libcore, nixpkgs, ... }:
+    let
+      core = libcore.lib { inherit self; debug.logLevel = "info"; };
+    in
+    core.path.import ./.
+      {
+        inherit core;
+        inherit (nixpkgs) lib;
       };
-  outputs
-  =   { self, libcore, nixpkgs, ... }:
-        let
-          core                          =   libcore.lib { inherit self; debug.logLevel = "info"; };
-        in
-          core.path.import ./.
-          {
-            inherit core;
-            inherit(nixpkgs) lib;
-          };
 }

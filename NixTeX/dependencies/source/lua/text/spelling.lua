@@ -63,7 +63,7 @@ spellChecker
             --    the provided pattern will be used.
             --  Note that weird command that take arguments in a form like \foo+(){}[]{}+
             --    cannot be parsed,
-            --      but they should occure only in special, ignored contexts anyway.
+            --      but they should occur only in special, ignored contexts anyway.
             --  Nevertheless such commands should have the pattern "!" to tell the parser
             --    to raise an exception.
             --  If such commands are in not-ignored contexts, escape them with \correct.

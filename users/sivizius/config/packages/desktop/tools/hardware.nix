@@ -2,6 +2,7 @@
 [
   linux.tp_smapi
 
+  #nix.bolt
   nix.brightnessctl
   nix.cpufrequtils
   nix.cifs-utils

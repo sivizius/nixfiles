@@ -1,6 +1,6 @@
 { chemistry, ... }:
 let
-  inherit(chemistry) compound;
+  inherit (chemistry) compound;
 in
 {
   absorptionCoefficient = {
@@ -522,8 +522,7 @@ in
     text = {
       deu = "Spezifische Viskosität";
     };
-    description = {
-    };
+    description = { };
     data = {
       kind = "Math";
       short = "\\eta_{sp}";

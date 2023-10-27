@@ -1,8 +1,8 @@
 { nix, ... }:
-  with nix;
-  [
-    cmatrix
-    fortune
-    lolcat
-    thefuck
-  ]
+with nix;
+[
+  cmatrix
+  fortune
+  lolcat
+  thefuck
+]

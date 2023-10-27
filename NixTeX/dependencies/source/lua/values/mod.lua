@@ -9,7 +9,7 @@ values
 
 local function formatEntry  ( entry,  unit, wantSpace )
   --> (
-  --    formatedUnit: string,
+  --    formattedUnit: string,
   --    isCurrency:   bool,
   --  )
   unit                                  =   acronyms.getShortText ( unit  )
@@ -36,7 +36,7 @@ end
 
 local function formatUnit ( unit, wantSpace )
   --> (
-  --    formatedUnit: string,
+  --    formattedUnit: string,
   --    isCurrency:   bool,
   --  )
   local entry                           =   acronyms.list [ unit  ]

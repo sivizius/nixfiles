@@ -1,6 +1,6 @@
 { nix, ... }:
-  with nix;
-  [
-    qemu
-    wine
-  ]
+with nix;
+[
+  qemu
+  wine
+]

@@ -172,14 +172,14 @@ let
   ];
 
   syntaxCommandType = lib.types.enum [
-    "color"       # <foreground>,<background> "regex" …
-    "comment"     # "string"
-    "formatter"   # program [argument …]
-    "header"      # "regex"
-    "icolor"      # <foreground>,<background> "regex" …
-    "linter"      # program [argument …]
-    "magic"       # "regex"
-    "tabgives"    # "string"
+    "color" # <foreground>,<background> "regex" …
+    "comment" # "string"
+    "formatter" # program [argument …]
+    "header" # "regex"
+    "icolor" # <foreground>,<background> "regex" …
+    "linter" # program [argument …]
+    "magic" # "regex"
+    "tabgives" # "string"
   ];
 in
 {
@@ -250,7 +250,7 @@ in
       # bind <key> <function> <menu>
       # bind <key> "string" <menu>
       bindings = lib.mkOption {
-        type = lib.types.listOf ( lib.types.submodule {
+        type = lib.types.listOf (lib.types.submodule {
           options = {
             key = lib.mkOption {
               type = lib.types.str;
@@ -312,7 +312,7 @@ in
             };
           };
         });
-        default = [];
+        default = [ ];
         description = ''
           List of Key-Bindings.
           Rebinds the given <option>key</option> to the given <option>function</option> in the given <option>menu</option>
@@ -403,13 +403,13 @@ in
         default = null;
         description = ''
           Use this colour combination for the status bar when an error message is displayed.
-          The default value is brightwhite for foregorund and red for background.
+          The default value is brightwhite for foreground and red for background.
         '';
       };
 
       # extendsyntax <name> <command> "argument …"
       extendSyntax = lib.mkOption {
-        type = lib.types.listOf ( lib.types.submodule {
+        type = lib.types.listOf (lib.types.submodule {
           options = {
             name = lib.mkOption {
               type = lib.types.str;
@@ -431,7 +431,7 @@ in
             };
           };
         });
-        default = [];
+        default = [ ];
         description = ''
           Extend the syntax previously defined as <option>name</option> with another <option>command</option>.
           This allows adding a new color, icolor, header, magic, formatter, linter, comment or tabgives command
@@ -499,7 +499,7 @@ in
       # include "filename"
       include = lib.mkOption {
         type = lib.types.listOf lib.types.path;
-        default = [];
+        default = [ ];
         description = ''
           Additional Files to add to /etc/nanorc.
         '';
@@ -861,7 +861,7 @@ in
 
       # unbind <key> <menu>
       unbindings = lib.mkOption {
-        type = lib.types.listOf ( lib.types.submodule {
+        type = lib.types.listOf (lib.types.submodule {
           options = {
             key = lib.mkOption {
               type = lib.types.str;
@@ -907,7 +907,7 @@ in
             };
           };
         });
-        default = [];
+        default = [ ];
         description = ''
           List of Key-Unbindings.
           Unbin the given <option>key</option> in the given <option>menu</option>
@@ -987,83 +987,83 @@ in
         "# This File was generated and will be overridden by the nixos-rebuid."
         ""
         "# == OPTIONS =="
-      ]                                                                                                                     ++
-      lib.optional cfg.afterEnds                  "set afterends"                                                           ++
-      lib.optional cfg.allowInsecureBackup        "set allow_insecure_backup"                                               ++
-      lib.optional cfg.atBlanks                   "set atblanks"                                                            ++
-      lib.optional cfg.autoIndentation            "set autoindent"                                                          ++
-      lib.optional cfg.backup                     "set backup"                                                              ++
-      lib.optional (cfg.backupDirectory != "")    "set backupdir \"${cfg.backupDirectory}\""                                ++
-      lib.optional cfg.boldText                   "set boldtext"                                                            ++
-      lib.optional (cfg.brackets != "")           "set brackets \"${cfg.brackets}\""                                        ++
-      lib.optional cfg.breakLongLines             "set breaklonglines"                                                      ++
-      lib.optional cfg.caseSensitiveSearch        "set casesensitive"                                                       ++
-      lib.optional cfg.constantShow               "set constantshow"                                                        ++
-      lib.optional cfg.cutFromCursor              "set cutfromcursor"                                                       ++
-      lib.optional cfg.emptyLine                  "set emptyline"                                                           ++
-      lib.optional (cfg.errorColour != null)      "set errorcolor \"${cfg.errorColour.fg},${cfg.errorColour.bg}\""          ++
-      lib.optional (cfg.fill != null)             "set fill ${toString cfg.fill}"                                           ++
-      lib.optional (cfg.functionColour != null)   "set functioncolor \"${cfg.functionColour.fg},${cfg.functionColour.bg}\"" ++
-      lib.optional (cfg.guideStripe != null)      "set guidestripe ${toString cfg.guideStripe}"                             ++
-      lib.optional cfg.historyLog                 "set historylog"                                                          ++
-      lib.optional cfg.jumpyScrolling             "set jumpyscrolling"                                                      ++
-      lib.optional (cfg.keyColour != null)        "set keycolor \"${cfg.keyColour.fg},${cfg.keyColour.bg}\""                ++
-      lib.optional cfg.lineNumbers                "set linenumbers"                                                         ++
-      lib.optional cfg.locking                    "set locking"                                                             ++
-      lib.optional (cfg.matchBrackets != "")      "set matchbrackets \"${cfg.matchBrackets}\""                              ++
-      lib.optional cfg.mouse                      "set mouse"                                                               ++
-      lib.optional cfg.multiBuffer                "set multibuffer"                                                         ++
-      lib.optional cfg.noConvert                  "set noconvert"                                                           ++
-      lib.optional cfg.noHelp                     "set nohelp"                                                              ++
-      lib.optional cfg.noNewLines                 "set nonewlines"                                                          ++
-      lib.optional (cfg.numberColour != null)     "set numbercolor \"${cfg.numberColour.fg},${cfg.numberColour.bg}\""       ++
-      lib.optional (cfg.operatingDirectory != "") "set operatingdir \"${cfg.operatingDirectory}\""                          ++
-      lib.optional cfg.positionLog                "set positionlog"                                                         ++
-      lib.optional cfg.preserve                   "set preserve"                                                            ++
-      lib.optional (cfg.punctuation != "")        "set punct \"${cfg.punctuation}\""                                        ++
-      lib.optional cfg.quickBlank                 "set quickblank"                                                          ++
-      lib.optional (cfg.quoteString != "")        "set quotestr \"${cfg.quoteString}\""                                     ++
-      lib.optional cfg.rawSequences               "set rawsequences"                                                        ++
-      lib.optional cfg.rebindDelete               "set rebinddelete"                                                        ++
-      lib.optional cfg.regexSearch                "set regexp"                                                              ++
-      lib.optional (cfg.selectedColour != null)   "set selectedcolor \"${cfg.selectedColour.fg},${cfg.selectedColour.bg}\"" ++
-      lib.optional cfg.showCursor                 "set showcursor"                                                          ++
-      lib.optional cfg.smartHome                  "set smarthome"                                                           ++
-      lib.optional cfg.softWrap                   "set softwrap"                                                            ++
-      lib.optional (cfg.spellChecker != "")       "set speller \"${cfg.spellChecker}\""                                     ++
-      lib.optional (cfg.statusColour != null)     "set statuscolor \"${cfg.statusColour.fg},${cfg.statusColour.bg}\""       ++
-      lib.optional (cfg.stripeColour != null)     "set stripecolor \"${cfg.stripeColour.fg},${cfg.stripeColour.bg}\""       ++
-      lib.optional cfg.suspendable                "set suspendable"                                                         ++
-      lib.optional (cfg.tabulatorSize > 0)        "set tabsize ${toString cfg.tabulatorSize}"                               ++
-      lib.optional cfg.tabulatorToSpaces          "set tabstospaces"                                                        ++
-      lib.optional cfg.temporaryFile              "set tempfile"                                                            ++
-      lib.optional (cfg.titleColour != null)      "set titlecolor \"${cfg.titleColour.fg},${cfg.titleColour.bg}\""          ++
-      lib.optional cfg.trimBlanks                 "set trimblanks"                                                          ++
-      lib.optional cfg.unixFormat                 "set unix"                                                                ++
-      lib.optional cfg.view                       "set view"                                                                ++
-      lib.optional (cfg.whiteSpace != "")         "set whitespace \"${cfg.whiteSpace}\""                                    ++
-      lib.optional cfg.wordBounds                 "set wordbounds"                                                          ++
-      lib.optional (cfg.wordCharacters != "")     "set wordchars \"${cfg.wordCharacters}\""                                 ++
-      lib.optional cfg.zap                        "set zap"                                                                 ++
+      ] ++
+      lib.optional cfg.afterEnds "set afterends" ++
+      lib.optional cfg.allowInsecureBackup "set allow_insecure_backup" ++
+      lib.optional cfg.atBlanks "set atblanks" ++
+      lib.optional cfg.autoIndentation "set autoindent" ++
+      lib.optional cfg.backup "set backup" ++
+      lib.optional (cfg.backupDirectory != "") "set backupdir \"${cfg.backupDirectory}\"" ++
+      lib.optional cfg.boldText "set boldtext" ++
+      lib.optional (cfg.brackets != "") "set brackets \"${cfg.brackets}\"" ++
+      lib.optional cfg.breakLongLines "set breaklonglines" ++
+      lib.optional cfg.caseSensitiveSearch "set casesensitive" ++
+      lib.optional cfg.constantShow "set constantshow" ++
+      lib.optional cfg.cutFromCursor "set cutfromcursor" ++
+      lib.optional cfg.emptyLine "set emptyline" ++
+      lib.optional (cfg.errorColour != null) "set errorcolor \"${cfg.errorColour.fg},${cfg.errorColour.bg}\"" ++
+      lib.optional (cfg.fill != null) "set fill ${toString cfg.fill}" ++
+      lib.optional (cfg.functionColour != null) "set functioncolor \"${cfg.functionColour.fg},${cfg.functionColour.bg}\"" ++
+      lib.optional (cfg.guideStripe != null) "set guidestripe ${toString cfg.guideStripe}" ++
+      lib.optional cfg.historyLog "set historylog" ++
+      lib.optional cfg.jumpyScrolling "set jumpyscrolling" ++
+      lib.optional (cfg.keyColour != null) "set keycolor \"${cfg.keyColour.fg},${cfg.keyColour.bg}\"" ++
+      lib.optional cfg.lineNumbers "set linenumbers" ++
+      lib.optional cfg.locking "set locking" ++
+      lib.optional (cfg.matchBrackets != "") "set matchbrackets \"${cfg.matchBrackets}\"" ++
+      lib.optional cfg.mouse "set mouse" ++
+      lib.optional cfg.multiBuffer "set multibuffer" ++
+      lib.optional cfg.noConvert "set noconvert" ++
+      lib.optional cfg.noHelp "set nohelp" ++
+      lib.optional cfg.noNewLines "set nonewlines" ++
+      lib.optional (cfg.numberColour != null) "set numbercolor \"${cfg.numberColour.fg},${cfg.numberColour.bg}\"" ++
+      lib.optional (cfg.operatingDirectory != "") "set operatingdir \"${cfg.operatingDirectory}\"" ++
+      lib.optional cfg.positionLog "set positionlog" ++
+      lib.optional cfg.preserve "set preserve" ++
+      lib.optional (cfg.punctuation != "") "set punct \"${cfg.punctuation}\"" ++
+      lib.optional cfg.quickBlank "set quickblank" ++
+      lib.optional (cfg.quoteString != "") "set quotestr \"${cfg.quoteString}\"" ++
+      lib.optional cfg.rawSequences "set rawsequences" ++
+      lib.optional cfg.rebindDelete "set rebinddelete" ++
+      lib.optional cfg.regexSearch "set regexp" ++
+      lib.optional (cfg.selectedColour != null) "set selectedcolor \"${cfg.selectedColour.fg},${cfg.selectedColour.bg}\"" ++
+      lib.optional cfg.showCursor "set showcursor" ++
+      lib.optional cfg.smartHome "set smarthome" ++
+      lib.optional cfg.softWrap "set softwrap" ++
+      lib.optional (cfg.spellChecker != "") "set speller \"${cfg.spellChecker}\"" ++
+      lib.optional (cfg.statusColour != null) "set statuscolor \"${cfg.statusColour.fg},${cfg.statusColour.bg}\"" ++
+      lib.optional (cfg.stripeColour != null) "set stripecolor \"${cfg.stripeColour.fg},${cfg.stripeColour.bg}\"" ++
+      lib.optional cfg.suspendable "set suspendable" ++
+      lib.optional (cfg.tabulatorSize > 0) "set tabsize ${toString cfg.tabulatorSize}" ++
+      lib.optional cfg.tabulatorToSpaces "set tabstospaces" ++
+      lib.optional cfg.temporaryFile "set tempfile" ++
+      lib.optional (cfg.titleColour != null) "set titlecolor \"${cfg.titleColour.fg},${cfg.titleColour.bg}\"" ++
+      lib.optional cfg.trimBlanks "set trimblanks" ++
+      lib.optional cfg.unixFormat "set unix" ++
+      lib.optional cfg.view "set view" ++
+      lib.optional (cfg.whiteSpace != "") "set whitespace \"${cfg.whiteSpace}\"" ++
+      lib.optional cfg.wordBounds "set wordbounds" ++
+      lib.optional (cfg.wordCharacters != "") "set wordchars \"${cfg.wordCharacters}\"" ++
+      lib.optional cfg.zap "set zap" ++
       [
         ""
         "# == SYNTAX HIGHLIGHTING =="
-      ]                                                                                                                     ++
-      lib.optional cfg.syntaxHighlight            "include \"${pkgs.nano}/share/nano/*.nanorc\""                            ++
-      lib.lists.forEach cfg.include       ( file: "include \"${file}\""                       )                             ++
-      lib.lists.forEach cfg.extendSyntax  ( this: "extendsyntax ${this.name} ${this.command}" )                             ++
+      ] ++
+      lib.optional cfg.syntaxHighlight "include \"${pkgs.nano}/share/nano/*.nanorc\"" ++
+      lib.lists.forEach cfg.include (file: "include \"${file}\"") ++
+      lib.lists.forEach cfg.extendSyntax (this: "extendsyntax ${this.name} ${this.command}") ++
       [
         ""
         "# == REBINDING KEYS =="
-      ]                                                                                                                     ++
-      lib.lists.forEach cfg.unbindings    ( this: "unbind ${this.key} ${this.menu}" )                                       ++
+      ] ++
+      lib.lists.forEach cfg.unbindings (this: "unbind ${this.key} ${this.menu}") ++
       lib.lists.forEach cfg.bindings
-      (
-        this:
+        (
+          this:
           if this.function == null
           then "bind ${this.key} \"${this.string}\" ${this.menu}"
           else "bind ${this.key} ${this.function} ${this.menu}"
-      )                                                                                                                     ++
+        ) ++
       [
         ""
         "# == CUSTOM SETTINGS =="

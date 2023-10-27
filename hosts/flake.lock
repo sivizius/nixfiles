@@ -48,19 +48,37 @@
         "type": "github"
       }
     },
+    "flake-utils": {
+      "inputs": {
+        "systems": "systems"
+      },
+      "locked": {
+        "lastModified": 1685518550,
+        "narHash": "sha256-o2d0KcvaXzTrPRIo0kOLV0/QXHhDQ5DTi+OxcjO8xqY=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "a1720a10a6cfe8234c0e93907ffe81be440f4cef",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
     "fork-awesome": {
       "inputs": {
         "libcore": "libcore_38",
-        "nixpkgs": "nixpkgs_31"
+        "nixpkgs": "nixpkgs_19"
       },
       "locked": {
         "dir": "packages/fork-awesome",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=packages/fork-awesome"
       },
       "original": {
         "dir": "packages/fork-awesome",
@@ -70,13 +88,34 @@
         "type": "github"
       }
     },
+    "gitignore": {
+      "inputs": {
+        "nixpkgs": [
+          "nix-pre-commit-hooks",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1660459072,
+        "narHash": "sha256-8DFJjXG8zqoONA1vXtgeKXy68KdJL5UaXR8NtVMUbx8=",
+        "owner": "hercules-ci",
+        "repo": "gitignore.nix",
+        "rev": "a20de23b925fd8264fd7fad6454652e142fd7f73",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hercules-ci",
+        "repo": "gitignore.nix",
+        "type": "github"
+      }
+    },
     "hardware": {
       "locked": {
-        "lastModified": 1684899633,
-        "narHash": "sha256-NtwerXX8UFsoNy6k+DukJMriWtEjQtMU/Urbff2O2Dg=",
+        "lastModified": 1698053470,
+        "narHash": "sha256-sP8D/41UiwC2qn0X40oi+DfuVzNHMROqIWdSdCI/AYA=",
         "owner": "NixOS",
         "repo": "nixos-hardware",
-        "rev": "4cc688ee711159b9bcb5a367be44007934e1a49d",
+        "rev": "80d98a7d55c6e27954a166cb583a41325e9512d7",
         "type": "github"
       },
       "original": {
@@ -93,12 +132,12 @@
       },
       "locked": {
         "dir": "home-manager",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=home-manager"
       },
       "original": {
         "dir": "home-manager",
@@ -113,11 +152,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1685999310,
-        "narHash": "sha256-gaRMZhc7z4KeU/xS3IWv3kC+WhVcAXOLXXGKLe5zn1Y=",
+        "lastModified": 1698392685,
+        "narHash": "sha256-yx/sbRneR2AfSAeAMqUu0hoVJdjh+qhl/7dkirp8yo8=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "28614ed7a1e3ace824c122237bdc0e5e0b62c5c3",
+        "rev": "1369d2cefb6f128c30e42fabcdebbacc07e18b3f",
         "type": "github"
       },
       "original": {
@@ -129,14 +168,14 @@
     },
     "home-manager_3": {
       "inputs": {
-        "nixpkgs": "nixpkgs_9"
+        "nixpkgs": "nixpkgs_5"
       },
       "locked": {
-        "lastModified": 1685999310,
-        "narHash": "sha256-gaRMZhc7z4KeU/xS3IWv3kC+WhVcAXOLXXGKLe5zn1Y=",
+        "lastModified": 1698392685,
+        "narHash": "sha256-yx/sbRneR2AfSAeAMqUu0hoVJdjh+qhl/7dkirp8yo8=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "28614ed7a1e3ace824c122237bdc0e5e0b62c5c3",
+        "rev": "1369d2cefb6f128c30e42fabcdebbacc07e18b3f",
         "type": "github"
       },
       "original": {
@@ -152,16 +191,16 @@
         "libsecrets": "libsecrets",
         "libstore": "libstore_2",
         "libweb": "libweb",
-        "nixpkgs": "nixpkgs_5"
+        "nixpkgs": "nixpkgs_3"
       },
       "locked": {
         "dir": "libs/config",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/config"
       },
       "original": {
         "dir": "libs/config",
@@ -177,16 +216,16 @@
         "libsecrets": "libsecrets_3",
         "libstore": "libstore_6",
         "libweb": "libweb_3",
-        "nixpkgs": "nixpkgs_13"
+        "nixpkgs": "nixpkgs_7"
       },
       "locked": {
         "dir": "libs/config",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/config"
       },
       "original": {
         "dir": "libs/config",
@@ -202,16 +241,16 @@
         "libsecrets": "libsecrets_4",
         "libstore": "libstore_8",
         "libweb": "libweb_4",
-        "nixpkgs": "nixpkgs_19"
+        "nixpkgs": "nixpkgs_12"
       },
       "locked": {
         "dir": "libs/config",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/config"
       },
       "original": {
         "dir": "libs/config",
@@ -227,16 +266,16 @@
         "libsecrets": "libsecrets_6",
         "libstore": "libstore_11",
         "libweb": "libweb_5",
-        "nixpkgs": "nixpkgs_24"
+        "nixpkgs": "nixpkgs_14"
       },
       "locked": {
         "dir": "libs/config",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/config"
       },
       "original": {
         "dir": "libs/config",
@@ -252,16 +291,16 @@
         "libsecrets": "libsecrets_7",
         "libstore": "libstore_13",
         "libweb": "libweb_6",
-        "nixpkgs": "nixpkgs_29"
+        "nixpkgs": "nixpkgs_17"
       },
       "locked": {
         "dir": "libs/config",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/config"
       },
       "original": {
         "dir": "libs/config",
@@ -277,16 +316,16 @@
         "libsecrets": "libsecrets_8",
         "libstore": "libstore_15",
         "libweb": "libweb_8",
-        "nixpkgs": "nixpkgs_35"
+        "nixpkgs": "nixpkgs_21"
       },
       "locked": {
         "dir": "libs/config",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/config"
       },
       "original": {
         "dir": "libs/config",
@@ -302,16 +341,16 @@
         "libsecrets": "libsecrets_9",
         "libstore": "libstore_17",
         "libweb": "libweb_9",
-        "nixpkgs": "nixpkgs_43"
+        "nixpkgs": "nixpkgs_26"
       },
       "locked": {
         "dir": "libs/config",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/config"
       },
       "original": {
         "dir": "libs/config",
@@ -327,12 +366,12 @@
       },
       "locked": {
         "dir": "libs/core",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/core"
       },
       "original": {
         "dir": "libs/core",
@@ -348,12 +387,12 @@
       },
       "locked": {
         "dir": "libs/core",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/core"
       },
       "original": {
         "dir": "libs/core",
@@ -369,12 +408,12 @@
       },
       "locked": {
         "dir": "libs/core",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/core"
       },
       "original": {
         "dir": "libs/core",
@@ -390,12 +429,12 @@
       },
       "locked": {
         "dir": "libs/core",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/core"
       },
       "original": {
         "dir": "libs/core",
@@ -411,12 +450,12 @@
       },
       "locked": {
         "dir": "libs/core",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/core"
       },
       "original": {
         "dir": "libs/core",
@@ -432,12 +471,12 @@
       },
       "locked": {
         "dir": "libs/core",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/core"
       },
       "original": {
         "dir": "libs/core",
@@ -453,12 +492,12 @@
       },
       "locked": {
         "dir": "libs/core",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/core"
       },
       "original": {
         "dir": "libs/core",
@@ -474,12 +513,12 @@
       },
       "locked": {
         "dir": "libs/core",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/core"
       },
       "original": {
         "dir": "libs/core",
@@ -495,12 +534,12 @@
       },
       "locked": {
         "dir": "libs/core",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/core"
       },
       "original": {
         "dir": "libs/core",
@@ -516,12 +555,12 @@
       },
       "locked": {
         "dir": "libs/core",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/core"
       },
       "original": {
         "dir": "libs/core",
@@ -537,12 +576,12 @@
       },
       "locked": {
         "dir": "libs/core",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/core"
       },
       "original": {
         "dir": "libs/core",
@@ -558,12 +597,12 @@
       },
       "locked": {
         "dir": "libs/core",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/core"
       },
       "original": {
         "dir": "libs/core",
@@ -579,12 +618,12 @@
       },
       "locked": {
         "dir": "libs/core",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/core"
       },
       "original": {
         "dir": "libs/core",
@@ -600,12 +639,12 @@
       },
       "locked": {
         "dir": "libs/core",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/core"
       },
       "original": {
         "dir": "libs/core",
@@ -621,12 +660,12 @@
       },
       "locked": {
         "dir": "libs/core",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/core"
       },
       "original": {
         "dir": "libs/core",
@@ -642,12 +681,12 @@
       },
       "locked": {
         "dir": "libs/core",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/core"
       },
       "original": {
         "dir": "libs/core",
@@ -663,12 +702,12 @@
       },
       "locked": {
         "dir": "libs/core",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/core"
       },
       "original": {
         "dir": "libs/core",
@@ -684,12 +723,12 @@
       },
       "locked": {
         "dir": "libs/core",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/core"
       },
       "original": {
         "dir": "libs/core",
@@ -705,12 +744,12 @@
       },
       "locked": {
         "dir": "libs/core",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/core"
       },
       "original": {
         "dir": "libs/core",
@@ -726,12 +765,12 @@
       },
       "locked": {
         "dir": "libs/core",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/core"
       },
       "original": {
         "dir": "libs/core",
@@ -747,12 +786,12 @@
       },
       "locked": {
         "dir": "libs/core",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/core"
       },
       "original": {
         "dir": "libs/core",
@@ -768,12 +807,12 @@
       },
       "locked": {
         "dir": "libs/core",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/core"
       },
       "original": {
         "dir": "libs/core",
@@ -789,12 +828,12 @@
       },
       "locked": {
         "dir": "libs/core",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/core"
       },
       "original": {
         "dir": "libs/core",
@@ -810,12 +849,12 @@
       },
       "locked": {
         "dir": "libs/core",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/core"
       },
       "original": {
         "dir": "libs/core",
@@ -831,12 +870,12 @@
       },
       "locked": {
         "dir": "libs/core",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/core"
       },
       "original": {
         "dir": "libs/core",
@@ -852,12 +891,12 @@
       },
       "locked": {
         "dir": "libs/core",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/core"
       },
       "original": {
         "dir": "libs/core",
@@ -873,12 +912,12 @@
       },
       "locked": {
         "dir": "libs/core",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/core"
       },
       "original": {
         "dir": "libs/core",
@@ -894,12 +933,12 @@
       },
       "locked": {
         "dir": "libs/core",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/core"
       },
       "original": {
         "dir": "libs/core",
@@ -915,12 +954,12 @@
       },
       "locked": {
         "dir": "libs/core",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/core"
       },
       "original": {
         "dir": "libs/core",
@@ -936,12 +975,12 @@
       },
       "locked": {
         "dir": "libs/core",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/core"
       },
       "original": {
         "dir": "libs/core",
@@ -957,12 +996,12 @@
       },
       "locked": {
         "dir": "libs/core",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/core"
       },
       "original": {
         "dir": "libs/core",
@@ -978,12 +1017,12 @@
       },
       "locked": {
         "dir": "libs/core",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/core"
       },
       "original": {
         "dir": "libs/core",
@@ -999,12 +1038,12 @@
       },
       "locked": {
         "dir": "libs/core",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/core"
       },
       "original": {
         "dir": "libs/core",
@@ -1020,12 +1059,12 @@
       },
       "locked": {
         "dir": "libs/core",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/core"
       },
       "original": {
         "dir": "libs/core",
@@ -1041,12 +1080,12 @@
       },
       "locked": {
         "dir": "libs/core",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/core"
       },
       "original": {
         "dir": "libs/core",
@@ -1062,12 +1101,12 @@
       },
       "locked": {
         "dir": "libs/core",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/core"
       },
       "original": {
         "dir": "libs/core",
@@ -1083,12 +1122,12 @@
       },
       "locked": {
         "dir": "libs/core",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/core"
       },
       "original": {
         "dir": "libs/core",
@@ -1104,12 +1143,12 @@
       },
       "locked": {
         "dir": "libs/core",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/core"
       },
       "original": {
         "dir": "libs/core",
@@ -1125,12 +1164,12 @@
       },
       "locked": {
         "dir": "libs/core",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/core"
       },
       "original": {
         "dir": "libs/core",
@@ -1146,12 +1185,12 @@
       },
       "locked": {
         "dir": "libs/core",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/core"
       },
       "original": {
         "dir": "libs/core",
@@ -1167,12 +1206,12 @@
       },
       "locked": {
         "dir": "libs/core",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/core"
       },
       "original": {
         "dir": "libs/core",
@@ -1188,12 +1227,12 @@
       },
       "locked": {
         "dir": "libs/core",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/core"
       },
       "original": {
         "dir": "libs/core",
@@ -1209,12 +1248,12 @@
       },
       "locked": {
         "dir": "libs/core",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/core"
       },
       "original": {
         "dir": "libs/core",
@@ -1230,12 +1269,12 @@
       },
       "locked": {
         "dir": "libs/core",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/core"
       },
       "original": {
         "dir": "libs/core",
@@ -1251,12 +1290,12 @@
       },
       "locked": {
         "dir": "libs/core",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/core"
       },
       "original": {
         "dir": "libs/core",
@@ -1272,12 +1311,12 @@
       },
       "locked": {
         "dir": "libs/core",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/core"
       },
       "original": {
         "dir": "libs/core",
@@ -1293,12 +1332,12 @@
       },
       "locked": {
         "dir": "libs/core",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/core"
       },
       "original": {
         "dir": "libs/core",
@@ -1314,12 +1353,12 @@
       },
       "locked": {
         "dir": "libs/core",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/core"
       },
       "original": {
         "dir": "libs/core",
@@ -1335,12 +1374,12 @@
       },
       "locked": {
         "dir": "libs/core",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/core"
       },
       "original": {
         "dir": "libs/core",
@@ -1356,12 +1395,12 @@
       },
       "locked": {
         "dir": "libs/core",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/core"
       },
       "original": {
         "dir": "libs/core",
@@ -1377,12 +1416,12 @@
       },
       "locked": {
         "dir": "libs/core",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/core"
       },
       "original": {
         "dir": "libs/core",
@@ -1398,12 +1437,12 @@
       },
       "locked": {
         "dir": "libs/core",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/core"
       },
       "original": {
         "dir": "libs/core",
@@ -1416,12 +1455,12 @@
     "libintrinsics": {
       "locked": {
         "dir": "libs/intrinsics",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/intrinsics"
       },
       "original": {
         "dir": "libs/intrinsics",
@@ -1434,12 +1473,12 @@
     "libintrinsics_10": {
       "locked": {
         "dir": "libs/intrinsics",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/intrinsics"
       },
       "original": {
         "dir": "libs/intrinsics",
@@ -1452,12 +1491,12 @@
     "libintrinsics_11": {
       "locked": {
         "dir": "libs/intrinsics",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/intrinsics"
       },
       "original": {
         "dir": "libs/intrinsics",
@@ -1470,12 +1509,12 @@
     "libintrinsics_12": {
       "locked": {
         "dir": "libs/intrinsics",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/intrinsics"
       },
       "original": {
         "dir": "libs/intrinsics",
@@ -1488,12 +1527,12 @@
     "libintrinsics_13": {
       "locked": {
         "dir": "libs/intrinsics",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/intrinsics"
       },
       "original": {
         "dir": "libs/intrinsics",
@@ -1506,12 +1545,12 @@
     "libintrinsics_14": {
       "locked": {
         "dir": "libs/intrinsics",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/intrinsics"
       },
       "original": {
         "dir": "libs/intrinsics",
@@ -1524,12 +1563,12 @@
     "libintrinsics_15": {
       "locked": {
         "dir": "libs/intrinsics",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/intrinsics"
       },
       "original": {
         "dir": "libs/intrinsics",
@@ -1542,12 +1581,12 @@
     "libintrinsics_16": {
       "locked": {
         "dir": "libs/intrinsics",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/intrinsics"
       },
       "original": {
         "dir": "libs/intrinsics",
@@ -1560,12 +1599,12 @@
     "libintrinsics_17": {
       "locked": {
         "dir": "libs/intrinsics",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/intrinsics"
       },
       "original": {
         "dir": "libs/intrinsics",
@@ -1578,12 +1617,12 @@
     "libintrinsics_18": {
       "locked": {
         "dir": "libs/intrinsics",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/intrinsics"
       },
       "original": {
         "dir": "libs/intrinsics",
@@ -1596,12 +1635,12 @@
     "libintrinsics_19": {
       "locked": {
         "dir": "libs/intrinsics",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/intrinsics"
       },
       "original": {
         "dir": "libs/intrinsics",
@@ -1614,12 +1653,12 @@
     "libintrinsics_2": {
       "locked": {
         "dir": "libs/intrinsics",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/intrinsics"
       },
       "original": {
         "dir": "libs/intrinsics",
@@ -1632,12 +1671,12 @@
     "libintrinsics_20": {
       "locked": {
         "dir": "libs/intrinsics",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/intrinsics"
       },
       "original": {
         "dir": "libs/intrinsics",
@@ -1650,12 +1689,12 @@
     "libintrinsics_21": {
       "locked": {
         "dir": "libs/intrinsics",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/intrinsics"
       },
       "original": {
         "dir": "libs/intrinsics",
@@ -1668,12 +1707,12 @@
     "libintrinsics_22": {
       "locked": {
         "dir": "libs/intrinsics",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/intrinsics"
       },
       "original": {
         "dir": "libs/intrinsics",
@@ -1686,12 +1725,12 @@
     "libintrinsics_23": {
       "locked": {
         "dir": "libs/intrinsics",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/intrinsics"
       },
       "original": {
         "dir": "libs/intrinsics",
@@ -1704,12 +1743,12 @@
     "libintrinsics_24": {
       "locked": {
         "dir": "libs/intrinsics",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/intrinsics"
       },
       "original": {
         "dir": "libs/intrinsics",
@@ -1722,12 +1761,12 @@
     "libintrinsics_25": {
       "locked": {
         "dir": "libs/intrinsics",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/intrinsics"
       },
       "original": {
         "dir": "libs/intrinsics",
@@ -1740,12 +1779,12 @@
     "libintrinsics_26": {
       "locked": {
         "dir": "libs/intrinsics",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/intrinsics"
       },
       "original": {
         "dir": "libs/intrinsics",
@@ -1758,12 +1797,12 @@
     "libintrinsics_27": {
       "locked": {
         "dir": "libs/intrinsics",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/intrinsics"
       },
       "original": {
         "dir": "libs/intrinsics",
@@ -1776,12 +1815,12 @@
     "libintrinsics_28": {
       "locked": {
         "dir": "libs/intrinsics",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/intrinsics"
       },
       "original": {
         "dir": "libs/intrinsics",
@@ -1794,12 +1833,12 @@
     "libintrinsics_29": {
       "locked": {
         "dir": "libs/intrinsics",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/intrinsics"
       },
       "original": {
         "dir": "libs/intrinsics",
@@ -1812,12 +1851,12 @@
     "libintrinsics_3": {
       "locked": {
         "dir": "libs/intrinsics",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/intrinsics"
       },
       "original": {
         "dir": "libs/intrinsics",
@@ -1830,12 +1869,12 @@
     "libintrinsics_30": {
       "locked": {
         "dir": "libs/intrinsics",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/intrinsics"
       },
       "original": {
         "dir": "libs/intrinsics",
@@ -1848,12 +1887,12 @@
     "libintrinsics_31": {
       "locked": {
         "dir": "libs/intrinsics",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/intrinsics"
       },
       "original": {
         "dir": "libs/intrinsics",
@@ -1866,12 +1905,12 @@
     "libintrinsics_32": {
       "locked": {
         "dir": "libs/intrinsics",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/intrinsics"
       },
       "original": {
         "dir": "libs/intrinsics",
@@ -1884,12 +1923,12 @@
     "libintrinsics_33": {
       "locked": {
         "dir": "libs/intrinsics",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/intrinsics"
       },
       "original": {
         "dir": "libs/intrinsics",
@@ -1902,12 +1941,12 @@
     "libintrinsics_34": {
       "locked": {
         "dir": "libs/intrinsics",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/intrinsics"
       },
       "original": {
         "dir": "libs/intrinsics",
@@ -1920,12 +1959,12 @@
     "libintrinsics_35": {
       "locked": {
         "dir": "libs/intrinsics",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/intrinsics"
       },
       "original": {
         "dir": "libs/intrinsics",
@@ -1938,12 +1977,12 @@
     "libintrinsics_36": {
       "locked": {
         "dir": "libs/intrinsics",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/intrinsics"
       },
       "original": {
         "dir": "libs/intrinsics",
@@ -1956,12 +1995,12 @@
     "libintrinsics_37": {
       "locked": {
         "dir": "libs/intrinsics",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/intrinsics"
       },
       "original": {
         "dir": "libs/intrinsics",
@@ -1974,12 +2013,12 @@
     "libintrinsics_38": {
       "locked": {
         "dir": "libs/intrinsics",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/intrinsics"
       },
       "original": {
         "dir": "libs/intrinsics",
@@ -1992,12 +2031,12 @@
     "libintrinsics_39": {
       "locked": {
         "dir": "libs/intrinsics",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/intrinsics"
       },
       "original": {
         "dir": "libs/intrinsics",
@@ -2010,12 +2049,12 @@
     "libintrinsics_4": {
       "locked": {
         "dir": "libs/intrinsics",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/intrinsics"
       },
       "original": {
         "dir": "libs/intrinsics",
@@ -2028,12 +2067,12 @@
     "libintrinsics_40": {
       "locked": {
         "dir": "libs/intrinsics",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/intrinsics"
       },
       "original": {
         "dir": "libs/intrinsics",
@@ -2046,12 +2085,12 @@
     "libintrinsics_41": {
       "locked": {
         "dir": "libs/intrinsics",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/intrinsics"
       },
       "original": {
         "dir": "libs/intrinsics",
@@ -2064,12 +2103,12 @@
     "libintrinsics_42": {
       "locked": {
         "dir": "libs/intrinsics",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/intrinsics"
       },
       "original": {
         "dir": "libs/intrinsics",
@@ -2082,12 +2121,12 @@
     "libintrinsics_43": {
       "locked": {
         "dir": "libs/intrinsics",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/intrinsics"
       },
       "original": {
         "dir": "libs/intrinsics",
@@ -2100,12 +2139,12 @@
     "libintrinsics_44": {
       "locked": {
         "dir": "libs/intrinsics",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/intrinsics"
       },
       "original": {
         "dir": "libs/intrinsics",
@@ -2118,12 +2157,12 @@
     "libintrinsics_45": {
       "locked": {
         "dir": "libs/intrinsics",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/intrinsics"
       },
       "original": {
         "dir": "libs/intrinsics",
@@ -2136,12 +2175,12 @@
     "libintrinsics_46": {
       "locked": {
         "dir": "libs/intrinsics",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/intrinsics"
       },
       "original": {
         "dir": "libs/intrinsics",
@@ -2154,12 +2193,12 @@
     "libintrinsics_47": {
       "locked": {
         "dir": "libs/intrinsics",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/intrinsics"
       },
       "original": {
         "dir": "libs/intrinsics",
@@ -2172,12 +2211,12 @@
     "libintrinsics_48": {
       "locked": {
         "dir": "libs/intrinsics",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/intrinsics"
       },
       "original": {
         "dir": "libs/intrinsics",
@@ -2190,12 +2229,12 @@
     "libintrinsics_49": {
       "locked": {
         "dir": "libs/intrinsics",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/intrinsics"
       },
       "original": {
         "dir": "libs/intrinsics",
@@ -2208,12 +2247,12 @@
     "libintrinsics_5": {
       "locked": {
         "dir": "libs/intrinsics",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/intrinsics"
       },
       "original": {
         "dir": "libs/intrinsics",
@@ -2226,12 +2265,12 @@
     "libintrinsics_50": {
       "locked": {
         "dir": "libs/intrinsics",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/intrinsics"
       },
       "original": {
         "dir": "libs/intrinsics",
@@ -2244,12 +2283,12 @@
     "libintrinsics_51": {
       "locked": {
         "dir": "libs/intrinsics",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/intrinsics"
       },
       "original": {
         "dir": "libs/intrinsics",
@@ -2262,12 +2301,12 @@
     "libintrinsics_52": {
       "locked": {
         "dir": "libs/intrinsics",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/intrinsics"
       },
       "original": {
         "dir": "libs/intrinsics",
@@ -2280,12 +2319,12 @@
     "libintrinsics_6": {
       "locked": {
         "dir": "libs/intrinsics",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/intrinsics"
       },
       "original": {
         "dir": "libs/intrinsics",
@@ -2298,12 +2337,12 @@
     "libintrinsics_7": {
       "locked": {
         "dir": "libs/intrinsics",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/intrinsics"
       },
       "original": {
         "dir": "libs/intrinsics",
@@ -2316,12 +2355,12 @@
     "libintrinsics_8": {
       "locked": {
         "dir": "libs/intrinsics",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/intrinsics"
       },
       "original": {
         "dir": "libs/intrinsics",
@@ -2334,12 +2373,12 @@
     "libintrinsics_9": {
       "locked": {
         "dir": "libs/intrinsics",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/intrinsics"
       },
       "original": {
         "dir": "libs/intrinsics",
@@ -2356,12 +2395,12 @@
       },
       "locked": {
         "dir": "libs/secrets",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/secrets"
       },
       "original": {
         "dir": "libs/secrets",
@@ -2378,12 +2417,12 @@
       },
       "locked": {
         "dir": "libs/secrets",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/secrets"
       },
       "original": {
         "dir": "libs/secrets",
@@ -2400,12 +2439,12 @@
       },
       "locked": {
         "dir": "libs/secrets",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/secrets"
       },
       "original": {
         "dir": "libs/secrets",
@@ -2422,12 +2461,12 @@
       },
       "locked": {
         "dir": "libs/secrets",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/secrets"
       },
       "original": {
         "dir": "libs/secrets",
@@ -2444,12 +2483,12 @@
       },
       "locked": {
         "dir": "libs/secrets",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/secrets"
       },
       "original": {
         "dir": "libs/secrets",
@@ -2466,12 +2505,12 @@
       },
       "locked": {
         "dir": "libs/secrets",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/secrets"
       },
       "original": {
         "dir": "libs/secrets",
@@ -2488,12 +2527,12 @@
       },
       "locked": {
         "dir": "libs/secrets",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/secrets"
       },
       "original": {
         "dir": "libs/secrets",
@@ -2510,12 +2549,12 @@
       },
       "locked": {
         "dir": "libs/secrets",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/secrets"
       },
       "original": {
         "dir": "libs/secrets",
@@ -2532,12 +2571,12 @@
       },
       "locked": {
         "dir": "libs/secrets",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/secrets"
       },
       "original": {
         "dir": "libs/secrets",
@@ -2549,17 +2588,16 @@
     },
     "libstore": {
       "inputs": {
-        "libcore": "libcore_4",
-        "nixpkgs": "nixpkgs_2"
+        "libcore": "libcore_4"
       },
       "locked": {
         "dir": "libs/store",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/store"
       },
       "original": {
         "dir": "libs/store",
@@ -2571,17 +2609,16 @@
     },
     "libstore_10": {
       "inputs": {
-        "libcore": "libcore_28",
-        "nixpkgs": "nixpkgs_21"
+        "libcore": "libcore_28"
       },
       "locked": {
         "dir": "libs/store",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/store"
       },
       "original": {
         "dir": "libs/store",
@@ -2593,17 +2630,16 @@
     },
     "libstore_11": {
       "inputs": {
-        "libcore": "libcore_29",
-        "nixpkgs": "nixpkgs_22"
+        "libcore": "libcore_29"
       },
       "locked": {
         "dir": "libs/store",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/store"
       },
       "original": {
         "dir": "libs/store",
@@ -2615,17 +2651,16 @@
     },
     "libstore_12": {
       "inputs": {
-        "libcore": "libcore_34",
-        "nixpkgs": "nixpkgs_26"
+        "libcore": "libcore_34"
       },
       "locked": {
         "dir": "libs/store",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/store"
       },
       "original": {
         "dir": "libs/store",
@@ -2637,17 +2672,16 @@
     },
     "libstore_13": {
       "inputs": {
-        "libcore": "libcore_35",
-        "nixpkgs": "nixpkgs_27"
+        "libcore": "libcore_35"
       },
       "locked": {
         "dir": "libs/store",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/store"
       },
       "original": {
         "dir": "libs/store",
@@ -2659,17 +2693,16 @@
     },
     "libstore_14": {
       "inputs": {
-        "libcore": "libcore_41",
-        "nixpkgs": "nixpkgs_32"
+        "libcore": "libcore_41"
       },
       "locked": {
         "dir": "libs/store",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/store"
       },
       "original": {
         "dir": "libs/store",
@@ -2681,17 +2714,16 @@
     },
     "libstore_15": {
       "inputs": {
-        "libcore": "libcore_42",
-        "nixpkgs": "nixpkgs_33"
+        "libcore": "libcore_42"
       },
       "locked": {
         "dir": "libs/store",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/store"
       },
       "original": {
         "dir": "libs/store",
@@ -2703,17 +2735,16 @@
     },
     "libstore_16": {
       "inputs": {
-        "libcore": "libcore_49",
-        "nixpkgs": "nixpkgs_40"
+        "libcore": "libcore_49"
       },
       "locked": {
         "dir": "libs/store",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/store"
       },
       "original": {
         "dir": "libs/store",
@@ -2725,17 +2756,16 @@
     },
     "libstore_17": {
       "inputs": {
-        "libcore": "libcore_50",
-        "nixpkgs": "nixpkgs_41"
+        "libcore": "libcore_50"
       },
       "locked": {
         "dir": "libs/store",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/store"
       },
       "original": {
         "dir": "libs/store",
@@ -2747,17 +2777,16 @@
     },
     "libstore_2": {
       "inputs": {
-        "libcore": "libcore_5",
-        "nixpkgs": "nixpkgs_3"
+        "libcore": "libcore_5"
       },
       "locked": {
         "dir": "libs/store",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/store"
       },
       "original": {
         "dir": "libs/store",
@@ -2769,17 +2798,16 @@
     },
     "libstore_3": {
       "inputs": {
-        "libcore": "libcore_9",
-        "nixpkgs": "nixpkgs_6"
+        "libcore": "libcore_9"
       },
       "locked": {
         "dir": "libs/store",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/store"
       },
       "original": {
         "dir": "libs/store",
@@ -2791,17 +2819,16 @@
     },
     "libstore_4": {
       "inputs": {
-        "libcore": "libcore_10",
-        "nixpkgs": "nixpkgs_7"
+        "libcore": "libcore_10"
       },
       "locked": {
         "dir": "libs/store",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/store"
       },
       "original": {
         "dir": "libs/store",
@@ -2813,17 +2840,16 @@
     },
     "libstore_5": {
       "inputs": {
-        "libcore": "libcore_14",
-        "nixpkgs": "nixpkgs_10"
+        "libcore": "libcore_14"
       },
       "locked": {
         "dir": "libs/store",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/store"
       },
       "original": {
         "dir": "libs/store",
@@ -2835,17 +2861,16 @@
     },
     "libstore_6": {
       "inputs": {
-        "libcore": "libcore_15",
-        "nixpkgs": "nixpkgs_11"
+        "libcore": "libcore_15"
       },
       "locked": {
         "dir": "libs/store",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/store"
       },
       "original": {
         "dir": "libs/store",
@@ -2857,17 +2882,16 @@
     },
     "libstore_7": {
       "inputs": {
-        "libcore": "libcore_20",
-        "nixpkgs": "nixpkgs_16"
+        "libcore": "libcore_20"
       },
       "locked": {
         "dir": "libs/store",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/store"
       },
       "original": {
         "dir": "libs/store",
@@ -2879,17 +2903,16 @@
     },
     "libstore_8": {
       "inputs": {
-        "libcore": "libcore_21",
-        "nixpkgs": "nixpkgs_17"
+        "libcore": "libcore_21"
       },
       "locked": {
         "dir": "libs/store",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/store"
       },
       "original": {
         "dir": "libs/store",
@@ -2901,17 +2924,16 @@
     },
     "libstore_9": {
       "inputs": {
-        "libcore": "libcore_25",
-        "nixpkgs": "nixpkgs_20"
+        "libcore": "libcore_25"
       },
       "locked": {
         "dir": "libs/store",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/store"
       },
       "original": {
         "dir": "libs/store",
@@ -2924,16 +2946,16 @@
     "libweb": {
       "inputs": {
         "libcore": "libcore_6",
-        "nixpkgs": "nixpkgs_4"
+        "nixpkgs": "nixpkgs_2"
       },
       "locked": {
         "dir": "libs/web",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/web"
       },
       "original": {
         "dir": "libs/web",
@@ -2946,16 +2968,16 @@
     "libweb_2": {
       "inputs": {
         "libcore": "libcore_11",
-        "nixpkgs": "nixpkgs_8"
+        "nixpkgs": "nixpkgs_4"
       },
       "locked": {
         "dir": "libs/web",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/web"
       },
       "original": {
         "dir": "libs/web",
@@ -2968,16 +2990,16 @@
     "libweb_3": {
       "inputs": {
         "libcore": "libcore_16",
-        "nixpkgs": "nixpkgs_12"
+        "nixpkgs": "nixpkgs_6"
       },
       "locked": {
         "dir": "libs/web",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/web"
       },
       "original": {
         "dir": "libs/web",
@@ -2990,16 +3012,16 @@
     "libweb_4": {
       "inputs": {
         "libcore": "libcore_22",
-        "nixpkgs": "nixpkgs_18"
+        "nixpkgs": "nixpkgs_11"
       },
       "locked": {
         "dir": "libs/web",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/web"
       },
       "original": {
         "dir": "libs/web",
@@ -3012,16 +3034,16 @@
     "libweb_5": {
       "inputs": {
         "libcore": "libcore_30",
-        "nixpkgs": "nixpkgs_23"
+        "nixpkgs": "nixpkgs_13"
       },
       "locked": {
         "dir": "libs/web",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/web"
       },
       "original": {
         "dir": "libs/web",
@@ -3034,16 +3056,16 @@
     "libweb_6": {
       "inputs": {
         "libcore": "libcore_36",
-        "nixpkgs": "nixpkgs_28"
+        "nixpkgs": "nixpkgs_16"
       },
       "locked": {
         "dir": "libs/web",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/web"
       },
       "original": {
         "dir": "libs/web",
@@ -3056,16 +3078,16 @@
     "libweb_7": {
       "inputs": {
         "libcore": "libcore_37",
-        "nixpkgs": "nixpkgs_30"
+        "nixpkgs": "nixpkgs_18"
       },
       "locked": {
         "dir": "libs/web",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/web"
       },
       "original": {
         "dir": "libs/web",
@@ -3078,16 +3100,16 @@
     "libweb_8": {
       "inputs": {
         "libcore": "libcore_43",
-        "nixpkgs": "nixpkgs_34"
+        "nixpkgs": "nixpkgs_20"
       },
       "locked": {
         "dir": "libs/web",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/web"
       },
       "original": {
         "dir": "libs/web",
@@ -3100,38 +3122,22 @@
     "libweb_9": {
       "inputs": {
         "libcore": "libcore_51",
-        "nixpkgs": "nixpkgs_42"
+        "nixpkgs": "nixpkgs_25"
       },
       "locked": {
         "dir": "libs/web",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=libs/web"
       },
       "original": {
         "dir": "libs/web",
         "owner": "sivizius",
         "ref": "development",
         "repo": "nixfiles",
-        "type": "github"
-      }
-    },
-    "lowdown-src": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1633514407,
-        "narHash": "sha256-Dw32tiMjdK9t3ETl5fzGrutQTzh2rufgZV4A/BbxuD4=",
-        "owner": "kristapsdz",
-        "repo": "lowdown",
-        "rev": "d2c2b44ff6c27b936ec27358a2653caaef8f73b8",
-        "type": "github"
-      },
-      "original": {
-        "owner": "kristapsdz",
-        "repo": "lowdown",
         "type": "github"
       }
     },
@@ -3140,17 +3146,17 @@
         "home-manager": "home-manager_3",
         "libconfig": "libconfig_2",
         "libcore": "libcore_17",
-        "nixpkgs": "nixpkgs_14",
+        "nixpkgs": "nixpkgs_8",
         "simple-nix-mailserver": "simple-nix-mailserver"
       },
       "locked": {
         "dir": "modules",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=modules"
       },
       "original": {
         "dir": "modules",
@@ -3160,37 +3166,39 @@
         "type": "github"
       }
     },
-    "nix": {
+    "nix-pre-commit-hooks": {
       "inputs": {
         "flake-compat": "flake-compat_2",
-        "lowdown-src": "lowdown-src",
-        "nixpkgs": "nixpkgs_36",
-        "nixpkgs-regression": "nixpkgs-regression"
+        "flake-utils": "flake-utils",
+        "gitignore": "gitignore",
+        "nixpkgs": "nixpkgs_10",
+        "nixpkgs-stable": "nixpkgs-stable"
       },
       "locked": {
-        "lastModified": 1686061266,
-        "narHash": "sha256-trpjzUXSnqjfuI0hzVnvh3wroy52K9QvZXJ/d0Vk7YA=",
-        "owner": "NixOS",
-        "repo": "nix",
-        "rev": "bf7dc3c7dc24f75fa623135750e8f10b8bcd94f9",
+        "lastModified": 1698227354,
+        "narHash": "sha256-Fi5H9jbaQLmLw9qBi/mkR33CoFjNbobo5xWdX4tKz1Q=",
+        "owner": "cachix",
+        "repo": "pre-commit-hooks.nix",
+        "rev": "bd38df3d508dfcdff52cd243d297f218ed2257bf",
         "type": "github"
       },
       "original": {
-        "id": "nix",
-        "type": "indirect"
+        "owner": "cachix",
+        "repo": "pre-commit-hooks.nix",
+        "type": "github"
       }
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1685655444,
-        "narHash": "sha256-6EujQNAeaUkWvpEZZcVF8qSfQrNVWFNNGbUJxv/A5a8=",
-        "owner": "nixos",
+        "lastModified": 1697456312,
+        "narHash": "sha256-roiSnrqb5r+ehnKCauPLugoU8S36KgmWraHgRqVYndo=",
+        "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "e635192892f5abbc2289eaac3a73cdb249abaefd",
+        "rev": "ca012a02bf8327be9e488546faecae5e05d7d749",
         "type": "github"
       },
       "original": {
-        "owner": "nixos",
+        "owner": "NixOS",
         "ref": "nixos-unstable",
         "repo": "nixpkgs",
         "type": "github"
@@ -3211,99 +3219,422 @@
         "type": "indirect"
       }
     },
-    "nixpkgs-regression": {
+    "nixpkgs-23_05": {
       "locked": {
-        "lastModified": 1643052045,
-        "narHash": "sha256-uGJ0VXIhWKGXxkeNnq4TvV3CIOkUJ3PAoLZ3HMzNVMw=",
+        "lastModified": 1684782344,
+        "narHash": "sha256-SHN8hPYYSX0thDrMLMWPWYulK3YFgASOrCsIL3AJ78g=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "215d4d0fd80ca5163643b03a33fde804a29cc1e2",
+        "rev": "8966c43feba2c701ed624302b6a935f97bcbdf88",
+        "type": "github"
+      },
+      "original": {
+        "id": "nixpkgs",
+        "ref": "nixos-23.05",
+        "type": "indirect"
+      }
+    },
+    "nixpkgs-stable": {
+      "locked": {
+        "lastModified": 1685801374,
+        "narHash": "sha256-otaSUoFEMM+LjBI1XL/xGB5ao6IwnZOXc47qhIgJe8U=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "c37ca420157f4abc31e26f436c1145f8951ff373",
         "type": "github"
       },
       "original": {
         "owner": "NixOS",
+        "ref": "nixos-23.05",
         "repo": "nixpkgs",
-        "rev": "215d4d0fd80ca5163643b03a33fde804a29cc1e2",
         "type": "github"
       }
     },
     "nixpkgs_10": {
       "locked": {
-        "lastModified": 1685998742,
-        "narHash": "sha256-f5XNR9i7ImhGHGys/0SpGX9OD2SFqWfNKlKtdn7c3Vc=",
+        "lastModified": 1689261696,
+        "narHash": "sha256-LzfUtFs9MQRvIoQ3MfgSuipBVMXslMPH/vZ+nM40LkA=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "932fc16b263f26803d3960e4400bc13dde84a972",
+        "rev": "df1eee2aa65052a18121ed4971081576b25d6b5c",
         "type": "github"
       },
       "original": {
-        "id": "nixpkgs",
-        "type": "indirect"
+        "owner": "NixOS",
+        "ref": "nixpkgs-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
       }
     },
     "nixpkgs_11": {
       "locked": {
-        "lastModified": 1685998742,
-        "narHash": "sha256-f5XNR9i7ImhGHGys/0SpGX9OD2SFqWfNKlKtdn7c3Vc=",
-        "owner": "NixOS",
+        "lastModified": 1698408240,
+        "narHash": "sha256-Qm9M/dV5Ct21uYU/4zLxLlJZ9eA8ypBj2pweZnJcJ+c=",
+        "owner": "sivizius",
         "repo": "nixpkgs",
-        "rev": "932fc16b263f26803d3960e4400bc13dde84a972",
+        "rev": "21a0ac3f720f7e64c650fcbd042db9d7f9ce4240",
         "type": "github"
       },
       "original": {
-        "id": "nixpkgs",
-        "type": "indirect"
+        "owner": "sivizius",
+        "ref": "extend-fido2luks-config",
+        "repo": "nixpkgs",
+        "type": "github"
       }
     },
     "nixpkgs_12": {
       "locked": {
-        "lastModified": 1686098066,
-        "narHash": "sha256-+Pg4nIrIARzOKkttept26lsEgtuDEPDPANd0uIOc1CQ=",
+        "lastModified": 1698408240,
+        "narHash": "sha256-Qm9M/dV5Ct21uYU/4zLxLlJZ9eA8ypBj2pweZnJcJ+c=",
         "owner": "sivizius",
         "repo": "nixpkgs",
-        "rev": "c0dc1bbc25165c2c6db8be91654cb0687580375f",
+        "rev": "21a0ac3f720f7e64c650fcbd042db9d7f9ce4240",
         "type": "github"
       },
       "original": {
         "owner": "sivizius",
-        "ref": "master",
+        "ref": "extend-fido2luks-config",
         "repo": "nixpkgs",
         "type": "github"
       }
     },
     "nixpkgs_13": {
       "locked": {
-        "lastModified": 1686098066,
-        "narHash": "sha256-+Pg4nIrIARzOKkttept26lsEgtuDEPDPANd0uIOc1CQ=",
+        "lastModified": 1698408240,
+        "narHash": "sha256-Qm9M/dV5Ct21uYU/4zLxLlJZ9eA8ypBj2pweZnJcJ+c=",
         "owner": "sivizius",
         "repo": "nixpkgs",
-        "rev": "c0dc1bbc25165c2c6db8be91654cb0687580375f",
+        "rev": "21a0ac3f720f7e64c650fcbd042db9d7f9ce4240",
         "type": "github"
       },
       "original": {
         "owner": "sivizius",
-        "ref": "master",
+        "ref": "extend-fido2luks-config",
         "repo": "nixpkgs",
         "type": "github"
       }
     },
     "nixpkgs_14": {
       "locked": {
-        "lastModified": 1686098066,
-        "narHash": "sha256-+Pg4nIrIARzOKkttept26lsEgtuDEPDPANd0uIOc1CQ=",
+        "lastModified": 1698408240,
+        "narHash": "sha256-Qm9M/dV5Ct21uYU/4zLxLlJZ9eA8ypBj2pweZnJcJ+c=",
         "owner": "sivizius",
         "repo": "nixpkgs",
-        "rev": "c0dc1bbc25165c2c6db8be91654cb0687580375f",
+        "rev": "21a0ac3f720f7e64c650fcbd042db9d7f9ce4240",
         "type": "github"
       },
       "original": {
         "owner": "sivizius",
-        "ref": "master",
+        "ref": "extend-fido2luks-config",
         "repo": "nixpkgs",
         "type": "github"
       }
     },
     "nixpkgs_15": {
+      "locked": {
+        "lastModified": 1698408240,
+        "narHash": "sha256-Qm9M/dV5Ct21uYU/4zLxLlJZ9eA8ypBj2pweZnJcJ+c=",
+        "owner": "sivizius",
+        "repo": "nixpkgs",
+        "rev": "21a0ac3f720f7e64c650fcbd042db9d7f9ce4240",
+        "type": "github"
+      },
+      "original": {
+        "owner": "sivizius",
+        "ref": "extend-fido2luks-config",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_16": {
+      "locked": {
+        "lastModified": 1698408240,
+        "narHash": "sha256-Qm9M/dV5Ct21uYU/4zLxLlJZ9eA8ypBj2pweZnJcJ+c=",
+        "owner": "sivizius",
+        "repo": "nixpkgs",
+        "rev": "21a0ac3f720f7e64c650fcbd042db9d7f9ce4240",
+        "type": "github"
+      },
+      "original": {
+        "owner": "sivizius",
+        "ref": "extend-fido2luks-config",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_17": {
+      "locked": {
+        "lastModified": 1698408240,
+        "narHash": "sha256-Qm9M/dV5Ct21uYU/4zLxLlJZ9eA8ypBj2pweZnJcJ+c=",
+        "owner": "sivizius",
+        "repo": "nixpkgs",
+        "rev": "21a0ac3f720f7e64c650fcbd042db9d7f9ce4240",
+        "type": "github"
+      },
+      "original": {
+        "owner": "sivizius",
+        "ref": "extend-fido2luks-config",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_18": {
+      "locked": {
+        "lastModified": 1698408240,
+        "narHash": "sha256-Qm9M/dV5Ct21uYU/4zLxLlJZ9eA8ypBj2pweZnJcJ+c=",
+        "owner": "sivizius",
+        "repo": "nixpkgs",
+        "rev": "21a0ac3f720f7e64c650fcbd042db9d7f9ce4240",
+        "type": "github"
+      },
+      "original": {
+        "owner": "sivizius",
+        "ref": "extend-fido2luks-config",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_19": {
+      "locked": {
+        "lastModified": 1698408240,
+        "narHash": "sha256-Qm9M/dV5Ct21uYU/4zLxLlJZ9eA8ypBj2pweZnJcJ+c=",
+        "owner": "sivizius",
+        "repo": "nixpkgs",
+        "rev": "21a0ac3f720f7e64c650fcbd042db9d7f9ce4240",
+        "type": "github"
+      },
+      "original": {
+        "owner": "sivizius",
+        "ref": "extend-fido2luks-config",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_2": {
+      "locked": {
+        "lastModified": 1698408240,
+        "narHash": "sha256-Qm9M/dV5Ct21uYU/4zLxLlJZ9eA8ypBj2pweZnJcJ+c=",
+        "owner": "sivizius",
+        "repo": "nixpkgs",
+        "rev": "21a0ac3f720f7e64c650fcbd042db9d7f9ce4240",
+        "type": "github"
+      },
+      "original": {
+        "owner": "sivizius",
+        "ref": "extend-fido2luks-config",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_20": {
+      "locked": {
+        "lastModified": 1698408240,
+        "narHash": "sha256-Qm9M/dV5Ct21uYU/4zLxLlJZ9eA8ypBj2pweZnJcJ+c=",
+        "owner": "sivizius",
+        "repo": "nixpkgs",
+        "rev": "21a0ac3f720f7e64c650fcbd042db9d7f9ce4240",
+        "type": "github"
+      },
+      "original": {
+        "owner": "sivizius",
+        "ref": "extend-fido2luks-config",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_21": {
+      "locked": {
+        "lastModified": 1698408240,
+        "narHash": "sha256-Qm9M/dV5Ct21uYU/4zLxLlJZ9eA8ypBj2pweZnJcJ+c=",
+        "owner": "sivizius",
+        "repo": "nixpkgs",
+        "rev": "21a0ac3f720f7e64c650fcbd042db9d7f9ce4240",
+        "type": "github"
+      },
+      "original": {
+        "owner": "sivizius",
+        "ref": "extend-fido2luks-config",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_22": {
+      "locked": {
+        "lastModified": 1698408240,
+        "narHash": "sha256-Qm9M/dV5Ct21uYU/4zLxLlJZ9eA8ypBj2pweZnJcJ+c=",
+        "owner": "sivizius",
+        "repo": "nixpkgs",
+        "rev": "21a0ac3f720f7e64c650fcbd042db9d7f9ce4240",
+        "type": "github"
+      },
+      "original": {
+        "owner": "sivizius",
+        "ref": "extend-fido2luks-config",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_23": {
+      "locked": {
+        "lastModified": 1698408240,
+        "narHash": "sha256-Qm9M/dV5Ct21uYU/4zLxLlJZ9eA8ypBj2pweZnJcJ+c=",
+        "owner": "sivizius",
+        "repo": "nixpkgs",
+        "rev": "21a0ac3f720f7e64c650fcbd042db9d7f9ce4240",
+        "type": "github"
+      },
+      "original": {
+        "owner": "sivizius",
+        "ref": "extend-fido2luks-config",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_24": {
+      "locked": {
+        "lastModified": 1698408240,
+        "narHash": "sha256-Qm9M/dV5Ct21uYU/4zLxLlJZ9eA8ypBj2pweZnJcJ+c=",
+        "owner": "sivizius",
+        "repo": "nixpkgs",
+        "rev": "21a0ac3f720f7e64c650fcbd042db9d7f9ce4240",
+        "type": "github"
+      },
+      "original": {
+        "owner": "sivizius",
+        "ref": "extend-fido2luks-config",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_25": {
+      "locked": {
+        "lastModified": 1698408240,
+        "narHash": "sha256-Qm9M/dV5Ct21uYU/4zLxLlJZ9eA8ypBj2pweZnJcJ+c=",
+        "owner": "sivizius",
+        "repo": "nixpkgs",
+        "rev": "21a0ac3f720f7e64c650fcbd042db9d7f9ce4240",
+        "type": "github"
+      },
+      "original": {
+        "owner": "sivizius",
+        "ref": "extend-fido2luks-config",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_26": {
+      "locked": {
+        "lastModified": 1698408240,
+        "narHash": "sha256-Qm9M/dV5Ct21uYU/4zLxLlJZ9eA8ypBj2pweZnJcJ+c=",
+        "owner": "sivizius",
+        "repo": "nixpkgs",
+        "rev": "21a0ac3f720f7e64c650fcbd042db9d7f9ce4240",
+        "type": "github"
+      },
+      "original": {
+        "owner": "sivizius",
+        "ref": "extend-fido2luks-config",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_3": {
+      "locked": {
+        "lastModified": 1698408240,
+        "narHash": "sha256-Qm9M/dV5Ct21uYU/4zLxLlJZ9eA8ypBj2pweZnJcJ+c=",
+        "owner": "sivizius",
+        "repo": "nixpkgs",
+        "rev": "21a0ac3f720f7e64c650fcbd042db9d7f9ce4240",
+        "type": "github"
+      },
+      "original": {
+        "owner": "sivizius",
+        "ref": "extend-fido2luks-config",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_4": {
+      "locked": {
+        "lastModified": 1698408240,
+        "narHash": "sha256-Qm9M/dV5Ct21uYU/4zLxLlJZ9eA8ypBj2pweZnJcJ+c=",
+        "owner": "sivizius",
+        "repo": "nixpkgs",
+        "rev": "21a0ac3f720f7e64c650fcbd042db9d7f9ce4240",
+        "type": "github"
+      },
+      "original": {
+        "owner": "sivizius",
+        "ref": "extend-fido2luks-config",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_5": {
+      "locked": {
+        "lastModified": 1697456312,
+        "narHash": "sha256-roiSnrqb5r+ehnKCauPLugoU8S36KgmWraHgRqVYndo=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "ca012a02bf8327be9e488546faecae5e05d7d749",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_6": {
+      "locked": {
+        "lastModified": 1698408240,
+        "narHash": "sha256-Qm9M/dV5Ct21uYU/4zLxLlJZ9eA8ypBj2pweZnJcJ+c=",
+        "owner": "sivizius",
+        "repo": "nixpkgs",
+        "rev": "21a0ac3f720f7e64c650fcbd042db9d7f9ce4240",
+        "type": "github"
+      },
+      "original": {
+        "owner": "sivizius",
+        "ref": "extend-fido2luks-config",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_7": {
+      "locked": {
+        "lastModified": 1698408240,
+        "narHash": "sha256-Qm9M/dV5Ct21uYU/4zLxLlJZ9eA8ypBj2pweZnJcJ+c=",
+        "owner": "sivizius",
+        "repo": "nixpkgs",
+        "rev": "21a0ac3f720f7e64c650fcbd042db9d7f9ce4240",
+        "type": "github"
+      },
+      "original": {
+        "owner": "sivizius",
+        "ref": "extend-fido2luks-config",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_8": {
+      "locked": {
+        "lastModified": 1698408240,
+        "narHash": "sha256-Qm9M/dV5Ct21uYU/4zLxLlJZ9eA8ypBj2pweZnJcJ+c=",
+        "owner": "sivizius",
+        "repo": "nixpkgs",
+        "rev": "21a0ac3f720f7e64c650fcbd042db9d7f9ce4240",
+        "type": "github"
+      },
+      "original": {
+        "owner": "sivizius",
+        "ref": "extend-fido2luks-config",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_9": {
       "locked": {
         "lastModified": 1670751203,
         "narHash": "sha256-XdoH1v3shKDGlrwjgrNX/EN8s3c+kQV7xY6cLCE8vcI=",
@@ -3318,552 +3649,6 @@
         "type": "indirect"
       }
     },
-    "nixpkgs_16": {
-      "locked": {
-        "lastModified": 1685998742,
-        "narHash": "sha256-f5XNR9i7ImhGHGys/0SpGX9OD2SFqWfNKlKtdn7c3Vc=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "932fc16b263f26803d3960e4400bc13dde84a972",
-        "type": "github"
-      },
-      "original": {
-        "id": "nixpkgs",
-        "type": "indirect"
-      }
-    },
-    "nixpkgs_17": {
-      "locked": {
-        "lastModified": 1685998742,
-        "narHash": "sha256-f5XNR9i7ImhGHGys/0SpGX9OD2SFqWfNKlKtdn7c3Vc=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "932fc16b263f26803d3960e4400bc13dde84a972",
-        "type": "github"
-      },
-      "original": {
-        "id": "nixpkgs",
-        "type": "indirect"
-      }
-    },
-    "nixpkgs_18": {
-      "locked": {
-        "lastModified": 1686098066,
-        "narHash": "sha256-+Pg4nIrIARzOKkttept26lsEgtuDEPDPANd0uIOc1CQ=",
-        "owner": "sivizius",
-        "repo": "nixpkgs",
-        "rev": "c0dc1bbc25165c2c6db8be91654cb0687580375f",
-        "type": "github"
-      },
-      "original": {
-        "owner": "sivizius",
-        "ref": "master",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_19": {
-      "locked": {
-        "lastModified": 1686098066,
-        "narHash": "sha256-+Pg4nIrIARzOKkttept26lsEgtuDEPDPANd0uIOc1CQ=",
-        "owner": "sivizius",
-        "repo": "nixpkgs",
-        "rev": "c0dc1bbc25165c2c6db8be91654cb0687580375f",
-        "type": "github"
-      },
-      "original": {
-        "owner": "sivizius",
-        "ref": "master",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_2": {
-      "locked": {
-        "lastModified": 1685998742,
-        "narHash": "sha256-f5XNR9i7ImhGHGys/0SpGX9OD2SFqWfNKlKtdn7c3Vc=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "932fc16b263f26803d3960e4400bc13dde84a972",
-        "type": "github"
-      },
-      "original": {
-        "id": "nixpkgs",
-        "type": "indirect"
-      }
-    },
-    "nixpkgs_20": {
-      "locked": {
-        "lastModified": 1685998742,
-        "narHash": "sha256-f5XNR9i7ImhGHGys/0SpGX9OD2SFqWfNKlKtdn7c3Vc=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "932fc16b263f26803d3960e4400bc13dde84a972",
-        "type": "github"
-      },
-      "original": {
-        "id": "nixpkgs",
-        "type": "indirect"
-      }
-    },
-    "nixpkgs_21": {
-      "locked": {
-        "lastModified": 1685998742,
-        "narHash": "sha256-f5XNR9i7ImhGHGys/0SpGX9OD2SFqWfNKlKtdn7c3Vc=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "932fc16b263f26803d3960e4400bc13dde84a972",
-        "type": "github"
-      },
-      "original": {
-        "id": "nixpkgs",
-        "type": "indirect"
-      }
-    },
-    "nixpkgs_22": {
-      "locked": {
-        "lastModified": 1685998742,
-        "narHash": "sha256-f5XNR9i7ImhGHGys/0SpGX9OD2SFqWfNKlKtdn7c3Vc=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "932fc16b263f26803d3960e4400bc13dde84a972",
-        "type": "github"
-      },
-      "original": {
-        "id": "nixpkgs",
-        "type": "indirect"
-      }
-    },
-    "nixpkgs_23": {
-      "locked": {
-        "lastModified": 1686098066,
-        "narHash": "sha256-+Pg4nIrIARzOKkttept26lsEgtuDEPDPANd0uIOc1CQ=",
-        "owner": "sivizius",
-        "repo": "nixpkgs",
-        "rev": "c0dc1bbc25165c2c6db8be91654cb0687580375f",
-        "type": "github"
-      },
-      "original": {
-        "owner": "sivizius",
-        "ref": "master",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_24": {
-      "locked": {
-        "lastModified": 1686098066,
-        "narHash": "sha256-+Pg4nIrIARzOKkttept26lsEgtuDEPDPANd0uIOc1CQ=",
-        "owner": "sivizius",
-        "repo": "nixpkgs",
-        "rev": "c0dc1bbc25165c2c6db8be91654cb0687580375f",
-        "type": "github"
-      },
-      "original": {
-        "owner": "sivizius",
-        "ref": "master",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_25": {
-      "locked": {
-        "lastModified": 1686098066,
-        "narHash": "sha256-+Pg4nIrIARzOKkttept26lsEgtuDEPDPANd0uIOc1CQ=",
-        "owner": "sivizius",
-        "repo": "nixpkgs",
-        "rev": "c0dc1bbc25165c2c6db8be91654cb0687580375f",
-        "type": "github"
-      },
-      "original": {
-        "owner": "sivizius",
-        "ref": "master",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_26": {
-      "locked": {
-        "lastModified": 1685998742,
-        "narHash": "sha256-f5XNR9i7ImhGHGys/0SpGX9OD2SFqWfNKlKtdn7c3Vc=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "932fc16b263f26803d3960e4400bc13dde84a972",
-        "type": "github"
-      },
-      "original": {
-        "id": "nixpkgs",
-        "type": "indirect"
-      }
-    },
-    "nixpkgs_27": {
-      "locked": {
-        "lastModified": 1685998742,
-        "narHash": "sha256-f5XNR9i7ImhGHGys/0SpGX9OD2SFqWfNKlKtdn7c3Vc=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "932fc16b263f26803d3960e4400bc13dde84a972",
-        "type": "github"
-      },
-      "original": {
-        "id": "nixpkgs",
-        "type": "indirect"
-      }
-    },
-    "nixpkgs_28": {
-      "locked": {
-        "lastModified": 1686098066,
-        "narHash": "sha256-+Pg4nIrIARzOKkttept26lsEgtuDEPDPANd0uIOc1CQ=",
-        "owner": "sivizius",
-        "repo": "nixpkgs",
-        "rev": "c0dc1bbc25165c2c6db8be91654cb0687580375f",
-        "type": "github"
-      },
-      "original": {
-        "owner": "sivizius",
-        "ref": "master",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_29": {
-      "locked": {
-        "lastModified": 1686098066,
-        "narHash": "sha256-+Pg4nIrIARzOKkttept26lsEgtuDEPDPANd0uIOc1CQ=",
-        "owner": "sivizius",
-        "repo": "nixpkgs",
-        "rev": "c0dc1bbc25165c2c6db8be91654cb0687580375f",
-        "type": "github"
-      },
-      "original": {
-        "owner": "sivizius",
-        "ref": "master",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_3": {
-      "locked": {
-        "lastModified": 1685998742,
-        "narHash": "sha256-f5XNR9i7ImhGHGys/0SpGX9OD2SFqWfNKlKtdn7c3Vc=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "932fc16b263f26803d3960e4400bc13dde84a972",
-        "type": "github"
-      },
-      "original": {
-        "id": "nixpkgs",
-        "type": "indirect"
-      }
-    },
-    "nixpkgs_30": {
-      "locked": {
-        "lastModified": 1686098066,
-        "narHash": "sha256-+Pg4nIrIARzOKkttept26lsEgtuDEPDPANd0uIOc1CQ=",
-        "owner": "sivizius",
-        "repo": "nixpkgs",
-        "rev": "c0dc1bbc25165c2c6db8be91654cb0687580375f",
-        "type": "github"
-      },
-      "original": {
-        "owner": "sivizius",
-        "ref": "master",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_31": {
-      "locked": {
-        "lastModified": 1686098066,
-        "narHash": "sha256-+Pg4nIrIARzOKkttept26lsEgtuDEPDPANd0uIOc1CQ=",
-        "owner": "sivizius",
-        "repo": "nixpkgs",
-        "rev": "c0dc1bbc25165c2c6db8be91654cb0687580375f",
-        "type": "github"
-      },
-      "original": {
-        "owner": "sivizius",
-        "ref": "master",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_32": {
-      "locked": {
-        "lastModified": 1685998742,
-        "narHash": "sha256-f5XNR9i7ImhGHGys/0SpGX9OD2SFqWfNKlKtdn7c3Vc=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "932fc16b263f26803d3960e4400bc13dde84a972",
-        "type": "github"
-      },
-      "original": {
-        "id": "nixpkgs",
-        "type": "indirect"
-      }
-    },
-    "nixpkgs_33": {
-      "locked": {
-        "lastModified": 1685998742,
-        "narHash": "sha256-f5XNR9i7ImhGHGys/0SpGX9OD2SFqWfNKlKtdn7c3Vc=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "932fc16b263f26803d3960e4400bc13dde84a972",
-        "type": "github"
-      },
-      "original": {
-        "id": "nixpkgs",
-        "type": "indirect"
-      }
-    },
-    "nixpkgs_34": {
-      "locked": {
-        "lastModified": 1686098066,
-        "narHash": "sha256-+Pg4nIrIARzOKkttept26lsEgtuDEPDPANd0uIOc1CQ=",
-        "owner": "sivizius",
-        "repo": "nixpkgs",
-        "rev": "c0dc1bbc25165c2c6db8be91654cb0687580375f",
-        "type": "github"
-      },
-      "original": {
-        "owner": "sivizius",
-        "ref": "master",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_35": {
-      "locked": {
-        "lastModified": 1686098066,
-        "narHash": "sha256-+Pg4nIrIARzOKkttept26lsEgtuDEPDPANd0uIOc1CQ=",
-        "owner": "sivizius",
-        "repo": "nixpkgs",
-        "rev": "c0dc1bbc25165c2c6db8be91654cb0687580375f",
-        "type": "github"
-      },
-      "original": {
-        "owner": "sivizius",
-        "ref": "master",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_36": {
-      "locked": {
-        "lastModified": 1670461440,
-        "narHash": "sha256-jy1LB8HOMKGJEGXgzFRLDU1CBGL0/LlkolgnqIsF0D8=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "04a75b2eecc0acf6239acf9dd04485ff8d14f425",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixos-22.11-small",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_37": {
-      "locked": {
-        "lastModified": 1686098066,
-        "narHash": "sha256-+Pg4nIrIARzOKkttept26lsEgtuDEPDPANd0uIOc1CQ=",
-        "owner": "sivizius",
-        "repo": "nixpkgs",
-        "rev": "c0dc1bbc25165c2c6db8be91654cb0687580375f",
-        "type": "github"
-      },
-      "original": {
-        "owner": "sivizius",
-        "ref": "master",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_38": {
-      "locked": {
-        "lastModified": 1686098066,
-        "narHash": "sha256-+Pg4nIrIARzOKkttept26lsEgtuDEPDPANd0uIOc1CQ=",
-        "owner": "sivizius",
-        "repo": "nixpkgs",
-        "rev": "c0dc1bbc25165c2c6db8be91654cb0687580375f",
-        "type": "github"
-      },
-      "original": {
-        "owner": "sivizius",
-        "ref": "master",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_39": {
-      "locked": {
-        "lastModified": 1686098066,
-        "narHash": "sha256-+Pg4nIrIARzOKkttept26lsEgtuDEPDPANd0uIOc1CQ=",
-        "owner": "sivizius",
-        "repo": "nixpkgs",
-        "rev": "c0dc1bbc25165c2c6db8be91654cb0687580375f",
-        "type": "github"
-      },
-      "original": {
-        "owner": "sivizius",
-        "ref": "master",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_4": {
-      "locked": {
-        "lastModified": 1686098066,
-        "narHash": "sha256-+Pg4nIrIARzOKkttept26lsEgtuDEPDPANd0uIOc1CQ=",
-        "owner": "sivizius",
-        "repo": "nixpkgs",
-        "rev": "c0dc1bbc25165c2c6db8be91654cb0687580375f",
-        "type": "github"
-      },
-      "original": {
-        "owner": "sivizius",
-        "ref": "master",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_40": {
-      "locked": {
-        "lastModified": 1685998742,
-        "narHash": "sha256-f5XNR9i7ImhGHGys/0SpGX9OD2SFqWfNKlKtdn7c3Vc=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "932fc16b263f26803d3960e4400bc13dde84a972",
-        "type": "github"
-      },
-      "original": {
-        "id": "nixpkgs",
-        "type": "indirect"
-      }
-    },
-    "nixpkgs_41": {
-      "locked": {
-        "lastModified": 1685998742,
-        "narHash": "sha256-f5XNR9i7ImhGHGys/0SpGX9OD2SFqWfNKlKtdn7c3Vc=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "932fc16b263f26803d3960e4400bc13dde84a972",
-        "type": "github"
-      },
-      "original": {
-        "id": "nixpkgs",
-        "type": "indirect"
-      }
-    },
-    "nixpkgs_42": {
-      "locked": {
-        "lastModified": 1686098066,
-        "narHash": "sha256-+Pg4nIrIARzOKkttept26lsEgtuDEPDPANd0uIOc1CQ=",
-        "owner": "sivizius",
-        "repo": "nixpkgs",
-        "rev": "c0dc1bbc25165c2c6db8be91654cb0687580375f",
-        "type": "github"
-      },
-      "original": {
-        "owner": "sivizius",
-        "ref": "master",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_43": {
-      "locked": {
-        "lastModified": 1686098066,
-        "narHash": "sha256-+Pg4nIrIARzOKkttept26lsEgtuDEPDPANd0uIOc1CQ=",
-        "owner": "sivizius",
-        "repo": "nixpkgs",
-        "rev": "c0dc1bbc25165c2c6db8be91654cb0687580375f",
-        "type": "github"
-      },
-      "original": {
-        "owner": "sivizius",
-        "ref": "master",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_5": {
-      "locked": {
-        "lastModified": 1686098066,
-        "narHash": "sha256-+Pg4nIrIARzOKkttept26lsEgtuDEPDPANd0uIOc1CQ=",
-        "owner": "sivizius",
-        "repo": "nixpkgs",
-        "rev": "c0dc1bbc25165c2c6db8be91654cb0687580375f",
-        "type": "github"
-      },
-      "original": {
-        "owner": "sivizius",
-        "ref": "master",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_6": {
-      "locked": {
-        "lastModified": 1685998742,
-        "narHash": "sha256-f5XNR9i7ImhGHGys/0SpGX9OD2SFqWfNKlKtdn7c3Vc=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "932fc16b263f26803d3960e4400bc13dde84a972",
-        "type": "github"
-      },
-      "original": {
-        "id": "nixpkgs",
-        "type": "indirect"
-      }
-    },
-    "nixpkgs_7": {
-      "locked": {
-        "lastModified": 1685998742,
-        "narHash": "sha256-f5XNR9i7ImhGHGys/0SpGX9OD2SFqWfNKlKtdn7c3Vc=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "932fc16b263f26803d3960e4400bc13dde84a972",
-        "type": "github"
-      },
-      "original": {
-        "id": "nixpkgs",
-        "type": "indirect"
-      }
-    },
-    "nixpkgs_8": {
-      "locked": {
-        "lastModified": 1686098066,
-        "narHash": "sha256-+Pg4nIrIARzOKkttept26lsEgtuDEPDPANd0uIOc1CQ=",
-        "owner": "sivizius",
-        "repo": "nixpkgs",
-        "rev": "c0dc1bbc25165c2c6db8be91654cb0687580375f",
-        "type": "github"
-      },
-      "original": {
-        "owner": "sivizius",
-        "ref": "master",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_9": {
-      "locked": {
-        "lastModified": 1685655444,
-        "narHash": "sha256-6EujQNAeaUkWvpEZZcVF8qSfQrNVWFNNGbUJxv/A5a8=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "e635192892f5abbc2289eaac3a73cdb249abaefd",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "peers": {
       "inputs": {
         "libconfig": "libconfig_3",
@@ -3872,12 +3657,12 @@
       },
       "locked": {
         "dir": "peers",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=peers"
       },
       "original": {
         "dir": "peers",
@@ -3892,17 +3677,17 @@
         "hardware": "hardware",
         "libconfig": "libconfig_4",
         "libcore": "libcore_31",
-        "nixpkgs": "nixpkgs_25",
+        "nixpkgs": "nixpkgs_15",
         "services": "services"
       },
       "locked": {
         "dir": "profiles",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=profiles"
       },
       "original": {
         "dir": "profiles",
@@ -3915,17 +3700,17 @@
     "redshift-wayland": {
       "inputs": {
         "libcore": "libcore_45",
-        "nixpkgs": "nixpkgs_38",
+        "nixpkgs": "nixpkgs_23",
         "redshift-wayland": "redshift-wayland_2"
       },
       "locked": {
         "dir": "packages/redshift-wayland",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=packages/redshift-wayland"
       },
       "original": {
         "dir": "packages/redshift-wayland",
@@ -3957,19 +3742,18 @@
         "fork-awesome": "fork-awesome",
         "libconfig": "libconfig_6",
         "libcore": "libcore_44",
-        "nix": "nix",
-        "nixpkgs": "nixpkgs_37",
+        "nixpkgs": "nixpkgs_22",
         "redshift-wayland": "redshift-wayland",
         "wofi-unpatched": "wofi-unpatched"
       },
       "locked": {
         "dir": "registries",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=registries"
       },
       "original": {
         "dir": "registries",
@@ -3988,6 +3772,7 @@
         "libstore": "libstore_4",
         "libweb": "libweb_2",
         "modules": "modules",
+        "nix-pre-commit-hooks": "nix-pre-commit-hooks",
         "peers": "peers",
         "profiles": "profiles",
         "registries": "registries",
@@ -4001,12 +3786,12 @@
       },
       "locked": {
         "dir": "services",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=services"
       },
       "original": {
         "dir": "services",
@@ -4020,16 +3805,17 @@
       "inputs": {
         "blobs": "blobs",
         "flake-compat": "flake-compat",
-        "nixpkgs": "nixpkgs_15",
+        "nixpkgs": "nixpkgs_9",
         "nixpkgs-22_11": "nixpkgs-22_11",
+        "nixpkgs-23_05": "nixpkgs-23_05",
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1684964237,
-        "narHash": "sha256-dDS+GhdZN2MAa2FJKFGM2gpgAXhx+xoMkpVsRx9qpDE=",
+        "lastModified": 1695910380,
+        "narHash": "sha256-CyzeiXQGm8ceEOSK1dffBCfO7JNp8XhQeNkUiJ5HxgY=",
         "ref": "refs/heads/master",
-        "rev": "1bcfcf786bc289ca1bd2c9d29d6f02d9141b1da3",
-        "revCount": 552,
+        "rev": "84783b661ecf33927c534b6476beb74ea3308968",
+        "revCount": 572,
         "type": "git",
         "url": "https://gitlab.com/simple-nixos-mailserver/nixos-mailserver.git"
       },
@@ -4045,18 +3831,33 @@
       },
       "locked": {
         "dir": "users/sivizius",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=users/sivizius"
       },
       "original": {
         "dir": "users/sivizius",
         "owner": "sivizius",
         "ref": "development",
         "repo": "nixfiles",
+        "type": "github"
+      }
+    },
+    "systems": {
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
         "type": "github"
       }
     },
@@ -4078,16 +3879,16 @@
     "wofi-unpatched": {
       "inputs": {
         "libcore": "libcore_46",
-        "nixpkgs": "nixpkgs_39"
+        "nixpkgs": "nixpkgs_24"
       },
       "locked": {
         "dir": "packages/wofi-unpatched",
-        "lastModified": 1686098437,
-        "narHash": "sha256-jpVDdU8pbN1f0hbsJNhPRpv5CYOwERTfBCQmkmgQz+U=",
-        "owner": "sivizius",
-        "repo": "nixfiles",
-        "rev": "027be844605fd5c25379e7034f9f8c2b1a9d41ce",
-        "type": "github"
+        "dirtyRev": "5739aae1474ec746d0568441fa909dbbcb5ef95c-dirty",
+        "dirtyShortRev": "5739aae-dirty",
+        "lastModified": 1698407767,
+        "narHash": "sha256-v84sElggDk11yASTh8/KNR3H5Fwh5UseEQPwhUE/QM8=",
+        "type": "git",
+        "url": "file:///home/sivizius/Projects/sivizius/nixfiles?dir=packages/wofi-unpatched"
       },
       "original": {
         "dir": "packages/wofi-unpatched",

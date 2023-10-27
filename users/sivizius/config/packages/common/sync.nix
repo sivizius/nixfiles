@@ -1,8 +1,8 @@
 { nix, ... }:
-  with nix;
-  [
-    git
-    restic
-    rsync
-    sshfs
-  ]
+with nix;
+[
+  git
+  restic
+  rsync
+  sshfs
+]

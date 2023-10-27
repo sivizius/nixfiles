@@ -5,11 +5,14 @@
   ./scanner.nix
   ./trackpoint.nix
   {
-    hardware.gpgSmartcards.enable       =   true;
-    services.pcscd.enable               =   true;
+    hardware.cpu.intel.updateMicrocode = true;
+    hardware.enableRedistributableFirmware = true;
 
-    hardware.opengl.enable              =   true;
-    nix.settings.max-jobs               =   8;
-    powerManagement.cpuFreqGovernor     =   "powersave";
+    hardware.gpgSmartcards.enable = true;
+    services.pcscd.enable = true;
+
+    hardware.opengl.enable = true;
+    nix.settings.max-jobs = 8;
+    powerManagement.cpuFreqGovernor = "powersave";
   }
 ]

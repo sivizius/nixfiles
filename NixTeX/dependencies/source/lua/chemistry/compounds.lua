@@ -35,7 +35,7 @@ chem.compounds.knownAcronyms
       [ "phenyl"              ]         =   "phenyl",
     }
 
---- Known Prefixes (…- or -…-) that should be formated.
+--- Known Prefixes (…- or -…-) that should be formatted.
 --- All entries are case-sensitive.
 chem.compounds.knownPrefixes
 =   {

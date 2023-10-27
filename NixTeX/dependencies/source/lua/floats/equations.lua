@@ -138,7 +138,7 @@ function physical ( inDecimals, inValue, inExponent, inUnit, unitExponent )
       "physical",
       "Physical takes one Optional and four Mandatory Arguments:",
       "  [decimals] value value-exponent unit unit-exponent",
-      "Perhabs you forgot one or two {} somewhere? Have a look:",
+      "Perhaps you forgot one or two {} somewhere? Have a look:",
       "decimals:        »"  ..  inDecimals    ..  "«",
       "value:           »"  ..  inValue       ..  "«",
       "value-exponent:  »"  ..  inExponent    ..  "«",

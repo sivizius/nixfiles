@@ -1,28 +1,28 @@
 { nix, ... }:
-  with nix;
-  [
-    # audio
-    audacity
-    pavucontrol
+with nix;
+[
+  # audio
+  audacity
+  pavucontrol
 
-    # documents
-    cairo
-    evince
-    #libreoffice
-    pandoc
-    pdfpc
-    pdftk
-    poppler_utils
-    qpdf
+  # documents
+  cairo
+  evince
+  #libreoffice
+  pandoc
+  pdfpc
+  pdftk
+  poppler_utils
+  qpdf
 
-    # images
-    feh
-    gimp
-    imagemagick
-    inkscape
-    librsvg
+  # images
+  feh
+  gimp
+  imagemagick
+  inkscape
+  librsvg
 
-    # video
-    ffmpeg
-    mpv
-  ]
+  # video
+  ffmpeg
+  mpv
+]

@@ -80,10 +80,10 @@ keywords
       "Z",  "zsh",
     }
 
-seperators                        =   " ?!.:,;()/&{}<>’"
+separators                        =   " ?!.:,;()/&{}<>’"
 
 function hideKeywords(text)
-  for keyword                           in  text:gmatch ( "[^"..seperators.."]+"  )
+  for keyword                           in  text:gmatch ( "[^"..separators.."]+"  )
   do
     if  ( not contains  ( ignore,   keyword ) )
     and ( not contains  ( keywords, keyword ) )

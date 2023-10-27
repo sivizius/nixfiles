@@ -1,0 +1,7 @@
+# within statix.toml
+disabled = [
+  "bool_comparison",
+  "empty_pattern",
+  "faster_groupby",
+  "faster_zipattrswith"
+]

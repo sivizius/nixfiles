@@ -203,7 +203,7 @@ function acronyms.getEntry          ( acronym, mightFail )
     log.warn
     (
       "acronyms.getEntry",
-      "Acronym »" ..  tostring  ( acronym ) ..  "« is depricated",
+      "Acronym »" ..  tostring  ( acronym ) ..  "« is deprecated",
       "I think,  you mean »"  ..  acronyms.deprecated [ acronym ] ..  "«…"
     )
     entry                               =   acronyms.getEntry ( acronyms.deprecated [ acronym ] )
@@ -344,4 +344,3 @@ function  acronyms.sort        ( this,  that )
     return      a.class           < b.class
   end
 end
-

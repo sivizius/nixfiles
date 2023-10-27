@@ -1,8 +1,8 @@
 { nix, ... }:
-  with nix;
-  [
-    parallel
-    progress
-    pv
-  ]
+with nix;
+[
+  parallel
+  progress
+  pv
+]
 

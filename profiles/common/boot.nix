@@ -1,7 +1,6 @@
 {
-  boot
-  =   {
-        enableContainers                =   true;
-        tmp.useTmpfs                    =   true;
-      };
+  boot = {
+    enableContainers = true;
+    tmp.useTmpfs = true;
+  };
 }

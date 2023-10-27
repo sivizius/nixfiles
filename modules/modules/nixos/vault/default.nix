@@ -1,4 +1,4 @@
 {
-  config                                =   ./config.nix;
-  options                               =   ./options.nix;
+  config = ./config.nix;
+  options = ./options.nix;
 }

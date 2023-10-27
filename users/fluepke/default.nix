@@ -1,4 +1,0 @@
-User "fluepke"
-{
-  config                                =   ./config;
-}

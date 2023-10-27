@@ -1,5 +1,5 @@
 {
-  aleph                                 =   ./aleph;
-  bet                                   =   ./bet;
-  mem                                   =   ./mem;
+  aleph = ./aleph;
+  bet = ./bet;
+  mem = ./mem;
 }

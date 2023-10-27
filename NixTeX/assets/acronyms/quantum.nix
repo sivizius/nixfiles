@@ -5,8 +5,7 @@
     text = {
       deu = "Höchste besetzte Molekül\\-orbital";
     };
-    description = {
-    };
+    description = { };
     data = {
       kind = "Default";
       short = "HOMO";
@@ -17,8 +16,7 @@
     text = {
       deu = "Niedrigste unbesetzte Molekül\\-orbital";
     };
-    description = {
-    };
+    description = { };
     data = {
       kind = "Default";
       short = "LUMO";

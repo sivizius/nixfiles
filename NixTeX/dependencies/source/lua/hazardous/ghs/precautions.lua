@@ -19,10 +19,10 @@ function ghsPrecautions ( ghs )
         end
         if      value.tempC   ~=  nil
         then
-          options                       =   options ..  "C-termperature=" ..  value.tempC
+          options                       =   options ..  "C-temperature=" ..  value.tempC
         elseif  value.tempF   ~=  nil
         then
-          options                       =   options ..  "F-termperature=" ..  value.tempF
+          options                       =   options ..  "F-temperature=" ..  value.tempF
         end
         if      value.massKG  ~=  nil
         then

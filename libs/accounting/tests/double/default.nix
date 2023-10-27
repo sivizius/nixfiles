@@ -2,59 +2,58 @@
 { formatOutcome, Section, Transaction, ... }:
 let
   inherit (time) formatDate;
-  Level
-  =   {
-        Kleinst                         =   0;
-        Klein                           =   1;
-        Mittel                          =   2;
-        Gross                           =   3;
-      };
-  method                                =   "Umsatz";
-  maxLevel                              =   Level.Kleinst;
+  Level = {
+    Kleinst = 0;
+    Klein = 1;
+    Mittel = 2;
+    Gross = 3;
+  };
+  method = "Umsatz";
+  maxLevel = Level.Kleinst;
 in
-  "\n${
+"\n${
     formatOutcome { from = "2021-01-01"; till = "2021-12-31"; }
     {
-      name                              =   "EDV Solutions UG";
-      currency                          =   "€";
+      name = "EDV Solutions UG";
+      currency = "€";
       events
-      =   {
-            balance#: { ... } -> ~Transaction
-            =   { ... } @ accounts:
+ = {
+            balance/* :  { ... } -> ~Transaction */
+ = accounts:
                 {
                   inherit time;
-                  credit                =   { "Passiva-A.I"   = betrag; };
-                  debit                 =   { "Aktiva-B.IV.3" = betrag; };
-                  description           =   "Jemand zahlt seinen*ihren Anteil ein";
+                  credit = { "Passiva-A.I"   = betrag; };
+                  debit = { "Aktiva-B.IV.3" = betrag; };
+                  description = "Jemand zahlt seinen*ihren Anteil ein";
                 };
-            formatAccountNames#: { ... } -> ...
-            =   { ... }:
+            formatAccountNames/* :  { ... } -> ... */
+ = { ... }:
                 {
-                  balance               =   "Bestandskonten";
-                  assets                =   "Aktive Konten";
-                  liabilities           =   "Passive Konten";
-                  outcome               =   "Erfolgskonten";
-                  revenues              =   "Ertragskonten";
-                  expenses              =   "Aufwandskonten";
+                  balance = "Bestandskonten";
+                  assets = "Aktive Konten";
+                  liabilities = "Passive Konten";
+                  outcome = "Erfolgskonten";
+                  revenues = "Ertragskonten";
+                  expenses = "Aufwandskonten";
                 };
-            formatBalanceTitle          =   { name, time, ... }:  "Bilanz von ${name} am ${formatDate time "deu"}";
+            formatBalanceTitle = { name, time, ... }:  "Bilanz von ${name} am ${formatDate time "deu"}";
             formatBalanceNames
-            =   { ... }:
+ = { ... }:
                 {
-                  credit                =   "Haben";
-                  debit                 =   "Soll";
-                  total                 =   "Gesamt";
-                  difference            =   "Saldo";
+                  credit = "Haben";
+                  debit = "Soll";
+                  total = "Gesamt";
+                  difference = "Saldo";
                 };
             formatOutcomeTitle
-            =   { name, from, till, ... }:
+ = { name, from, till, ... }:
                   "Gewinn- und Verlustrechnung von ${name} zwischen ${formatDate from "deu"} und ${formatDate till "deu"}";
-            formatOutcomeTotal          =   { ... }:              "Jahresüberschuss/-fehlbetrag";
-            filterSection               =   { level, ... }:       level <= maxLevel;
-            initialTransaction          =   { time, ... }:        { description = "Vorjahresbilanz ${formatDate time "deu"}"; };
+            formatOutcomeTotal = { ... }:              "Jahresüberschuss/-fehlbetrag";
+            filterSection = { level, ... }:       level <= maxLevel;
+            initialTransaction = { time, ... }:        { description = "Vorjahresbilanz ${formatDate time "deu"}"; };
           };
       assets                            #   Aktiva nach § 266 Abs. 2 HGB
-      =   Section { title = "Aktiva"; level = Level.Kleinst; }
+ = Section { title = "Aktiva"; level = Level.Kleinst; }
           [
             (
               Section { title = "Anlagevermögen"; level = Level.Klein; }
@@ -139,7 +138,7 @@ in
             { id = "Aktiva-E"; name = "Aktiver Unterschiedsbetrag aus der Vermögensverrechnung"; }
           ];
       liabilities                       #   Passiva nach § 266 Abs. 3 HGB
-      =   Section { title = "Passiva"; level = Level.Kleinst; }
+ = Section { title = "Passiva"; level = Level.Kleinst; }
           [
             (
               Section { title = "Eigenkapital"; level = Level.Klein; }
@@ -189,7 +188,7 @@ in
             { id = "Passiva-E"; name = "Passive latente Steuern"; }
             ];
       outcome                           # Gewinn- und Verlustrechnung nach § 275 Abs. 5 HGB
-      =   Section { title = "Jahresüberschuss/-fehlbetrag"; level = Level.Kleinst; }
+ = Section { title = "Jahresüberschuss/-fehlbetrag"; level = Level.Kleinst; }
           (
             if maxLevel == Level.Kleinst
             then
@@ -219,79 +218,79 @@ in
                 ''
           );
       inventory                         # Materialien, Maschinen, Grundstücken, …
-      =   Section "Inventar"
+ = Section "Inventar"
           [
             { id = "Inventar-1"; name = "Materialien"; }
           ];
       journal                           # Chronologische Liste aller Geschäftsvorfälle
-      =   import ./journal.nix
+ = import ./journal.nix
           {
             Gesellschaftereinzahlung
-            =   time:
+ = time:
                 betrag:
                 name:
                 {
                   inherit time;
-                  credit                =   { "Passiva-A.I"   = betrag; };
-                  debit                 =   { "Aktiva-B.IV.3" = betrag; };
-                  description           =   "${name} zahlt seinen*ihren Anteil ein";
+                  credit = { "Passiva-A.I"   = betrag; };
+                  debit = { "Aktiva-B.IV.3" = betrag; };
+                  description = "${name} zahlt seinen*ihren Anteil ein";
                 };
             Kontofuehrungsgebuehr
-            =   time:
+ = time:
                 betrag:
                 {
                   inherit time;
-                  credit                =   { "Aktiva-B.IV.3" = betrag; };
-                  debit                 =   { "GuV-6"         = betrag; };
-                  description           =   "Kontoführungsgebühren";
+                  credit = { "Aktiva-B.IV.3" = betrag; };
+                  debit = { "GuV-6"         = betrag; };
+                  description = "Kontoführungsgebühren";
                 };
             Forderung
-            =   time:
+ = time:
                 betrag:
                 kunde:
                 rechnungsnummer:
                   let
-                    betrag'             =   betrag / 1.19;
-                    steuer              =   betrag - betrag';
+                    betrag' = betrag / 1.19;
+                    steuer = betrag - betrag';
                   in
                   {
                     inherit time;
-                    credit              =   { "GuV-1"         = betrag';  "Passiva-C.8.1" = steuer; };
-                    debit               =   { "Aktiva-B.II.1" = betrag;                             };
-                    description         =   "Rechnung an ${kunde} (${rechnungsnummer})";
+                    credit = { "GuV-1"         = betrag';  "Passiva-C.8.1" = steuer; };
+                    debit = { "Aktiva-B.II.1" = betrag;                             };
+                    description = "Rechnung an ${kunde} (${rechnungsnummer})";
                   };
             Rechnungsbegleichung
-            =   time:
+ = time:
                 betrag:
                 rechnungsnummer:
                 {
                   inherit time;
-                  credit                =   { "Aktiva-B.II.1" = betrag; };
-                  debit                 =   { "Aktiva-B.IV.3" = betrag; };
-                  description           =   "Rechnung ${rechnungsnummer} beglichen";
+                  credit = { "Aktiva-B.II.1" = betrag; };
+                  debit = { "Aktiva-B.IV.3" = betrag; };
+                  description = "Rechnung ${rechnungsnummer} beglichen";
                 };
             Sachanlagen
-            =   time:
+ = time:
                 betrag:
                 sache:
                   let
-                    betrag'             =   betrag / 1.19;
-                    steuer              =   betrag - betrag';
+                    betrag' = betrag / 1.19;
+                    steuer = betrag - betrag';
                   in
                   {
                     inherit time;
-                    credit              =   { "Aktiva-B.IV.3" = betrag; };
-                    debit               =   { "Aktiva-A.II.2" = betrag'; "Aktiva-B.II.4.1" = steuer; };
-                    description         =   "Ankauf von ${sache}";
+                    credit = { "Aktiva-B.IV.3" = betrag; };
+                    debit = { "Aktiva-A.II.2" = betrag'; "Aktiva-B.II.4.1" = steuer; };
+                    description = "Ankauf von ${sache}";
                   };
             Gewinnruecklage
-            =   time:
+ = time:
                 betrag:
                   {
                     inherit time;
-                    credit              =   { "Passiva-A.III.4" = betrag; };
-                    debit               =   { "Passiva-A.IV"    = betrag; };
-                    description         =   "Gewinnrücklage";
+                    credit = { "Passiva-A.III.4" = betrag; };
+                    debit = { "Passiva-A.IV"    = betrag; };
+                    description = "Gewinnrücklage";
                   };
           };
     }

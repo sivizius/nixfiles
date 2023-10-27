@@ -1,53 +1,49 @@
 { core, ... }:
-  let
-    inherit(core) debug indentation list path set string type;
+let
+  inherit (core) debug indentation list path set string type;
 
-    formatAttributes
-    =   prefix:
-        { ... } @ attributes:
-          list.concat
+  formatAttributes = prefix:
+    attributes:
+    list.concat
+      (
+        set.mapToList
           (
-            set.mapToList
-              (
-                name:
-                value:
-                  if  set.isInstanceOf value
-                  &&  value.__toString or null == null
-                  then
-                    formatAttributes "${prefix}${name}-" value
-                  else
-                    [ "${prefix}${name}: ${string value};" ]
-              )
-              attributes
-          );
+            name:
+            value:
+            if set.isInstanceOf value
+              && value.__toString or null == null
+            then
+              formatAttributes "${prefix}${name}-" value
+            else
+              [ "${prefix}${name}: ${string value};" ]
+          )
+          attributes
+      );
 
-    CSS
-    =   type "CSS"
-        {
-          from
-          =   { ... } @ definition:
-                CSS.instanciate
-                {
-                  inherit definition;
+  CSS = type "CSS"
+    {
+      from = definition:
+        CSS.instantiate
+          {
+            inherit definition;
 
-                  __toString
-                  =   { definition, ... }:
-                        indentation {}
+            __toString = { definition, ... }:
+              indentation { }
+                (
+                  list.concat
+                    (
+                      set.mapToList
                         (
-                          list.concat
-                          (
-                            set.mapToList
-                              (
-                                selector:
-                                { ... } @ attributes:
-                                  [ "${selector} {" indentation.more ]
-                                  ++  (formatAttributes "" attributes)
-                                  ++  [ indentation.less "}" ]
-                              )
-                              definition
-                          )
-                        );
-                };
-        };
-  in
-    CSS // { inherit CSS; }
+                          selector:
+                          attributes:
+                          [ "${selector} {" indentation.more ]
+                          ++ (formatAttributes "" attributes)
+                          ++ [ indentation.less "}" ]
+                        )
+                        definition
+                    )
+                );
+          };
+    };
+in
+CSS // { inherit CSS; }

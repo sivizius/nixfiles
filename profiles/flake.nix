@@ -1,13 +1,61 @@
 {
   description = "Sivizius’ profiles.";
   inputs = {
-    hardware.url = "github:NixOS/nixos-hardware/master";
-    libcore.url = "github:sivizius/nixfiles/development?dir=libs/core";
-    libconfig.url = "github:sivizius/nixfiles/development?dir=libs/config";
-    nixpkgs.url = "github:sivizius/nixpkgs/extend-fido2luks-config";
-    services.url = "github:sivizius/nixfiles/development?dir=services";
+    libconfig = {
+      url = "git+ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?ref=secunet&dir=libs/config";
+      inputs = {
+        libcore.follows = "libcore";
+        libintrinsics.follows = "libintrinsics";
+        libsecrets.follows = "libsecrets";
+        libstore.follows = "libstore";
+        libweb.follows = "libweb";
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
+    libcore = {
+      url = "git+ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?ref=secunet&dir=libs/core";
+      inputs.libintrinsics.follows = "libintrinsics";
+    };
+    libintrinsics.url = "git+ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?ref=secunet&dir=libs/intrinsics";
+    libsecrets = {
+      url = "git+ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?ref=secunet&dir=libs/secrets";
+      inputs = {
+        libcore.follows = "libcore";
+        libintrinsics.follows = "libintrinsics";
+        libstore.follows = "libstore";
+      };
+    };
+    libstore = {
+      url = "git+ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?ref=secunet&dir=libs/store";
+      inputs = {
+        libcore.follows = "libcore";
+        libintrinsics.follows = "libintrinsics";
+      };
+    };
+    libweb = {
+      url = "git+ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?ref=secunet&dir=libs/web";
+      inputs = {
+        libcore.follows = "libcore";
+        libintrinsics.follows = "libintrinsics";
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    nixpkgs.url = "github:sivizius/nixpkgs/extend-fido2luks-config2";
+    services = {
+      url = "git+ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?ref=secunet&dir=services";
+      inputs = {
+        libconfig.follows = "libconfig";
+        libcore.follows = "libcore";
+        libintrinsics.follows = "libintrinsics";
+        libsecrets.follows = "libsecrets";
+        libstore.follows = "libstore";
+        libweb.follows = "libweb";
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
   };
-  outputs = { self, hardware, libcore, libconfig, nixpkgs, services, ... }:
+  outputs = { self, nixos-hardware, libcore, libconfig, nixpkgs, services, ... }:
     let
       core = libcore.lib { inherit self; debug.logLevel = "info"; };
       config = libconfig.lib { inherit self; };
@@ -56,7 +104,7 @@
               "nixosModules"
             ]
         )
-        hardware
+        nixos-hardware
         // load ./.
         {
           inherit core profiles;

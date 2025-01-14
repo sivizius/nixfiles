@@ -19,6 +19,7 @@ Host "bet (from hebrew בית: house) is usually installed on localhost."
         eduroam
         fluepke
         mum
+        nix-community
         sivizius
         tuc
       ];

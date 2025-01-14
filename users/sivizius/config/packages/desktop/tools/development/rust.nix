@@ -10,5 +10,5 @@ with nix;
   #rust-cbindgen
   #rustc
   #rustfmt
-  rustup
+  #rustup
 ]

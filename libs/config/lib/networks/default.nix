@@ -26,7 +26,7 @@ let
                     };
                     wireless = wireless
                     // {
-                      environmentFile = secret.generateEnvFile' "wireless";
+                      secretsFile = secret.generateEnvFile' "wireless";
                     };
                   };
                 };

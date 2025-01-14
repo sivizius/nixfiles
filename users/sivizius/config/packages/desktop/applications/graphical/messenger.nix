@@ -1,5 +1,6 @@
 { nix, ... }:
 with nix;
 [
-  nheko
+  #nheko
+  fractal
 ]

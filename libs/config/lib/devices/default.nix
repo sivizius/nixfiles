@@ -19,7 +19,7 @@ let
             DeviceConfiguration
               {
                 configuration.fileSystems.${name} = {
-                  inherit fsType label;
+                  inherit fsType;
                   device = toDevice device;
                 };
                 inherit source;

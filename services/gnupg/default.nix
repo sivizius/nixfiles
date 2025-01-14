@@ -8,7 +8,7 @@ Service "GNU Privacy Guard"
           enableBrowserSocket = false;
           enableExtraSocket = false;
           enableSSHSupport = true;
-          pinentryFlavor = "qt";
+          pinentryPackage = registries.nix.pinentry-gnome3;
         };
         dirmngr.enable = false;
         package = registries.nix.gnupg;

@@ -8,6 +8,6 @@ with nix;
   nix-index
   nix-prefetch-git
   nix-prefetch-github
-  xdg_utils
+  xdg-utils
   yubikey-manager
 ]

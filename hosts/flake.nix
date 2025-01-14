@@ -1,20 +1,174 @@
 {
   description = "Sivizius’ hosts.";
   inputs = {
-    home-manager.url = "github:sivizius/nixfiles/development?dir=home-manager";
-    libconfig.url = "github:sivizius/nixfiles/development?dir=libs/config";
-    libcore.url = "github:sivizius/nixfiles/development?dir=libs/core";
-    libsecrets.url = "github:sivizius/nixfiles/development?dir=libs/secrets";
-    libstore.url = "github:sivizius/nixfiles/development?dir=libs/store";
-    libweb.url = "github:sivizius/nixfiles/development?dir=libs/web";
-    modules.url = "github:sivizius/nixfiles/development?dir=modules";
-    nix-pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
-    peers.url = "github:sivizius/nixfiles/development?dir=peers";
-    profiles.url = "github:sivizius/nixfiles/development?dir=profiles";
-    registries.url = "github:sivizius/nixfiles/development?dir=registries";
-    sivizius.url = "github:sivizius/nixfiles/development?dir=users/sivizius";
+    flake-compat.url = "github:edolstra/flake-compat";
+    fork-awesome = {
+      url = "git+ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?ref=secunet&dir=packages/fork-awesome";
+      inputs = {
+        libcore.follows = "libcore";
+        libintrinsics.follows = "libintrinsics";
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
+    home-manager = {
+      url = "github:nix-community/home-manager/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    home-manager-wrapper = {
+      url = "git+ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?ref=secunet&dir=home-manager";
+      inputs = {
+        home-manager.follows = "home-manager";
+        libcore.follows = "libcore";
+        libintrinsics.follows = "libintrinsics";
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
+    libconfig = {
+      url = "git+ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?ref=secunet&dir=libs/config";
+      inputs = {
+        libcore.follows = "libcore";
+        libintrinsics.follows = "libintrinsics";
+        libsecrets.follows = "libsecrets";
+        libstore.follows = "libstore";
+        libweb.follows = "libweb";
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
+    libcore = {
+      url = "git+ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?ref=secunet&dir=libs/core";
+      inputs.libintrinsics.follows = "libintrinsics";
+    };
+    libintrinsics.url = "git+ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?ref=secunet&dir=libs/intrinsics";
+    libsecrets = {
+      url = "git+ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?ref=secunet&dir=libs/secrets";
+      inputs = {
+        libcore.follows = "libcore";
+        libintrinsics.follows = "libintrinsics";
+        libstore.follows = "libstore";
+      };
+    };
+    libstore = {
+      url = "git+ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?ref=secunet&dir=libs/store";
+      inputs = {
+        libcore.follows = "libcore";
+        libintrinsics.follows = "libintrinsics";
+      };
+    };
+    libweb = {
+      url = "git+ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?ref=secunet&dir=libs/web";
+      inputs = {
+        libcore.follows = "libcore";
+        libintrinsics.follows = "libintrinsics";
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
+    modules = {
+      url = "git+ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?ref=secunet&dir=modules";
+      inputs = {
+        flake-compat.follows = "flake-compat";
+        home-manager.follows = "home-manager";
+        libconfig.follows = "libconfig";
+        libcore.follows = "libcore";
+        libintrinsics.follows = "libintrinsics";
+        libsecrets.follows = "libsecrets";
+        libstore.follows = "libstore";
+        libweb.follows = "libweb";
+        nixpkgs.follows = "nixpkgs";
+        simple-nix-mailserver.follows = "simple-nixos-mailserver";
+        simple-nixos-mailserver.follows = "simple-nixos-mailserver";
+      };
+    };
+    nix-pre-commit-hooks = {
+      url = "github:cachix/pre-commit-hooks.nix";
+      inputs = {
+        flake-compat.follows = "flake-compat";
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    nixpkgs.url = "github:sivizius/nixpkgs/extend-fido2luks-config2";
+    peers = {
+      url = "git+ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?ref=secunet&dir=peers";
+      inputs = {
+        libconfig.follows = "libconfig";
+        libcore.follows = "libcore";
+        libintrinsics.follows = "libintrinsics";
+        libsecrets.follows = "libsecrets";
+        libstore.follows = "libstore";
+        libweb.follows = "libweb";
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
+    profiles = {
+      url = "git+ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?ref=secunet&dir=profiles";
+      inputs = {
+        libconfig.follows = "libconfig";
+        libcore.follows = "libcore";
+        libintrinsics.follows = "libintrinsics";
+        libsecrets.follows = "libsecrets";
+        libstore.follows = "libstore";
+        libweb.follows = "libweb";
+        nixos-hardware.follows = "nixos-hardware";
+        nixpkgs.follows = "nixpkgs";
+        services.follows = "services";
+      };
+    };
+    registries = {
+      url = "git+ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?ref=secunet&dir=registries";
+      inputs = {
+        fork-awesome.follows = "fork-awesome";
+        libconfig.follows = "libconfig";
+        libcore.follows = "libcore";
+        libintrinsics.follows = "libintrinsics";
+        libsecrets.follows = "libsecrets";
+        libstore.follows = "libstore";
+        libweb.follows = "libweb";
+        nixpkgs.follows = "nixpkgs";
+        wofi-unpatched.follows = "wofi-unpatched";
+      };
+    };
+    services = {
+      url = "git+ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?ref=secunet&dir=services";
+      inputs = {
+        libconfig.follows = "libconfig";
+        libcore.follows = "libcore";
+        libintrinsics.follows = "libintrinsics";
+        libsecrets.follows = "libsecrets";
+        libstore.follows = "libstore";
+        libweb.follows = "libweb";
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
+    simple-nixos-mailserver = {
+      url = "git+https://gitlab.com/simple-nixos-mailserver/nixos-mailserver.git";
+      inputs = {
+        flake-compat.follows = "flake-compat";
+        nixpkgs.follows = "nixpkgs";
+        nixpkgs-24_11.follows = "nixpkgs";
+      };
+    };
+    sivizius = {
+      url = "git+ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?ref=secunet&dir=users/sivizius";
+      inputs = {
+        libconfig.follows = "libconfig";
+        libcore.follows = "libcore";
+        libintrinsics.follows = "libintrinsics";
+        libsecrets.follows = "libsecrets";
+        libstore.follows = "libstore";
+        libweb.follows = "libweb";
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
+    wofi-unpatched = {
+      url = "git+ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?ref=secunet&dir=packages/wofi-unpatched";
+      inputs = {
+        libcore.follows = "libcore";
+        libintrinsics.follows = "libintrinsics";
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
   };
-  outputs = { self, home-manager, libconfig, libcore, libsecrets, libstore, libweb, modules, nix-pre-commit-hooks, peers, profiles, registries, sivizius, ... }:
+  outputs = { self, home-manager-wrapper, libconfig, libcore, libsecrets, libstore, libweb, modules, nix-pre-commit-hooks, peers, profiles, registries, sivizius, ... }:
     let
       config = libconfig.lib { inherit self; };
       core = libcore.lib { inherit self; debug.logLevel = "info"; };
@@ -38,7 +192,7 @@
           web = libweb.lib { inherit self; };
 
           dateTime = time.parseDateTime self.lastModifiedDate;
-          home-manager = home-manager.lib;
+          home-manager = home-manager-wrapper.lib;
           registries = registries';
           store = libstore.lib;
           users = {

@@ -10,7 +10,7 @@ with nix;
   evince
   #libreoffice
   pandoc
-  pdfpc
+  #pdfpc
   pdftk
   poppler_utils
   qpdf

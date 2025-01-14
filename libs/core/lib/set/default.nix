@@ -64,6 +64,18 @@ let
     self:
     (partitionByValue predicate self).right;
 
+  first = { ... } @ attrs:
+    let
+      name = list.headOr (names attrs) null;
+      value = attrs.${name};
+    in
+      if name != null then { inherit name value; }
+      else {};
+
+  firstName = { ... } @ attrs: (first attrs).name or null;
+
+  firstValue = { ... } @ attrs: (first attrs).value or null;
+
   # F -> S -> { T... } -> S
   # where
   #   F: S -> string -> T -> S,
@@ -230,6 +242,8 @@ let
 
   isInstanceOf = intrinsics.isAttrs;
 
+  length = { ... } @ attrs: list.length (names attrs);
+
   map = intrinsics.mapAttrs;
 
   mapFold = convert:
@@ -371,11 +385,12 @@ type "set"
 
   inherit all all' any any'
     callValues collect
-    filter filterByName filterKeys filterValue fold fold' foldValues
+    filter filterByName filterKeys filterValue first firstName firstValue fold fold' foldValues
     fromList fromListDefault fromListIMapped fromListIMappedValue fromListMapped fromListMappedValue
     generate get getOr getKeySource getSource
     hasAttribute
     ifOrEmpty intersect isInstanceOf
+    length
     map mapFold mapFold' mapNamesAndValues mapToList mapToListConcatted mapValues
     name names
     orNull

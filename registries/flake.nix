@@ -1,14 +1,64 @@
 {
   description = "Packages";
   inputs = {
-    fork-awesome.url = "github:sivizius/nixfiles/development?dir=packages/fork-awesome";
-    libconfig.url = "github:sivizius/nixfiles/development?dir=libs/config";
-    libcore.url = "github:sivizius/nixfiles/development?dir=libs/core";
-    nixpkgs.url = "github:sivizius/nixpkgs/extend-fido2luks-config";
-    redshift-wayland.url = "github:sivizius/nixfiles/development?dir=packages/redshift-wayland";
-    wofi-unpatched.url = "github:sivizius/nixfiles/development?dir=packages/wofi-unpatched";
+    fork-awesome = {
+      url = "git+ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?ref=secunet&dir=packages/fork-awesome";
+      inputs = {
+        libcore.follows = "libcore";
+        libintrinsics.follows = "libintrinsics";
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
+    libconfig = {
+      url = "git+ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?ref=secunet&dir=libs/config";
+      inputs = {
+        libcore.follows = "libcore";
+        libintrinsics.follows = "libintrinsics";
+        libsecrets.follows = "libsecrets";
+        libstore.follows = "libstore";
+        libweb.follows = "libweb";
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
+    libcore = {
+      url = "git+ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?ref=secunet&dir=libs/core";
+      inputs.libintrinsics.follows = "libintrinsics";
+    };
+    libintrinsics.url = "git+ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?ref=secunet&dir=libs/intrinsics";
+    libsecrets = {
+      url = "git+ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?ref=secunet&dir=libs/secrets";
+      inputs = {
+        libcore.follows = "libcore";
+        libintrinsics.follows = "libintrinsics";
+        libstore.follows = "libstore";
+      };
+    };
+    libstore = {
+      url = "git+ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?ref=secunet&dir=libs/store";
+      inputs = {
+        libcore.follows = "libcore";
+        libintrinsics.follows = "libintrinsics";
+      };
+    };
+    libweb = {
+      url = "git+ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?ref=secunet&dir=libs/web";
+      inputs = {
+        libcore.follows = "libcore";
+        libintrinsics.follows = "libintrinsics";
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
+    nixpkgs.url = "github:sivizius/nixpkgs/extend-fido2luks-config2";
+    wofi-unpatched = {
+      url = "git+ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?ref=secunet&dir=packages/wofi-unpatched";
+      inputs = {
+        libcore.follows = "libcore";
+        libintrinsics.follows = "libintrinsics";
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
   };
-  outputs = { self, fork-awesome, libconfig, libcore, nixpkgs, redshift-wayland, wofi-unpatched, ... }:
+  outputs = { self, fork-awesome, libconfig, libcore, nixpkgs, wofi-unpatched, ... }:
     let
       inherit (libconfig.lib { inherit self; }) packages;
       inherit (libcore.lib { inherit self; debug.logLevel = "info"; }) path set target;
@@ -17,11 +67,11 @@
         allowedNonSourcePackages = [
           "adoptopenjdk-hotspot-bin"
           "ant"
-          "discord"
-          "electron"
+          "cargo-bootstrap"
           "ghidra"
+          "go-1.21.0-linux-amd64-bootstrap"
+          "go"
           "gradle"
-          "hplip"
           "i2p"
           "iscan"
           "iscan-data"
@@ -30,23 +80,19 @@
           "iscan-gt-x770-bundle"
           "iscan-gt-x820-bundle"
           "iscan-nt-bundle"
-          "libreoffice"
-          "libreoffice-7.3.7.2-wrapped"
+          "iscan-perfection-v550-bundle"
           "pdftk"
-          "signal-desktop"
+          "rustc"
+          "rustc-bootstrap"
           "sof"
           "sof-firmware"
-          "spotify"
-          "tor-browser-bundle-bin"
+          "temurin-bin"
           "tor-browser"
           "vscodium"
           "wine"
         ];
         allowedUnfreePackages = [
-          "discord"
           "hopper"
-          "memtest86-efi"
-          "spotify"
           "hplip"
           "iscan"
           "iscan-data"
@@ -55,6 +101,7 @@
           "iscan-gt-x770-bundle"
           "iscan-gt-x820-bundle"
           "iscan-nt-bundle"
+          "iscan-perfection-v550-bundle"
         ];
       };
 
@@ -63,7 +110,6 @@
           system:
           {
             fork-awesome = fork-awesome.packages."${system}";
-            redshift-wayland = redshift-wayland.packages."${system}";
             wofi-unpatched = wofi-unpatched.packages."${system}";
           }
         );

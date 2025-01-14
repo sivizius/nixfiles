@@ -1,7 +1,7 @@
-{ hunspell, nix, ... }:
+{ hunspellDicts, nix, ... }:
 [
-  hunspell.en_GB-large
-  hunspell.de_DE
+  hunspellDicts.en_GB-large
+  hunspellDicts.de_DE
   nix.aspell
   nix.hunspell
 ]

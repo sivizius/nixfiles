@@ -1,4 +1,4 @@
-{ nix, texlive, ... }:
+{ nix, ... }:
 [
   ./python.nix
   ./rust.nix
@@ -13,8 +13,9 @@
   nix.pkg-config
   nix.stdenv
   #nix.swift
-  texlive.combined.scheme-full
+  #texlive.combined.scheme-full
   nix.nil
+  nix.nix-output-monitor
 
   nix.prusa-slicer
   nix.openscad

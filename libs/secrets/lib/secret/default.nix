@@ -224,7 +224,7 @@ let
 
   loadVariable = {
     toValue = { secret, vaultBasePath, ... }:
-      "@_${secret}_@";
+      "ext:_${secret}";
 
     type = "loadVariable";
 

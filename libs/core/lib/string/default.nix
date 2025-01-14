@@ -211,12 +211,12 @@ let
     let
       args = intrinsics.functionArgs value;
       value' = bool.select (args != { })
-        "{ ${concatCSV (mapArguments args)} }: ..."
-        "_: ...";
+        "({ ${concatCSV (mapArguments args)} }: ...)"
+        "(_: ...)";
     in
     if depth == maxDepth
     then
-      "_: ..."
+      "(_: ...)"
     else if display
     then
       bool.select legacy "<CODE>" value'
@@ -230,13 +230,22 @@ let
   formatList = { depth, indent, legacy, maxDepth, nice, ... } @ env:
     value:
     let
-      body = list.imap (formatValue' env) value;
+      body = list.imap (formatInnerValue' env) value;
+      first = formatInnerValue env 0 (list.head value);
+      simpleBody = "[ ${concatCSV body} ]";
+
+      valueIsSimpleList = isSimpleList value;
+      simpleBodyIsShort = length "${indent}${simpleBody}" < 64;
+
+      isSimple = valueIsSimpleList && simpleBodyIsShort;
     in
-    if depth == maxDepth then "[ ... ]"
-    else if value == [ ] then bool.select legacy "" "[]"
-    else if legacy then "[ ${concatMappedWords (value: "(${value})") body} ]"
-    else if nice then "[\n${indent}  ${concatWith ",\n${indent}  " body}\n${indent}]"
-    else "[ ${concatCSV body} ]";
+      if depth == maxDepth then "[ ... ]"
+      else if value == [ ] then bool.select legacy "" "[]"
+      else if legacy then "[ ${concatMappedWords (value: "(${value})") body} ]"
+      else if isSimple then simpleBody
+      else if list.length value == 1 then "[${first}]"
+      else if nice then "[\n${indent}  ${concatWith ",\n${indent}  " body}\n${indent}]"
+      else "[ ${concatCSV body} ]";
 
   formatNull = { legacy, ... }: _: bool.select legacy "" "null";
 
@@ -246,7 +255,7 @@ let
     else intrinsics.toString value; #"${value}";
 
   formatSet = { depth, display, indent, legacy, maxDepth, nice, ... } @ env:
-    value:
+    { ... } @ value:
     let
       body = set.mapToList format
         (
@@ -255,22 +264,12 @@ let
             (set.filterByName value value.__public__)
             (set.remove value [ "__public__" "__type__" "__variant__" ])
         );
-      format = key:
-        value:
-        let
-          key' = escapeKey key;
-        in
-        "${key'} = ${formatValue' env key' value};";
-      niceText = "{\n${indent}  ${concatWith "\n${indent}  " body}\n${indent}}";
-      niceText' =
-        if body != [ ]
-        then
-          bool.select
-            (type.getType value != null)
-            "<${typeName} ${niceText}>"
-            niceText
-        else
-          "{}";
+      format = formatSetValue env;
+      isTyped = type.getType value != null;
+      niceText = bool.select (isSimpleSet value)
+        "{ ${list.head body} }"
+        "{\n${indent}  ${concatWith "\n${indent}  " body}\n${indent}}";
+      niceText' = bool.select isTyped "<${typeName} ${niceText}>" niceText;
       typeName = type.format value;
       value' =
         if debug.Debug.isInstanceOf value then "<Debug>"
@@ -297,6 +296,30 @@ let
               data = value;
             }
       );
+
+  formatSetValue =
+    { attrPath, depth, seen, ... } @ env:
+    key:
+    value:
+      let
+        escapedKey = escapeKey key;
+
+        isSet = set.isInstanceOf value;
+        isTyped = type.getType value != null;
+        isSingleton = set.length value == 1;
+
+        nameValuePair = set.first value;
+        key' = nameValuePair.name;
+        value' = nameValuePair.value;
+
+        env' = env // {
+          attrPath = attrPath ++ [ escapedKey ];
+          depth = depth + 1;
+        };
+      in
+        bool.select (isSet && !isTyped && isSingleton)
+          "${escapedKey}.${formatSetValue env' key' value'}"
+          "${escapedKey} = ${formatInnerValue' env escapedKey value};";
 
   formatString = { depth, display, indent, maxDepth, nice, ... }:
     value:
@@ -367,7 +390,7 @@ let
 
       inherit (expression.tryEval input) success value;
       value' =
-        if doNotFormat then "..."
+        if doNotFormat then "<...>"
         else if !success then valueIfUnsuccessful
         else if list.find value seen then "<recursion>"
         else if depth >= veryDeep.depth then valueIfVeryDeep
@@ -379,17 +402,16 @@ let
     else
       value';
 
-  formatValue' = { attrPath, depth, indent, seen, ... } @ env:
+  formatInnerValue = { attrPath, depth, ... } @ env:
     key:
-    formatValue
-      (
-        env
-        // {
+      formatValue (
+        env // {
           attrPath = attrPath ++ [ key ];
           depth = depth + 1;
-          indent = "${indent}  ";
         }
       );
+
+  formatInnerValue' = { indent, ... } @ env: formatInnerValue (env // { indent = "${indent}  "; });
 
   from = format { };
 
@@ -472,6 +494,25 @@ let
   isEmpty/* :  string -> bool */ = text: text == "";
 
   isInstanceOf = intrinsics.isString or (value: type.getPrimitive value == "string");
+
+  isSimpleList = list.all isSimpleValue;
+
+  isSimpleSet = { ... } @ value: set.length value < 2 && isSimpleValue (set.firstValue value);
+
+  isSimpleString = value: (match ".*\n.*" value) == null && length value < 32;
+
+  isSimpleValue = value:
+    {
+      bool = true;
+      float = true;
+      int = true;
+      list = isSimpleList value;
+      null = true;
+      # store paths are very long
+      path = false;
+      set = isSimpleSet value;
+      string = isSimpleString value;
+    }.${type.getPrimitive value} or false;
 
   length/* :  string -> int */ = intrinsics.stringLength
     or  (

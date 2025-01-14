@@ -1,11 +1,35 @@
 {
   description = "Configure and Deploy NixOS";
   inputs = {
-    libcore.url = "github:sivizius/nixfiles/development?dir=libs/core";
-    libsecrets.url = "github:sivizius/nixfiles/development?dir=libs/secrets";
-    libstore.url = "github:sivizius/nixfiles/development?dir=libs/store";
-    libweb.url = "github:sivizius/nixfiles/development?dir=libs/web";
-    nixpkgs.url = "github:sivizius/nixpkgs/extend-fido2luks-config";
+    libcore = {
+      url = "git+ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?ref=secunet&dir=libs/core";
+      inputs.libintrinsics.follows = "libintrinsics";
+    };
+    libintrinsics.url = "git+ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?ref=secunet&dir=libs/intrinsics";
+    libsecrets = {
+      url = "git+ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?ref=secunet&dir=libs/secrets";
+      inputs = {
+        libcore.follows = "libcore";
+        libintrinsics.follows = "libintrinsics";
+        libstore.follows = "libstore";
+      };
+    };
+    libstore = {
+      url = "git+ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?ref=secunet&dir=libs/store";
+      inputs = {
+        libcore.follows = "libcore";
+        libintrinsics.follows = "libintrinsics";
+      };
+    };
+    libweb = {
+      url = "git+ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?ref=secunet&dir=libs/web";
+      inputs = {
+        libcore.follows = "libcore";
+        libintrinsics.follows = "libintrinsics";
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
+    nixpkgs.url = "github:sivizius/nixpkgs/extend-fido2luks-config2";
   };
   outputs = { self, libcore, libsecrets, libstore, libweb, nixpkgs, ... }:
     let

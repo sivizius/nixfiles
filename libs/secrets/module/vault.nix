@@ -65,7 +65,7 @@ let
             list.map
               (
                 variable:
-                ''echo "_${variable}_=\"$(${utils}/cat "${vaultBasePath}/${variable}")\"" >> "${fileName}"''
+                ''echo "_${variable}=$(${utils}/cat "${vaultBasePath}/${variable}")" >> "${fileName}"''
               )
               variables
           )

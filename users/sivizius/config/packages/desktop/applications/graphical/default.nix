@@ -5,7 +5,7 @@ with nix;
   #custom.redshift-wayland
   system-config-printer
   vscodium
-  xournal
+  #xournal
   ./browser.nix
   ./chemistry.nix
   ./darkweb.nix

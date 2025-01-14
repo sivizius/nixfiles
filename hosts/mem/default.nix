@@ -2,8 +2,10 @@
 Host "mem (from hebrew מודיעין: intelligence) is installed on a mysterious laptop."
 {
   config = [
+    ./rsyslogd.nix
     ./config.nix
     ./proxy.nix
+    ./dhcp-enp0s31f6.nix
     ./static-enp0s31f6.nix
   ];
   devices = {
@@ -23,6 +25,9 @@ Host "mem (from hebrew מודיעין: intelligence) is installed on a mysteriou
     peers = with peers;
       [
         deutsche-bahn
+        fluepke.wireless
+        nix-community
+        seven
         sivizius
       ];
     wireless = {

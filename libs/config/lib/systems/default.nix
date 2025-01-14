@@ -17,6 +17,7 @@ let
                     text = "registries";
                     data = set.names registries;
                     nice = true;
+                    when = false;
                   }
                   {
                     hostPlatform = string hostSystem;

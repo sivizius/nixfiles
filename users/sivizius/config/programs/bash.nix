@@ -1,7 +1,7 @@
 { ... }:
 {
   historyControl = [ "erasedups" "ignoredups" ];
-  historyFile = "$HOME/.cache/bash-history.log";
+  historyFile = "~/.cache/bash-history.log";
   historyFileSize = 65536;
   historyIgnore = [
     "cd"

@@ -4,7 +4,7 @@
       configuration = { secret, ... }:
         {
           networking.wireless.networks = {
-            "Webbot".psk = secret.decryptVariable' "wireless" ./Webbot.asc;
+            "Webbot".pskRaw = secret.decryptVariable' "wireless" ./Webbot.asc;
           };
         };
     };

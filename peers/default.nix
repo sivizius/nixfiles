@@ -6,6 +6,8 @@
   google = ./google;
   hetzner = ./hetzner;
   mum = ./mum;
+  nix-community = ./nix-community;
   petabytedev = ./petabytedev;
+  seven = ./seven;
   sivizius = ./sivizius;
 }

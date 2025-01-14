@@ -1,11 +1,13 @@
-{ gnome, nix, ... }:
-[
-  gnome.adwaita-icon-theme
-  gnome.nautilus
-  nix.atk
-  #nix.gdk-pixbuf
-  nix.gtk3
-  nix.hicolor-icon-theme
-  nix.libappindicator-gtk3
-  nix.pango
+{ nix, ... }:
+with nix; [
+  adwaita-icon-theme
+  hicolor-icon-theme
+
+  atk
+  nautilus
+  #gdk-pixbuf
+  gtk3
+  libappindicator-gtk3
+  pango
+  sushi
 ]

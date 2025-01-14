@@ -1,8 +1,12 @@
 {
   description = "Ghidra-Decompiler for Cutter";
   inputs = {
-    libcore.url = "github:sivizius/nixfiles/development?dir=libs/core";
-    nixpkgs.url = "github:sivizius/nixpkgs/extend-fido2luks-config";
+    libcore = {
+      url = "git+ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?ref=secunet&dir=libs/core";
+      inputs.libintrinsics.follows = "libintrinsics";
+    };
+    libintrinsics.url = "git+ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?ref=secunet&dir=libs/intrinsics";
+    nixpkgs.url = "github:sivizius/nixpkgs/extend-fido2luks-config2";
   };
   outputs = { self, libcore, nixpkgs, ... }:
     let

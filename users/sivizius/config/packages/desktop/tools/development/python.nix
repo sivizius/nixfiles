@@ -3,7 +3,7 @@ with  python3;
 [
   ipython
   python
-  pwntools
+  #pwntools
   pygments
   pyserial
 ]

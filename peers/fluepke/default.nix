@@ -24,9 +24,9 @@
       configuration = { secret, ... }:
         {
           networking.wireless.networks = {
-            Paketschleuder.psk = secret.decryptVariable' "wireless" ./Paketschleuder.asc;
-            Vodafone-F88C.psk = secret.decryptVariable' "wireless" ./Vodafone-F88C.asc;
-            "wifi.fluep.ke".psk = secret.decryptVariable' "wireless" ./wifi.fluep.ke.asc;
+            Paketschleuder.pskRaw = secret.decryptVariable' "wireless" ./Paketschleuder.asc;
+#            Vodafone-F88C.pskRaw = secret.decryptVariable' "wireless" ./Vodafone-F88C.asc;
+#            "wifi.fluep.ke".pskRaw = secret.decryptVariable' "wireless" ./wifi.fluep.ke.asc;
           };
         };
     };

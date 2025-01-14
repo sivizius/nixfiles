@@ -10,6 +10,7 @@
   nginx = ./nginx;
   openssh = ./openssh;
   printing = ./printing;
+  pulseaudio = ./pulseaudio;
   restic = ./restic;
   simple-nix-mail = ./simple-nix-mail;
   static = ./static;

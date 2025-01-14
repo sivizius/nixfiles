@@ -58,8 +58,8 @@ let
     message:
     debug.panic "defaultHandleEvalIssue"
       {
-        text = reason;
-        data = message;
+        text = [ reason message ];
+        #data = message;
       }
       null;
 

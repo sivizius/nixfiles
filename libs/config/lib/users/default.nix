@@ -109,13 +109,16 @@ let
           users.users.${user.name} = configuration.host
           // {
             isNormalUser = true;
-            openssh.authorizedKeys = {
+            openssh.authorizedKeys = let
+              authorizedKeys = user.keys.${host.network.hostName} or [ ];
+            in {
               keys = debug.info [ "UserConfiguration" "openssh.authorizedKeys" ]
                 {
                   text = "${user.name}@${host.network.hostName}";
                   show = true;
+                  when = authorizedKeys != [];
                 }
-                user.keys.${host.network.hostName} or [ ];
+                authorizedKeys;
             };
           };
         }

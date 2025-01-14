@@ -2,11 +2,6 @@
 {
   enable = profile.isDesktop;
   settings = {
-    font.normal = {
-      family = "Noto Sans Mono";
-      size = 9.0;
-    };
-
     colors = {
       primary = {
         background = "0x000000";
@@ -33,7 +28,21 @@
         white = "0xe2e2e2";
       };
     };
+
+    font = {
+      normal = {
+        family = "Noto Sans Mono";
+        style = "Regular";
+      };
+      bold.style = "Bold";
+      #bold_italic.style = "ExtraBold";
+      italic.style = "Thin";
+      size = 9.0;
+    };
+
     window = {
+      decorations = "None";
+      decorations_theme_variant = "Dark";
       opacity = 0.6;
     };
   };

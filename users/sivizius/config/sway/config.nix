@@ -82,7 +82,8 @@ in
     [
       { command = "${registries.nix.firefox}/bin/firefox"; always = false; }
       #{ command = "${registries.nix.schildichat-desktop}/bin/schildichat-desktop";    always  = false;  }
-      { command = "${registries.nix.nheko}/bin/nheko"; always = false; }
+      #{ command = "${registries.nix.nheko}/bin/nheko"; always = false; }
+      { command = "${registries.nix.fractal}/bin/fractal"; always = false; }
       { command = "${terminal}  -t ranger   -e ${registries.nix.ranger}/bin/ranger"; always = false; }
       { command = "${bar}"; always = false; }
       { command = "${lockScreen}"; always = true; }

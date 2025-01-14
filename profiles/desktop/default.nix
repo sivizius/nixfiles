@@ -20,22 +20,35 @@ Profile "Desktop."
           swaylock = { /* empty */ };
         };
 
+        # GNOME crypto services (daemon and tools)
+        services.dbus.packages = [ registries.nix.gcr ];
+
         # For Screen Sharing
         services.pipewire.enable = true;
         xdg = {
           portal = {
             enable = true;
-            extraPortals = with registries.nix; [
+            configPackages = with registries.nix; [
               xdg-desktop-portal-wlr
               xdg-desktop-portal-gtk
             ];
           };
         };
 
+        # Compress Volatile Memory With zram
+        zramSwap = {
+          enable = true;
+          algorithm = "zstd";
+          memoryMax = null;
+          #memoryPercent = 50;
+          #priority = 5;
+          swapDevices = 1;
+          #memoryPercent = null;
+        };
       }
     )
   ];
   isDesktop = true;
   parents = with profiles; [ common ];
-  services = with services; [ printing gnome-keyring yubikey-touch-detector ];
+  services = with services; [ printing gnome-keyring pulseaudio yubikey-touch-detector ];
 }

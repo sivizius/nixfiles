@@ -5,7 +5,7 @@
         {
           networking.wireless.networks = {
             "SiviPhone" = {
-              psk = secret.decryptVariable' "wireless" ./SiviPhone.asc;
+              pskRaw = secret.decryptVariable' "wireless" ./SiviPhone.asc;
               authProtocols = [ "WPA-PSK" "WPA-EAP" "FT-PSK" "FT-EAP" ];
             };
           };

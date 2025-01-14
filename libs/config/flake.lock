@@ -1,0 +1,157 @@
+{
+  "nodes": {
+    "libcore": {
+      "inputs": {
+        "libintrinsics": [
+          "libintrinsics"
+        ]
+      },
+      "locked": {
+        "dir": "libs/core",
+        "lastModified": 1736869116,
+        "narHash": "sha256-860UMdxeGnQJKebnDgDbpZRSntMR2VUyB92W0IfiPI0=",
+        "ref": "secunet",
+        "rev": "7fdbccafb026950590157dccc0f15f20a51c2112",
+        "revCount": 4,
+        "type": "git",
+        "url": "ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?dir=libs/core"
+      },
+      "original": {
+        "dir": "libs/core",
+        "ref": "secunet",
+        "type": "git",
+        "url": "ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?dir=libs/core"
+      }
+    },
+    "libintrinsics": {
+      "locked": {
+        "dir": "libs/intrinsics",
+        "lastModified": 1736869116,
+        "narHash": "sha256-860UMdxeGnQJKebnDgDbpZRSntMR2VUyB92W0IfiPI0=",
+        "ref": "secunet",
+        "rev": "7fdbccafb026950590157dccc0f15f20a51c2112",
+        "revCount": 4,
+        "type": "git",
+        "url": "ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?dir=libs/intrinsics"
+      },
+      "original": {
+        "dir": "libs/intrinsics",
+        "ref": "secunet",
+        "type": "git",
+        "url": "ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?dir=libs/intrinsics"
+      }
+    },
+    "libsecrets": {
+      "inputs": {
+        "libcore": [
+          "libcore"
+        ],
+        "libintrinsics": [
+          "libintrinsics"
+        ],
+        "libstore": [
+          "libstore"
+        ]
+      },
+      "locked": {
+        "dir": "libs/secrets",
+        "lastModified": 1736869116,
+        "narHash": "sha256-860UMdxeGnQJKebnDgDbpZRSntMR2VUyB92W0IfiPI0=",
+        "ref": "secunet",
+        "rev": "7fdbccafb026950590157dccc0f15f20a51c2112",
+        "revCount": 4,
+        "type": "git",
+        "url": "ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?dir=libs/secrets"
+      },
+      "original": {
+        "dir": "libs/secrets",
+        "ref": "secunet",
+        "type": "git",
+        "url": "ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?dir=libs/secrets"
+      }
+    },
+    "libstore": {
+      "inputs": {
+        "libcore": [
+          "libcore"
+        ],
+        "libintrinsics": [
+          "libintrinsics"
+        ]
+      },
+      "locked": {
+        "dir": "libs/store",
+        "lastModified": 1736869116,
+        "narHash": "sha256-860UMdxeGnQJKebnDgDbpZRSntMR2VUyB92W0IfiPI0=",
+        "ref": "secunet",
+        "rev": "7fdbccafb026950590157dccc0f15f20a51c2112",
+        "revCount": 4,
+        "type": "git",
+        "url": "ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?dir=libs/store"
+      },
+      "original": {
+        "dir": "libs/store",
+        "ref": "secunet",
+        "type": "git",
+        "url": "ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?dir=libs/store"
+      }
+    },
+    "libweb": {
+      "inputs": {
+        "libcore": [
+          "libcore"
+        ],
+        "libintrinsics": [
+          "libintrinsics"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "dir": "libs/web",
+        "lastModified": 1736869116,
+        "narHash": "sha256-860UMdxeGnQJKebnDgDbpZRSntMR2VUyB92W0IfiPI0=",
+        "ref": "secunet",
+        "rev": "7fdbccafb026950590157dccc0f15f20a51c2112",
+        "revCount": 4,
+        "type": "git",
+        "url": "ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?dir=libs/web"
+      },
+      "original": {
+        "dir": "libs/web",
+        "ref": "secunet",
+        "type": "git",
+        "url": "ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?dir=libs/web"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1736862976,
+        "narHash": "sha256-0VJA0xvDWx1UaPLx0I6IlPtWpEk/QOGph5HLb0S6130=",
+        "owner": "sivizius",
+        "repo": "nixpkgs",
+        "rev": "39e1f3726f1187dfcc6e6c9615e841ffc7fe7d70",
+        "type": "github"
+      },
+      "original": {
+        "owner": "sivizius",
+        "ref": "extend-fido2luks-config2",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "libcore": "libcore",
+        "libintrinsics": "libintrinsics",
+        "libsecrets": "libsecrets",
+        "libstore": "libstore",
+        "libweb": "libweb",
+        "nixpkgs": "nixpkgs"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}

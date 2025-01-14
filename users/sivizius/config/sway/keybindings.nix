@@ -98,7 +98,7 @@ let
   browser = qutebrowser;
   mod = modifier;
 in
-debug.info "selectNetwork" "»${selectNetwork}«"
+#debug.info "selectNetwork" "»${selectNetwork}«"
 {
   # Execute Stuff
   "${mod}+z" = "exec ${bluetoothConnect}";

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-nix "$@" \
+"$@" \
   --override-input home-manager                                                                         ../home-manager               \
   --override-input home-manager/libcore                                                                 ../libs/core                  \
   --override-input home-manager/libcore/libintrinsics                                                   ../libs/intrinsics            \

@@ -4,10 +4,12 @@ let
   inherit (core) path;
 in
 {
-  #abook = path.import ./abook         env;
-
   alacritty = path.import ./alacritty.nix env;
   bash = path.import ./bash.nix env;
+  direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+  };
   firefox = path.import ./firefox.nix env;
   git = path.import ./git.nix env;
   htop = path.import ./htop.nix env;

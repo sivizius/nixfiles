@@ -4,7 +4,7 @@
   extraConfig.init.defaultBranch = "development";
   delta.enable = true;
   signing = {
-    key = "CC1862DD37260C5EF4DA26C79CB027E330D31FB0";
+    key = "9ECC4999AE01F9906C80B1BB5516370FA26C395C";
     signByDefault = true;
   };
   userName = user.realName;

@@ -1,4 +1,4 @@
-{ core, chemistry, ... } @ libs:
+{ core, chemistry, ... }@libs:
 let
   inherit (core) library;
   inherit (chemistry) compound;
@@ -137,4 +137,4 @@ in
 // library.import ./nucleicacids.nix libs
 // library.import ./polymers.nix libs
 // library.import ./silanes.nix libs
-  // library.import ./solvents.nix libs
+// library.import ./solvents.nix libs

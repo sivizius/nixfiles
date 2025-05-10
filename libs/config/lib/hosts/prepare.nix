@@ -1,4 +1,15 @@
-{ about, configurations, core, devices, networks, profiles, systems, users, versions, ... }:
+{
+  about,
+  configurations,
+  core,
+  devices,
+  networks,
+  profiles,
+  systems,
+  users,
+  versions,
+  ...
+}:
 environment:
 let
   inherit (configurations) Configuration';
@@ -6,21 +17,20 @@ let
 
   ConfigConfiguration = Configuration' "Config";
 
-  fail = hostName:
-    fieldName:
+  fail =
+    hostName: fieldName:
     debug.panic "prepareHost" "Field `${fieldName}` of host `${hostName}` missing!";
 
   prepareAbout = about.prepare environment;
-  prepareConfig = { source, ... }:
-    list.map
-      (
-        fileName:
-        ConfigConfiguration
-          {
-            configuration = path.import fileName;
-            source = source fileName;
-          }
-      );
+  prepareConfig =
+    { source, ... }:
+    list.map (
+      fileName:
+      ConfigConfiguration {
+        configuration = path.import fileName;
+        source = source fileName;
+      }
+    );
   prepareDevices = devices.prepare environment;
   prepareNetwork = networks.prepare environment;
   prepareProfile = profiles.prepare environment;
@@ -28,18 +38,19 @@ let
   prepareUsers = users.prepare environment;
   prepareVersion = versions.prepare environment;
 in
-{ about
-, config ? [ ]
-, devices ? fail host.name "devices"
-, name
-, network ? fail host.name "network"
-, profile ? fail host.name "profile"
-, source
-, system ? fail host.name "system"
-, users ? fail host.name "users"
-, version ? fail host.name "version"
-, ...
-} @ host:
+{
+  about,
+  config ? [ ],
+  devices ? fail host.name "devices",
+  name,
+  network ? fail host.name "network",
+  profile ? fail host.name "profile",
+  source,
+  system ? fail host.name "system",
+  users ? fail host.name "users",
+  version ? fail host.name "version",
+  ...
+}@host:
 let
   env = {
     inherit name source;

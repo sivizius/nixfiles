@@ -1,3 +1,10 @@
 { core, ... }:
-{ decrypt, encrypt, helpers, key, serde, ... }:
+{
+  decrypt,
+  encrypt,
+  helpers,
+  key,
+  serde,
+  ...
+}:
 { }

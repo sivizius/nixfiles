@@ -1,9 +1,16 @@
 { core, systems, ... }:
 let
-  inherit (core) debug string time type version;
+  inherit (core)
+    debug
+    string
+    time
+    type
+    version
+    ;
   inherit (systems) SystemConfiguration;
 
-  config = stateVersion:
+  config =
+    stateVersion:
     { dateTime, host, ... }:
     {
       boot.loader.grub = {
@@ -14,24 +21,19 @@ let
       };
     };
 
-  collect = { source, version, ... }:
+  collect =
+    { source, version, ... }:
     [
-      (
-        SystemConfiguration
-          {
-            configuration = config version;
-            inherit source;
-          }
-      )
+      (SystemConfiguration {
+        configuration = config version;
+        inherit source;
+      })
     ];
 
-  prepare = environment:
-    host:
-    version:
-    {
-      version = string.expect version;
-      source = host.source "version";
-    };
+  prepare = environment: host: version: {
+    version = string.expect version;
+    source = host.source "version";
+  };
 in
 {
   inherit collect prepare;

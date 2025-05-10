@@ -32,22 +32,28 @@ let
     "Dezember"
   ];
 
-  standard = default
-    // {
-    "formatDate" = { day, month, year, ... }:
+  standard = default // {
+    "formatDate" =
+      {
+        day,
+        month,
+        year,
+        ...
+      }:
       "${string day}. ${list.get months month} ${string year}";
     "colour" = "Farbe";
     "today" = "heute";
   };
 in
 {
-  translate = locale:
-    snippet:
+  translate =
+    locale: snippet:
     let
-      translations = {
-        "DE" = standard;
-      }.${locale.territory}
-        or (error.panic "Unknown Territory »${locale.territory}«!");
+      translations =
+        {
+          "DE" = standard;
+        }
+        .${locale.territory} or (error.panic "Unknown Territory »${locale.territory}«!");
     in
-      translations.${snippet} or (error.panic "Unknown Snippet »${snippet}«!");
+    translations.${snippet} or (error.panic "Unknown Snippet »${snippet}«!");
 }

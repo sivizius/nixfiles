@@ -50,15 +50,25 @@
     };
     nixpkgs.url = "github:sivizius/nixpkgs/extend-fido2luks-config2";
   };
-  outputs = { self, fork-awesome, libconfig, libcore, nixpkgs, ... }:
+  outputs =
+    {
+      self,
+      fork-awesome,
+      libconfig,
+      libcore,
+      nixpkgs,
+      ...
+    }:
     let
-      core = libcore.lib { inherit self; debug.logLevel = "info"; };
+      core = libcore.lib {
+        inherit self;
+        debug.logLevel = "info";
+      };
     in
     {
-      lib = core.path.import ./.
-        {
-          inherit core fork-awesome nixpkgs;
-          inherit (libconfig) stdenv;
-        };
+      lib = core.path.import ./. {
+        inherit core fork-awesome nixpkgs;
+        inherit (libconfig) stdenv;
+      };
     };
 }

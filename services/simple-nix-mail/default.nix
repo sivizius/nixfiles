@@ -1,6 +1,6 @@
-Service "Simple Mail Delivery Agent"
-{
-  configuration = { network, ... }:
+Service "Simple Mail Delivery Agent" {
+  configuration =
+    { network, ... }:
     let
       inherit (network) domain;
     in

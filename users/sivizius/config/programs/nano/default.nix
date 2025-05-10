@@ -21,7 +21,10 @@
     matchBrackets = "(<[{»›)>]}«‹";
     multiBuffer = true;
     noHelp = true;
-    numberColour = { fg = "brightyellow"; bg = "normal"; };
+    numberColour = {
+      fg = "brightyellow";
+      bg = "normal";
+    };
     punctuation = "–;:,.¿?¡!";
     regexSearch = true;
     showCursor = true;

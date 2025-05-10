@@ -96,9 +96,26 @@ in
     availability = { };
     hazmat = {
       ghs = {
-        hazards = [ 310 330 341 351 411 ];
-        precautions = [ 260 284 320 361 405 501 ];
-        pictograms = [ ghs.pictogram.Skull ghs.pictogram.Health ghs.pictogram.Pollu ];
+        hazards = [
+          310
+          330
+          341
+          351
+          411
+        ];
+        precautions = [
+          260
+          284
+          320
+          361
+          405
+          501
+        ];
+        pictograms = [
+          ghs.pictogram.Skull
+          ghs.pictogram.Health
+          ghs.pictogram.Pollu
+        ];
         signal = ghs.signal.Danger;
       };
       kemler = 60;
@@ -119,9 +136,26 @@ in
     availability = { };
     hazmat = {
       ghs = {
-        hazards = [ 350 341 319 315 336 412 ];
-        precautions = [ 201 261 273 280 "305+351+338" "308+313" ];
-        pictograms = [ ghs.pictogram.Health ghs.pictogram.Exclam ];
+        hazards = [
+          350
+          341
+          319
+          315
+          336
+          412
+        ];
+        precautions = [
+          201
+          261
+          273
+          280
+          "305+351+338"
+          "308+313"
+        ];
+        pictograms = [
+          ghs.pictogram.Health
+          ghs.pictogram.Exclam
+        ];
         signal = ghs.signal.Danger;
       };
       kemler = 60;
@@ -142,9 +176,27 @@ in
     availability = { };
     hazmat = {
       ghs = {
-        hazards = [ 225 350 302 319 335 315 ];
-        precautions = [ 201 210 "302+352" "304+340" "305+351+338" "308+313" ];
-        pictograms = [ ghs.pictogram.Flame ghs.pictogram.Health ghs.pictogram.Exclam ];
+        hazards = [
+          225
+          350
+          302
+          319
+          335
+          315
+        ];
+        precautions = [
+          201
+          210
+          "302+352"
+          "304+340"
+          "305+351+338"
+          "308+313"
+        ];
+        pictograms = [
+          ghs.pictogram.Flame
+          ghs.pictogram.Health
+          ghs.pictogram.Exclam
+        ];
         signal = ghs.signal.Danger;
       };
     };
@@ -170,10 +222,26 @@ in
     };
     hazmat = {
       ghs = {
-        hazards = [ 225 319 335 351 ];
-        euHazards = [ 19 66 ];
-        precautions = [ 210 261 "305+351+338" ];
-        pictograms = [ ghs.pictogram.Flame ghs.pictogram.Health ghs.pictogram.Exclam ];
+        hazards = [
+          225
+          319
+          335
+          351
+        ];
+        euHazards = [
+          19
+          66
+        ];
+        precautions = [
+          210
+          261
+          "305+351+338"
+        ];
+        pictograms = [
+          ghs.pictogram.Flame
+          ghs.pictogram.Health
+          ghs.pictogram.Exclam
+        ];
         signal = ghs.signal.Danger;
       };
       iso7010 = {
@@ -203,8 +271,15 @@ in
     availability = { };
     hazmat = {
       ghs = {
-        hazards = [ 302 319 ];
-        precautions = [ "301+312" 330 "305+351+338" ];
+        hazards = [
+          302
+          319
+        ];
+        precautions = [
+          "301+312"
+          330
+          "305+351+338"
+        ];
         pictograms = [ ghs.pictogram.Exclam ];
         signal = ghs.signal.Warning;
       };
@@ -231,9 +306,27 @@ in
     };
     hazmat = {
       ghs = {
-        hazards = [ 226 302 318 315 335 336 ];
-        precautions = [ 210 280 "302+352" "304+340" "305+351+338" "308+313" ];
-        pictograms = [ ghs.pictogram.Flame ghs.pictogram.Acid ghs.pictogram.Exclam ];
+        hazards = [
+          226
+          302
+          318
+          315
+          335
+          336
+        ];
+        precautions = [
+          210
+          280
+          "302+352"
+          "304+340"
+          "305+351+338"
+          "308+313"
+        ];
+        pictograms = [
+          ghs.pictogram.Flame
+          ghs.pictogram.Acid
+          ghs.pictogram.Exclam
+        ];
         signal = ghs.signal.Danger;
       };
       kemler = 33;
@@ -254,9 +347,23 @@ in
     availability = { };
     hazmat = {
       ghs = {
-        hazards = [ "225‐318" 336 ];
-        precautions = [ 210 240 280 "305+351+338" 313 "403+233" ];
-        pictograms = [ ghs.pictogram.Flame ghs.pictogram.Acid ghs.pictogram.Exclam ];
+        hazards = [
+          "225‐318"
+          336
+        ];
+        precautions = [
+          210
+          240
+          280
+          "305+351+338"
+          313
+          "403+233"
+        ];
+        pictograms = [
+          ghs.pictogram.Flame
+          ghs.pictogram.Acid
+          ghs.pictogram.Exclam
+        ];
         signal = ghs.signal.Danger;
       };
       kemler = 33;
@@ -284,9 +391,21 @@ in
     };
     hazmat = {
       ghs = {
-        hazards = [ 226 319 335 336 ];
-        precautions = [ 210 "304+340" "305+351+338" ];
-        pictograms = [ ghs.pictogram.Flame ghs.pictogram.Exclam ];
+        hazards = [
+          226
+          319
+          335
+          336
+        ];
+        precautions = [
+          210
+          "304+340"
+          "305+351+338"
+        ];
+        pictograms = [
+          ghs.pictogram.Flame
+          ghs.pictogram.Exclam
+        ];
         signal = ghs.signal.Danger;
       };
       kemler = 33;
@@ -307,9 +426,24 @@ in
     availability = { };
     hazmat = {
       ghs = {
-        hazards = [ 226 335 315 318 336 ];
-        precautions = [ 210 280 "302+352" "305+351+338" ];
-        pictograms = [ ghs.pictogram.Flame ghs.pictogram.Acid ghs.pictogram.Exclam ];
+        hazards = [
+          226
+          335
+          315
+          318
+          336
+        ];
+        precautions = [
+          210
+          280
+          "302+352"
+          "305+351+338"
+        ];
+        pictograms = [
+          ghs.pictogram.Flame
+          ghs.pictogram.Acid
+          ghs.pictogram.Exclam
+        ];
         signal = ghs.signal.Danger;
       };
       kemler = 33;
@@ -330,9 +464,22 @@ in
     availability = { };
     hazmat = {
       ghs = {
-        hazards = [ "225​" "​319" 336 ];
-        precautions = [ 210 233 240 "305+351+338" "403+235" ];
-        pictograms = [ ghs.pictogram.Flame ghs.pictogram.Exclam ];
+        hazards = [
+          "225​"
+          "​319"
+          336
+        ];
+        precautions = [
+          210
+          233
+          240
+          "305+351+338"
+          "403+235"
+        ];
+        pictograms = [
+          ghs.pictogram.Flame
+          ghs.pictogram.Exclam
+        ];
         signal = ghs.signal.Danger;
       };
       kemler = 33;
@@ -353,10 +500,27 @@ in
     availability = { };
     hazmat = {
       ghs = {
-        hazards = [ 225 319 336 ];
+        hazards = [
+          225
+          319
+          336
+        ];
         euHazards = [ 66 ];
-        precautions = [ 210 "305+351+338" { id = "370+378"; dots = { deu = "Löschpulver oder Trockensand"; }; } "403+235" ];
-        pictograms = [ ghs.pictogram.Flame ghs.pictogram.Exclam ];
+        precautions = [
+          210
+          "305+351+338"
+          {
+            id = "370+378";
+            dots = {
+              deu = "Löschpulver oder Trockensand";
+            };
+          }
+          "403+235"
+        ];
+        pictograms = [
+          ghs.pictogram.Flame
+          ghs.pictogram.Exclam
+        ];
         signal = ghs.signal.Danger;
       };
       kemler = 33;
@@ -377,10 +541,26 @@ in
     availability = { };
     hazmat = {
       ghs = {
-        hazards = [ 226 332 315 319 335 ];
+        hazards = [
+          226
+          332
+          315
+          319
+          335
+        ];
         euHazards = [ 66 ];
-        precautions = [ 210 280 "304+340" "302+352" "332+313" "337+313" ];
-        pictograms = [ ghs.pictogram.Flame ghs.pictogram.Exclam ];
+        precautions = [
+          210
+          280
+          "304+340"
+          "302+352"
+          "332+313"
+          "337+313"
+        ];
+        pictograms = [
+          ghs.pictogram.Flame
+          ghs.pictogram.Exclam
+        ];
         signal = ghs.signal.Warning;
       };
       kemler = 33;
@@ -401,9 +581,24 @@ in
     availability = { };
     hazmat = {
       ghs = {
-        hazards = [ 302 311 332 373 411 ];
-        precautions = [ 280 273 "308+313" "302+352" ];
-        pictograms = [ ghs.pictogram.Skull ghs.pictogram.Health ghs.pictogram.Pollu ];
+        hazards = [
+          302
+          311
+          332
+          373
+          411
+        ];
+        precautions = [
+          280
+          273
+          "308+313"
+          "302+352"
+        ];
+        pictograms = [
+          ghs.pictogram.Skull
+          ghs.pictogram.Health
+          ghs.pictogram.Pollu
+        ];
         signal = ghs.signal.Danger;
       };
       kemler = 60;
@@ -424,9 +619,22 @@ in
     availability = { };
     hazmat = {
       ghs = {
-        hazards = [ 226 290 314 ];
-        precautions = [ 210 280 "301+330+331" "305+351+338" "308+313" ];
-        pictograms = [ ghs.pictogram.Flame ghs.pictogram.Acid ];
+        hazards = [
+          226
+          290
+          314
+        ];
+        precautions = [
+          210
+          280
+          "301+330+331"
+          "305+351+338"
+          "308+313"
+        ];
+        pictograms = [
+          ghs.pictogram.Flame
+          ghs.pictogram.Acid
+        ];
         signal = ghs.signal.Warning;
       };
       kemler = 83;
@@ -454,10 +662,22 @@ in
     };
     hazmat = {
       ghs = {
-        hazards = [ 225 319 336 ];
+        hazards = [
+          225
+          319
+          336
+        ];
         euHazards = [ 66 ];
-        precautions = [ 210 240 "305+351+338" "403+233" ];
-        pictograms = [ ghs.pictogram.Flame ghs.pictogram.Exclam ];
+        precautions = [
+          210
+          240
+          "305+351+338"
+          "403+233"
+        ];
+        pictograms = [
+          ghs.pictogram.Flame
+          ghs.pictogram.Exclam
+        ];
         signal = ghs.signal.Danger;
       };
       iso7010 = {
@@ -487,9 +707,24 @@ in
     availability = { };
     hazmat = {
       ghs = {
-        hazards = [ 225 332 302 312 319 ];
-        precautions = [ 210 240 "302+352" "305+351+338" "403+233" ];
-        pictograms = [ ghs.pictogram.Flame ghs.pictogram.Exclam ];
+        hazards = [
+          225
+          332
+          302
+          312
+          319
+        ];
+        precautions = [
+          210
+          240
+          "302+352"
+          "305+351+338"
+          "403+233"
+        ];
+        pictograms = [
+          ghs.pictogram.Flame
+          ghs.pictogram.Exclam
+        ];
         signal = ghs.signal.Danger;
       };
       kemler = 33;
@@ -510,9 +745,25 @@ in
     availability = { };
     hazmat = {
       ghs = {
-        hazards = [ 290 314 335 400 ];
-        precautions = [ 260 273 280 "301+330+331" "303+361+353" "305+351+338" ];
-        pictograms = [ ghs.pictogram.Acid ghs.pictogram.Exclam ghs.pictogram.Pollu ];
+        hazards = [
+          290
+          314
+          335
+          400
+        ];
+        precautions = [
+          260
+          273
+          280
+          "301+330+331"
+          "303+361+353"
+          "305+351+338"
+        ];
+        pictograms = [
+          ghs.pictogram.Acid
+          ghs.pictogram.Exclam
+          ghs.pictogram.Pollu
+        ];
         signal = ghs.signal.Danger;
       };
       kemler = 268;
@@ -533,9 +784,21 @@ in
     availability = { };
     hazmat = {
       ghs = {
-        hazards = [ 315 410 ];
-        precautions = [ 273 280 "302+352" "332+313" 501 ];
-        pictograms = [ ghs.pictogram.Exclam ghs.pictogram.Pollu ];
+        hazards = [
+          315
+          410
+        ];
+        precautions = [
+          273
+          280
+          "302+352"
+          "332+313"
+          501
+        ];
+        pictograms = [
+          ghs.pictogram.Exclam
+          ghs.pictogram.Pollu
+        ];
         signal = ghs.signal.Warning;
       };
     };
@@ -600,9 +863,34 @@ in
     availability = { };
     hazmat = {
       ghs = {
-        hazards = [ 225 304 315 319 340 350 372 412 ];
-        precautions = [ 201 210 280 "308+313" { id = "370+378"; dots = { deu = "Löschpulver oder Trockensand"; }; } "403+235" ];
-        pictograms = [ ghs.pictogram.Flame ghs.pictogram.Health ghs.pictogram.Exclam ];
+        hazards = [
+          225
+          304
+          315
+          319
+          340
+          350
+          372
+          412
+        ];
+        precautions = [
+          201
+          210
+          280
+          "308+313"
+          {
+            id = "370+378";
+            dots = {
+              deu = "Löschpulver oder Trockensand";
+            };
+          }
+          "403+235"
+        ];
+        pictograms = [
+          ghs.pictogram.Flame
+          ghs.pictogram.Health
+          ghs.pictogram.Exclam
+        ];
         signal = ghs.signal.Danger;
       };
       kemler = 33;
@@ -623,9 +911,21 @@ in
     availability = { };
     hazmat = {
       ghs = {
-        hazards = [ 315 318 "372:orgDE=inhalativ die Lunge;orgEN=the lungs by inhalation;" ];
-        precautions = [ 280 "302+352" "305+351+338" 314 ];
-        pictograms = [ ghs.pictogram.Acid ghs.pictogram.Health ];
+        hazards = [
+          315
+          318
+          "372:orgDE=inhalativ die Lunge;orgEN=the lungs by inhalation;"
+        ];
+        precautions = [
+          280
+          "302+352"
+          "305+351+338"
+          314
+        ];
+        pictograms = [
+          ghs.pictogram.Acid
+          ghs.pictogram.Health
+        ];
         signal = ghs.signal.Danger;
       };
     };
@@ -644,9 +944,24 @@ in
     availability = { };
     hazmat = {
       ghs = {
-        hazards = [ 330 314 400 ];
-        precautions = [ 210 273 "304+340" "305+351+338" "308+310" "403+233" ];
-        pictograms = [ ghs.pictogram.Skull ghs.pictogram.Acid ghs.pictogram.Pollu ];
+        hazards = [
+          330
+          314
+          400
+        ];
+        precautions = [
+          210
+          273
+          "304+340"
+          "305+351+338"
+          "308+310"
+          "403+233"
+        ];
+        pictograms = [
+          ghs.pictogram.Skull
+          ghs.pictogram.Acid
+          ghs.pictogram.Pollu
+        ];
         signal = ghs.signal.Danger;
       };
       kemler = 886;
@@ -667,9 +982,26 @@ in
     availability = { };
     hazmat = {
       ghs = {
-        hazards = [ 220 350 340 280 ];
-        precautions = [ 210 202 "308+313" 377 381 405 403 ];
-        pictograms = [ ghs.pictogram.Flame ghs.pictogram.Health ghs.pictogram.Bottle ];
+        hazards = [
+          220
+          350
+          340
+          280
+        ];
+        precautions = [
+          210
+          202
+          "308+313"
+          377
+          381
+          405
+          403
+        ];
+        pictograms = [
+          ghs.pictogram.Flame
+          ghs.pictogram.Health
+          ghs.pictogram.Bottle
+        ];
         signal = ghs.signal.None;
       };
       kemler = 23;
@@ -690,9 +1022,22 @@ in
     availability = { };
     hazmat = {
       ghs = {
-        hazards = [ 302 315 319 335 361 ];
-        precautions = [ 261 281 "305+351+338" ];
-        pictograms = [ ghs.pictogram.Health ghs.pictogram.Exclam ];
+        hazards = [
+          302
+          315
+          319
+          335
+          361
+        ];
+        precautions = [
+          261
+          281
+          "305+351+338"
+        ];
+        pictograms = [
+          ghs.pictogram.Health
+          ghs.pictogram.Exclam
+        ];
         signal = ghs.signal.Warning;
       };
     };
@@ -711,9 +1056,27 @@ in
     availability = { };
     hazmat = {
       ghs = {
-        hazards = [ 220 331 "360D" 372 ];
-        precautions = [ 202 210 260 "304+340" "308+313" 315 377 381 ];
-        pictograms = [ ghs.pictogram.Flame ghs.pictogram.Skull ghs.pictogram.Health ];
+        hazards = [
+          220
+          331
+          "360D"
+          372
+        ];
+        precautions = [
+          202
+          210
+          260
+          "304+340"
+          "308+313"
+          315
+          377
+          381
+        ];
+        pictograms = [
+          ghs.pictogram.Flame
+          ghs.pictogram.Skull
+          ghs.pictogram.Health
+        ];
         signal = ghs.signal.Danger;
       };
     };
@@ -732,9 +1095,23 @@ in
     availability = { };
     hazmat = {
       ghs = {
-        hazards = [ 226 332 315 411 ];
-        precautions = [ 260 262 273 403 ];
-        pictograms = [ ghs.pictogram.Flame ghs.pictogram.Exclam ghs.pictogram.Pollu ];
+        hazards = [
+          226
+          332
+          315
+          411
+        ];
+        precautions = [
+          260
+          262
+          273
+          403
+        ];
+        pictograms = [
+          ghs.pictogram.Flame
+          ghs.pictogram.Exclam
+          ghs.pictogram.Pollu
+        ];
         signal = ghs.signal.Warning;
       };
       kemler = 30;
@@ -755,10 +1132,37 @@ in
     availability = { };
     hazmat = {
       ghs = {
-        hazards = [ 270 280 330 315 319 335 400 ];
+        hazards = [
+          270
+          280
+          330
+          315
+          319
+          335
+          400
+        ];
         euHazards = [ 71 ];
-        precautions = [ 260 220 280 244 273 "304+340" "305+351+338" "332+313" "370+376" "302+352" 315 405 403 ];
-        pictograms = [ ghs.pictogram.Skull ghs.pictogram.OFlame ghs.pictogram.Bottle ghs.pictogram.Pollu ];
+        precautions = [
+          260
+          220
+          280
+          244
+          273
+          "304+340"
+          "305+351+338"
+          "332+313"
+          "370+376"
+          "302+352"
+          315
+          405
+          403
+        ];
+        pictograms = [
+          ghs.pictogram.Skull
+          ghs.pictogram.OFlame
+          ghs.pictogram.Bottle
+          ghs.pictogram.Pollu
+        ];
         signal = ghs.signal.Danger;
       };
       kemler = 265;
@@ -779,10 +1183,34 @@ in
     availability = { };
     hazmat = {
       ghs = {
-        hazards = [ 270 330 315 319 335 400 ];
+        hazards = [
+          270
+          330
+          315
+          319
+          335
+          400
+        ];
         euHazards = [ 71 ];
-        precautions = [ 260 220 280 273 "304+340" "305+351+338" "332+313" "370+376" "302+352" 315 405 403 ];
-        pictograms = [ ghs.pictogram.Skull ghs.pictogram.OFlame ghs.pictogram.Pollu ];
+        precautions = [
+          260
+          220
+          280
+          273
+          "304+340"
+          "305+351+338"
+          "332+313"
+          "370+376"
+          "302+352"
+          315
+          405
+          403
+        ];
+        pictograms = [
+          ghs.pictogram.Skull
+          ghs.pictogram.OFlame
+          ghs.pictogram.Pollu
+        ];
         signal = ghs.signal.Danger;
       };
     };
@@ -804,10 +1232,25 @@ in
     };
     hazmat = {
       ghs = {
-        hazards = [ 300 310 330 410 ];
+        hazards = [
+          300
+          310
+          330
+          410
+        ];
         euHazards = [ 32 ];
-        precautions = [ 260 264 273 280 284 "301+310" ];
-        pictograms = [ ghs.pictogram.Skull ghs.pictogram.Pollu ];
+        precautions = [
+          260
+          264
+          273
+          280
+          284
+          "301+310"
+        ];
+        pictograms = [
+          ghs.pictogram.Skull
+          ghs.pictogram.Pollu
+        ];
         signal = ghs.signal.None;
       };
     };
@@ -826,7 +1269,11 @@ in
     availability = { };
     hazmat = {
       ghs = {
-        pictograms = [ ghs.pictogram.Acid ghs.pictogram.Exclam ghs.pictogram.Pollu ];
+        pictograms = [
+          ghs.pictogram.Acid
+          ghs.pictogram.Exclam
+          ghs.pictogram.Pollu
+        ];
         signal = ghs.signal.None;
       };
       kemler = 66;
@@ -847,9 +1294,24 @@ in
     availability = { };
     hazmat = {
       ghs = {
-        hazards = [ 302 315 319 410 ];
-        precautions = [ 273 "305+351+338" 362 "301+312" "302+352" 501 ];
-        pictograms = [ ghs.pictogram.Exclam ghs.pictogram.Pollu ];
+        hazards = [
+          302
+          315
+          319
+          410
+        ];
+        precautions = [
+          273
+          "305+351+338"
+          362
+          "301+312"
+          "302+352"
+          501
+        ];
+        pictograms = [
+          ghs.pictogram.Exclam
+          ghs.pictogram.Pollu
+        ];
         signal = ghs.signal.None;
       };
       kemler = 66;
@@ -870,9 +1332,28 @@ in
     availability = { };
     hazmat = {
       ghs = {
-        hazards = [ 225 304 315 336 410 ];
-        precautions = [ 210 240 273 "301+310" 331 "302+352" "403+233" ];
-        pictograms = [ ghs.pictogram.Flame ghs.pictogram.Health ghs.pictogram.Exclam ghs.pictogram.Pollu ];
+        hazards = [
+          225
+          304
+          315
+          336
+          410
+        ];
+        precautions = [
+          210
+          240
+          273
+          "301+310"
+          331
+          "302+352"
+          "403+233"
+        ];
+        pictograms = [
+          ghs.pictogram.Flame
+          ghs.pictogram.Health
+          ghs.pictogram.Exclam
+          ghs.pictogram.Pollu
+        ];
         signal = ghs.signal.Danger;
       };
       kemler = 33;
@@ -894,7 +1375,10 @@ in
     hazmat = {
       ghs = {
         hazards = [ 220 ];
-        pictograms = [ ghs.pictogram.Flame ghs.pictogram.Bottle ];
+        pictograms = [
+          ghs.pictogram.Flame
+          ghs.pictogram.Bottle
+        ];
         signal = ghs.signal.Danger;
       };
       kemler = 23;
@@ -915,9 +1399,28 @@ in
     availability = { };
     hazmat = {
       ghs = {
-        hazards = [ 226 331 304 314 411 ];
-        precautions = [ 261 273 280 "301+310" "305+351+338" 310 ];
-        pictograms = [ ghs.pictogram.Flame ghs.pictogram.Skull ghs.pictogram.Health ghs.pictogram.Acid ghs.pictogram.Pollu ];
+        hazards = [
+          226
+          331
+          304
+          314
+          411
+        ];
+        precautions = [
+          261
+          273
+          280
+          "301+310"
+          "305+351+338"
+          310
+        ];
+        pictograms = [
+          ghs.pictogram.Flame
+          ghs.pictogram.Skull
+          ghs.pictogram.Health
+          ghs.pictogram.Acid
+          ghs.pictogram.Pollu
+        ];
         signal = ghs.signal.Danger;
       };
       kemler = 30;
@@ -946,9 +1449,22 @@ in
     };
     hazmat = {
       ghs = {
-        hazards = [ 315 319 335 336 351 373 ];
-        precautions = [ 261 "305+351+338" ];
-        pictograms = [ ghs.pictogram.Health ghs.pictogram.Exclam ];
+        hazards = [
+          315
+          319
+          335
+          336
+          351
+          373
+        ];
+        precautions = [
+          261
+          "305+351+338"
+        ];
+        pictograms = [
+          ghs.pictogram.Health
+          ghs.pictogram.Exclam
+        ];
         signal = ghs.signal.Danger;
       };
       nfpa = {
@@ -982,10 +1498,24 @@ in
     };
     hazmat = {
       ghs = {
-        hazards = [ 224 302 336 ];
-        euHazards = [ 19 66 ];
-        precautions = [ 210 240 "403+235" ];
-        pictograms = [ ghs.pictogram.Flame ghs.pictogram.Exclam ];
+        hazards = [
+          224
+          302
+          336
+        ];
+        euHazards = [
+          19
+          66
+        ];
+        precautions = [
+          210
+          240
+          "403+235"
+        ];
+        pictograms = [
+          ghs.pictogram.Flame
+          ghs.pictogram.Exclam
+        ];
         signal = ghs.signal.Danger;
       };
       nfpa = {
@@ -1037,9 +1567,26 @@ in
     };
     hazmat = {
       ghs = {
-        hazards = [ 226 312 332 319 "360D" ];
-        precautions = [ 201 210 "302+352" "304+340" "305+351+338" "308+313" ];
-        pictograms = [ ghs.pictogram.Flame ghs.pictogram.Health ghs.pictogram.Exclam ];
+        hazards = [
+          226
+          312
+          332
+          319
+          "360D"
+        ];
+        precautions = [
+          201
+          210
+          "302+352"
+          "304+340"
+          "305+351+338"
+          "308+313"
+        ];
+        pictograms = [
+          ghs.pictogram.Flame
+          ghs.pictogram.Health
+          ghs.pictogram.Exclam
+        ];
         signal = ghs.signal.Danger;
       };
       nfpa = {
@@ -1066,9 +1613,22 @@ in
     availability = { };
     hazmat = {
       ghs = {
-        hazards = [ 319 411 ];
-        precautions = [ 280 273 264 "305+351+338" "337+313" 501 ];
-        pictograms = [ ghs.pictogram.Exclam ghs.pictogram.Pollu ];
+        hazards = [
+          319
+          411
+        ];
+        precautions = [
+          280
+          273
+          264
+          "305+351+338"
+          "337+313"
+          501
+        ];
+        pictograms = [
+          ghs.pictogram.Exclam
+          ghs.pictogram.Pollu
+        ];
         signal = ghs.signal.Warning;
       };
     };
@@ -1111,10 +1671,24 @@ in
     availability = { };
     hazmat = {
       ghs = {
-        hazards = [ 225 319 ];
-        euHazards = [ 19 66 ];
-        precautions = [ 210 240 "305+351+338" "403+233" ];
-        pictograms = [ ghs.pictogram.Flame ghs.pictogram.Exclam ];
+        hazards = [
+          225
+          319
+        ];
+        euHazards = [
+          19
+          66
+        ];
+        precautions = [
+          210
+          240
+          "305+351+338"
+          "403+233"
+        ];
+        pictograms = [
+          ghs.pictogram.Flame
+          ghs.pictogram.Exclam
+        ];
         signal = ghs.signal.Danger;
       };
       kemler = 33;
@@ -1135,9 +1709,22 @@ in
     availability = { };
     hazmat = {
       ghs = {
-        hazards = [ 225 319 336 ];
-        precautions = [ 210 233 240 "305+351+338" "403+235" ];
-        pictograms = [ ghs.pictogram.Flame ghs.pictogram.Exclam ];
+        hazards = [
+          225
+          319
+          336
+        ];
+        precautions = [
+          210
+          233
+          240
+          "305+351+338"
+          "403+235"
+        ];
+        pictograms = [
+          ghs.pictogram.Flame
+          ghs.pictogram.Exclam
+        ];
         signal = ghs.signal.Danger;
       };
       kemler = 33;
@@ -1158,9 +1745,18 @@ in
     availability = { };
     hazmat = {
       ghs = {
-        hazards = [ 302 373 ];
-        precautions = [ "301+312" 330 ];
-        pictograms = [ ghs.pictogram.Exclam ghs.pictogram.Health ];
+        hazards = [
+          302
+          373
+        ];
+        precautions = [
+          "301+312"
+          330
+        ];
+        pictograms = [
+          ghs.pictogram.Exclam
+          ghs.pictogram.Health
+        ];
         signal = ghs.signal.Warning;
       };
     };
@@ -1244,9 +1840,27 @@ in
     availability = { };
     hazmat = {
       ghs = {
-        hazards = [ 225 304 315 336 410 ];
-        precautions = [ 210 240 273 "301+330+331" "302+352" "403+233" ];
-        pictograms = [ ghs.pictogram.Flame ghs.pictogram.Health ghs.pictogram.Exclam ghs.pictogram.Pollu ];
+        hazards = [
+          225
+          304
+          315
+          336
+          410
+        ];
+        precautions = [
+          210
+          240
+          273
+          "301+330+331"
+          "302+352"
+          "403+233"
+        ];
+        pictograms = [
+          ghs.pictogram.Flame
+          ghs.pictogram.Health
+          ghs.pictogram.Exclam
+          ghs.pictogram.Pollu
+        ];
         signal = ghs.signal.Danger;
       };
       kemler = 33;
@@ -1274,9 +1888,31 @@ in
     };
     hazmat = {
       ghs = {
-        hazards = [ 225 304 "361f" 373 315 335 336 411 ];
-        precautions = [ 210 240 273 "301+310" 331 "302+352" "403+235" ];
-        pictograms = [ ghs.pictogram.Flame ghs.pictogram.Health ghs.pictogram.Exclam ghs.pictogram.Pollu ];
+        hazards = [
+          225
+          304
+          "361f"
+          373
+          315
+          335
+          336
+          411
+        ];
+        precautions = [
+          210
+          240
+          273
+          "301+310"
+          331
+          "302+352"
+          "403+235"
+        ];
+        pictograms = [
+          ghs.pictogram.Flame
+          ghs.pictogram.Health
+          ghs.pictogram.Exclam
+          ghs.pictogram.Pollu
+        ];
         signal = ghs.signal.Danger;
       };
       nfpa = {
@@ -1310,9 +1946,30 @@ in
     };
     hazmat = {
       ghs = {
-        hazards = [ 301 311 330 314 317 350 410 ];
-        precautions = [ 201 260 273 280 "304+340" 310 "305+351+338" ];
-        pictograms = [ ghs.pictogram.Skull ghs.pictogram.Health ghs.pictogram.Acid ghs.pictogram.Pollu ];
+        hazards = [
+          301
+          311
+          330
+          314
+          317
+          350
+          410
+        ];
+        precautions = [
+          201
+          260
+          273
+          280
+          "304+340"
+          310
+          "305+351+338"
+        ];
+        pictograms = [
+          ghs.pictogram.Skull
+          ghs.pictogram.Health
+          ghs.pictogram.Acid
+          ghs.pictogram.Pollu
+        ];
         signal = ghs.signal.Danger;
       };
       nfpa = {
@@ -1339,9 +1996,23 @@ in
     availability = { };
     hazmat = {
       ghs = {
-        hazards = [ 290 314 335 ];
-        precautions = [ 260 280 "303+361+353" "304+340" 310 "305+351+338" ];
-        pictograms = [ ghs.pictogram.Acid ghs.pictogram.Exclam ];
+        hazards = [
+          290
+          314
+          335
+        ];
+        precautions = [
+          260
+          280
+          "303+361+353"
+          "304+340"
+          310
+          "305+351+338"
+        ];
+        pictograms = [
+          ghs.pictogram.Acid
+          ghs.pictogram.Exclam
+        ];
         signal = ghs.signal.Danger;
       };
       kemler = 80;
@@ -1362,9 +2033,25 @@ in
     availability = { };
     hazmat = {
       ghs = {
-        hazards = [ 300 310 330 314 ];
-        precautions = [ 260 280 "301+330+331" 310 "303+361+353" "304+340" "305+351+338" ];
-        pictograms = [ ghs.pictogram.Skull ghs.pictogram.Acid ];
+        hazards = [
+          300
+          310
+          330
+          314
+        ];
+        precautions = [
+          260
+          280
+          "301+330+331"
+          310
+          "303+361+353"
+          "304+340"
+          "305+351+338"
+        ];
+        pictograms = [
+          ghs.pictogram.Skull
+          ghs.pictogram.Acid
+        ];
         signal = ghs.signal.Danger;
       };
       kemler = 886;
@@ -1385,9 +2072,20 @@ in
     availability = { };
     hazmat = {
       ghs = {
-        hazards = [ 220 280 ];
-        precautions = [ 210 377 381 403 ];
-        pictograms = [ ghs.pictogram.Flame ghs.pictogram.Bottle ];
+        hazards = [
+          220
+          280
+        ];
+        precautions = [
+          210
+          377
+          381
+          403
+        ];
+        pictograms = [
+          ghs.pictogram.Flame
+          ghs.pictogram.Bottle
+        ];
         signal = ghs.signal.Danger;
       };
       kemler = 23;
@@ -1414,9 +2112,26 @@ in
     };
     hazmat = {
       ghs = {
-        hazards = [ 312 332 315 319 335 372 400 ];
-        precautions = [ 273 "302+352" "305+351+338" 314 ];
-        pictograms = [ ghs.pictogram.Health ghs.pictogram.Exclam ghs.pictogram.Pollu ];
+        hazards = [
+          312
+          332
+          315
+          319
+          335
+          372
+          400
+        ];
+        precautions = [
+          273
+          "302+352"
+          "305+351+338"
+          314
+        ];
+        pictograms = [
+          ghs.pictogram.Health
+          ghs.pictogram.Exclam
+          ghs.pictogram.Pollu
+        ];
         signal = ghs.signal.Warning;
       };
     };
@@ -1435,7 +2150,11 @@ in
     availability = { };
     hazmat = {
       ghs = {
-        hazards = [ 302 319 315 ];
+        hazards = [
+          302
+          319
+          315
+        ];
         precautions = [ "305+351+338" ];
         pictograms = [ ghs.pictogram.Exclam ];
         signal = ghs.signal.Warning;
@@ -1456,9 +2175,22 @@ in
     availability = { };
     hazmat = {
       ghs = {
-        hazards = [ 290 302 315 318 317 ];
-        precautions = [ 280 "302+352" "305+351+338" ];
-        pictograms = [ ghs.pictogram.Acid ghs.pictogram.Exclam ];
+        hazards = [
+          290
+          302
+          315
+          318
+          317
+        ];
+        precautions = [
+          280
+          "302+352"
+          "305+351+338"
+        ];
+        pictograms = [
+          ghs.pictogram.Acid
+          ghs.pictogram.Exclam
+        ];
         signal = ghs.signal.Danger;
       };
       kemler = 80;
@@ -1480,8 +2212,28 @@ in
     availability = { };
     hazmat = {
       ghs = {
-        hazards = [ 315 319 335 ];
-        precautions = [ 261 "305+351+338" 280 271 264 "302+352" "304+340" 312 321 "332+313" "337+313" 362 "403+233" 405 501 ];
+        hazards = [
+          315
+          319
+          335
+        ];
+        precautions = [
+          261
+          "305+351+338"
+          280
+          271
+          264
+          "302+352"
+          "304+340"
+          312
+          321
+          "332+313"
+          "337+313"
+          362
+          "403+233"
+          405
+          501
+        ];
         pictograms = [ ghs.pictogram.Exclam ];
         signal = ghs.signal.Warning;
       };
@@ -1508,9 +2260,29 @@ in
     };
     hazmat = {
       ghs = {
-        hazards = [ 226 304 315 319 335 411 ];
-        precautions = [ 210 273 "301+310" 331 "302+352" "304+340" 312 ];
-        pictograms = [ ghs.pictogram.Flame ghs.pictogram.Health ghs.pictogram.Exclam ghs.pictogram.Pollu ];
+        hazards = [
+          226
+          304
+          315
+          319
+          335
+          411
+        ];
+        precautions = [
+          210
+          273
+          "301+310"
+          331
+          "302+352"
+          "304+340"
+          312
+        ];
+        pictograms = [
+          ghs.pictogram.Flame
+          ghs.pictogram.Health
+          ghs.pictogram.Exclam
+          ghs.pictogram.Pollu
+        ];
         signal = ghs.signal.Danger;
       };
       iso7010 = {
@@ -1540,10 +2312,27 @@ in
     availability = { };
     hazmat = {
       ghs = {
-        hazards = [ 226 302 314 331 ];
+        hazards = [
+          226
+          302
+          314
+          331
+        ];
         euHazards = [ 71 ];
-        precautions = [ 210 280 "303+361+353" "304+340" 310 "305+351+338" "403+233" ];
-        pictograms = [ ghs.pictogram.Flame ghs.pictogram.Skull ghs.pictogram.Acid ];
+        precautions = [
+          210
+          280
+          "303+361+353"
+          "304+340"
+          310
+          "305+351+338"
+          "403+233"
+        ];
+        pictograms = [
+          ghs.pictogram.Flame
+          ghs.pictogram.Skull
+          ghs.pictogram.Acid
+        ];
         signal = ghs.signal.Danger;
       };
       kemler = 83;
@@ -1571,9 +2360,27 @@ in
     };
     hazmat = {
       ghs = {
-        hazards = [ 225 331 311 301 370 ];
-        precautions = [ 210 233 280 "302+352" "304+340" "308+313" "403+235" ];
-        pictograms = [ ghs.pictogram.Flame ghs.pictogram.Skull ghs.pictogram.Health ];
+        hazards = [
+          225
+          331
+          311
+          301
+          370
+        ];
+        precautions = [
+          210
+          233
+          280
+          "302+352"
+          "304+340"
+          "308+313"
+          "403+235"
+        ];
+        pictograms = [
+          ghs.pictogram.Flame
+          ghs.pictogram.Skull
+          ghs.pictogram.Health
+        ];
         signal = ghs.signal.Danger;
       };
       nfpa = {
@@ -1600,8 +2407,27 @@ in
     availability = { };
     hazmat = {
       ghs = {
-        hazards = [ "351i" 341 "360D" 372 272 332 302 315 318 334 317 410 ];
-        pictograms = [ ghs.pictogram.OFlame ghs.pictogram.Acid ghs.pictogram.Health ghs.pictogram.Exclam ghs.pictogram.Pollu ];
+        hazards = [
+          "351i"
+          341
+          "360D"
+          372
+          272
+          332
+          302
+          315
+          318
+          334
+          317
+          410
+        ];
+        pictograms = [
+          ghs.pictogram.OFlame
+          ghs.pictogram.Acid
+          ghs.pictogram.Health
+          ghs.pictogram.Exclam
+          ghs.pictogram.Pollu
+        ];
         signal = ghs.signal.Danger;
       };
       kemler = 50;
@@ -1622,10 +2448,23 @@ in
     availability = { };
     hazmat = {
       ghs = {
-        hazards = [ 272 290 314 ];
+        hazards = [
+          272
+          290
+          314
+        ];
         euHazards = [ 71 ];
-        precautions = [ 280 "301+330+331" "304+340" "305+351+338" 310 ];
-        pictograms = [ ghs.pictogram.OFlame ghs.pictogram.Acid ];
+        precautions = [
+          280
+          "301+330+331"
+          "304+340"
+          "305+351+338"
+          310
+        ];
+        pictograms = [
+          ghs.pictogram.OFlame
+          ghs.pictogram.Acid
+        ];
         signal = ghs.signal.Danger;
       };
       kemler = 885;
@@ -1646,9 +2485,27 @@ in
     availability = { };
     hazmat = {
       ghs = {
-        hazards = [ "360F" 301 311 331 351 372 412 ];
-        precautions = [ 201 273 280 "302+352" "304+340" "308+313" ];
-        pictograms = [ ghs.pictogram.Skull ghs.pictogram.Health ];
+        hazards = [
+          "360F"
+          301
+          311
+          331
+          351
+          372
+          412
+        ];
+        precautions = [
+          201
+          273
+          280
+          "302+352"
+          "304+340"
+          "308+313"
+        ];
+        pictograms = [
+          ghs.pictogram.Skull
+          ghs.pictogram.Health
+        ];
         signal = ghs.signal.Danger;
       };
     };
@@ -1690,8 +2547,16 @@ in
     availability = { };
     hazmat = {
       ghs = {
-        hazards = [ 280 281 ];
-        precautions = [ 282 336 315 403 ];
+        hazards = [
+          280
+          281
+        ];
+        precautions = [
+          282
+          336
+          315
+          403
+        ];
         pictograms = [ ghs.pictogram.Bottle ];
         signal = ghs.signal.Warning;
       };
@@ -1717,7 +2582,10 @@ in
     availability = { };
     hazmat = {
       ghs = {
-        hazards = [ 315 319 ];
+        hazards = [
+          315
+          319
+        ];
         precautions = [ "305+351+338" ];
         pictograms = [ ghs.pictogram.Exclam ];
         signal = ghs.signal.Warning;
@@ -1739,8 +2607,17 @@ in
     availability = { };
     hazmat = {
       ghs = {
-        hazards = [ 315 319 335 413 ];
-        precautions = [ 280 "305+351+338" 313 ];
+        hazards = [
+          315
+          319
+          335
+          413
+        ];
+        precautions = [
+          280
+          "305+351+338"
+          313
+        ];
         pictograms = [ ghs.pictogram.Exclam ];
         signal = ghs.signal.Warning;
       };
@@ -1805,9 +2682,29 @@ in
     };
     hazmat = {
       ghs = {
-        hazards = [ 225 304 315 336 "361f" 373 411 ];
-        precautions = [ 201 210 "301+310" 331 "370+378" 501 ];
-        pictograms = [ ghs.pictogram.Flame ghs.pictogram.Health ghs.pictogram.Exclam ghs.pictogram.Pollu ];
+        hazards = [
+          225
+          304
+          315
+          336
+          "361f"
+          373
+          411
+        ];
+        precautions = [
+          201
+          210
+          "301+310"
+          331
+          "370+378"
+          501
+        ];
+        pictograms = [
+          ghs.pictogram.Flame
+          ghs.pictogram.Health
+          ghs.pictogram.Exclam
+          ghs.pictogram.Pollu
+        ];
         signal = ghs.signal.Danger;
       };
       iso7010 = {
@@ -1837,9 +2734,29 @@ in
     availability = { };
     hazmat = {
       ghs = {
-        hazards = [ 301 311 331 314 341 373 411 ];
-        precautions = [ 260 280 "301+330+331" "303+361+353" "304+340" 310 "305+351+338" ];
-        pictograms = [ ghs.pictogram.Skull ghs.pictogram.Acid ghs.pictogram.Health ];
+        hazards = [
+          301
+          311
+          331
+          314
+          341
+          373
+          411
+        ];
+        precautions = [
+          260
+          280
+          "301+330+331"
+          "303+361+353"
+          "304+340"
+          310
+          "305+351+338"
+        ];
+        pictograms = [
+          ghs.pictogram.Skull
+          ghs.pictogram.Acid
+          ghs.pictogram.Health
+        ];
         signal = ghs.signal.Danger;
       };
       kemler = 60;
@@ -1860,8 +2777,16 @@ in
     availability = { };
     hazmat = {
       ghs = {
-        hazards = [ 341 350 "361f" ];
-        precautions = [ 201 280 "308+313" ];
+        hazards = [
+          341
+          350
+          "361f"
+        ];
+        precautions = [
+          201
+          280
+          "308+313"
+        ];
         pictograms = [ ghs.pictogram.Health ];
         signal = ghs.signal.Danger;
       };
@@ -1881,8 +2806,18 @@ in
     availability = { };
     hazmat = {
       ghs = {
-        hazards = [ 335 315 319 ];
-        precautions = [ 280 "301+330+331" "304+340" "305+351+338" "308+310" ];
+        hazards = [
+          335
+          315
+          319
+        ];
+        precautions = [
+          280
+          "301+330+331"
+          "304+340"
+          "305+351+338"
+          "308+310"
+        ];
         pictograms = [ ghs.pictogram.Exclam ];
         signal = ghs.signal.Warning;
       };
@@ -1902,9 +2837,22 @@ in
     availability = { };
     hazmat = {
       ghs = {
-        hazards = [ 302 312 315 318 ];
-        precautions = [ 280 "302+352" "305+351+338" 313 ];
-        pictograms = [ ghs.pictogram.Acid ghs.pictogram.Exclam ];
+        hazards = [
+          302
+          312
+          315
+          318
+        ];
+        precautions = [
+          280
+          "302+352"
+          "305+351+338"
+          313
+        ];
+        pictograms = [
+          ghs.pictogram.Acid
+          ghs.pictogram.Exclam
+        ];
         signal = ghs.signal.Danger;
       };
     };
@@ -1963,7 +2911,12 @@ in
     hazmat = {
       ghs = {
         hazards = [ "301+311+331" ];
-        precautions = [ 280 "302+352" "304+340" "308+310" ];
+        precautions = [
+          280
+          "302+352"
+          "304+340"
+          "308+310"
+        ];
         pictograms = [ ghs.pictogram.Skull ];
         signal = ghs.signal.Danger;
       };
@@ -1985,9 +2938,21 @@ in
     availability = { };
     hazmat = {
       ghs = {
-        hazards = [ 290 302 314 ];
-        precautions = [ 280 "301+330+331" "305+351+338" "308+313" ];
-        pictograms = [ ghs.pictogram.Acid ghs.pictogram.Exclam ];
+        hazards = [
+          290
+          302
+          314
+        ];
+        precautions = [
+          280
+          "301+330+331"
+          "305+351+338"
+          "308+313"
+        ];
+        pictograms = [
+          ghs.pictogram.Acid
+          ghs.pictogram.Exclam
+        ];
         signal = ghs.signal.Danger;
       };
       kemler = 80;
@@ -2027,7 +2992,10 @@ in
     hazmat = {
       ghs = {
         hazards = [ 272 ];
-        precautions = [ 210 221 ];
+        precautions = [
+          210
+          221
+        ];
         pictograms = [ ghs.pictogram.OFlame ];
         signal = ghs.signal.Warning;
       };
@@ -2049,9 +3017,27 @@ in
     availability = { };
     hazmat = {
       ghs = {
-        hazards = [ 272 302 315 317 319 334 335 ];
-        precautions = [ 220 261 280 "305+351+338" "342+311" ];
-        pictograms = [ ghs.pictogram.OFlame ghs.pictogram.Health ghs.pictogram.Exclam ];
+        hazards = [
+          272
+          302
+          315
+          317
+          319
+          334
+          335
+        ];
+        precautions = [
+          220
+          261
+          280
+          "305+351+338"
+          "342+311"
+        ];
+        pictograms = [
+          ghs.pictogram.OFlame
+          ghs.pictogram.Health
+          ghs.pictogram.Exclam
+        ];
         signal = ghs.signal.Danger;
       };
       kemler = 50;
@@ -2108,9 +3094,23 @@ in
     availability = { };
     hazmat = {
       ghs = {
-        hazards = [ 225 332 302 312 319 315 ];
-        precautions = [ 210 280 "305+351+338" ];
-        pictograms = [ ghs.pictogram.Flame ghs.pictogram.Exclam ];
+        hazards = [
+          225
+          332
+          302
+          312
+          319
+          315
+        ];
+        precautions = [
+          210
+          280
+          "305+351+338"
+        ];
+        pictograms = [
+          ghs.pictogram.Flame
+          ghs.pictogram.Exclam
+        ];
         signal = ghs.signal.Danger;
       };
       kemler = 33;
@@ -2131,8 +3131,16 @@ in
     availability = { };
     hazmat = {
       ghs = {
-        hazards = [ 318 412 ];
-        precautions = [ 260 273 280 "305+351+338" ];
+        hazards = [
+          318
+          412
+        ];
+        precautions = [
+          260
+          273
+          280
+          "305+351+338"
+        ];
         pictograms = [ ghs.pictogram.Acid ];
         signal = ghs.signal.Danger;
       };
@@ -2152,9 +3160,19 @@ in
     availability = { };
     hazmat = {
       ghs = {
-        hazards = [ 302 318 ];
-        precautions = [ 270 280 "305+351+338" ];
-        pictograms = [ ghs.pictogram.Acid ghs.pictogram.Exclam ];
+        hazards = [
+          302
+          318
+        ];
+        precautions = [
+          270
+          280
+          "305+351+338"
+        ];
+        pictograms = [
+          ghs.pictogram.Acid
+          ghs.pictogram.Exclam
+        ];
         signal = ghs.signal.Danger;
       };
     };
@@ -2173,9 +3191,32 @@ in
     availability = { };
     hazmat = {
       ghs = {
-        hazards = [ 272 290 314 410 ];
-        precautions = [ 210 220 260 280 "305+351+338" { id = "370+378"; dots = { deu = "Löschpulver oder Trockensand"; }; } 308 310 ];
-        pictograms = [ ghs.pictogram.OFlame ghs.pictogram.Acid ghs.pictogram.Pollu ];
+        hazards = [
+          272
+          290
+          314
+          410
+        ];
+        precautions = [
+          210
+          220
+          260
+          280
+          "305+351+338"
+          {
+            id = "370+378";
+            dots = {
+              deu = "Löschpulver oder Trockensand";
+            };
+          }
+          308
+          310
+        ];
+        pictograms = [
+          ghs.pictogram.OFlame
+          ghs.pictogram.Acid
+          ghs.pictogram.Pollu
+        ];
         signal = ghs.signal.Danger;
       };
       kemler = 50;
@@ -2196,9 +3237,35 @@ in
     availability = { };
     hazmat = {
       ghs = {
-        hazards = [ 228 302 332 315 318 335 412 ];
-        precautions = [ 210 261 280 "301+312" "301+330+331" "305+351+338" 310 { id = "370+378"; dots = { deu = "Löschpulver oder Trockensand"; }; } ];
-        pictograms = [ ghs.pictogram.Flame ghs.pictogram.Acid ghs.pictogram.Exclam ];
+        hazards = [
+          228
+          302
+          332
+          315
+          318
+          335
+          412
+        ];
+        precautions = [
+          210
+          261
+          280
+          "301+312"
+          "301+330+331"
+          "305+351+338"
+          310
+          {
+            id = "370+378";
+            dots = {
+              deu = "Löschpulver oder Trockensand";
+            };
+          }
+        ];
+        pictograms = [
+          ghs.pictogram.Flame
+          ghs.pictogram.Acid
+          ghs.pictogram.Exclam
+        ];
         signal = ghs.signal.Danger;
       };
     };
@@ -2217,8 +3284,16 @@ in
     availability = { };
     hazmat = {
       ghs = {
-        hazards = [ 290 314 ];
-        precautions = [ 280 "301+330+331" "305+351+338" "308+313" ];
+        hazards = [
+          290
+          314
+        ];
+        precautions = [
+          280
+          "301+330+331"
+          "305+351+338"
+          "308+313"
+        ];
         pictograms = [ ghs.pictogram.Acid ];
         signal = ghs.signal.Danger;
       };
@@ -2258,8 +3333,17 @@ in
     availability = { };
     hazmat = {
       ghs = {
-        hazards = [ 290 314 ];
-        precautions = [ 280 "301+330+331" "305+351+338" 308 310 ];
+        hazards = [
+          290
+          314
+        ];
+        precautions = [
+          280
+          "301+330+331"
+          "305+351+338"
+          308
+          310
+        ];
         pictograms = [ ghs.pictogram.Acid ];
         signal = ghs.signal.Danger;
       };
@@ -2282,9 +3366,26 @@ in
     availability = { };
     hazmat = {
       ghs = {
-        hazards = [ 226 332 319 335 ];
-        precautions = [ 210 261 280 "303+361+353" "304+340" 312 "370+378" "403+235" ];
-        pictograms = [ ghs.pictogram.Flame ghs.pictogram.Exclam ];
+        hazards = [
+          226
+          332
+          319
+          335
+        ];
+        precautions = [
+          210
+          261
+          280
+          "303+361+353"
+          "304+340"
+          312
+          "370+378"
+          "403+235"
+        ];
+        pictograms = [
+          ghs.pictogram.Flame
+          ghs.pictogram.Exclam
+        ];
         signal = ghs.signal.Warning;
       };
       kemler = 30;
@@ -2306,9 +3407,20 @@ in
     availability = { };
     hazmat = {
       ghs = {
-        hazards = [ 226 315 319 335 ];
-        precautions = [ 261 "305+351+338" ];
-        pictograms = [ ghs.pictogram.Flame ghs.pictogram.Exclam ];
+        hazards = [
+          226
+          315
+          319
+          335
+        ];
+        precautions = [
+          261
+          "305+351+338"
+        ];
+        pictograms = [
+          ghs.pictogram.Flame
+          ghs.pictogram.Exclam
+        ];
         signal = ghs.signal.Warning;
       };
     };
@@ -2353,10 +3465,31 @@ in
     };
     hazmat = {
       ghs = {
-        hazards = [ 225 302 319 335 351 ];
+        hazards = [
+          225
+          302
+          319
+          335
+          351
+        ];
         euHazards = [ 19 ];
-        precautions = [ 210 280 "301+312" 330 "305+351+338" { dots = "Löschpulver oder Trockensand"; id = "370+378"; } "403+235" ];
-        pictograms = [ ghs.pictogram.Flame ghs.pictogram.Exclam ghs.pictogram.Health ];
+        precautions = [
+          210
+          280
+          "301+312"
+          330
+          "305+351+338"
+          {
+            dots = "Löschpulver oder Trockensand";
+            id = "370+378";
+          }
+          "403+235"
+        ];
+        pictograms = [
+          ghs.pictogram.Flame
+          ghs.pictogram.Exclam
+          ghs.pictogram.Health
+        ];
         signal = ghs.signal.Danger;
       };
       iso7010 = {
@@ -2386,9 +3519,29 @@ in
     availability = { };
     hazmat = {
       ghs = {
-        hazards = [ 225 "361d" 304 373 315 336 ];
-        precautions = [ 210 240 "301+310" "301+330+331" "302+352" "308+313" 314 "403+233" ];
-        pictograms = [ ghs.pictogram.Flame ghs.pictogram.Health ghs.pictogram.Exclam ];
+        hazards = [
+          225
+          "361d"
+          304
+          373
+          315
+          336
+        ];
+        precautions = [
+          210
+          240
+          "301+310"
+          "301+330+331"
+          "302+352"
+          "308+313"
+          314
+          "403+233"
+        ];
+        pictograms = [
+          ghs.pictogram.Flame
+          ghs.pictogram.Health
+          ghs.pictogram.Exclam
+        ];
         signal = ghs.signal.Danger;
       };
       kemler = 33;
@@ -2409,9 +3562,26 @@ in
     availability = { };
     hazmat = {
       ghs = {
-        hazards = [ 302 331 315 319 351 "361d" 336 372 ];
-        precautions = [ 261 280 "305+351+338" 311 ];
-        pictograms = [ ghs.pictogram.Skull ghs.pictogram.Health ];
+        hazards = [
+          302
+          331
+          315
+          319
+          351
+          "361d"
+          336
+          372
+        ];
+        precautions = [
+          261
+          280
+          "305+351+338"
+          311
+        ];
+        pictograms = [
+          ghs.pictogram.Skull
+          ghs.pictogram.Health
+        ];
         signal = ghs.signal.Danger;
       };
       kemler = 60;
@@ -2438,9 +3608,21 @@ in
     };
     hazmat = {
       ghs = {
-        hazards = [ 302 317 373 ];
-        precautions = [ 280 "301+312" "301+330+331" "333+313" ];
-        pictograms = [ ghs.pictogram.Health ghs.pictogram.Exclam ];
+        hazards = [
+          302
+          317
+          373
+        ];
+        precautions = [
+          280
+          "301+312"
+          "301+330+331"
+          "333+313"
+        ];
+        pictograms = [
+          ghs.pictogram.Health
+          ghs.pictogram.Exclam
+        ];
         signal = ghs.signal.Warning;
       };
       nfpa = {

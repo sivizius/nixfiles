@@ -1,15 +1,22 @@
-Service "BIND: DNS-Server"
-{
-  configuration = { core, network, ... }:
+Service "BIND: DNS-Server" {
+  configuration =
+    { core, network, ... }:
     let
       inherit (core) list string;
-      inherit (network) domain hostName ips peers tcp;
+      inherit (network)
+        domain
+        hostName
+        ips
+        peers
+        tcp
+        ;
       inherit (tcp) ports;
 
       hostDomain = "${hostName}.${domain}";
       master = true;
       masters = [ ];
-      /*domainList
+      /*
+        domainList
          = [
                 domain
                 hostDomain
@@ -28,12 +35,10 @@ Service "BIND: DNS-Server"
                   value = { after = [ "bind.service"  ]; };
                 }
               )
-              domainList;*/
-      ipsFromPeer = list.concatMap
-        ({ network, ... }: network.ips);
-      allowedIPs = string.concatMappedLines
-        (ip: "allow ${ip};")
-        ips;
+              domainList;
+      */
+      ipsFromPeer = list.concatMap ({ network, ... }: network.ips);
+      allowedIPs = string.concatMappedLines (ip: "allow ${ip};") ips;
       extraConfig = ''
         ${allowedIPs}
         deny all;
@@ -42,12 +47,15 @@ Service "BIND: DNS-Server"
     {
       bind = {
         enable = true;
-        forwarders = ipsFromPeer
-          (
-            list.filter
-              ({ type ? { }, ... }: type.dns-forwarder or false)
-              peers
-          );
+        forwarders = ipsFromPeer (
+          list.filter (
+            {
+              type ? { },
+              ...
+            }:
+            type.dns-forwarder or false
+          ) peers
+        );
         cacheNetworks = [
           "127.0.0.0/8"
           "::/64"
@@ -58,12 +66,7 @@ Service "BIND: DNS-Server"
             # TODO: Generate Zone-File
             file = "${./zones}/${domain}";
             inherit master masters;
-            slaves = ipsFromPeer
-              (
-                list.filter
-                  ({ type, ... }: type.dns-secondary or false)
-                  peers
-              );
+            slaves = ipsFromPeer (list.filter ({ type, ... }: type.dns-secondary or false) peers);
           }
         ];
       };

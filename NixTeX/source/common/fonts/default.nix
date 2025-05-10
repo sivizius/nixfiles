@@ -24,24 +24,23 @@ let
     UprightFont = "*-Regular";
   };
 
-  defaultFontFeatures = fontName:
-    features:
+  defaultFontFeatures =
+    fontName: features:
     [
       "\\defaultfontfeatures[${fontName}]{"
       indentation.more
     ]
-    ++ (
-      set.mapToList
-        (key: value: "${key} = ${value},")
-        (
-          {
-            Path = "\\source/fonts/";
-            Extension = ".ttf";
-          }
-          // features
-        )
-    )
-    ++ [ indentation.less "}" ];
+    ++ (set.mapToList (key: value: "${key} = ${value},") (
+      {
+        Path = "\\source/fonts/";
+        Extension = ".ttf";
+      }
+      // features
+    ))
+    ++ [
+      indentation.less
+      "}"
+    ];
 in
 [ ]
 ++ (defaultFontFeatures "Arimo" usualFont)
@@ -69,21 +68,15 @@ in
 ++ (defaultFontFeatures "Roboto Slab" lightFont)
 ++ (defaultFontFeatures "Tinos" usualFont)
 ++ (defaultFontFeatures "unifont" regularFont)
-++ (
-  defaultFontFeatures "forkawesome"
-    {
-      UprightFont = "*-webfont";
-    }
-)
-++ (
-  defaultFontFeatures "Font-Awesome"
-    {
-      Extension = ".otf";
-      UprightFont = "*-6-Free-Regular-400";
-      ItalicFont = "*-6-Free-Solid-900";
-      SmallCapsFont = "*-6-Brands-Regular-400";
-    }
-)
+++ (defaultFontFeatures "forkawesome" {
+  UprightFont = "*-webfont";
+})
+++ (defaultFontFeatures "Font-Awesome" {
+  Extension = ".otf";
+  UprightFont = "*-6-Free-Regular-400";
+  ItalicFont = "*-6-Free-Solid-900";
+  SmallCapsFont = "*-6-Brands-Regular-400";
+})
 ++ [
   "\\newfontfamily{\\fontAwesome}{Font-Awesome}"
   "\\DeclareTextFontCommand{\\textFontAwesome}{\\fontAwesome}"

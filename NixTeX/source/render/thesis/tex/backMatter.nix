@@ -1,4 +1,9 @@
-{ context, core, thesis, ... }:
+{
+  context,
+  core,
+  thesis,
+  ...
+}:
 let
   inherit (core) indentation;
 in
@@ -18,12 +23,14 @@ backmatter:
     "\\renewcommand*\\thesubsubsection{}"
   ]
   ++ (
-    if configuration.concise or false
-    then
+    if configuration.concise or false then
       [ ]
     else
       [ "\\newpage\\unrotatePages\\thispagestyle{empty}\\mbox{}" ]
   )
   ++ backmatter
-  ++ [ indentation.less "}" ]
+  ++ [
+    indentation.less
+    "}"
+  ]
 )

@@ -1,6 +1,15 @@
-{ chunks, core, ... } @ libs:
+{ chunks, core, ... }@libs:
 let
-  inherit (core) debug error indentation list path set string type;
+  inherit (core)
+    debug
+    error
+    indentation
+    list
+    path
+    set
+    string
+    type
+    ;
   inherit (chunks) Chunk addToLastItem;
   inherit (chunks.chunks) Paragraph;
 
@@ -9,43 +18,50 @@ let
   # { ... } -> lambda | list | path | set | string -> [ string ]
   render = render' false;
 
-  render' = paragraphs:
-    document:
-    body:
-    type.matchPrimitiveOrPanic body
-      {
-        bool = error.throw "Bool in render?";
-        lambda = render' paragraphs document (body libs document);
-        list = list.concatMap (render' true document) body;
-        path = render' paragraphs document (path.import body);
-        set = (Chunk.expect body).render document body "LaTeX";
-        string =
-          let
-            body' = list.map (toLine true) (splitTexLines body);
-          in
-          if paragraphs
-          then
-            addToLastItem body' "\\par"
-          else
-            body';
-      };
+  render' =
+    paragraphs: document: body:
+    type.matchPrimitiveOrPanic body {
+      bool = error.throw "Bool in render?";
+      lambda = render' paragraphs document (body libs document);
+      list = list.concatMap (render' true document) body;
+      path = render' paragraphs document (path.import body);
+      set = (Chunk.expect body).render document body "LaTeX";
+      string =
+        let
+          body' = list.map (toLine true) (splitTexLines body);
+        in
+        if paragraphs then addToLastItem body' "\\par" else body';
+    };
 
   # string -> [ string ]
   splitTexLines = text: string.splitLines (string.trim (verifyString text));
 
   # { caption, description, ... } -> [ Chunk ]
-  putCaption = { caption, description, cite ? null, ... }:
-    if description != null
-      && description != [ ]
-    then
+  putCaption =
+    {
+      caption,
+      description,
+      cite ? null,
+      ...
+    }:
+    if description != null && description != [ ] then
       (
-        if caption != null
-        then
-          [ "\\caption[\\nolink{%" indentation.more ]
+        if caption != null then
+          [
+            "\\caption[\\nolink{%"
+            indentation.more
+          ]
           ++ caption
-          ++ [ indentation.less "}]{%" indentation.more ]
+          ++ [
+            indentation.less
+            "}]{%"
+            indentation.more
+          ]
         else
-          [ "\\caption{%" indentation.more ]
+          [
+            "\\caption{%"
+            indentation.more
+          ]
       )
       ++ [
         "\\tolerance 500%"
@@ -54,47 +70,39 @@ let
         "\\vfuzz=2pt%"
         "\\hyphenchar\\font=-1%"
       ]
-      ++ (
-        type.matchPrimitiveOrPanic cite
-          {
-            null = description;
-            list = addToLastItem description "\\cite{${string.concatMappedWith ({ name, ... }: name) "," cite}}";
-            set = addToLastItem description "\\cite{${cite.name}}";
-          }
-      )
-      ++ [ indentation.less "}%" ]
+      ++ (type.matchPrimitiveOrPanic cite {
+        null = description;
+        list = addToLastItem description "\\cite{${
+          string.concatMappedWith ({ name, ... }: name) "," cite
+        }}";
+        set = addToLastItem description "\\cite{${cite.name}}";
+      })
+      ++ [
+        indentation.less
+        "}%"
+      ]
     else
       [ ];
 
   # [ T ] | null | set | string -> [ T ] | [ ]
-  toBody = body:
-    type.matchPrimitiveOrPanic body
-      {
-        bool = error.throw "Bool in toBody?";
-        list = body;
-        null = [ ];
-        set = [ body ];
-        string = [ (Paragraph body) ];
-      };
+  toBody =
+    body:
+    type.matchPrimitiveOrPanic body {
+      bool = error.throw "Bool in toBody?";
+      list = body;
+      null = [ ];
+      set = [ body ];
+      string = [ (Paragraph body) ];
+    };
 
   # string -> [ string ]
-  toCaption = text:
-    if text != null
-    then
-      list.map (toLine true) (splitTexLines text)
-    else
-      null;
+  toCaption = text: if text != null then list.map (toLine true) (splitTexLines text) else null;
 
   # string -> [ string ]
-  toDescription = text:
-    if text != null
-    then
-      list.map (toLine true) (splitTexLines text)
-    else
-      null;
+  toDescription = text: if text != null then list.map (toLine true) (splitTexLines text) else null;
 
-  toLine = checkCommands:
-    line:
+  toLine =
+    checkCommands: line:
     let
       knownCommands =
         let
@@ -189,18 +197,16 @@ let
 
             "rightarrow"
             "directlua"
-          ]
-          ++ greekLetters;
+          ] ++ greekLetters;
         in
         list.mapNamesToSet (name: null) knownCommands;
-      filter = item:
+      filter =
+        item:
         let
           item' = list.head item;
         in
-        if list.isInstanceOf item
-        then
-          if set.hasAttribute item' knownCommands
-          then
+        if list.isInstanceOf item then
+          if set.hasAttribute item' knownCommands then
             [ ] # Replace?
           else
             item
@@ -218,26 +224,22 @@ let
         "##" = "\\textsc{";
         "\"" = "\\q{";
       };
-      line' = (
-        list.fold
+      line' =
+        (list.fold
           (
             { stack, text }:
             token:
-            if string.isInstanceOf token
-            then
+            if string.isInstanceOf token then
               {
                 inherit stack;
                 text = "${text}${token}";
               }
-            else if list.head token != null
-            then
+            else if list.head token != null then
               {
                 inherit stack;
                 text = "${text}${list.foot token}";
               }
-            else if stack != [ ]
-              -> list.head stack != list.foot token
-            then
+            else if stack != [ ] -> list.head stack != list.foot token then
               {
                 stack = list.tail token ++ stack;
                 text = "${text}${formatCommands.${list.foot token}}";
@@ -253,87 +255,92 @@ let
             text = "";
           }
           (string.split "(\\\\)?(~~|__|\\*\\*|//|\\+\\+|--|`|##|\")" line)
-      ).text;
+        ).text;
     in
-    debug.warn "toLine"
-      {
-        text = [ "Unknown LaTeX-Commands in line:" line ];
-        data = commands;
-        when = checkCommands && commands != [ ];
-      }
-      (string.concat (string.splitAt "${escape}(.*)${escape}" line'));
+    debug.warn "toLine" {
+      text = [
+        "Unknown LaTeX-Commands in line:"
+        line
+      ];
+      data = commands;
+      when = checkCommands && commands != [ ];
+    } (string.concat (string.splitAt "${escape}(.*)${escape}" line'));
 
   # string | [ string ] -> [ string ] | !
   toLines = toLines' true;
 
-  toLines' = checkCommands:
+  toLines' =
+    checkCommands:
     let
-      checkLines = list.map
-        (
-          line:
-          if string.isInstanceOf line
-            && string.match ".*\n.*" line == null
-          then
-            verifyString line
-          else
-            debug.panic [ "toLines'" "checkLines" ] "Lines must be a list of strings without newline \\n, got »${string line}«!"
-        );
+      checkLines = list.map (
+        line:
+        if string.isInstanceOf line && string.match ".*\n.*" line == null then
+          verifyString line
+        else
+          debug.panic [
+            "toLines'"
+            "checkLines"
+          ] "Lines must be a list of strings without newline \\n, got »${string line}«!"
+      );
     in
     body:
-    type.matchPrimitiveOrPanic body
-      {
-        bool = error.throw "Bool in toLines'?";
-        list = list.map (toLine checkCommands) (checkLines body);
-        string = list.map (toLine checkCommands) (splitTexLines body);
-      };
+    type.matchPrimitiveOrPanic body {
+      bool = error.throw "Bool in toLines'?";
+      list = list.map (toLine checkCommands) (checkLines body);
+      string = list.map (toLine checkCommands) (splitTexLines body);
+    };
 
   # string | { caption: string, bookmark: string?, visible: bool? }
   # -> { caption: string, bookmark: string, visible: bool }
-  toTitle = title:
-    latex:
-    type.matchPrimitiveOrPanic title
-      {
-        bool = error.throw "Bool in toTitle?";
-        string = {
-          caption = toLines' latex title;
-          bookmark = toLines' latex title;
-          visible = true;
-        };
-        set = {
-          caption = toLines' latex (title.caption                    or (debug.panic "toTitle" "Title needs caption!"));
-          bookmark = toLines' latex (title.bookmark  or title.caption or (debug.panic "toTitle" "Title needs bookmark!"));
-          visible = title.visible   or true;
-        };
+  toTitle =
+    title: latex:
+    type.matchPrimitiveOrPanic title {
+      bool = error.throw "Bool in toTitle?";
+      string = {
+        caption = toLines' latex title;
+        bookmark = toLines' latex title;
+        visible = true;
       };
+      set = {
+        caption = toLines' latex (title.caption or (debug.panic "toTitle" "Title needs caption!"));
+        bookmark = toLines' latex (
+          title.bookmark or title.caption or (debug.panic "toTitle" "Title needs bookmark!")
+        );
+        visible = title.visible or true;
+      };
+    };
 
-  verifyString/* :  string -> string */ = text:
-    let
-      count = char:
-        list.fold
-          (counter: char': counter + (if char == char' then 1 else 0))
-          0
-          (string.toCharacters text);
-      openA = count "{";
-      closeA = count "}";
-      openB = count "[";
-      closeB = count "]";
-      openC = count "(";
-      closeC = count ")";
-      warnIfUnequal = a: b:
-        msg:
-        if a != b
-        then
-          debug.warn [ "document" "verifyString" ] "Counting ${msg} in\n${text}"
-        else
-          (x: x);
-    in
-    (warnIfUnequal openA closeA "${string openA} »{« but ${string closeA} »}«")
-      (warnIfUnequal openB closeB "${string openB} »[« but ${string closeB} »]«")
-      (warnIfUnequal openC closeC "${string openC} »(« but ${string closeC} »)«")
-      text;
+  verifyString # :  string -> string
+    =
+      text:
+      let
+        count =
+          char:
+          list.fold (counter: char': counter + (if char == char' then 1 else 0)) 0 (string.toCharacters text);
+        openA = count "{";
+        closeA = count "}";
+        openB = count "[";
+        closeB = count "]";
+        openC = count "(";
+        closeC = count ")";
+        warnIfUnequal =
+          a: b: msg:
+          if a != b then debug.warn [ "document" "verifyString" ] "Counting ${msg} in\n${text}" else (x: x);
+      in
+      (warnIfUnequal openA closeA "${string openA} »{« but ${string closeA} »}«") (warnIfUnequal openB
+        closeB
+        "${string openB} »[« but ${string closeB} »]«"
+      ) (warnIfUnequal openC closeC "${string openC} »(« but ${string closeC} »)«") text;
 in
 {
-  inherit toBody toCaption toDescription toLine toLines toTitle;
+  inherit
+    toBody
+    toCaption
+    toDescription
+    toLine
+    toLines
+    toTitle
+    ;
   inherit putCaption render;
   splitLines = splitTexLines;
 }

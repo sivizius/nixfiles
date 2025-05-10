@@ -1,34 +1,34 @@
-{ fetchFromGitHub, pkgs, stdenv }:
+{
+  fetchFromGitHub,
+  pkgs,
+  stdenv,
+}:
 let
   pname = "rz-ghidra";
   version = "0.6.0";
   sha256 = "sha256-SnRNOv2rGGUX+/0zHIPptpt+t7c9FGJ9mFQT6Y16IxM=";
 in
-stdenv.mkDerivation
-{
+stdenv.mkDerivation {
   inherit pname version;
 
-  src = fetchFromGitHub
-    {
-      inherit sha256;
-      owner = "rizinorg";
-      repo = pname;
-      rev = "v${version}";
-      fetchSubmodules = true;
-    };
+  src = fetchFromGitHub {
+    inherit sha256;
+    owner = "rizinorg";
+    repo = pname;
+    rev = "v${version}";
+    fetchSubmodules = true;
+  };
 
-  nativeBuildInputs = with pkgs;
-    [
-      cmake
-      pkg-config
-      libsForQt5.wrapQtAppsHook
-    ];
+  nativeBuildInputs = with pkgs; [
+    cmake
+    pkg-config
+    libsForQt5.wrapQtAppsHook
+  ];
 
-  buildInputs = with pkgs;
-    [
-      cutter
-      rizin
-    ];
+  buildInputs = with pkgs; [
+    cutter
+    rizin
+  ];
 
   cmakeFlags = [
     "-DBUILD_CUTTER_PLUGIN=ON"

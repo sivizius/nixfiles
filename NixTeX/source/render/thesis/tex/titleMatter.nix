@@ -1,9 +1,27 @@
-{ context, core, thesis, ... }:
+{
+  context,
+  core,
+  thesis,
+  ...
+}:
 let
-  inherit (core) indentation list string time;
+  inherit (core)
+    indentation
+    list
+    string
+    time
+    ;
   inherit (thesis) formatAuthor;
 in
-{ authors, date, place, style, thesis, title, ... } @ document:
+{
+  authors,
+  date,
+  place,
+  style,
+  thesis,
+  title,
+  ...
+}@document:
 titleMatter:
 let
   authorList = string.concatCSV (list.map formatAuthor authors);

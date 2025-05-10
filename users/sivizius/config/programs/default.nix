@@ -1,4 +1,4 @@
-{ core, profile, ... } @ env:
+{ core, profile, ... }@env:
 extra:
 let
   inherit (core) path;
@@ -10,7 +10,7 @@ in
     enable = true;
     nix-direnv.enable = true;
   };
-  firefox = path.import ./firefox.nix env;
+  firefox = path.import ./firefox env;
   git = path.import ./git.nix env;
   htop = path.import ./htop.nix env;
   mbsync.enable = profile.isDesktop;

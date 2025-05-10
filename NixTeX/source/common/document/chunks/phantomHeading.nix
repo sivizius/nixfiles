@@ -1,13 +1,19 @@
 # TODO: Remove LaTeX-Code, replace with renderer-methods
-{ chunks, core, evaluator, renderer, ... }:
+{
+  chunks,
+  core,
+  evaluator,
+  renderer,
+  ...
+}:
 let
   inherit (core) debug list;
   inherit (evaluator) evaluate;
   inherit (renderer) toBody render;
 
-  evaluatePhantomHeading = document:
-    state:
-    { body, dependencies, ... } @ heading:
+  evaluatePhantomHeading =
+    document: state:
+    { body, dependencies, ... }@heading:
     let
       state' = evaluate document state body;
     in
@@ -16,19 +22,19 @@ let
       dependencies = state'.dependencies ++ dependencies;
     };
 
-  renderPhantomHeading = { level, ... } @ document:
-    { body, ... } @ heading:
+  renderPhantomHeading =
+    { level, ... }@document:
+    { body, ... }@heading:
     output:
-    render
-      (
-        document
-        // {
-          level = list.tailOr level [ ];
-        }
-      )
-      body;
+    render (
+      document
+      // {
+        level = list.tailOr level [ ];
+      }
+    ) body;
 
-  PhantomHeading = body:
+  PhantomHeading =
+    body:
     chunks.Chunk "PhantomHeading"
       {
         render = renderPhantomHeading;
@@ -39,4 +45,6 @@ let
         dependencies = [ ];
       };
 in
-{ inherit PhantomHeading; }
+{
+  inherit PhantomHeading;
+}

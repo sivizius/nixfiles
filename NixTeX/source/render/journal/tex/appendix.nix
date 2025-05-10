@@ -30,5 +30,9 @@ appendix:
     "\\printbibliography[heading=none]"
   ]
   ++ appendix
-  ++ [ "\\clearpage" indentation.less "}" ]
+  ++ [
+    "\\clearpage"
+    indentation.less
+    "}"
+  ]
 )

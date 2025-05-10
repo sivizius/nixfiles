@@ -1,11 +1,38 @@
-{ common, core, helpers, ... }:
+{
+  common,
+  core,
+  helpers,
+  ...
+}:
 let
   inherit (common) Transaction;
-  inherit (core) debug list path string;
+  inherit (core)
+    debug
+    list
+    path
+    string
+    ;
   inherit (helpers) parseAmountComma parseBritishDateTime trim;
 
-  convertTransaction = { currency, lookUpAccount, self, ... }:
-    { Adresse, Beschreibung, Betrag, Betreff, Datum, Kategorie, Land, PLZ, Stadt, ... } @ transaction:
+  convertTransaction =
+    {
+      currency,
+      lookUpAccount,
+      self,
+      ...
+    }:
+    {
+      Adresse,
+      Beschreibung,
+      Betrag,
+      Betreff,
+      Datum,
+      Kategorie,
+      Land,
+      PLZ,
+      Stadt,
+      ...
+    }@transaction:
     let
       address = {
         country = trim Land;
@@ -15,30 +42,48 @@ let
       };
       amount = parseAmountComma Betrag currency;
       category = trim Kategorie;
-      client = lookUpAccount
-        {
-          inherit address category description details message subject uid;
-        };
+      client = lookUpAccount {
+        inherit
+          address
+          category
+          description
+          details
+          message
+          subject
+          uid
+          ;
+      };
       dateTime = parseBritishDateTime Datum "00:00:00";
       description = trim Beschreibung;
       details = trim transaction."Weitere Details";
       uid =
-        if description == "ZAHLUNG/ÜBERWEISUNG ERHALTEN BESTEN DANK"
-        then
+        if description == "ZAHLUNG/ÜBERWEISUNG ERHALTEN BESTEN DANK" then
           "American Express"
         else
           trim (list.head (string.splitLines description));
       message = trim transaction."Erscheint auf Ihrer Abrechnung als";
       subject = trim Betreff;
     in
-    Transaction
-      {
-        inherit dateTime description;
-        credit = { ${client.uid} = amount; };
-        debit = { ${self.uid} = amount; };
+    Transaction {
+      inherit dateTime description;
+      credit = {
+        ${client.uid} = amount;
       };
+      debit = {
+        ${self.uid} = amount;
+      };
+    };
 
-  next = { case, columns, index, quote, transaction, text, journal } @ state:
+  next =
+    {
+      case,
+      columns,
+      index,
+      quote,
+      transaction,
+      text,
+      journal,
+    }@state:
     cell:
     let
       field = list.get columns index;
@@ -60,10 +105,8 @@ let
     in
     {
       FinaliseCell =
-        if isFinalCell
-        then
-          if isLineBreak
-          then
+        if isFinalCell then
+          if isLineBreak then
             {
               case = "ParseCell";
               index = 0;
@@ -72,15 +115,13 @@ let
             }
           else
             debug.panic [ "next" "FinaliseCell" ] "Line Break expected!"
-        else if isColumnSep
-        then
+        else if isColumnSep then
           {
             case = "ParseCell";
             index = index';
             quote = null;
           }
-        else if isLineBreak && quote != null
-        then
+        else if isLineBreak && quote != null then
           {
             case = "Quoted";
             text = "${text}${quote}${string.concat cell}";
@@ -89,20 +130,16 @@ let
           debug.panic [ "next" "FinaliseCell" ] "Column Separator expected!";
 
       ParseCell =
-        if !isCell
-        then
+        if !isCell then
           debug.panic [ "next" "ParseCell" ] "Cell expected!"
-        else if quoted != null
-        then
+        else if quoted != null then
           {
             case = "FinaliseCell";
-            transaction = transaction
-              // {
+            transaction = transaction // {
               ${field} = quoted';
             };
           }
-        else if quotedStart != null
-        then
+        else if quotedStart != null then
           {
             case = "Quoted";
             quote = list.head quotedStart;
@@ -111,20 +148,17 @@ let
         else
           {
             case = "FinaliseCell";
-            transaction = transaction
-              // {
+            transaction = transaction // {
               ${field} = cell;
             };
           };
 
       ParseHeader =
-        if isCell
-        then
+        if isCell then
           {
             columns = columns ++ [ cell ];
           }
-        else if isColumnSep
-        then
+        else if isColumnSep then
           { }
         else
           {
@@ -132,18 +166,14 @@ let
           };
 
       Quoted =
-        if !isCell
-        then
+        if !isCell then
           {
             text = "${text}${string.concat cell}";
           }
-        else if quotedStop != null
-          && quote == (list.get quotedStop 1)
-        then
+        else if quotedStop != null && quote == (list.get quotedStop 1) then
           {
             case = "FinaliseCell";
-            transaction = transaction
-              // {
+            transaction = transaction // {
               ${field} = "${text}${list.head quotedStop}";
             };
             text = "${text}${list.head quotedStop}";
@@ -152,41 +182,24 @@ let
           {
             text = "${text}${cell}";
           };
-    }.${case};
+    }
+    .${case};
 
-  next' = state:
-    cell:
-    state // (next state cell);
+  next' = state: cell: state // (next state cell);
 
-  parseCells = list.fold next'
-    {
-      case = "ParseHeader";
-      columns = [ ];
-      index = 0;
-      journal = [ ];
-      quote = null;
-      text = "";
-      transaction = { };
-    };
+  parseCells = list.fold next' {
+    case = "ParseHeader";
+    columns = [ ];
+    index = 0;
+    journal = [ ];
+    quote = null;
+    text = "";
+    transaction = { };
+  };
 
-  parseFile = fileName:
-    (
-      parseCells
-        (
-          string.split
-            "( *)([\n,])( *)"
-            (path.readFile fileName)
-        )
-    ).journal;
+  parseFile =
+    fileName: (parseCells (string.split "( *)([\n,])( *)" (path.readFile fileName))).journal;
 in
 {
-  journal = files:
-    env:
-    list.map
-      (convertTransaction env)
-      (
-        list.concatMap
-          parseFile
-          files
-      );
+  journal = files: env: list.map (convertTransaction env) (list.concatMap parseFile files);
 }

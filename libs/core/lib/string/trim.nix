@@ -3,17 +3,15 @@ let
   concat = splits: string.concat (list.flat splits);
   splitSpaces = string.split "([[:space:]]+)";
 
-  ltrim' = parts:
-    if list.head parts == ""
-      && parts != [ "" ]
-    then
+  ltrim' =
+    parts:
+    if list.head parts == "" && parts != [ "" ] then
       list.generate (x: list.get parts (x + 2)) (list.length parts - 2)
     else
       parts;
-  rtrim' = parts:
-    if list.foot parts == ""
-      && parts != [ "" ]
-    then
+  rtrim' =
+    parts:
+    if list.foot parts == "" && parts != [ "" ] then
       list.generate (list.get parts) (list.length parts - 2)
     else
       parts;
@@ -24,5 +22,10 @@ in
   __functor = self: trim;
   ltrim = text: concat (ltrim' (splitSpaces text));
   rtrim = text: concat (rtrim' (splitSpaces text));
-  inherit ltrim' rtrim' trim trim';
+  inherit
+    ltrim'
+    rtrim'
+    trim
+    trim'
+    ;
 }

@@ -1,7 +1,12 @@
-{ enableACME, extraConfig, forceSSL, ... }:
-Service "Static Files"
 {
-  configuration = { network, ... }:
+  enableACME,
+  extraConfig,
+  forceSSL,
+  ...
+}:
+Service "Static Files" {
+  configuration =
+    { network, ... }:
     {
       nginx = {
         enable = true;

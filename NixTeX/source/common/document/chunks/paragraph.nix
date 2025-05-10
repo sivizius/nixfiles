@@ -1,11 +1,18 @@
 # TODO: Remove LaTeX-Code, replace with renderer-methods
-{ chunks, core, evaluator, renderer, ... }:
+{
+  chunks,
+  core,
+  evaluator,
+  renderer,
+  ...
+}:
 let
   inherit (core) debug list;
   inherit (evaluator) evaluateLine;
   inherit (renderer) toLines;
 
-  evaluateParagraph = { ... }:
+  evaluateParagraph =
+    { ... }:
     state:
     { body, dependencies, ... }:
     let
@@ -17,14 +24,13 @@ let
     };
 
   # { ... } -> Paragraph -> [ string ]
-  renderParagraph = { ... }:
+  renderParagraph =
+    { ... }:
     { body, endParagraph, ... }:
     output:
-    if output == "LaTeX"
-    then
+    if output == "LaTeX" then
       chunks.addToLastItem body endParagraph
-    else if output == "Markdown"
-    then
+    else if output == "Markdown" then
       body
     else
       debug.panic "render" "Unknown output ${output}";
@@ -33,9 +39,10 @@ let
   Paragraph = body: Paragraph' body { };
 
   # string | [ string ] -> { ... } -> Document::Chunk::Paragraph
-  Paragraph' = body:
-    { endParagraph ? "\\par"
-    ,
+  Paragraph' =
+    body:
+    {
+      endParagraph ? "\\par",
     }:
     chunks.Chunk "Paragraph"
       {
@@ -48,4 +55,6 @@ let
         dependencies = [ ];
       };
 in
-{ inherit Paragraph Paragraph'; }
+{
+  inherit Paragraph Paragraph';
+}

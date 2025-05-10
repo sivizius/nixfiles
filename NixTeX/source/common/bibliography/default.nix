@@ -1,8 +1,7 @@
-{ core, ... } @ libs:
+{ core, ... }@libs:
 let
   inherit (core) library;
-  libs' = libs
-    // {
+  libs' = libs // {
     inherit bibliography;
   };
 

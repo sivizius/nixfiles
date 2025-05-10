@@ -1,4 +1,9 @@
-{ context, core, thesis, ... }:
+{
+  context,
+  core,
+  thesis,
+  ...
+}:
 let
   inherit (core) indentation;
   inherit (thesis) cleardoublepage;
@@ -25,9 +30,7 @@ in
   "\\afteracronyms%"
 ]
 ++ (
-  if configuration.substances.enable
-  && configuration.substances.list
-  then
+  if configuration.substances.enable && configuration.substances.list then
     [ "${cleardoublepage'}\\addchap{Substanzverzeichnis}{\\directlua{substances.printList(true)}}" ]
   else
     [ ]
@@ -37,26 +40,11 @@ in
   indentation.less
   "}"
 ]
-++ (
-  if state.schemes.counter > 0
-  then
-    [ "${cleardoublepage'}\\listofschemes" ]
-  else
-    [ ]
-)
-++ (
-  if state.figures.counter > 0
-  then
-    [ "${cleardoublepage'}\\listoffigures" ]
-  else
-    [ ]
-)
-++ (
-  if state.tables.counter > 0
-  then
-    [ "${cleardoublepage'}\\listoftables" ]
-  else
-    [ ]
-)
+++ (if state.schemes.counter > 0 then [ "${cleardoublepage'}\\listofschemes" ] else [ ])
+++ (if state.figures.counter > 0 then [ "${cleardoublepage'}\\listoffigures" ] else [ ])
+++ (if state.tables.counter > 0 then [ "${cleardoublepage'}\\listoftables" ] else [ ])
 ++ frontMatter
-++ [ indentation.less "}" ]
+++ [
+  indentation.less
+  "}"
+]

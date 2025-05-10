@@ -56,27 +56,29 @@
     };
   };
   outputs =
-    { self
-    , libcore
-    , libconfig
-    , # Foreign Modules
-      home-manager
-    , nixpkgs
-    , simple-nixos-mailserver
-    , ...
+    {
+      self,
+      libcore,
+      libconfig,
+      # Foreign Modules
+      home-manager,
+      nixpkgs,
+      simple-nixos-mailserver,
+      ...
     }:
     let
-      core = libcore.lib { inherit self; debug.logLevel = "info"; };
+      core = libcore.lib {
+        inherit self;
+        debug.logLevel = "info";
+      };
       inherit (core) path;
     in
-    path.import ./.
-      {
-        inherit core;
-        context = [ "modules" ];
-        config = libconfig.lib { inherit self; };
-        foreign = {
-          inherit home-manager nixpkgs simple-nixos-mailserver;
-          simple-nix-mailserver = simple-nixos-mailserver;
-        };
+    path.import ./. {
+      inherit core;
+      context = [ "modules" ];
+      config = libconfig.lib { inherit self; };
+      foreign = {
+        inherit home-manager nixpkgs simple-nixos-mailserver;
       };
+    };
 }

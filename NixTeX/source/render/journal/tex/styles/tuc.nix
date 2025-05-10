@@ -1,11 +1,29 @@
-{ core, journal, vanilla, ... }:
+{
+  core,
+  journal,
+  vanilla,
+  ...
+}:
 let
-  inherit (core) indentation list string time;
+  inherit (core)
+    indentation
+    list
+    string
+    time
+    ;
   inherit (journal) formatAuthor;
 in
 {
   name = "Chemnitz University of Technology";
-  titlePage = { authors, date, journal, place, title, ... }:
+  titlePage =
+    {
+      authors,
+      date,
+      journal,
+      place,
+      title,
+      ...
+    }:
     [
       "\\vspace*{-1.2cm}"
       "{"
@@ -22,7 +40,7 @@ in
       "{${journal.organisation.group}}\\hspace{0pt}\\\\[3.00em]"
       "{\\Huge ${title}}\\hspace{0pt}\\\\[2.00em]"
       "{\\large ${journal.title}}\\hspace{0pt}\\\\[1.00em]"
-      "{${string.concatCSV ( list.map formatAuthor authors )}}\\hspace{0pt}\\\\[1.00em]"
+      "{${string.concatCSV (list.map formatAuthor authors)}}\\hspace{0pt}\\\\[1.00em]"
       "{\\scriptsize ${place}, ${time.formatDate date.from "deu"} bis ${time.formatDate date.till "deu"}}"
       indentation.less
       "}"

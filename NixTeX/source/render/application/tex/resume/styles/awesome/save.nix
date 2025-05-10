@@ -1,17 +1,26 @@
 {
-  formatChapter = { body, title }:
+  formatChapter =
+    { body, title }:
     [
       "\\markleft{#1}%"
       "{\\fontsize{32pt}{1em}${selectFont.headerLight}\\color{graytext} ${title}}\\newline%"
       "{\\ignorespaces\\unskip{${body}}}%"
     ];
 
-  formatItem = { body, title }:
-    [ "\\item{${if title != null then "\\textbf{${title}}\\newline" else ""}%" indentation.more ]
+  formatItem =
+    { body, title }:
+    [
+      "\\item{${if title != null then "\\textbf{${title}}\\newline" else ""}%"
+      indentation.more
+    ]
     ++ body
-    ++ [ indentation.less "}" ];
+    ++ [
+      indentation.less
+      "}"
+    ];
 
-  formatItemList = { config, body }:
+  formatItemList =
+    { config, body }:
     [
       "\\relax%"
       "\\begin{cvitems}[${config}]%"
@@ -21,7 +30,8 @@
       "\\end{cvitems}%"
     ];
 
-  formatNote = { body, ... }:
+  formatNote =
+    { body, ... }:
     [
       ''
         \def\@note{}
@@ -31,21 +41,26 @@
       ''
     ];
 
-  formatSubEntry = { date, description, grade, place, position, title, ... }:
+  formatSubEntry =
+    {
+      date,
+      description,
+      grade,
+      place,
+      position,
+      title,
+      ...
+    }:
     let
       date' = "\\subentrydatestyle{${formatDate date language}}";
       description' =
-        if description != null
-        then
+        if description != null then
           [ "\\multicolumn{2}{L{17.0cm}}{\\subdescriptionstyle{${description}}}\\\\" ]
         else
           [ ];
-      grade' =
-        if grade != null then ", ${grade}"
-        else "";
+      grade' = if grade != null then ", ${grade}" else "";
       position' =
-        if position != null
-        then
+        if position != null then
           [
             "\\subentrypositionstyle{${position}${grade}} & ${date'}\\\\"
             "${title'}\\\\"
@@ -65,9 +80,18 @@
     ]
     ++ position'
     ++ description'
-    ++ [ indentation.less "\\end{tabular*}" ];
+    ++ [
+      indentation.less
+      "\\end{tabular*}"
+    ];
 
-  formatSubSection' = { body, environment ? null, title, ... }:
+  formatSubSection' =
+    {
+      body,
+      environment ? null,
+      title,
+      ...
+    }:
     [
       "\\vspace{-3mm}%"
       "\\phantomsection%"

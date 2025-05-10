@@ -1,7 +1,28 @@
-{ about, configurations, core, devices, hosts, networks, profiles, secrets, systems, users, versions, ... }:
+{
+  about,
+  configurations,
+  core,
+  devices,
+  hosts,
+  networks,
+  profiles,
+  secrets,
+  systems,
+  users,
+  versions,
+  ...
+}:
 let
   inherit (configurations) mapToArguments mapToLegacy sortUniqueChecked;
-  inherit (core) context debug library list set string target;
+  inherit (core)
+    context
+    debug
+    library
+    list
+    set
+    string
+    target
+    ;
   inherit (hosts) PrepareArgument;
   inherit (secrets) secret;
   inherit (systems) SystemConfiguration;
@@ -15,8 +36,8 @@ let
   collectUsers = users.collect;
   collectVersion = versions.collect;
 
-  prepareEnvironment = arguments:
-    environment:
+  prepareEnvironment =
+    arguments: environment:
     debug.debug "prepareEnvironment"
       {
         text = "(environment // arguments)";
@@ -24,30 +45,22 @@ let
       }
       set.map
       (
-        name:
-        value:
+        name: value:
         debug.debug "prepareEnvironment"
           {
             text = name;
             data = value;
           }
           (
-            if PrepareArgument.isInstanceOf value
-              || (
-              library.isInstanceOf value
-                && !value.isInitialised
-            )
-            then
+            if PrepareArgument.isInstanceOf value || (library.isInstanceOf value && !value.isInitialised) then
               let
                 value' = value (environment // arguments);
               in
-              debug.debug "prepareEnvironment"
-                {
-                  text = "value'";
-                  show = true;
-                  showType = false;
-                }
-                value'
+              debug.debug "prepareEnvironment" {
+                text = "value'";
+                show = true;
+                showType = false;
+              } value'
             else
               value
           )
@@ -57,23 +70,34 @@ let
 in
 { modules, ... }:
 environment:
-{ about, config ? [ ], devices, name, network, profile, source, system, users, version, ... } @ host:
+{
+  about,
+  config ? [ ],
+  devices,
+  name,
+  network,
+  profile,
+  source,
+  system,
+  users,
+  version,
+  ...
+}@host:
 let
-  arguments = debug.debug "arguments"
-    {
-      nice = true;
-      show = true;
-    }
-    (mapToArguments configurations);
+  arguments = debug.debug "arguments" {
+    nice = true;
+    show = true;
+  } (mapToArguments configurations);
 
-  configurations = debug.debug "configurations"
-    {
-      show = true;
-      nice = true;
-    }
-    (
-      sortUniqueChecked
-        (
+  configurations =
+    debug.info "configurations"
+      {
+        text = "sortUniqueChecked configs";
+        show = true;
+        nice = true;
+      }
+      (
+        sortUniqueChecked (
           [ ]
           ++ (collectAbout about)
           ++ (collectConfig config)
@@ -85,41 +109,37 @@ let
           ++ (collectUsers users)
           ++ (collectVersion version)
         )
-    );
+      );
 
-  nixosConfiguration = debug.debug "nixosConfiguration"
-    {
-      show = true;
-      nice = true;
-      when = false;
-    }
-    (
-      target.System.mapStdenv
-        (
+  nixosConfiguration =
+    debug.debug "nixosConfiguration"
+      {
+        show = true;
+        nice = true;
+        when = false;
+      }
+      (
+        target.System.mapStdenv (
           buildSystem:
           let
             buildPlatform = string buildSystem;
-            systemConfig = SystemConfiguration
-              {
-                configuration.nixpkgs = {
-                  inherit buildPlatform;
-                };
-                source = source "buildSystem";
+            systemConfig = SystemConfiguration {
+              configuration.nixpkgs = {
+                inherit buildPlatform;
               };
+              source = source "buildSystem";
+            };
           in
-          mapToLegacy
-            {
-              inherit host modules;
-              configurations = configurations ++ [ systemConfig ];
-              environment = prepareEnvironment
-                {
-                  inherit buildSystem secret;
-                  targetSystem = system;
-                }
-                environment;
-            }
+          mapToLegacy {
+            inherit host modules;
+            configurations = configurations ++ [ systemConfig ];
+            environment = prepareEnvironment {
+              inherit buildSystem secret;
+              targetSystem = system;
+            } environment;
+          }
         )
-    );
+      );
 
   /*
         buildScript
@@ -145,7 +165,6 @@ let
               ln -s ${deployScript} $out/deploy.sh
             '';
 
-
         deployScript
      = store.write.shellScript
             {
@@ -162,9 +181,10 @@ let
      = ''
               # Name: ${name}
               # Description: ${string.replace [ "\n" ] [ "\n#   " ]; about}
-            '';*/
+            '';
+  */
 in
 host
-  // {
+// {
   inherit arguments configurations nixosConfiguration;
 }

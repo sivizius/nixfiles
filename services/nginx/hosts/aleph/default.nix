@@ -1,5 +1,5 @@
-{ core, web, ... } @ libs:
-{ domain, ... } @ env:
+{ core, web, ... }@libs:
+{ domain, ... }@env:
 let
   inherit (core) path;
 
@@ -13,7 +13,10 @@ let
 
       _blank = "https://sivizius.eu/";
       stylesheets = {
-        "common.css" = { crossorigin = "anonymous"; referrerpolicy = "no-referrer"; };
+        "common.css" = {
+          crossorigin = "anonymous";
+          referrerpolicy = "no-referrer";
+        };
       };
       viewport = "width=device-width, initial-scale=1.0";
     };
@@ -32,8 +35,9 @@ let
         "index.html" = path.import ./index.html.nix libs wwwEnv;
         "resume.html" = path.import ./resume.html.nix libs wwwEnv;
         "pgp.asc" = ./pgp.asc;
-        "secunet.asc" = ./secunet.asc;
-        "secunet.ssh" = ./secunet.ssh;
+        "share" = "/var/www/share";
+        #"secunet.asc" = ./secunet.asc;
+        #"secunet.ssh" = ./secunet.ssh;
       };
     };
     "/fasm".redirect = "https://github.com/sivizius/dirtycow.fasm";
@@ -41,7 +45,8 @@ let
     "/latex".redirect = "https://github.com/sivizius/nixfiles/tree/development/NixTeX";
     "/nixfiles".redirect = "https://github.com/sivizius/nixfiles";
     "/python".redirect = "https://github.com/sivizius/ameisenRennen";
-    "/rust".redirect = "https://github.com/sivizius?tab=repositories&q=&type=source&language=rust&sort=";
+    "/rust".redirect =
+      "https://github.com/sivizius?tab=repositories&q=&type=source&language=rust&sort=";
     "/ti-konnektor".redirect = "https://github.com/sivizius/secunet_ti_konnektor_pin_calculator";
   };
 in

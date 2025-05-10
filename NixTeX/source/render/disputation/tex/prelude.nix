@@ -1,11 +1,37 @@
-{ core, fonts, formatAuthor, ... }:
+{
+  core,
+  fonts,
+  formatAuthor,
+  ...
+}:
 let
-  inherit (core) debug indentation list set string time;
+  inherit (core)
+    debug
+    indentation
+    list
+    set
+    string
+    time
+    ;
 
   facultyColours = "natwi";
 in
-{ title, authors, date, disputation, ... }:
-{ assets, acronyms, packages, references, source, substances, ... } @ args:
+{
+  title,
+  authors,
+  date,
+  disputation,
+  ...
+}:
+{
+  assets,
+  acronyms,
+  packages,
+  references,
+  source,
+  substances,
+  ...
+}@args:
 (
   [
     ''
@@ -45,7 +71,7 @@ in
   ++ fonts
   ++ [
     "\\renewcommand{\\familydefault}{\\sfdefault}"
-    "\\pdfvariable suppressoptionalinfo ${string ( 32 + 64 + 512 )}" # Makes the PDF constant
+    "\\pdfvariable suppressoptionalinfo ${string (32 + 64 + 512)}" # Makes the PDF constant
     "\\setstretch{1.433}" # 1/2-spacing
 
     "\\DeclareFloatingEnvironment["
@@ -115,9 +141,12 @@ in
     ''
   ]
   ++ (
-    if substances != null
-    then
-      [ "\\directlua{substances.load(source..\"${string.slice 0 ((string.length substances) - 4) substances}\")}%" ]
+    if substances != null then
+      [
+        "\\directlua{substances.load(source..\"${
+          string.slice 0 ((string.length substances) - 4) substances
+        }\")}%"
+      ]
     else
       [ ]
   )

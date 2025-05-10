@@ -19,9 +19,18 @@
     #  inputs.nixpkgs.follows = "nixpkgs";
     #};
   };
-  outputs = { self, libcore, libstore, ... }:
+  outputs =
+    {
+      self,
+      libcore,
+      libstore,
+      ...
+    }:
     let
-      core = libcore.lib { inherit self; debug.logLevel = "info"; };
+      core = libcore.lib {
+        inherit self;
+        debug.logLevel = "info";
+      };
       store = libstore.lib;
     in
     core.path.import ./. { inherit core self store; };

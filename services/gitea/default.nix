@@ -1,6 +1,10 @@
-{ commonHeaders, enableACME, forceSSL, ... }:
-Service "Gitea: Hosting git-repositories"
 {
+  commonHeaders,
+  enableACME,
+  forceSSL,
+  ...
+}:
+Service "Gitea: Hosting git-repositories" {
   configuration =
     let
       attachment = {
@@ -37,10 +41,25 @@ Service "Gitea: Hosting git-repositories"
         THEME_COLOR_META_TAG = "#222222";
       };
       settings = {
-        inherit attachment repository log metrics picture server service sessions ui;
+        inherit
+          attachment
+          repository
+          log
+          metrics
+          picture
+          server
+          service
+          sessions
+          ui
+          ;
       };
     in
-    { core, network, secret, ... }:
+    {
+      core,
+      network,
+      secret,
+      ...
+    }:
     let
       inherit (core) string;
       domain = "git.${network.domain}";

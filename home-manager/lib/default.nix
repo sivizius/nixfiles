@@ -1,9 +1,7 @@
-{ core, ... } @ libs:
+{ core, ... }@libs:
 let
   inherit (core) library;
 in
-library "homemanager"
-  libs
-{
+library "homemanager" libs {
   htop = ./htop.nix;
 }

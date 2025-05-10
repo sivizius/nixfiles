@@ -1,17 +1,16 @@
-Service "Restic: Backups"
-{
-  configuration = { store, ... }:
+Service "Restic: Backups" {
+  configuration =
+    { store, ... }:
     {
       restic.backups = {
         "05-1611-07A" =
           let
-            listFiles = store.write.bashScriptFile "listHomeDirectory"
-              ''
-                for f in /home/sivizius/*
-                do
-                  echo "$f"
-                done
-              '';
+            listFiles = store.write.bashScriptFile "listHomeDirectory" ''
+              for f in /home/sivizius/*
+              do
+                echo "$f"
+              done
+            '';
           in
           {
             dynamicFilesFrom = "sh ${listFiles}";

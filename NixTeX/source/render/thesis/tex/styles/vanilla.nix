@@ -1,20 +1,21 @@
 { core, thesis, ... }:
 let
-  inherit (core) indentation list string time;
+  inherit (core)
+    indentation
+    list
+    string
+    time
+    ;
   inherit (thesis) formatAuthor thesisVersion;
 in
 {
   name = "Vanilla";
-  originalityDeclaration = { thesis, title, ... }:
+  originalityDeclaration =
+    { thesis, title, ... }:
     let
       withTitle = "mit dem Titel \\textit{${title}}";
       followingWork =
-        if thesis.article == "den"
-          || thesis.article == "diesen"
-        then
-          "vorliegenden"
-        else
-          "vorliegende";
+        if thesis.article == "den" || thesis.article == "diesen" then "vorliegenden" else "vorliegende";
     in
     [
       "Ich erkläre,"
@@ -25,14 +26,23 @@ in
       "  habe ich als solche kenntlich gemacht."
       "Diese Arbeit wurde in gleicher oder ähnlicher Form noch nicht als Prüfungsleistung eingereicht und ist auch noch nicht veröffentlicht."
     ];
-  titlePage = { authors, date, place, thesis, title, version, ... }:
+  titlePage =
+    {
+      authors,
+      date,
+      place,
+      thesis,
+      title,
+      version,
+      ...
+    }:
     [
       "\\centering"
       "{\\Large ${thesis.organisation.department}} \\\\"
       "{${thesis.organisation.group}} \\\\"
       "{\\Huge ${title}} \\\\"
       "{\\large ${thesis.title}} \\\\"
-      "{${string.concatCSV ( list.map formatAuthor authors )}}"
+      "{${string.concatCSV (list.map formatAuthor authors)}}"
       "\\vfill"
       "\\begin{tabularx}{\\linewidth}{@{}lX@{}}"
       indentation.more

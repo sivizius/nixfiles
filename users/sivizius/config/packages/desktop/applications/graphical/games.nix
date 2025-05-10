@@ -2,7 +2,7 @@
 with nix;
 [
   jdk17
-  prismlauncher
-  sauerbraten
+  #prismlauncher
+  #sauerbraten
   xonotic
 ]

@@ -1,9 +1,22 @@
 { core, journal, ... }:
 let
-  inherit (core) indentation list string time;
+  inherit (core)
+    indentation
+    list
+    string
+    time
+    ;
   inherit (journal) formatAuthor;
 in
-{ authors, date, journal, place, title, style, ... } @ document:
+{
+  authors,
+  date,
+  journal,
+  place,
+  title,
+  style,
+  ...
+}@document:
 { ... }:
 let
   authorList = string.concatCSV (list.map formatAuthor authors);

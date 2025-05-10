@@ -2,13 +2,12 @@
 let
   inherit (intrinsics) attrNames concatStringsSep;
 
-  Layout = name:
-    bindings:
-    { inherit name bindings; };
+  Layout = name: bindings: { inherit name bindings; };
 
   toXKB =
     let
-      mapKey = key:
+      mapKey =
+        key:
         {
           "1" = "AE01";
           "2" = "AE02";
@@ -58,77 +57,68 @@ let
           "." = "AB09";
           "/" = "AB10";
           "<" = "LSGT";
-        }.${key};
-      mapCharacters = map
-        (
-          char:
-          if isString char
-          then
-            (
-              lib.foldl
-                (
-                  result:
-                  char:
-                  result // { ${char} = char; }
-                )
-                { }
-                [
-                  "0"
-                  "1"
-                  "2"
-                  "3"
-                  "4"
-                  "5"
-                  "6"
-                  "7"
-                  "8"
-                  "9"
-                  "a"
-                  "b"
-                  "c"
-                  "d"
-                  "e"
-                  "f"
-                  "g"
-                  "h"
-                  "i"
-                  "j"
-                  "k"
-                  "l"
-                  "m"
-                  "n"
-                  "o"
-                  "p"
-                  "q"
-                  "r"
-                  "s"
-                  "t"
-                  "u"
-                  "v"
-                  "w"
-                  "x"
-                  "y"
-                  "z"
-                ]
-            )
-              {
-                "!" = "exclam";
-                "¡" = "exclamdown";
-              }.${char}
-          else if char == null then "NoSymbol"
-          else if char == Grave then "grave"
-          else null
+        }
+        .${key};
+      mapCharacters = map (
+        char:
+        if isString char then
+          (lib.foldl (result: char: result // { ${char} = char; }) { } [
+            "0"
+            "1"
+            "2"
+            "3"
+            "4"
+            "5"
+            "6"
+            "7"
+            "8"
+            "9"
+            "a"
+            "b"
+            "c"
+            "d"
+            "e"
+            "f"
+            "g"
+            "h"
+            "i"
+            "j"
+            "k"
+            "l"
+            "m"
+            "n"
+            "o"
+            "p"
+            "q"
+            "r"
+            "s"
+            "t"
+            "u"
+            "v"
+            "w"
+            "x"
+            "y"
+            "z"
+          ])
+            {
+              "!" = "exclam";
+              "¡" = "exclamdown";
+            }
+            .${char}
+        else if char == null then
+          "NoSymbol"
+        else if char == Grave then
+          "grave"
+        else
+          null
+      );
+      toXKB =
+        bindings:
+        concatStringsSep "\n" (
+          map (key: "  key <${mapKey key}> { [${concatStringsSep ", " (mapCharacters bindings.${key})}] };") (
+            attrNames bindings
+          )
         );
-      toXKB = bindings:
-        concatStringsSep "\n"
-          (
-            map
-              (
-                key:
-                "  key <${mapKey key}> { [${concatStringsSep ", " (mapCharacters bindings.${key})}] };"
-              )
-              (attrNames bindings)
-          );
 
     in
     { name, bindings, ... }:
@@ -139,20 +129,84 @@ let
       };
     '';
 in
-Layout "de"
-{
+Layout "de" {
   # First
-  "~" = [ "^" "°" "′" "″" ];
-  "1" = [ "1" "!" "¹" "¡" ];
-  "2" = [ "2" "\"" "²" "⅛" ];
-  "3" = [ "3" "§" "³" "£" ];
-  "4" = [ "4" "$" "¼" "¤" ];
-  "5" = [ "5" "%" "½" "⅜" ];
-  "6" = [ "6" "&" "¬" "⅝" ];
-  "7" = [ "7" "/" "{" "⅞" ];
-  "8" = [ "8" "(" "[" "™" ];
-  "9" = [ "9" ")" "]" "±" ];
-  "0" = [ "0" "=" "}" "°" ];
-  "-" = [ "ß" "?" "\\" "¿" ];
-  "=" = [ "´" "`" "¸" "˛" ];
+  "~" = [
+    "^"
+    "°"
+    "′"
+    "″"
+  ];
+  "1" = [
+    "1"
+    "!"
+    "¹"
+    "¡"
+  ];
+  "2" = [
+    "2"
+    "\""
+    "²"
+    "⅛"
+  ];
+  "3" = [
+    "3"
+    "§"
+    "³"
+    "£"
+  ];
+  "4" = [
+    "4"
+    "$"
+    "¼"
+    "¤"
+  ];
+  "5" = [
+    "5"
+    "%"
+    "½"
+    "⅜"
+  ];
+  "6" = [
+    "6"
+    "&"
+    "¬"
+    "⅝"
+  ];
+  "7" = [
+    "7"
+    "/"
+    "{"
+    "⅞"
+  ];
+  "8" = [
+    "8"
+    "("
+    "["
+    "™"
+  ];
+  "9" = [
+    "9"
+    ")"
+    "]"
+    "±"
+  ];
+  "0" = [
+    "0"
+    "="
+    "}"
+    "°"
+  ];
+  "-" = [
+    "ß"
+    "?"
+    "\\"
+    "¿"
+  ];
+  "=" = [
+    "´"
+    "`"
+    "¸"
+    "˛"
+  ];
 }

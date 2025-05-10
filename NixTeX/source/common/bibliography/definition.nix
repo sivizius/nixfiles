@@ -1,102 +1,94 @@
 { core, document, ... }:
 let
-  inherit (core) debug list number set string time type;
+  inherit (core)
+    debug
+    list
+    number
+    set
+    string
+    time
+    type
+    ;
 
-  adjustDate = source:
-    date:
+  adjustDate =
+    source: date:
     let
       panic = debug.panic (source ++ [ "adjustDate" ]);
       date' = time.from date;
     in
-    if date' != null
-    then
-      date'
-    else
-      panic "Invalid date: »${date}«";
+    if date' != null then date' else panic "Invalid date: »${date}«";
 
-  adjustPages = source:
-    pages:
+  adjustPages =
+    source: pages:
     let
       panic = debug.panic (source ++ [ "adjustPages" ]);
     in
-    type.matchPrimitiveOrPanic pages
-      {
-        "int" = {
-          from = pages;
-          till = pages;
-        };
-        "set" = {
-          from = pages.from or (panic "Pages need a from!");
-          till = pages.till or (panic "Pages need a till!");
-        };
-        "string" =
+    type.matchPrimitiveOrPanic pages {
+      "int" = {
+        from = pages;
+        till = pages;
+      };
+      "set" = {
+        from = pages.from or (panic "Pages need a from!");
+        till = pages.till or (panic "Pages need a till!");
+      };
+      "string" =
+        let
+          pages' = string.match "([^-]+)--?([^-]+)" pages;
+        in
+        if pages' != null then
+          {
+            from = list.get pages' 0;
+            till = list.get pages' 1;
+          }
+        else
           let
-            pages' = string.match "([^-]+)--?([^-]+)" pages;
+            page = number.toInteger' pages;
           in
-          if pages' != null
-          then
+          if page != null then
             {
-              from = list.get pages' 0;
-              till = list.get pages' 1;
+              from = page;
+              till = page;
             }
           else
             let
-              page = number.toInteger' pages;
+              page = string.match "!?(.*)" pages;
             in
-            if page != null
-            then
-              {
-                from = page;
-                till = page;
-              }
-            else
-              let
-                page = string.match "!?(.*)" pages;
-              in
-              list.head page;
-      };
+            list.head page;
+    };
 
-  adjustWhitespace = text:
-    string.concatMapped
-      (
-        item:
-        if string.isInstanceOf item
-        then
-          item
-        else
-          " "
-      )
-      (string.trim' text);
+  adjustWhitespace =
+    text:
+    string.concatMapped (item: if string.isInstanceOf item then item else " ") (string.trim' text);
 
-  toChapterBook = source:
+  toChapterBook =
+    source:
     let
       source' = source ++ [ "toChapterBook" ];
     in
-    { date ? (debug.panic source' "Need a date!")
-    , isbn ? null
-    , publisher ? (debug.panic source' "Needs a publisher!")
-    , series ? null
-    , title ? (debug.panic source' "Needs a title!")
+    {
+      date ? (debug.panic source' "Need a date!"),
+      isbn ? null,
+      publisher ? (debug.panic source' "Needs a publisher!"),
+      series ? null,
+      title ? (debug.panic source' "Needs a title!"),
     }:
     {
       date = adjustDate source' date;
       title = adjustWhitespace title;
-      series =
-        if series != null
-        then
-          adjustWhitespace series
-        else
-          null;
+      series = if series != null then adjustWhitespace series else null;
       inherit isbn publisher;
     };
 
-  toConference = source:
+  toConference =
+    source:
     let
       source' = source ++ [ "toConference" ];
     in
-    { date ? (debug.panic source' "Need a date!")
-    , publisher ? (debug.panic source' "Needs a publisher!")
-    , title ? (debug.panic source' "Needs a title!")
+    {
+      date ? (debug.panic source' "Need a date!"),
+      publisher ? (debug.panic source' "Needs a publisher!"),
+      title ? (debug.panic source' "Needs a title!"),
     }:
     {
       date = adjustDate source' date;
@@ -104,14 +96,16 @@ let
       inherit publisher;
     };
 
-  toIssue = source:
+  toIssue =
+    source:
     let
       source' = source ++ [ "toIssue" ];
     in
-    { date ? (debug.panic source' "Need a date!")
-    , journal ? (debug.panic source' "Need a journal!")
-    , number ? null
-    , volume ? null
+    {
+      date ? (debug.panic source' "Need a date!"),
+      journal ? (debug.panic source' "Need a journal!"),
+      number ? null,
+      volume ? null,
     }:
     {
       date = adjustDate source' date;
@@ -119,13 +113,15 @@ let
       inherit number volume;
     };
 
-  toJournal = source:
+  toJournal =
+    source:
     let
       source' = source ++ [ "toJournal" ];
     in
-    { name ? (debug.panic source' "Need a name!")
-    , publisher ? (debug.panic source' "Need a publisher!")
-    , short ? ""
+    {
+      name ? (debug.panic source' "Need a name!"),
+      publisher ? (debug.panic source' "Need a publisher!"),
+      short ? "",
     }:
     {
       name = adjustWhitespace name;
@@ -133,13 +129,15 @@ let
       publisher = toPublisher source' publisher;
     };
 
-  toPublisher = source:
+  toPublisher =
+    source:
     let
       source' = source ++ [ "toPublisher" ];
     in
-    { name ? (debug.panic source' "Needs a name!")
-    , ...
-    } @ publisher:
+    {
+      name ? (debug.panic source' "Needs a name!"),
+      ...
+    }@publisher:
     publisher
     // {
       name = adjustWhitespace name;
@@ -147,14 +145,15 @@ let
 in
 {
   Article =
-    { authors ? (debug.panic "Article" "Need some authors!")
-    , doi ? null
-    , issue ? (debug.panic "Article" "Need an issue!")
-    , pages ? (debug.panic "Article" "Need pages!")
-    , title ? (debug.panic "Article" "Need a title!")
-    , url ? null
-    , ...
-    } @ article:
+    {
+      authors ? (debug.panic "Article" "Need some authors!"),
+      doi ? null,
+      issue ? (debug.panic "Article" "Need an issue!"),
+      pages ? (debug.panic "Article" "Need pages!"),
+      title ? (debug.panic "Article" "Need a title!"),
+      url ? null,
+      ...
+    }@article:
     article
     // {
       __type__ = "JournalArticle";
@@ -166,16 +165,17 @@ in
     };
 
   Book =
-    { authors ? (debug.panic "Book" "Need some authors!")
-    , date ? (debug.panic "Book" "Need a date!")
-    , doi ? null
-    , isbn ? null
-    , publisher ? (debug.panic "Book" "Need a publisher!")
-    , series ? null
-    , title ? (debug.panic "Book" "Need a title!")
-    , url ? null
-    , ...
-    } @ book:
+    {
+      authors ? (debug.panic "Book" "Need some authors!"),
+      date ? (debug.panic "Book" "Need a date!"),
+      doi ? null,
+      isbn ? null,
+      publisher ? (debug.panic "Book" "Need a publisher!"),
+      series ? null,
+      title ? (debug.panic "Book" "Need a title!"),
+      url ? null,
+      ...
+    }@book:
     book
     // {
       __type__ = "Book";
@@ -187,13 +187,14 @@ in
     };
 
   Chapter =
-    { authors ? (debug.panic "Chapter" "Need some authors!")
-    , book ? (debug.panic "Chapter" "Need a book!")
-    , doi ? null
-    , title ? (debug.panic "Chapter" "Need a title!")
-    , url ? null
-    , ...
-    } @ chapter:
+    {
+      authors ? (debug.panic "Chapter" "Need some authors!"),
+      book ? (debug.panic "Chapter" "Need a book!"),
+      doi ? null,
+      title ? (debug.panic "Chapter" "Need a title!"),
+      url ? null,
+      ...
+    }@chapter:
     chapter
     // {
       __type__ = "BookChapter";
@@ -204,14 +205,15 @@ in
     };
 
   ConferenceArticle =
-    { authors ? (debug.panic "ConferenceArticle" "Need some authors!")
-    , conference ? (debug.panic "ConferenceArticle" "Need a conference!")
-    , doi ? null
-    , title ? (debug.panic "ConferenceArticle" "Need a title!")
-    , pages ? (debug.panic "ConferenceArticle" "Need pages!")
-    , url ? null
-    , ...
-    } @ paper:
+    {
+      authors ? (debug.panic "ConferenceArticle" "Need some authors!"),
+      conference ? (debug.panic "ConferenceArticle" "Need a conference!"),
+      doi ? null,
+      title ? (debug.panic "ConferenceArticle" "Need a title!"),
+      pages ? (debug.panic "ConferenceArticle" "Need pages!"),
+      url ? null,
+      ...
+    }@paper:
     paper
     // {
       __type__ = "ConferenceArticle";
@@ -223,16 +225,17 @@ in
     };
 
   Patent =
-    { authors ? (debug.panic "Patent" "Need some authors!")
-    , date ? (debug.panic "Patent" "Need a date!")
-    , doi ? null
-    , number ? (debug.panic "Patent" "Need a Number!")
-    , stage ? null
-    , title ? (debug.panic "Patent" "Need a title!")
-    , type ? (debug.panic "Patent" "Need a type!")
-    , url ? null
-    , ...
-    } @ patent:
+    {
+      authors ? (debug.panic "Patent" "Need some authors!"),
+      date ? (debug.panic "Patent" "Need a date!"),
+      doi ? null,
+      number ? (debug.panic "Patent" "Need a Number!"),
+      stage ? null,
+      title ? (debug.panic "Patent" "Need a title!"),
+      type ? (debug.panic "Patent" "Need a type!"),
+      url ? null,
+      ...
+    }@patent:
     patent
     // {
       __type__ = "Patent";
@@ -244,14 +247,15 @@ in
     };
 
   Review =
-    { authors ? (debug.panic "Review" "Need some authors!")
-    , doi ? null
-    , issue ? (debug.panic "Review" "Need an issue!")
-    , pages ? (debug.panic "Review" "Need pages!")
-    , title ? (debug.panic "Review" "Need a title!")
-    , url ? null
-    , ...
-    } @ review:
+    {
+      authors ? (debug.panic "Review" "Need some authors!"),
+      doi ? null,
+      issue ? (debug.panic "Review" "Need an issue!"),
+      pages ? (debug.panic "Review" "Need pages!"),
+      title ? (debug.panic "Review" "Need a title!"),
+      url ? null,
+      ...
+    }@review:
     review
     // {
       __type__ = "ReviewArticle";

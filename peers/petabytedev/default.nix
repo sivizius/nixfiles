@@ -2,14 +2,12 @@
 let
   inherit (core) string;
 
-  Peer' = number:
-    domain:
-    ips:
-    Peer "Domain Name Server ${string number}"
-      {
-        network = { inherit domain ips; };
-        type.dns-secondary = true;
-      };
+  Peer' =
+    number: domain: ips:
+    Peer "Domain Name Server ${string number}" {
+      network = { inherit domain ips; };
+      type.dns-secondary = true;
+    };
 in
 {
   dns1 = Peer' 1 "ns1.pbb.lc" [ "2a01:4f8:c0c:473f::1" ];

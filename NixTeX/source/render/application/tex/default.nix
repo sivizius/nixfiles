@@ -1,7 +1,32 @@
-{ bibliography, chemistry, core, document, glossaries, ... } @ libs:
-{ configuration, content, date, dependencies, language ? "eng", name, place, resources, ... } @ document:
+{
+  bibliography,
+  chemistry,
+  core,
+  document,
+  glossaries,
+  ...
+}@libs:
+{
+  configuration,
+  content,
+  date,
+  dependencies,
+  language ? "eng",
+  name,
+  place,
+  resources,
+  ...
+}@document:
 let
-  inherit (core) debug indentation library list path string time;
+  inherit (core)
+    debug
+    indentation
+    library
+    list
+    path
+    string
+    time
+    ;
 
   renderBeginDocument = library.import ./beginDocument.nix libs';
   renderEnclosures = library.import ./enclosures.nix libs';
@@ -9,8 +34,7 @@ let
   renderPrelude = library.import ./prelude.nix libs';
   renderResume = library.import ./resume libs';
 
-  libs' = libs
-    // {
+  libs' = libs // {
     toTex = libs.document.toTex { inherit configuration language resources; };
   };
 
@@ -47,25 +71,36 @@ let
   };
 
   letter = {
-    inherit (document) configuration date language place;
+    inherit (document)
+      configuration
+      date
+      language
+      place
+      ;
     sender = {
       inherit (resume) name social;
     };
     subject = document.title;
-  }
-  // (path.import content.letter libs' document);
+  } // (path.import content.letter libs' document);
   resume = {
     inherit (document) date language place;
-  }
-  // (path.import content.resume libs' document);
+  } // (path.import content.resume libs' document);
 
   pdfMeta = {
     author = "${resume.name.given} ${resume.name.family}";
-    title = "${document.title} ${{ deu = "am"; eng = "on"; }.${language}} ${time.formatDate document.date language}";
-    subject = {
-      deu = "Bewerbung";
-      eng = "Application";
-    }.${language};
+    title = "${document.title} ${
+      {
+        deu = "am";
+        eng = "on";
+      }
+      .${language}
+    } ${time.formatDate document.date language}";
+    subject =
+      {
+        deu = "Bewerbung";
+        eng = "Application";
+      }
+      .${language};
   };
 
   enclosures = {
@@ -73,28 +108,34 @@ let
     inherit (letter) enclosures;
   };
 
-  content' = indentation { initial = ""; tab = "  "; }
-    (
-      [ ]
-      ++ (renderPrelude prelude)
-      ++ [ "\\begin{document}" indentation.more ]
-      ++ (renderBeginDocument pdfMeta)
-      ++ list.ifOrEmpty'
-        ((configuration.application or { }).letter or true)
-        (renderLetter letter)
-      ++ list.ifOrEmpty'
-        ((configuration.application or { }).resume or true)
-        (renderResume resume)
-      ++ list.ifOrEmpty'
-        ((configuration.application or { }).enclosures or true)
-        (renderEnclosures enclosures)
-      ++ [ "\\directlua{commonFinal()}" ] # ToDo: Remove!
-      ++ [ indentation.less "\\end{document}" ]
-    );
+  content' =
+    indentation
+      {
+        initial = "";
+        tab = "  ";
+      }
+      (
+        [ ]
+        ++ (renderPrelude prelude)
+        ++ [
+          "\\begin{document}"
+          indentation.more
+        ]
+        ++ (renderBeginDocument pdfMeta)
+        ++ list.ifOrEmpty' ((configuration.application or { }).letter or true) (renderLetter letter)
+        ++ list.ifOrEmpty' ((configuration.application or { }).resume or true) (renderResume resume)
+        ++ list.ifOrEmpty' ((configuration.application or { }).enclosures or true) (
+          renderEnclosures enclosures
+        )
+        ++ [ "\\directlua{commonFinal()}" ] # ToDo: Remove!
+        ++ [
+          indentation.less
+          "\\end{document}"
+        ]
+      );
 
   optimiser =
-    if configuration.optimise or false
-    then
+    if configuration.optimise or false then
       ''
         # Optimise and linearise
         # This removes tooltips, sorry
@@ -122,48 +163,46 @@ let
     else
       "";
 
-  compile = path.toFile "compile-${name}.sh"
-    ''
-      #!/usr/bin/env bash
-      echo "$out/${name}.tex"
-      #exit 0
+  compile = path.toFile "compile-${name}.sh" ''
+    #!/usr/bin/env bash
+    echo "$out/${name}.tex"
+    #exit 0
 
-      newHash="false"
-      oldHash="true"
-      out="$1"
+    newHash="false"
+    oldHash="true"
+    out="$1"
 
-      counter=""
-      while [[ "$newHash" != "$oldHash" && "$counter" != "${configuration.foo or "+++++"}" ]]
-      do
-        if  lualatex                  \
-            --interaction=nonstopmode \
-            --halt-on-error           \
-            --output-format=pdf       \
-            "\def\source{$out}\def\build{.}\input{$out/${name}.tex}" #2> /dev/null > /dev/null
-        then
-          oldHash="$newHash"
-          newHash="$(md5sum "${name}.pdf")"
-          echo "$newHash"
-          mv "${name}.log" "$out/${name}.log"
-          mv "${name}.llg" "$out/${name}.llg"
-          biber "${name}"
-          counter="+$counter"
-        else
-          exit 1
-        fi
-      done
+    counter=""
+    while [[ "$newHash" != "$oldHash" && "$counter" != "${configuration.foo or "+++++"}" ]]
+    do
+      if  lualatex                  \
+          --interaction=nonstopmode \
+          --halt-on-error           \
+          --output-format=pdf       \
+          "\def\source{$out}\def\build{.}\input{$out/${name}.tex}" #2> /dev/null > /dev/null
+      then
+        oldHash="$newHash"
+        newHash="$(md5sum "${name}.pdf")"
+        echo "$newHash"
+        mv "${name}.log" "$out/${name}.log"
+        mv "${name}.llg" "$out/${name}.llg"
+        biber "${name}"
+        counter="+$counter"
+      else
+        exit 1
+      fi
+    done
 
-      ${optimiser}
-      # move the generated and processed document to the final-directory
-      mv "${name}.pdf" "$out/${name}.pdf"
-    '';
+    ${optimiser}
+    # move the generated and processed document to the final-directory
+    mv "${name}.pdf" "$out/${name}.pdf"
+  '';
   texFile = path.toFile "${name}.tex" content';
 in
 document
-  // {
+// {
   content = content';
-  dependencies = dependencies
-  ++ [
+  dependencies = dependencies ++ [
     acronyms
     references
     substances
@@ -172,7 +211,10 @@ document
       dst = "${name}.tex";
     }
     {
-      src = { store = compile; executable = true; };
+      src = {
+        store = compile;
+        executable = true;
+      };
       dst = "compile-${name}.sh";
     }
   ];

@@ -1,6 +1,6 @@
-Service "GNU Privacy Guard"
-{
-  configuration = { registries, ... }:
+Service "GNU Privacy Guard" {
+  configuration =
+    { registries, ... }:
     {
       programs.gnupg = {
         agent = {

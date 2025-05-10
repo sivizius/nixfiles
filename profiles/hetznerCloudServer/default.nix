@@ -1,6 +1,5 @@
 { profiles, services, ... }:
-Profile "Hetzner Cloud-Server."
-{
+Profile "Hetzner Cloud-Server." {
   configuration = [
     ./hardware
     {
@@ -8,6 +7,16 @@ Profile "Hetzner Cloud-Server."
     }
   ];
   isDesktop = false;
-  parents = with profiles; [ common qemu-guest ];
-  services = with services; [ bind gitea monitoring nginx simple-nix-mail static ];
+  parents = with profiles; [
+    common
+    qemu-guest
+  ];
+  services = with services; [
+    bind
+    gitea
+    monitoring
+    nginx
+    simple-nix-mail
+    static
+  ];
 }

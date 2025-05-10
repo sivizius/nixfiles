@@ -1,4 +1,12 @@
-{ bool, debug, integer, set, string, type, ... }:
+{
+  bool,
+  debug,
+  integer,
+  set,
+  string,
+  type,
+  ...
+}:
 let
   inherit (string) char;
 
@@ -45,17 +53,17 @@ let
     };
   };
 
-  concatAttributes = attributes:
+  concatAttributes =
+    attributes:
     let
-      attributes' = type.matchPrimitiveOrPanic attributes
-        {
-          bool = bool.select attributes "1" "0";
-          int = integer.toString attributes;
-          list = string.concatWith ";" attributes;
-          null = "";
-          path = "${attributes}";
-          string = attributes;
-        };
+      attributes' = type.matchPrimitiveOrPanic attributes {
+        bool = bool.select attributes "1" "0";
+        int = integer.toString attributes;
+        list = string.concatWith ";" attributes;
+        null = "";
+        path = "${attributes}";
+        string = attributes;
+      };
     in
     attributes';
 
@@ -72,16 +80,14 @@ let
     crossedOut = 9;
     font = {
       default = 10;
-      alternative = number:
-        debug.panic [ "displayAttributes" "font" "alternative" ]
-          {
-            text = "Alternative Font must be an integer in 1…9";
-            data = number;
-            when = !(integer.isInstanceOf number)
-              || number < 1
-              || number > 9;
-          }
-          number + 10;
+      alternative =
+        number:
+        debug.panic [ "displayAttributes" "font" "alternative" ] {
+          text = "Alternative Font must be an integer in 1…9";
+          data = number;
+          when = !(integer.isInstanceOf number) || number < 1 || number > 9;
+        } number
+        + 10;
     };
     fraktur = 20;
     doubleUnderline = 21;
@@ -89,19 +95,15 @@ let
     #…
     notCrossedOut = 29;
     # …
-  }
-  // colours;
+  } // colours;
 
-  mapToSGR = set.mapValues
-    (
-      attributes:
-      type.matchPrimitiveOrDefault attributes
-        {
-          lambda = args: SGR (attributes args);
-          set = mapToSGR attributes;
-        }
-        (SGR attributes)
-    );
+  mapToSGR = set.mapValues (
+    attributes:
+    type.matchPrimitiveOrDefault attributes {
+      lambda = args: SGR (attributes args);
+      set = mapToSGR attributes;
+    } (SGR attributes)
+  );
 
   APC = "${char.escape}_";
   CSI = "${char.escape}[";
@@ -113,12 +115,21 @@ let
   SS3 = "${char.escape}O";
   ST = "${char.escape}\\";
 
-  SGR = attributes:
-    "${CSI}${concatAttributes attributes}m";
+  SGR = attributes: "${CSI}${concatAttributes attributes}m";
 in
 {
-  inherit APC CSI DCS OSC PM SOS SS2 SS3 ST;
+  inherit
+    APC
+    CSI
+    DCS
+    OSC
+    PM
+    SOS
+    SS2
+    SS3
+    ST
+    ;
   inherit SGR;
   inherit colours concatAttributes displayAttributes;
 }
-  // mapToSGR displayAttributes
+// mapToSGR displayAttributes

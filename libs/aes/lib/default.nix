@@ -1,7 +1,5 @@
 { core, ... }:
-Library "libaes"
-{ inherit core; }
-{
+Library "libaes" { inherit core; } {
   decrypt = ./decrypt;
   encrypt = ./encrypt;
   key = ./key;

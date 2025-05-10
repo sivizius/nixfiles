@@ -3,59 +3,55 @@
   inputs = {
     libintrinsics.url = "git+ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?ref=secunet&dir=libs/intrinsics";
   };
-  outputs = { self, libintrinsics, ... }:
+  outputs =
+    { self, libintrinsics, ... }:
     let
       intrinsics = libintrinsics.lib;
 
-      adjustArguments = { arguments, fileName, moduleName, source, ... }:
-        intrinsics.mapAttrs
-          (
-            moduleName:
-            module:
-            let
-              initialisationData' = {
-                inherit fileName moduleName;
-                source = source
-                  {
-                    inherit fileName;
-                    attribute =
-                      if moduleName != null
-                      then
-                        moduleName
-                      else
-                        intrinsics.baseNameOf fileName;
-                  };
+      adjustArguments =
+        {
+          arguments,
+          fileName,
+          moduleName,
+          source,
+          ...
+        }:
+        intrinsics.mapAttrs (
+          moduleName: module:
+          let
+            initialisationData' = {
+              inherit fileName moduleName;
+              source = source {
+                inherit fileName;
+                attribute = if moduleName != null then moduleName else intrinsics.baseNameOf fileName;
               };
-            in
-            if module.__type__ or null == "NeedInitialisation"
-            then
-              module.initialise module.body initialisationData'
-            else
-              module
-          )
-          arguments;
+            };
+          in
+          if module.__type__ or null == "NeedInitialisation" then
+            module.initialise module.body initialisationData'
+          else
+            module
+        ) arguments;
 
-      minimal = intrinsics.scopedImport
-        { inherit Library; }
-        ./lib
-        { inherit intrinsics; };
+      minimal = intrinsics.scopedImport { inherit Library; } ./lib { inherit intrinsics; };
 
       Library = {
-        __functor = { ... }:
-          libraryName:
-          environment:
-          modules:
+        __functor =
+          { ... }:
+          libraryName: environment: modules:
           let
-            arguments = library
-              // environment;
-            library = intrinsics.mapAttrs
-              (
-                moduleName:
-                fileName:
-                intrinsics.import fileName
-                  (adjustArguments { inherit arguments fileName moduleName source; })
-              )
-              modules;
+            arguments = library // environment;
+            library = intrinsics.mapAttrs (
+              moduleName: fileName:
+              intrinsics.import fileName (adjustArguments {
+                inherit
+                  arguments
+                  fileName
+                  moduleName
+                  source
+                  ;
+              })
+            ) modules;
             source = library.context libraryName;
           in
           library;

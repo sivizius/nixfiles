@@ -1,8 +1,22 @@
 { core, fonts, ... }:
 let
-  inherit (core) indentation list set string;
+  inherit (core)
+    indentation
+    list
+    set
+    string
+    ;
 in
-{ acronyms, assets, packages, publications, references, source, substances, ... }:
+{
+  acronyms,
+  assets,
+  packages,
+  publications,
+  references,
+  source,
+  substances,
+  ...
+}:
 (
   [
     ''
@@ -46,7 +60,7 @@ in
   ]
   ++ fonts
   ++ [
-    "\\pdfvariable suppressoptionalinfo ${string ( 32 + 64 + 512 )}" # Makes the PDF constant
+    "\\pdfvariable suppressoptionalinfo ${string (32 + 64 + 512)}" # Makes the PDF constant
     "\\setstretch{1.433}" # 1/2-spacing
 
     "\\DeclareFloatingEnvironment["
@@ -94,41 +108,36 @@ in
         left      = 2.5cm,
       }
       ''
-            */
+    */
   ]
+  ++ (set.mapToList (name: colour: "\\definecolor{${name}}{HTML}{${colour}}") {
+    white = "FFFFFF";
+    black = "000000";
+    darkgray = "333333";
+    gray = "5D5D5D";
+    lightgray = "999999";
+    green = "C2E15F";
+    orange = "FDA333";
+    purple = "D3A4F9";
+    red = "FB4485";
+    blue = "6CE0F1";
+    darktext = "414141";
+    awesome-emerald = "00A388";
+    awesome-skyblue = "0395DE";
+    awesome-red = "DC3522";
+    awesome-pink = "EF4089";
+    awesome-orange = "FF6138";
+    awesome-nephritis = "27AE60";
+    awesome-concrete = "95A5A6";
+    awesome-darknight = "131A28";
+  })
   ++ (
-    set.mapToList
-      (
-        name:
-        colour:
-        "\\definecolor{${name}}{HTML}{${colour}}"
-      )
-      {
-        white = "FFFFFF";
-        black = "000000";
-        darkgray = "333333";
-        gray = "5D5D5D";
-        lightgray = "999999";
-        green = "C2E15F";
-        orange = "FDA333";
-        purple = "D3A4F9";
-        red = "FB4485";
-        blue = "6CE0F1";
-        darktext = "414141";
-        awesome-emerald = "00A388";
-        awesome-skyblue = "0395DE";
-        awesome-red = "DC3522";
-        awesome-pink = "EF4089";
-        awesome-orange = "FF6138";
-        awesome-nephritis = "27AE60";
-        awesome-concrete = "95A5A6";
-        awesome-darknight = "131A28";
-      }
-  )
-  ++ (
-    if substances != null
-    then
-      [ "\\directlua{substances.load(source..\"${string.slice 0 ((string.length substances) - 4) substances}\")}%" ]
+    if substances != null then
+      [
+        "\\directlua{substances.load(source..\"${
+          string.slice 0 ((string.length substances) - 4) substances
+        }\")}%"
+      ]
     else
       [ ]
   )

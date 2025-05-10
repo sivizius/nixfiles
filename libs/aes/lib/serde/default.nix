@@ -2,13 +2,13 @@
 let
   inherit (core) bool integer list;
 
-  expectU8 = value:
-    assert  integer.isInstanceOf value
-      && value >= 0
-      && value <= 255;
+  expectU8 =
+    value:
+    assert integer.isInstanceOf value && value >= 0 && value <= 255;
     value;
 
-  splitInteger = value:
+  splitInteger =
+    value:
     let
       value0 = integer.abs value;
       value1 = value0 / 256;
@@ -40,37 +40,68 @@ let
       dword1 = integer.and value4 4294967295;
     };
 
-  unpackWord = word:
-    {
-      inherit word;
-      inherit (splitInteger word) byte0 byte1
-        sign;
-    };
+  unpackWord = word: {
+    inherit word;
+    inherit (splitInteger word)
+      byte0
+      byte1
+      sign
+      ;
+  };
 
-  unpackDWord = dword:
-    {
-      inherit dword;
-      inherit (splitInteger dword) byte0 byte1 byte2 byte3
-        word0 word1
-        sign;
-    };
+  unpackDWord = dword: {
+    inherit dword;
+    inherit (splitInteger dword)
+      byte0
+      byte1
+      byte2
+      byte3
+      word0
+      word1
+      sign
+      ;
+  };
 
-  unpackQWord = qword:
-    {
-      inherit qword;
-      inherit (splitInteger qword) byte0 byte1 byte2 byte3 byte4 byte5 byte6 byte7
-        word0 word1 word2 word3
-        dword0 dword1
-        sign;
-    };
+  unpackQWord = qword: {
+    inherit qword;
+    inherit (splitInteger qword)
+      byte0
+      byte1
+      byte2
+      byte3
+      byte4
+      byte5
+      byte6
+      byte7
+      word0
+      word1
+      word2
+      word3
+      dword0
+      dword1
+      sign
+      ;
+  };
 
-  foldBuffer = { length, pack }:
+  foldBuffer =
+    { length, pack }:
     let
       length-1 = length - 1;
     in
     list.fold
       (
-        { buffer, byte0, byte1, byte2, byte3, byte4, byte5, byte6, byte7, count }:
+        {
+          buffer,
+          byte0,
+          byte1,
+          byte2,
+          byte3,
+          byte4,
+          byte5,
+          byte6,
+          byte7,
+          count,
+        }:
         value:
         let
           buffer' = buffer ++ [ (pack bytes) ];
@@ -105,7 +136,8 @@ let
         count = 0;
       };
 
-  packBuffer = { length, pack } @ packer:
+  packBuffer =
+    { length, pack }@packer:
     buffer:
     let
       state' = foldBuffer packer buffer;
@@ -114,103 +146,155 @@ let
     state'.buffer;
 
   packWord =
-    { byte0 ? 0
-    , byte1 ? 0
-    ,
+    {
+      byte0 ? 0,
+      byte1 ? 0,
     }:
     (expectU8 byte0) + (expectU8 byte1) * 256;
 
-  packWordBuffer = packBuffer
-    {
-      length = 2;
-      pack = { byte0, byte1, ... }:
-        {
-          inherit byte0 byte1;
-          word = packWord { inherit byte0 byte1; };
-        };
-    };
+  packWordBuffer = packBuffer {
+    length = 2;
+    pack =
+      { byte0, byte1, ... }:
+      {
+        inherit byte0 byte1;
+        word = packWord { inherit byte0 byte1; };
+      };
+  };
 
   packDWord =
-    { byte0 ? 0
-    , byte1 ? 0
-    , byte2 ? 0
-    , byte3 ? 0
-    ,
-    }:
-    list.fold
-      (result: byte: result * 256 + (expectU8 byte))
-      (expectU8 byte3)
-      [ byte2 byte1 byte0 ];
-
-  packDWordBuffer = packBuffer
     {
-      length = 4;
-      pack = { byte0, byte1, byte2, byte3, ... }:
-        {
-          inherit byte0 byte1 byte2 byte3;
-          dword = packDWord { inherit byte0 byte1 byte2 byte3; };
-          word0 = packWord { inherit byte0 byte1; };
-          word1 = packWord
-            {
-              byte0 = byte2;
-              byte1 = byte3;
-            };
+      byte0 ? 0,
+      byte1 ? 0,
+      byte2 ? 0,
+      byte3 ? 0,
+    }:
+    list.fold (result: byte: result * 256 + (expectU8 byte)) (expectU8 byte3) [
+      byte2
+      byte1
+      byte0
+    ];
+
+  packDWordBuffer = packBuffer {
+    length = 4;
+    pack =
+      {
+        byte0,
+        byte1,
+        byte2,
+        byte3,
+        ...
+      }:
+      {
+        inherit
+          byte0
+          byte1
+          byte2
+          byte3
+          ;
+        dword = packDWord {
+          inherit
+            byte0
+            byte1
+            byte2
+            byte3
+            ;
         };
-    };
+        word0 = packWord { inherit byte0 byte1; };
+        word1 = packWord {
+          byte0 = byte2;
+          byte1 = byte3;
+        };
+      };
+  };
 
   packQWord =
-    { byte0 ? 0
-    , byte1 ? 0
-    , byte2 ? 0
-    , byte3 ? 0
-    , byte4 ? 0
-    , byte5 ? 0
-    , byte6 ? 0
-    , byte7 ? 0
-    ,
-    }:
-    list.fold
-      (result: byte: result * 256 + (expectU8 byte))
-      (expectU8 byte7)
-      [ byte6 byte5 byte4 byte3 byte2 byte1 byte0 ];
-
-  packQWordBuffer = packBuffer
     {
-      length = 8;
-      pack = { byte0, byte1, byte2, byte3, byte4, byte5, byte6, byte7, ... }:
-        {
-          inherit byte0 byte1 byte2 byte3 byte4 byte5 byte6 byte7;
-          dword0 = packDWord { inherit byte0 byte1 byte2 byte3; };
-          dword1 = packDWord
-            {
-              byte0 = byte4;
-              byte1 = byte5;
-              byte2 = byte6;
-              byte3 = byte7;
-            };
-          word0 = packWord { inherit byte0 byte1; };
-          word1 = packWord
-            {
-              byte0 = byte2;
-              byte1 = byte3;
-            };
-          word2 = packWord
-            {
-              byte0 = byte4;
-              byte1 = byte5;
-            };
-          word3 = packWord
-            {
-              byte0 = byte6;
-              byte1 = byte7;
-            };
+      byte0 ? 0,
+      byte1 ? 0,
+      byte2 ? 0,
+      byte3 ? 0,
+      byte4 ? 0,
+      byte5 ? 0,
+      byte6 ? 0,
+      byte7 ? 0,
+    }:
+    list.fold (result: byte: result * 256 + (expectU8 byte)) (expectU8 byte7) [
+      byte6
+      byte5
+      byte4
+      byte3
+      byte2
+      byte1
+      byte0
+    ];
+
+  packQWordBuffer = packBuffer {
+    length = 8;
+    pack =
+      {
+        byte0,
+        byte1,
+        byte2,
+        byte3,
+        byte4,
+        byte5,
+        byte6,
+        byte7,
+        ...
+      }:
+      {
+        inherit
+          byte0
+          byte1
+          byte2
+          byte3
+          byte4
+          byte5
+          byte6
+          byte7
+          ;
+        dword0 = packDWord {
+          inherit
+            byte0
+            byte1
+            byte2
+            byte3
+            ;
         };
-    };
+        dword1 = packDWord {
+          byte0 = byte4;
+          byte1 = byte5;
+          byte2 = byte6;
+          byte3 = byte7;
+        };
+        word0 = packWord { inherit byte0 byte1; };
+        word1 = packWord {
+          byte0 = byte2;
+          byte1 = byte3;
+        };
+        word2 = packWord {
+          byte0 = byte4;
+          byte1 = byte5;
+        };
+        word3 = packWord {
+          byte0 = byte6;
+          byte1 = byte7;
+        };
+      };
+  };
 in
 {
-  inherit packDWord packDWordBuffer
-    packQWord packQWordBuffer
-    packWord packWordBuffer
+  inherit
+    packDWord
+    packDWordBuffer
+    packQWord
+    packQWordBuffer
+    packWord
+    packWordBuffer
     splitInteger
-    unpackDWord unpackQWord unpackWord;
+    unpackDWord
+    unpackQWord
+    unpackWord
+    ;
 }

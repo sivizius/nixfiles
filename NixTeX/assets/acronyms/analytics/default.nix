@@ -1,4 +1,4 @@
-{ core, ... } @ libs:
+{ core, ... }@libs:
 let
   inherit (core) library;
 in
@@ -181,4 +181,4 @@ in
 }
 // library.import ./electrochemistry.nix libs
 // library.import ./electromagnetic.nix libs
-  // library.import ./nmr.nix libs
+// library.import ./nmr.nix libs

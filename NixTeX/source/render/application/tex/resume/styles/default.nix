@@ -1,9 +1,8 @@
-{ core, ... } @ libs:
+{ core, ... }@libs:
 let
   inherit (core) path;
 
-  libs' = libs
-    // {
+  libs' = libs // {
     helpers = path.import ./helpers.nix libs';
   };
 in

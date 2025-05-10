@@ -14,5 +14,8 @@ mainmatter:
     "\\pagenumbering{arabic}"
   ]
   ++ mainmatter
-  ++ [ indentation.less "}" ]
+  ++ [
+    indentation.less
+    "}"
+  ]
 )

@@ -1,13 +1,19 @@
-{ core, registries, store, ... }:
-{ lock
-, terminal
-, volumeDelta
-, brightnessDelta
-, modifier
-, up
-, down
-, left
-, right
+{
+  core,
+  registries,
+  store,
+  ...
+}:
+{
+  lock,
+  terminal,
+  volumeDelta,
+  brightnessDelta,
+  modifier,
+  up,
+  down,
+  left,
+  right,
 }:
 let
   inherit (core) debug string;
@@ -26,74 +32,68 @@ let
 
   takeScreenshot =
     let
-      script = store.write.shellScript "screenshooter"
-        ''
-          directory="$HOME/Pictures/Screenshots"
-          ${registries.nix.coreutils}/bin/mkdir -p "$directory"
-          OUTPUT="$directory/$(date -Iseconds).png"
-          ${registries.nix.grim}/bin/grim -g "$(${registries.nix.slurp}/bin/slurp -d)" "$OUTPUT"
-          ${registries.nix.libnotify}/bin/notify-send -t 10000 "Screenshot saved to" "$OUTPUT"
-        '';
+      script = store.write.shellScript "screenshooter" ''
+        directory="$HOME/Pictures/Screenshots"
+        ${registries.nix.coreutils}/bin/mkdir -p "$directory"
+        OUTPUT="$directory/$(date -Iseconds).png"
+        ${registries.nix.grim}/bin/grim -g "$(${registries.nix.slurp}/bin/slurp -d)" "$OUTPUT"
+        ${registries.nix.libnotify}/bin/notify-send -t 10000 "Screenshot saved to" "$OUTPUT"
+      '';
     in
     "sh ${script}";
 
   listPasswords =
     let
-      script = store.write.shellScript "passwords"
-        ''
-          cd $HOME/Passwords
-          for file in $(${registries.nix.findutils}/bin/find . -name "*.gpg")
-          do
-            echo "''${file%.gpg}" | ${sed} "s/^.\///g"
-          done
-        '';
+      script = store.write.shellScript "passwords" ''
+        cd $HOME/Passwords
+        for file in $(${registries.nix.findutils}/bin/find . -name "*.gpg")
+        do
+          echo "''${file%.gpg}" | ${sed} "s/^.\///g"
+        done
+      '';
     in
     "sh ${script}";
 
-  selectNetwork = string.concatWords
-    [
-      "${wpa_cli} select_network"
-      "$("
-      "${wpa_cli} list_networks"
-      "| ${registries.nix.coreutils}/bin/tail -n +3"
-      "| ${ripgrep} -o \"^[^\t]+\t[^\t]+\""
-      "| ${woficmd} --show dmenu"
-      "| ${ripgrep} -o \"^[0-9]+\" | tee -a $HOME/network.log"
-      ")"
-    ];
+  selectNetwork = string.concatWords [
+    "${wpa_cli} select_network"
+    "$("
+    "${wpa_cli} list_networks"
+    "| ${registries.nix.coreutils}/bin/tail -n +3"
+    "| ${ripgrep} -o \"^[^\t]+\t[^\t]+\""
+    "| ${woficmd} --show dmenu"
+    "| ${ripgrep} -o \"^[0-9]+\" | tee -a $HOME/network.log"
+    ")"
+  ];
 
-  killer = string.concatWords
-    [
-      "kill"
-      "-SIGKILL"
-      "$("
-      "${registries.nix.procps}/bin/ps -H -u $USER -o pid=,cmd="
-      "| ${sed} \"s/^ *\\([1-9][0-9]*\\) \\(.*\\)/\\1\\t\\2/\" "
-      "| ${woficmd} --show dmenu --insensitive | rg -o \"^\d+\""
-      ")"
-    ];
+  killer = string.concatWords [
+    "kill"
+    "-SIGKILL"
+    "$("
+    "${registries.nix.procps}/bin/ps -H -u $USER -o pid=,cmd="
+    "| ${sed} \"s/^ *\\([1-9][0-9]*\\) \\(.*\\)/\\1\\t\\2/\" "
+    "| ${woficmd} --show dmenu --insensitive | rg -o \"^\d+\""
+    ")"
+  ];
 
-  bluetoothConnect = string.concatWords
-    [
-      "${bluetoothctl} connect"
-      "$("
-      "${bluetoothctl} devices"
-      "| ${sed} \"s/^Device \\(.*\\) \\(.*\\)/\\1\\t\\2/\""
-      "| ${woficmd} --show dmenu --insensitive"
-      "| ${ripgrep} -o \"^[0-9A-F:]*\""
-      ")"
-    ];
+  bluetoothConnect = string.concatWords [
+    "${bluetoothctl} connect"
+    "$("
+    "${bluetoothctl} devices"
+    "| ${sed} \"s/^Device \\(.*\\) \\(.*\\)/\\1\\t\\2/\""
+    "| ${woficmd} --show dmenu --insensitive"
+    "| ${ripgrep} -o \"^[0-9A-F:]*\""
+    ")"
+  ];
   pass = "${registries.nix.pass}/bin/pass -c $(${listPasswords} | ${woficmd} --show dmenu --insensitive)";
   calculateTOTP =
     let
       ykman = "${registries.nix.yubikey-manager}/bin/ykman";
     in
-    string.concatWords
-      [
-        "${ykman} oath accounts code -s"
-        ''"$(${ykman} oath accounts list | ${woficmd} --show dmenu)"''
-        "| ${registries.nix.wl-clipboard}/bin/wl-copy -n"
-      ];
+    string.concatWords [
+      "${ykman} oath accounts code -s"
+      ''"$(${ykman} oath accounts list | ${woficmd} --show dmenu)"''
+      "| ${registries.nix.wl-clipboard}/bin/wl-copy -n"
+    ];
   menu = "${woficmd} --show drun -I --insensitive";
   browser = qutebrowser;
   mod = modifier;

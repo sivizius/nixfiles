@@ -14,6 +14,7 @@ in
   ];
   ${wsMailClient} = [
     { title = "^neomutt$"; }
+    { app_id = "^org.gnome.Fractal$"; }
   ];
   ${wsMessenger} = [
   ];

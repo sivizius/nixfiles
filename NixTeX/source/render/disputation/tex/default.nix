@@ -1,11 +1,23 @@
-{ bibliography, chemistry, core, document, glossaries, ... } @ libs:
+{
+  bibliography,
+  chemistry,
+  core,
+  document,
+  glossaries,
+  ...
+}@libs:
 let
-  inherit (core) debug indentation library list path string;
+  inherit (core)
+    debug
+    indentation
+    library
+    list
+    path
+    string
+    ;
 
-  libs' = libs
-    // {
-    formatAuthor = author:
-      "${author.forename} ${author.surname}";
+  libs' = libs // {
+    formatAuthor = author: "${author.forename} ${author.surname}";
   };
 
   renderExtra = library.import ./extra.nix libs';
@@ -13,10 +25,23 @@ let
   renderSlides = library.import ./slides.nix libs';
   renderTitle = library.import ./title.nix libs';
 in
-{ authors, configuration, content, date, dependencies, name, place, resources, disputation, ... } @ document:
+{
+  authors,
+  configuration,
+  content,
+  date,
+  dependencies,
+  name,
+  place,
+  resources,
+  disputation,
+  ...
+}@document:
 let
   style = (library.import ./styles libs').${disputation.style};
-  document' = document // { inherit style; };
+  document' = document // {
+    inherit style;
+  };
   toTex = libs.document.toTex { inherit configuration resources; };
 
   packages = [
@@ -49,21 +74,31 @@ let
     substances = substances.dst;
   };
 
-  content' = indentation { initial = ""; tab = "  "; }
-    (
-      [ ]
-      ++ (renderPrelude document' prelude)
-      ++ [ "\\begin{document}" indentation.more ]
-      ++ (renderTitle document')
-      ++ (renderSlides document' (toTex content.slides  or  null))
-      ++ (renderExtra document' (toTex content.extra   or  null))
-      ++ [ "\\directlua{commonFinal()}" ] # ToDo: Remove!
-      ++ [ indentation.less "\\end{document}" ]
-    );
+  content' =
+    indentation
+      {
+        initial = "";
+        tab = "  ";
+      }
+      (
+        [ ]
+        ++ (renderPrelude document' prelude)
+        ++ [
+          "\\begin{document}"
+          indentation.more
+        ]
+        ++ (renderTitle document')
+        ++ (renderSlides document' (toTex content.slides or null))
+        ++ (renderExtra document' (toTex content.extra or null))
+        ++ [ "\\directlua{commonFinal()}" ] # ToDo: Remove!
+        ++ [
+          indentation.less
+          "\\end{document}"
+        ]
+      );
 
   optimiser =
-    if configuration.optimise or false
-    then
+    if configuration.optimise or false then
       ''
         # Optimise and linearise
         # This removes tooltips, sorry
@@ -91,46 +126,44 @@ let
     else
       "";
 
-  compile = path.toFile "compile-${name}.sh"
-    ''
-      #!/usr/bin/env bash
-      newHash="false"
-      oldHash="true"
-      out="$1"
+  compile = path.toFile "compile-${name}.sh" ''
+    #!/usr/bin/env bash
+    newHash="false"
+    oldHash="true"
+    out="$1"
 
-      counter=""
-      while [[ "$newHash" != "$oldHash" && "$counter" != "${configuration.foo or "+++++"}" ]]
-      do
-        if  lualatex                  \
-            --interaction=nonstopmode \
-            --halt-on-error           \
-            --output-format=pdf       \
-            "\def\source{$out}\def\build{.}\input{$out/${name}.tex}" #2> /dev/null > /dev/null
-        then
-          oldHash="$newHash"
-          newHash="$(md5sum "${name}.pdf")"
-          echo "$newHash"
-          mv "${name}.log" "$out/${name}.log"
-          mv "${name}.llg" "$out/${name}.llg"
-          biber "${name}"
-          counter="+$counter"
-        else
-          exit 1
-        fi
-      done
+    counter=""
+    while [[ "$newHash" != "$oldHash" && "$counter" != "${configuration.foo or "+++++"}" ]]
+    do
+      if  lualatex                  \
+          --interaction=nonstopmode \
+          --halt-on-error           \
+          --output-format=pdf       \
+          "\def\source{$out}\def\build{.}\input{$out/${name}.tex}" #2> /dev/null > /dev/null
+      then
+        oldHash="$newHash"
+        newHash="$(md5sum "${name}.pdf")"
+        echo "$newHash"
+        mv "${name}.log" "$out/${name}.log"
+        mv "${name}.llg" "$out/${name}.llg"
+        biber "${name}"
+        counter="+$counter"
+      else
+        exit 1
+      fi
+    done
 
-      ${optimiser}
-      # move the generated and processed document to the final-directory
-      mv "${name}.pdf" "$out/${name}.pdf"
-      exit 0
-    '';
+    ${optimiser}
+    # move the generated and processed document to the final-directory
+    mv "${name}.pdf" "$out/${name}.pdf"
+    exit 0
+  '';
   texFile = path.toFile "${name}.tex" content';
 in
 document'
-  // {
+// {
   content = content';
-  dependencies = dependencies
-  ++ [
+  dependencies = dependencies ++ [
     acronyms
     references
     substances
@@ -139,7 +172,10 @@ document'
       dst = "${name}.tex";
     }
     {
-      src = { store = compile; executable = true; };
+      src = {
+        store = compile;
+        executable = true;
+      };
       dst = "compile-${name}.sh";
     }
   ];

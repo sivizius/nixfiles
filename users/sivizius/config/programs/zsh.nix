@@ -3,8 +3,7 @@
   autocd = true;
   cdpath = [
   ];
-  completionInit = ''
-      '';
+  completionInit = '''';
   defaultKeymap = null;
   dirHashes = {
     active = "$HOME/Projects/Active";
@@ -35,37 +34,36 @@
     searchDownKey = "^[[B";
     searchUpKey = "^[[A";
   };
-  initExtra =
+  initContent =
     let
       states = {
         # For `git_prompt_info`:
         prefix = "%{$fg[green]%}[";
-        dirty = " 💩";    # Repo != HEAD
-        clean = " 🧼";    # Repo == HEAD
+        dirty = " 💩"; # Repo != HEAD
+        clean = " 🧼"; # Repo == HEAD
         suffix = "";
 
         # For `git_prompt_status`:
-        diverged = "🔀";  # ???
-        behind = "⬇️";     # Branch has additional remote commits
-        ahead = "⬆️";      # Branch has additional local commits
-        unmerged = "♒";  # Updated but unmerged
-        stashed = "📚";   # Stashed files
-        deleted = "❌";   # Commit will delete files
-        renamed = "🚂";   # Commit will rename files
-        modified = "🏗️";  # Changes not staged for commit
-        added = "🚀";     # Changes staged for commit
+        diverged = "🔀"; # ???
+        behind = "⬇️"; # Branch has additional remote commits
+        ahead = "⬆️"; # Branch has additional local commits
+        unmerged = "♒"; # Updated but unmerged
+        stashed = "📚"; # Stashed files
+        deleted = "❌"; # Commit will delete files
+        renamed = "🚂"; # Commit will rename files
+        modified = "🏗️"; # Changes not staged for commit
+        added = "🚀"; # Changes staged for commit
         untracked = "🥷"; # Untracked files
       };
 
       states2env =
         let
           formatState =
-            name:
-            prefix:
+            name: prefix:
             let
               name' = core.string.toUpperCase name;
             in
-              ''ZSH_THEME_GIT_PROMPT_${name'}="${prefix}"'';
+            ''ZSH_THEME_GIT_PROMPT_${name'}="${prefix}"'';
         in
         states: core.string.concatLines (core.set.mapToList formatState states);
     in
@@ -95,20 +93,15 @@
 
       ${states2env states}
     '';
-  initExtraBeforeCompInit = ''
-      '';
-  initExtraFirst = ''
-      '';
+  initExtraBeforeCompInit = '''';
+  initExtraFirst = '''';
   localVariables = { };
-  loginExtra = ''
-      '';
-  logoutExtra = ''
-      '';
+  loginExtra = '''';
+  logoutExtra = '''';
   oh-my-zsh = {
     custom = "";
     enable = true;
-    extraConfig = ''
-            '';
+    extraConfig = '''';
     plugins = [
       "git"
       "pass"
@@ -118,7 +111,6 @@
   plugins = [
   ];
   prezto = { };
-  profileExtra = ''
-      '';
+  profileExtra = '''';
   sessionVariables = { };
 }

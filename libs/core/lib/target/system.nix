@@ -1,27 +1,40 @@
-{ debug, integer, intrinsics, list, set, string, target, type, ... }:
+{
+  debug,
+  integer,
+  intrinsics,
+  list,
+  set,
+  string,
+  target,
+  type,
+  ...
+}:
 let
   inherit (target) Architecture Kernel;
 
-  System/* :  struct { architecture: Architecture, kernel: Kernel } */ = type "System"
-    {
+  System # :  struct { architecture: Architecture, kernel: Kernel }
+    = type "System" {
       inherit all stdenv;
 
       current = fromString (intrinsics.currentSystem or "unknown-none");
 
-      mapAll/* :  T: ( System -> T ) -> { string -> T } */ = map all;
+      mapAll # :  T: ( System -> T ) -> { string -> T }
+        = map all;
 
-      mapStdenv/* :  T: ( System -> T ) -> { string -> T } */ = map stdenv;
+      mapStdenv # :  T: ( System -> T ) -> { string -> T }
+        = map stdenv;
 
-      from/* :  type -> string | { architecture: string? = null, kernel: string? = null } -> System | ! */ = system:
-        type.matchPrimitiveOrPanic system
-          {
+      from # :  type -> string | { architecture: string? = null, kernel: string? = null } -> System | !
+        =
+          system:
+          type.matchPrimitiveOrPanic system {
             set = fromSet system;
             string = fromString system;
           };
     };
 
-  all/* :  { string -> System } */ = list.mapNamesToSet fromString
-    [
+  all # :  { string -> System }
+    = list.mapNamesToSet fromString [
       # Cygwin
       "i686-cygwin"
       "x86_64-cygwin"
@@ -122,34 +135,41 @@ let
     ];
 
   stdenv = {
-    inherit (all) aarch64-linux aarch64-darwin
-      x86_64-linux x86_64-darwin;
+    inherit (all)
+      aarch64-linux
+      aarch64-darwin
+      x86_64-linux
+      x86_64-darwin
+      ;
   };
 
-  fromSet/* :  { architecture: ToArchitecture? = null, kernel: ToKernel = null } -> System */ = { architecture ? null, kernel ? null }:
-    System.instantiate
+  fromSet # :  { architecture: ToArchitecture? = null, kernel: ToKernel = null } -> System
+    =
       {
-        __toString/* :  { architecture: Architecture, kernel: Kernel } -> string */ = { architecture, kernel, ... }:
-          "${string architecture}-${string kernel}";
+        architecture ? null,
+        kernel ? null,
+      }:
+      System.instantiate {
+        __toString # :  { architecture: Architecture, kernel: Kernel } -> string
+          =
+            { architecture, kernel, ... }: "${string architecture}-${string kernel}";
         architecture = Architecture architecture;
         kernel = Kernel kernel;
       };
 
-  fromString/* :  string -> System | ! */ = name:
-    let
-      parts = string.match "(.*)-(.*)" name;
-    in
-    if parts != null
-    then
-      fromSet
-        {
+  fromString # :  string -> System | !
+    =
+      name:
+      let
+        parts = string.match "(.*)-(.*)" name;
+      in
+      if parts != null then
+        fromSet {
           architecture = list.get parts 0;
           kernel = list.get parts 1;
         }
-    else
-      debug.panic
-        "fromString"
-        {
+      else
+        debug.panic "fromString" {
           text = ''
             Cannot convert »${name}« to System!
             A name must be »architecture-kernel«.
@@ -157,8 +177,8 @@ let
           data = name;
         };
 
-  map/* :  T: { string -> System } -> ( System -> T ) -> { string -> T } */ = systems:
-    convert:
-    set.mapValues convert systems;
+  map # :  T: { string -> System } -> ( System -> T ) -> { string -> T }
+    =
+      systems: convert: set.mapValues convert systems;
 in
 System

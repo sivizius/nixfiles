@@ -10,6 +10,14 @@
         nixpkgs.follows = "nixpkgs";
       };
     };
+    git-hooks = {
+      url = "github:cachix/git-hooks.nix";
+      inputs = {
+        flake-compat.follows = "flake-compat";
+        nixpkgs.follows = "nixpkgs";
+        #gitignore.inputs.nixpkgs.follows = "nixpkgs";
+      };
+    };
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -24,7 +32,8 @@
       };
     };
     libconfig = {
-      url = "git+ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?ref=secunet&dir=libs/config";
+      #url = "git+ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?ref=secunet&dir=libs/config";
+      url = "/home/sivizius/Projects/sivizius/nixfiles/libs/config";
       inputs = {
         libcore.follows = "libcore";
         libintrinsics.follows = "libintrinsics";
@@ -74,15 +83,7 @@
         libstore.follows = "libstore";
         libweb.follows = "libweb";
         nixpkgs.follows = "nixpkgs";
-        simple-nix-mailserver.follows = "simple-nixos-mailserver";
         simple-nixos-mailserver.follows = "simple-nixos-mailserver";
-      };
-    };
-    nix-pre-commit-hooks = {
-      url = "github:cachix/pre-commit-hooks.nix";
-      inputs = {
-        flake-compat.follows = "flake-compat";
-        nixpkgs.follows = "nixpkgs";
       };
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
@@ -168,10 +169,29 @@
       };
     };
   };
-  outputs = { self, home-manager-wrapper, libconfig, libcore, libsecrets, libstore, libweb, modules, nix-pre-commit-hooks, peers, profiles, registries, sivizius, ... }:
+  outputs =
+    {
+      self,
+      home-manager-wrapper,
+      libconfig,
+      libcore,
+      libsecrets,
+      libstore,
+      libweb,
+      modules,
+      git-hooks,
+      peers,
+      profiles,
+      registries,
+      sivizius,
+      ...
+    }:
     let
       config = libconfig.lib { inherit self; };
-      core = libcore.lib { inherit self; debug.logLevel = "info"; };
+      core = libcore.lib {
+        inherit self;
+        debug.logLevel = "info";
+      };
       secrets = libsecrets.lib { inherit self; };
 
       inherit (core) set target time;
@@ -179,73 +199,64 @@
 
       registries' = PrepareArgument registries.registries;
 
-      hosts = load ./.
-        {
-          modules = modules.legacyModules.nixos;
-        }
-        {
-          inherit core self;
-          inherit (peers) peers;
-          inherit (profiles) profiles;
-          inherit (secrets) secret;
+      hosts =
+        load ./.
+          {
+            modules = modules.legacyModules.nixos;
+          }
+          {
+            inherit core self;
+            inherit (peers) peers;
+            inherit (profiles) profiles;
+            inherit (secrets) secret;
 
-          web = libweb.lib { inherit self; };
+            web = libweb.lib { inherit self; };
 
-          dateTime = time.parseDateTime self.lastModifiedDate;
-          home-manager = home-manager-wrapper.lib;
-          registries = registries';
-          store = libstore.lib;
-          users = {
-            sivizius = sivizius.user;
+            dateTime = time.parseDateTime self.lastModifiedDate;
+            home-manager = home-manager-wrapper.lib;
+            registries = registries';
+            store = libstore.lib;
+            users = {
+              sivizius = sivizius.user;
+            };
           };
-        };
 
       filteredHosts = set.filterValue Host.isInstanceOf hosts;
 
-      packages = target.System.mapStdenv
-        (
-          buildSystem:
-          set.mapValues
-            ({ nixosConfiguration, ... }: nixosConfiguration."${buildSystem}".config.system.build.toplevel)
-            filteredHosts
-        );
+      packages = target.System.mapStdenv (
+        buildSystem:
+        set.mapValues (
+          { nixosConfiguration, ... }: nixosConfiguration."${buildSystem}".config.system.build.toplevel
+        ) filteredHosts
+      );
     in
     {
       inherit hosts packages;
 
-      apps = target.System.mapStdenv
-        (
-          buildSystem:
-          set.mapValues
-            (
-              program:
-              {
-                type = "app";
-                inherit program;
-              }
-            )
-            packages
-        );
+      apps = target.System.mapStdenv (
+        buildSystem:
+        set.mapValues (program: {
+          type = "app";
+          inherit program;
+        }) packages
+      );
 
-      nixosConfigurations = set.mapValues
-        ({ nixosConfiguration, system, ... }: nixosConfiguration."${system}")
-        filteredHosts;
+      nixosConfigurations = set.mapValues (
+        { nixosConfiguration, system, ... }: nixosConfiguration."${system}"
+      ) filteredHosts;
 
-      devShells = target.System.mapStdenv
-        (
-          buildSystem:
-          {
-            default = registries'.inner."${buildSystem}".nix.mkShell {
-              name = "hosts";
+      devShells = target.System.mapStdenv (buildSystem: {
+        default = registries'.inner."${buildSystem}".nix.mkShell {
+          name = "hosts";
 
-              shellHook = core.string.concatLines [
-                # Enable Pre-Commit-Hooks:
-                "${(import ../pre-commit.nix {
-                  nix-pre-commit-hooks = nix-pre-commit-hooks.lib."${buildSystem}";
-                }).pre-commit-check.shellHook}"
-              ];
-            };
-          }
-        );
+          shellHook = core.string.concatLines [
+            # Enable Pre-Commit-Hooks:
+            "${(import ../pre-commit.nix {
+              git-hooks = git-hooks.lib."${buildSystem}";
+            }).pre-commit-check.shellHook
+            }"
+          ];
+        };
+      });
     };
 }

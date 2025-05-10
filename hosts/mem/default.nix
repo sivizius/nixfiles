@@ -1,6 +1,10 @@
-{ peers, profiles, users, ... }:
-Host "mem (from hebrew מודיעין: intelligence) is installed on a mysterious laptop."
 {
+  peers,
+  profiles,
+  users,
+  ...
+}:
+Host "mem (from hebrew מודיעין: intelligence) is installed on a mysterious laptop." {
   config = [
     ./rsyslogd.nix
     ./config.nix
@@ -22,14 +26,14 @@ Host "mem (from hebrew מודיעין: intelligence) is installed on a mysteriou
       wlp0s20f3.useDHCP = true;
       # wwp0s20u4i6.useDHCP = true;
     };
-    peers = with peers;
-      [
-        deutsche-bahn
-        fluepke.wireless
-        nix-community
-        seven
-        sivizius
-      ];
+    peers = with peers; [
+      chaos
+      deutsche-bahn
+      fluepke.wireless
+      nix-community
+      seven
+      sivizius
+    ];
     wireless = {
       enable = true;
       interfaces = [ "wlp0s20f3" ];
@@ -39,7 +43,9 @@ Host "mem (from hebrew מודיעין: intelligence) is installed on a mysteriou
   profile = profiles.desktop;
   system = "x86_64-linux";
   users = {
-    sivizius = users.sivizius // { trusted = true; };
+    sivizius = users.sivizius // {
+      trusted = true;
+    };
   };
   version = "23.05";
 }

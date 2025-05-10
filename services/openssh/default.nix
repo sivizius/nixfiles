@@ -1,5 +1,4 @@
-Service "OpenSSH."
-{
+Service "OpenSSH." {
   configuration = {
     openssh.enable = true;
   };

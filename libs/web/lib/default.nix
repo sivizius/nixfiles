@@ -1,7 +1,5 @@
 { core, ... }:
-Library "libweb"
-{ inherit core; }
-{
+Library "libweb" { inherit core; } {
   css = ./css;
   html = ./html;
 }

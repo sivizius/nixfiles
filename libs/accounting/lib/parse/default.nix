@@ -1,45 +1,33 @@
-{ common, core, ... } @ libs:
+{ common, core, ... }@libs:
 let
   inherit (common) Amount;
-  inherit (core) expression library list string;
+  inherit (core)
+    expression
+    library
+    list
+    string
+    ;
 
-  parseAmount = regex:
-    text:
+  parseAmount =
+    regex: text:
     let
       sign = if list.head valid == "-" then -1 else 1;
-      text' = list.fold
-        (
-          result:
-          digit:
-          if result == ""
-            -> digit != "0"
-          then
-            "${result}${digit}"
-          else
-            ""
-        )
-        ""
-        (
-          string.splitAt'
-            "[^0-9]*"
-            text
-        );
+      text' = list.fold (
+        result: digit: if result == "" -> digit != "0" then "${result}${digit}" else ""
+      ) "" (string.splitAt' "[^0-9]*" text);
       valid = string.match regex text;
       value =
-        if valid != null
-          && text' != ""
-        then
-        #__trace "> »${text}«"
-        #__trace "< »${text'}«"
+        if valid != null && text' != "" then
+          #__trace "> »${text}«"
+          #__trace "< »${text'}«"
           sign * (expression.fromJSON text')
         else
           0;
     in
     Amount value;
 
-  parseDMYdateTime = regex:
-    date:
-    time:
+  parseDMYdateTime =
+    regex: date: time:
     let
       dateParts = string.match regex date;
       day = list.get dateParts 0;
@@ -48,16 +36,9 @@ let
     in
     "${year}-${month}-${day}T${time}";
 
-  trim = text:
-    string.concatWords
-      (
-        list.filter
-          (part: part != "")
-          (string.splitSpaces text)
-      );
+  trim = text: string.concatWords (list.filter (part: part != "") (string.splitSpaces text));
 
-  libs' = libs
-    // {
+  libs' = libs // {
     helpers = {
       inherit parseAmount parseDMYdateTime trim;
 

@@ -1,34 +1,62 @@
-{ common, core, helpers, ... }:
+{
+  common,
+  core,
+  helpers,
+  ...
+}:
 let
   inherit (common) Transaction;
   inherit (core) list path string;
   inherit (helpers) parseAmountComma parseGermanDateTime trim;
 
-  convertTransaction = { currency, lookUpAccount, self, ... }:
-    { amount, bic, clientID, creditorID, customerID, dateTime, dateTime', description, iban, mandateID, type }:
+  convertTransaction =
+    {
+      currency,
+      lookUpAccount,
+      self,
+      ...
+    }:
+    {
+      amount,
+      bic,
+      clientID,
+      creditorID,
+      customerID,
+      dateTime,
+      dateTime',
+      description,
+      iban,
+      mandateID,
+      type,
+    }:
     let
       amount' = amount currency;
-      client = lookUpAccount
-        {
-          inherit bic creditorID customerID description iban mandateID;
-          uid =
-            if clientID != ""
-            then
-              clientID
-            else
-              "Deutsche Kreditbank Berlin";
-        };
+      client = lookUpAccount {
+        inherit
+          bic
+          creditorID
+          customerID
+          description
+          iban
+          mandateID
+          ;
+        uid = if clientID != "" then clientID else "Deutsche Kreditbank Berlin";
+      };
     in
     #__trace "${client}"
-    Transaction
-      {
-        inherit dateTime description type;
-        credit = { ${client.uid} = amount'; };
-        debit = { ${self.uid} = amount'; };
-        ongoing = type == "Lastschrift" || type == "Dauerauftrag";
+    Transaction {
+      inherit dateTime description type;
+      credit = {
+        ${client.uid} = amount';
       };
+      debit = {
+        ${self.uid} = amount';
+      };
+      ongoing = type == "Lastschrift" || type == "Dauerauftrag";
+    };
 
-  parseLine = line:
+  parseLine =
+    line:
     let
       cells = string.splitAt "(\";\"|\")" line;
     in
@@ -48,31 +76,16 @@ let
         let
           type = trim (list.get cells 3);
         in
-        if type != ""
-        then
-          type
-        else
-          "Kreditkartenabrechnung";
+        if type != "" then type else "Kreditkartenabrechnung";
     };
 
-  parseFile = fileName:
+  parseFile =
+    fileName:
     let
-      lines = list.filter
-        (line: line != "")
-        (string.splitLines (path.readFile fileName));
+      lines = list.filter (line: line != "") (string.splitLines (path.readFile fileName));
     in
-    list.map
-      parseLine
-      (list.tail lines);
+    list.map parseLine (list.tail lines);
 in
 {
-  journal = files:
-    env:
-    list.map
-      (convertTransaction env)
-      (
-        list.concatMap
-          parseFile
-          files
-      );
+  journal = files: env: list.map (convertTransaction env) (list.concatMap parseFile files);
 }

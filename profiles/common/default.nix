@@ -1,10 +1,12 @@
 { services, ... }:
-Profile "Common."
-{
+Profile "Common." {
   configuration = [
     ./boot.nix
     ./environment.nix
     ./system.nix
   ];
-  services = with services; [ gnupg openssh ];
+  services = with services; [
+    gnupg
+    openssh
+  ];
 }

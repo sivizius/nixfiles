@@ -1,7 +1,7 @@
-{ nix-pre-commit-hooks, ... }:
+{ git-hooks, ... }:
 {
-  pre-commit-check = nix-pre-commit-hooks.run {
-    # We can use the entire unfiltered source here because pre-commit-hooks automatically
+  pre-commit-check = git-hooks.run {
+    # We can use the entire unfiltered source here because git-hooks automatically
     # uses a .gitignore filter.
     src = ./.;
     hooks = {

@@ -1,12 +1,31 @@
-{ core, thesis, vanilla, ... }:
+{
+  core,
+  thesis,
+  vanilla,
+  ...
+}:
 let
-  inherit (core) indentation list string time;
+  inherit (core)
+    indentation
+    list
+    string
+    time
+    ;
   inherit (thesis) formatAuthor formatAuthorTableLine thesisVersion;
 in
 {
   name = "Chemnitz University of Technology";
   inherit (vanilla) originalityDeclaration;
-  titlePage = { authors, date, place, thesis, title, version, ... }:
+  titlePage =
+    {
+      authors,
+      date,
+      place,
+      thesis,
+      title,
+      version,
+      ...
+    }:
     [
       "\\vspace*{-1.2cm}"
       "{"
@@ -25,8 +44,7 @@ in
       "{\\large ${thesis.title}}\\hspace{0pt}\\\\[1.00em]"
     ]
     ++ (
-      if thesis.degree != null
-      then
+      if thesis.degree != null then
         let
           author = list.head authors;
         in
@@ -43,7 +61,7 @@ in
         ]
       else
         [
-          "{${string.concatCSV ( list.map formatAuthor authors )}}"
+          "{${string.concatCSV (list.map formatAuthor authors)}}"
           "\\vfill"
           "\\begin{tabularx}{\\linewidth}{@{}lX@{}}"
           indentation.more
@@ -150,4 +168,4 @@ in
                     \end{tabularx}
                   }
                 }
-  */
+*/

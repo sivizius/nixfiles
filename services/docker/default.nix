@@ -1,6 +1,6 @@
-Service "Docker"
-{
-  configuration = { core, registries, ... }:
+Service "Docker" {
+  configuration =
+    { core, registries, ... }:
     {
       virtualisation.docker = {
         autoPrune = {

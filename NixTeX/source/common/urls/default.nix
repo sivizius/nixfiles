@@ -8,9 +8,14 @@ let
   formatTeX = href: text: "\\href{${href}}{${escape text}}";
 in
 {
-  inherit formatEmailTeX formatHttpsTeX formatHttpsTeX' formatTeX;
-  formatEmailTeXboxed = href: text: "\\mbox{${formatEmailTeX  href text}}";
-  formatHttpsTeXboxed = href: text: "\\mbox{${formatHttpsTeX  href text}}";
+  inherit
+    formatEmailTeX
+    formatHttpsTeX
+    formatHttpsTeX'
+    formatTeX
+    ;
+  formatEmailTeXboxed = href: text: "\\mbox{${formatEmailTeX href text}}";
+  formatHttpsTeXboxed = href: text: "\\mbox{${formatHttpsTeX href text}}";
   formatHttpsTeXboxed' = href: text: "\\mbox{${formatHttpsTeX' href text}}";
-  formatTeXboxed = href: text: "\\mbox{${formatTeX       href text}}";
+  formatTeXboxed = href: text: "\\mbox{${formatTeX href text}}";
 }

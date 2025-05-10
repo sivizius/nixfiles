@@ -1,9 +1,13 @@
 #![in_scope(Host, XFS, VFAT)]
-{ peers, profiles, users, ... }:
-Host "aleph (a silent letter in hebrew) is usually installed as sivizius on sivizius.eu"
 {
+  peers,
+  profiles,
+  users,
+  ...
+}:
+Host "aleph (a silent letter in hebrew) is usually installed as sivizius on sivizius.eu" {
   config = [
-    ./homepage
+    #./homepage
     ./mail.nix
   ];
   devices = {
@@ -31,13 +35,12 @@ Host "aleph (a silent letter in hebrew) is usually installed as sivizius on sivi
         legacyIP
         "${IP}/64"
       ];
-      peers = with peers;
-        [
-          fluepke.wireguard
-          google
-          hetzner
-          petabytedev
-        ];
+      peers = with peers; [
+        fluepke.wireguard
+        google
+        hetzner
+        petabytedev
+      ];
       tcp.ports = {
         dns = 53;
         exporters = {
@@ -62,8 +65,9 @@ Host "aleph (a silent letter in hebrew) is usually installed as sivizius on sivi
   profile = profiles.hetznerCloudServer;
   system = "x86_64-linux";
   users = {
-    sivizius = users.sivizius // { trusted = true; };
+    sivizius = users.sivizius // {
+      trusted = true;
+    };
   };
   version = "23.05";
 }
-

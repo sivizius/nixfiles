@@ -1,13 +1,18 @@
-{ core, profile, registries, secret, ... }:
+{
+  core,
+  profile,
+  registries,
+  secret,
+  ...
+}:
 let
   inherit (core) bool set string;
   lt = "${registries.nix.eza}/bin/eza -lahTL";
 in
 {
-  edit = bool.select
-    profile.isDesktop
-    "${registries.nix.vscodium}/bin/codium"
-    "${registries.nix.nano}/bin/nano";
+  edit =
+    bool.select profile.isDesktop "${registries.nix.vscodium}/bin/codium"
+      "${registries.nix.nano}/bin/nano";
   enby = "${registries.nix.man-db}/bin/man";
   frg = ''
     :(){
@@ -82,14 +87,7 @@ in
     };:\
   '';
 }
-  // (
-  set.generate
-    (
-      index:
-      {
-        name = "l${string (index + 1)}";
-        value = "${lt}${string (index + 1)}";
-      }
-    )
-    9
-)
+// (set.generate (index: {
+  name = "l${string (index + 1)}";
+  value = "${lt}${string (index + 1)}";
+}) 9)

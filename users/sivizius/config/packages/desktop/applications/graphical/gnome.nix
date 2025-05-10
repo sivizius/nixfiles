@@ -1,5 +1,6 @@
 { nix, ... }:
-with nix; [
+with nix;
+[
   adwaita-icon-theme
   hicolor-icon-theme
 

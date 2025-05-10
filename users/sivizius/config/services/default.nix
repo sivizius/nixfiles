@@ -1,4 +1,4 @@
-{ core, registries, ... } @ env:
+{ core, registries, ... }@env:
 let
   inherit (core) path;
 in
@@ -15,7 +15,7 @@ in
     grabKeyboardAndMouse = true;
     maxCacheTtl = 60 * 60; # 60 minutes
     maxCacheTtlSsh = 60 * 60; # 60 minutes
-    pinentryPackage = registries.nix.pinentry-gnome3;
+    pinentry.package = registries.nix.pinentry-gnome3;
     sshKeys = [
       "DEEE6586C847CF09A204714BFC23BF127D62006C" # sivizius@sivizius.eu, sivizius@aleph.sivizius.eu
       "FDCE333287DC03BE9310F4028ADC2A58F7A24CB0" # sivizius@github.com

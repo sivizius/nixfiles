@@ -1,4 +1,10 @@
-{ core, registries, store, profile, ... } @ arguments:
+{
+  core,
+  registries,
+  store,
+  profile,
+  ...
+}@arguments:
 let
   inherit (core) path string;
 
@@ -9,14 +15,13 @@ let
   lightsOff = "${swaymsg} 'output * dpms off'";
   lightsOn = "${swaymsg} 'output * dpms on'";
 
-  lockScreen = store.write.shellScript "lockScreen"
-    ''
-      ${registries.nix.swayidle}/bin/swayidle -w \
-      timeout       ${string timeOutLock} "${lightsOff}; ${lock}" \
-      resume        "${lightsOn}" \
-      before-sleep  "${lock}" \
-      lock          "${lock}"
-    '';
+  lockScreen = store.write.shellScript "lockScreen" ''
+    ${registries.nix.swayidle}/bin/swayidle -w \
+    timeout       ${string timeOutLock} "${lightsOff}; ${lock}" \
+    resume        "${lightsOn}" \
+    before-sleep  "${lock}" \
+    lock          "${lock}"
+  '';
   brightnessDelta = "5%";
   volumeDelta = "5%";
   resizeHeight = "10px";
@@ -44,16 +49,24 @@ in
   };
 
   fonts = {
-    names = [ "FontAwesome" "RobotoMono" ];
+    names = [
+      "FontAwesome"
+      "RobotoMono"
+    ];
     size = 10.0;
   };
 
-  keybindings = path.import ./keybindings.nix arguments
-    {
-      inherit lock terminal;
-      inherit brightnessDelta volumeDelta;
-      inherit modifier up down left right;
-    };
+  keybindings = path.import ./keybindings.nix arguments {
+    inherit lock terminal;
+    inherit brightnessDelta volumeDelta;
+    inherit
+      modifier
+      up
+      down
+      left
+      right
+      ;
+  };
 
   input."*" = {
     pointer_accel = "0.0";
@@ -62,31 +75,51 @@ in
     xkb_variant = "\"\"";
   };
 
-  modes = path.import ./modes.nix
-    {
-      inherit resizeHeight resizeWidth;
-      inherit up down left right;
-    };
+  modes = path.import ./modes.nix {
+    inherit resizeHeight resizeWidth;
+    inherit
+      up
+      down
+      left
+      right
+      ;
+  };
 
   output."*".bg = "\"${./assets/Crater_Cluster.png}\" fill";
 
   startup =
     let
       bar = "${registries.nix.waybar}/bin/waybar -c ${./assets/waybar/config.json} -s ${./assets/waybar/style.css}";
-      neomutt = store.write.shellScript "neomuttWrapper"
-        ''
-          ${registries.nix.neomutt}/bin/neomutt 2> $HOME/.cache/neomutt.log
-        '';
+      #neomutt = store.write.shellScript "neomuttWrapper"
+      #  ''
+      #    ${registries.nix.neomutt}/bin/neomutt 2> $HOME/.cache/neomutt.log
+      #  '';
     in
     assert profile.isDesktop;
+    #builtins.trace registries.nix.firefox
     [
-      { command = "${registries.nix.firefox}/bin/firefox"; always = false; }
+      {
+        command = "${registries.nix.firefox}/bin/firefox";
+        always = false;
+      }
       #{ command = "${registries.nix.schildichat-desktop}/bin/schildichat-desktop";    always  = false;  }
       #{ command = "${registries.nix.nheko}/bin/nheko"; always = false; }
-      { command = "${registries.nix.fractal}/bin/fractal"; always = false; }
-      { command = "${terminal}  -t ranger   -e ${registries.nix.ranger}/bin/ranger"; always = false; }
-      { command = "${bar}"; always = false; }
-      { command = "${lockScreen}"; always = true; }
+      {
+        command = "${registries.nix.fractal}/bin/fractal";
+        always = false;
+      }
+      {
+        command = "${terminal}  -t ranger   -e ${registries.nix.ranger}/bin/ranger";
+        always = false;
+      }
+      {
+        command = "${bar}";
+        always = false;
+      }
+      {
+        command = "${lockScreen}";
+        always = true;
+      }
     ];
 
   window = {

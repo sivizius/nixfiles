@@ -1,4 +1,9 @@
-{ core, document, helpers, ... }:
+{
+  core,
+  document,
+  helpers,
+  ...
+}:
 { ... }:
 let
   inherit (core) indentation list;
@@ -7,13 +12,10 @@ let
 in
 publications:
 formatSection
-  (
-    Multilingual
-    {
-      deu = "Publikationen";
-      eng = "Publicationen";
-    }
-  )
+  (Multilingual {
+    deu = "Publikationen";
+    eng = "Publicationen";
+  })
   (
     [ "\\vspace{-1em}%" ]
     ++ (list.map ({ name, ... }: "\\nocite{${name}}%") publications)

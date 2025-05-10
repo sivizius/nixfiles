@@ -1,6 +1,4 @@
 { core, ... }:
-Library "libstore"
-{ inherit core; }
-{
+Library "libstore" { inherit core; } {
   write = ./write.nix;
 }

@@ -1,92 +1,96 @@
 { core, ... }:
-{ decrypt, encrypt, helpers, key, serde, ... }:
+{
+  decrypt,
+  encrypt,
+  helpers,
+  key,
+  serde,
+  ...
+}:
 let
   inherit (core) debug;
   inherit (helpers) formatColumns;
   inherit (key) AESkey;
   inherit (serde) packDWordBuffer;
 
-  key128 = AESkey.from128bit
-    [
-      43
-      126
-      21
-      22
-      40
-      174
-      210
-      166
-      171
-      247
-      21
-      136
-      9
-      207
-      79
-      60
-    ];
-  key192 = AESkey.from192bit
-    [
-      142
-      115
-      176
-      247
-      218
-      14
-      100
-      82
-      200
-      16
-      243
-      43
-      128
-      144
-      121
-      229
-      98
-      248
-      234
-      210
-      82
-      44
-      107
-      123
-    ];
-  key256 = AESkey.from256bit
-    [
-      96
-      61
-      235
-      16
-      21
-      202
-      113
-      190
-      43
-      115
-      174
-      240
-      133
-      125
-      119
-      129
-      31
-      53
-      44
-      7
-      59
-      97
-      8
-      215
-      45
-      152
-      16
-      163
-      9
-      20
-      223
-      244
-    ];
+  key128 = AESkey.from128bit [
+    43
+    126
+    21
+    22
+    40
+    174
+    210
+    166
+    171
+    247
+    21
+    136
+    9
+    207
+    79
+    60
+  ];
+  key192 = AESkey.from192bit [
+    142
+    115
+    176
+    247
+    218
+    14
+    100
+    82
+    200
+    16
+    243
+    43
+    128
+    144
+    121
+    229
+    98
+    248
+    234
+    210
+    82
+    44
+    107
+    123
+  ];
+  key256 = AESkey.from256bit [
+    96
+    61
+    235
+    16
+    21
+    202
+    113
+    190
+    43
+    115
+    174
+    240
+    133
+    125
+    119
+    129
+    31
+    53
+    44
+    7
+    59
+    97
+    8
+    215
+    45
+    152
+    16
+    163
+    9
+    20
+    223
+    244
+  ];
 
   msg128 = [
     50
@@ -114,35 +118,28 @@ let
 in
 {
   inherit key128 key192 key256;
-  msg128 = debug.warn "msg128"
-    {
-      data = formatColumns (packDWordBuffer msg128);
-      hex = true;
-      nice = true;
-    }
-    msg128;
-  fastEncrypt = debug.warn "fastEncrypt"
-    {
-      data = formatColumns fastEncrypt;
-      hex = true;
-      nice = true;
-    }
-    fastEncrypt;
-  slowEncrypt = debug.warn "slowEncrypt"
-    {
-      data = formatColumns slowEncrypt;
-      hex = true;
-      nice = true;
-    }
-    slowEncrypt;
-  slowDecrypt = debug.warn "slowDecrypt"
-    {
-      data = formatColumns slowDecrypt;
-      hex = true;
-      nice = true;
-    }
-    slowDecrypt;
-  /*unmixColumns
+  msg128 = debug.warn "msg128" {
+    data = formatColumns (packDWordBuffer msg128);
+    hex = true;
+    nice = true;
+  } msg128;
+  fastEncrypt = debug.warn "fastEncrypt" {
+    data = formatColumns fastEncrypt;
+    hex = true;
+    nice = true;
+  } fastEncrypt;
+  slowEncrypt = debug.warn "slowEncrypt" {
+    data = formatColumns slowEncrypt;
+    hex = true;
+    nice = true;
+  } slowEncrypt;
+  slowDecrypt = debug.warn "slowDecrypt" {
+    data = formatColumns slowDecrypt;
+    hex = true;
+    nice = true;
+  } slowDecrypt;
+  /*
+    unmixColumns
      = debug.debug "unmixColumns"
         {
           nice = true;
@@ -175,11 +172,9 @@ in
                     );
               };
         }
-        null;*/
+        null;
+  */
 }
-
-
-
 
 /*
   key
@@ -207,7 +202,6 @@ in
               Never gonna say goodbye
               Never gonna tell a lie and hurt you
 
-
               We've known each other for so long
               Your heart's been aching but
               You're too shy to say it
@@ -229,7 +223,6 @@ in
               Never gonna make you cry
               Never gonna say goodbye
               Never gonna tell a lie and hurt you
-
 
               (Ooh, give you up)
               (Ooh, give you up)
@@ -270,4 +263,5 @@ in
               Never gonna say goodbye
               Never gonna tell a lie and hurt you
             '';
-      };*/
+      };
+*/

@@ -58,10 +58,27 @@
       };
     };
   };
-  outputs = { self, fork-awesome, libconfig, libcore, nixpkgs, wofi-unpatched, ... }:
+  outputs =
+    {
+      self,
+      fork-awesome,
+      libconfig,
+      libcore,
+      nixpkgs,
+      wofi-unpatched,
+      ...
+    }:
     let
       inherit (libconfig.lib { inherit self; }) packages;
-      inherit (libcore.lib { inherit self; debug.logLevel = "info"; }) path set target;
+      inherit
+        (libcore.lib {
+          inherit self;
+          debug.logLevel = "info";
+        })
+        path
+        set
+        target
+        ;
 
       config = {
         allowedNonSourcePackages = [
@@ -92,7 +109,6 @@
           "wine"
         ];
         allowedUnfreePackages = [
-          "hopper"
           "hplip"
           "iscan"
           "iscan-data"
@@ -105,41 +121,22 @@
         ];
       };
 
-      custom = target.System.mapStdenv
-        (
-          system:
-          {
-            fork-awesome = fork-awesome.packages."${system}";
-            wofi-unpatched = wofi-unpatched.packages."${system}";
-          }
-        );
+      custom = target.System.mapStdenv (system: {
+        fork-awesome = fork-awesome.packages."${system}";
+        wofi-unpatched = wofi-unpatched.packages."${system}";
+      });
 
-      registries = { inherit custom; }
-        // (
-        set.mapValues
-          (packages.fromNixpkgs { inherit config nixpkgs; })
-          (path.import ./.)
-      );
+      registries = {
+        inherit custom;
+      } // (set.mapValues (packages.fromNixpkgs { inherit config nixpkgs; }) (path.import ./.));
     in
     #builtins.trace self._type
-      #debug.debug "registries" { text = "Hello World"; when = true; }
+    #debug.debug "registries" { text = "Hello World"; when = true; }
     {
-      registries = (
-        target.System.mapStdenv
-          (
-            system:
-            set.mapValues
-              (
-                registry:
-                registry."${system}"
-              )
-              registries
-          )
-      )
-      // {
-        __functor = registries:
-          { targetSystem, ... }:
-          registries."${targetSystem}" // { inherit nixpkgs; };
-      };
+      registries =
+        (target.System.mapStdenv (system: set.mapValues (registry: registry."${system}") registries))
+        // {
+          __functor = registries: { targetSystem, ... }: registries."${targetSystem}" // { inherit nixpkgs; };
+        };
     };
 }

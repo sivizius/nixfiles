@@ -1,5 +1,10 @@
-{ core, ... } @ libs:
-{ config, lib, pkgs, ... } @ env:
+{ core, ... }@libs:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}@env:
 let
   inherit (core) path;
 in

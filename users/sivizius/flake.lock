@@ -23,19 +23,19 @@
       },
       "locked": {
         "dir": "libs/config",
-        "lastModified": 1736869116,
-        "narHash": "sha256-860UMdxeGnQJKebnDgDbpZRSntMR2VUyB92W0IfiPI0=",
+        "lastModified": 1744744473,
+        "narHash": "sha256-AqlX9TXRi43MFWgf/kSbYZ333TlW3ZjMo2WcEixSNw8=",
         "ref": "secunet",
-        "rev": "7fdbccafb026950590157dccc0f15f20a51c2112",
-        "revCount": 4,
+        "rev": "b6b79d71e918b149e01083bb102d40b7b0e6255b",
+        "revCount": 5,
         "type": "git",
-        "url": "ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?dir=libs/config"
+        "url": "ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles"
       },
       "original": {
         "dir": "libs/config",
         "ref": "secunet",
         "type": "git",
-        "url": "ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?dir=libs/config"
+        "url": "ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles"
       }
     },
     "libcore": {
@@ -46,37 +46,37 @@
       },
       "locked": {
         "dir": "libs/core",
-        "lastModified": 1736869116,
-        "narHash": "sha256-860UMdxeGnQJKebnDgDbpZRSntMR2VUyB92W0IfiPI0=",
+        "lastModified": 1744744473,
+        "narHash": "sha256-AqlX9TXRi43MFWgf/kSbYZ333TlW3ZjMo2WcEixSNw8=",
         "ref": "secunet",
-        "rev": "7fdbccafb026950590157dccc0f15f20a51c2112",
-        "revCount": 4,
+        "rev": "b6b79d71e918b149e01083bb102d40b7b0e6255b",
+        "revCount": 5,
         "type": "git",
-        "url": "ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?dir=libs/core"
+        "url": "ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles"
       },
       "original": {
         "dir": "libs/core",
         "ref": "secunet",
         "type": "git",
-        "url": "ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?dir=libs/core"
+        "url": "ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles"
       }
     },
     "libintrinsics": {
       "locked": {
         "dir": "libs/intrinsics",
-        "lastModified": 1736869116,
-        "narHash": "sha256-860UMdxeGnQJKebnDgDbpZRSntMR2VUyB92W0IfiPI0=",
+        "lastModified": 1744744473,
+        "narHash": "sha256-AqlX9TXRi43MFWgf/kSbYZ333TlW3ZjMo2WcEixSNw8=",
         "ref": "secunet",
-        "rev": "7fdbccafb026950590157dccc0f15f20a51c2112",
-        "revCount": 4,
+        "rev": "b6b79d71e918b149e01083bb102d40b7b0e6255b",
+        "revCount": 5,
         "type": "git",
-        "url": "ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?dir=libs/intrinsics"
+        "url": "ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles"
       },
       "original": {
         "dir": "libs/intrinsics",
         "ref": "secunet",
         "type": "git",
-        "url": "ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?dir=libs/intrinsics"
+        "url": "ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles"
       }
     },
     "libsecrets": {
@@ -93,19 +93,19 @@
       },
       "locked": {
         "dir": "libs/secrets",
-        "lastModified": 1736869116,
-        "narHash": "sha256-860UMdxeGnQJKebnDgDbpZRSntMR2VUyB92W0IfiPI0=",
+        "lastModified": 1744744473,
+        "narHash": "sha256-AqlX9TXRi43MFWgf/kSbYZ333TlW3ZjMo2WcEixSNw8=",
         "ref": "secunet",
-        "rev": "7fdbccafb026950590157dccc0f15f20a51c2112",
-        "revCount": 4,
+        "rev": "b6b79d71e918b149e01083bb102d40b7b0e6255b",
+        "revCount": 5,
         "type": "git",
-        "url": "ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?dir=libs/secrets"
+        "url": "ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles"
       },
       "original": {
         "dir": "libs/secrets",
         "ref": "secunet",
         "type": "git",
-        "url": "ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?dir=libs/secrets"
+        "url": "ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles"
       }
     },
     "libstore": {
@@ -119,19 +119,19 @@
       },
       "locked": {
         "dir": "libs/store",
-        "lastModified": 1736869116,
-        "narHash": "sha256-860UMdxeGnQJKebnDgDbpZRSntMR2VUyB92W0IfiPI0=",
+        "lastModified": 1744744473,
+        "narHash": "sha256-AqlX9TXRi43MFWgf/kSbYZ333TlW3ZjMo2WcEixSNw8=",
         "ref": "secunet",
-        "rev": "7fdbccafb026950590157dccc0f15f20a51c2112",
-        "revCount": 4,
+        "rev": "b6b79d71e918b149e01083bb102d40b7b0e6255b",
+        "revCount": 5,
         "type": "git",
-        "url": "ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?dir=libs/store"
+        "url": "ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles"
       },
       "original": {
         "dir": "libs/store",
         "ref": "secunet",
         "type": "git",
-        "url": "ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?dir=libs/store"
+        "url": "ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles"
       }
     },
     "libweb": {
@@ -148,28 +148,28 @@
       },
       "locked": {
         "dir": "libs/web",
-        "lastModified": 1736869116,
-        "narHash": "sha256-860UMdxeGnQJKebnDgDbpZRSntMR2VUyB92W0IfiPI0=",
+        "lastModified": 1744744473,
+        "narHash": "sha256-AqlX9TXRi43MFWgf/kSbYZ333TlW3ZjMo2WcEixSNw8=",
         "ref": "secunet",
-        "rev": "7fdbccafb026950590157dccc0f15f20a51c2112",
-        "revCount": 4,
+        "rev": "b6b79d71e918b149e01083bb102d40b7b0e6255b",
+        "revCount": 5,
         "type": "git",
-        "url": "ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?dir=libs/web"
+        "url": "ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles"
       },
       "original": {
         "dir": "libs/web",
         "ref": "secunet",
         "type": "git",
-        "url": "ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?dir=libs/web"
+        "url": "ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles"
       }
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1736862976,
-        "narHash": "sha256-0VJA0xvDWx1UaPLx0I6IlPtWpEk/QOGph5HLb0S6130=",
+        "lastModified": 1744725539,
+        "narHash": "sha256-8Pf3tqKApVNTOceaGINru0ssLOw6cYtJC5cmEpXbhYs=",
         "owner": "sivizius",
         "repo": "nixpkgs",
-        "rev": "39e1f3726f1187dfcc6e6c9615e841ffc7fe7d70",
+        "rev": "aa46a404cfeff0aabd8766eafec0a6294596845b",
         "type": "github"
       },
       "original": {

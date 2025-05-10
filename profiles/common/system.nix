@@ -3,6 +3,7 @@
   nix = {
     extraOptions = ''
       experimental-features = nix-command flakes
+      builders-use-substitutes = true
     '';
     gc = {
       automatic = false;
@@ -12,6 +13,7 @@
       automatic = true;
       dates = [ "23:42" ];
     };
+    package = registries.nix.lix;
     settings = {
       auto-optimise-store = true;
       trusted-users = [

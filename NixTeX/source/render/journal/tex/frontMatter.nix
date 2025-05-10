@@ -21,26 +21,11 @@ _frontmatter:
     indentation.less
     "}"
   ]
-  ++ (
-    if state.schemes.counter > 0
-    then
-      [ "\\clearpage\\listofschemes" ]
-    else
-      [ ]
-  )
-  ++ (
-    if state.figures.counter > 0
-    then
-      [ "\\clearpage\\listoffigures" ]
-    else
-      [ ]
-  )
-  ++ (
-    if state.tables.counter > 0
-    then
-      [ "\\clearpage\\listoftables" ]
-    else
-      [ ]
-  )
-  ++ [ indentation.less "}" ]
+  ++ (if state.schemes.counter > 0 then [ "\\clearpage\\listofschemes" ] else [ ])
+  ++ (if state.figures.counter > 0 then [ "\\clearpage\\listoffigures" ] else [ ])
+  ++ (if state.tables.counter > 0 then [ "\\clearpage\\listoftables" ] else [ ])
+  ++ [
+    indentation.less
+    "}"
+  ]
 )

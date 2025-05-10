@@ -3,24 +3,23 @@ default:
 let
   inherit (mod) error;
 
-  american = british
-    // {
+  american = british // {
     "colour" = "color";
   };
-  british = default
-    // {
+  british = default // {
     "colour" = "colour";
     "today" = "today";
   };
 in
 {
-  translate = locale:
-    snippet:
+  translate =
+    locale: snippet:
     let
-      translations = {
-        "UK" = british;
-      }.${locale.territory}
-        or (error.panic "Unknown Territory »${locale.territory}«!");
+      translations =
+        {
+          "UK" = british;
+        }
+        .${locale.territory} or (error.panic "Unknown Territory »${locale.territory}«!");
     in
-      translations.${snippet} or (error.panic "Unknown Snippet »${snippet}«!");
+    translations.${snippet} or (error.panic "Unknown Snippet »${snippet}«!");
 }

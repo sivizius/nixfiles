@@ -7,9 +7,13 @@
     };
     libintrinsics.url = "git+ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?ref=secunet&dir=libs/intrinsics";
   };
-  outputs = { self, libcore, ... }:
+  outputs =
+    { self, libcore, ... }:
     let
-      core = libcore.lib { inherit self; debug.logLevel = "info"; };
+      core = libcore.lib {
+        inherit self;
+        debug.logLevel = "info";
+      };
     in
     core.path.import ./. { inherit core; };
 }

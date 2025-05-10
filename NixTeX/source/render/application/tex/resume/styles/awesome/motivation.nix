@@ -10,7 +10,7 @@ body:
   "\\def\\section#1{(((#1)))}%"
   "\\def\\subsection#1{((#1))}%"
 ]
-  #++  (toTex body)
+#++  (toTex body)
 ++ [
   indentation.less
   "}%"

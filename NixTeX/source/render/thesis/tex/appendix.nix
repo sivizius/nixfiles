@@ -14,8 +14,7 @@ appendix:
     "\\renewcommand*\\thesubsubsection{\\thechapter.\\arabic{ctrAppendix}}"
   ]
   ++ (
-    if configuration.concise or false
-    then
+    if configuration.concise or false then
       [ ]
     else
       [
@@ -37,12 +36,9 @@ appendix:
   ]
   ++ appendix
   ++ [ "\\clearpage" ]
-  ++ (
-    if configuration.concise or false
-    then
-      [ ]
-    else
-      [ "\\thispagestyle{empty}" ]
-  )
-  ++ [ indentation.less "}" ]
+  ++ (if configuration.concise or false then [ ] else [ "\\thispagestyle{empty}" ])
+  ++ [
+    indentation.less
+    "}"
+  ]
 )

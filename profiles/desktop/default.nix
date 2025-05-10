@@ -1,6 +1,5 @@
 { profiles, services, ... }:
-Profile "Desktop."
-{
+Profile "Desktop." {
   configuration = [
     ./fonts
     ./hardware
@@ -17,10 +16,13 @@ Profile "Desktop."
         };
         security.pam.services = {
           # To make Swaylock unlockable.
-          swaylock = { /* empty */ };
+          swaylock = {
+            # empty
+          };
         };
 
         # GNOME crypto services (daemon and tools)
+        programs.dconf.enable = true;
         services.dbus.packages = [ registries.nix.gcr ];
 
         # For Screen Sharing
@@ -50,5 +52,10 @@ Profile "Desktop."
   ];
   isDesktop = true;
   parents = with profiles; [ common ];
-  services = with services; [ printing gnome-keyring pulseaudio yubikey-touch-detector ];
+  services = with services; [
+    printing
+    gnome-keyring
+    pulseaudio
+    yubikey-touch-detector
+  ];
 }

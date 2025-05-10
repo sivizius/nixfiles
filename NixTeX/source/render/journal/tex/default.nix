@@ -1,21 +1,27 @@
-{ bibliography, chemistry, core, glossaries, ... } @ libs:
+{
+  bibliography,
+  chemistry,
+  core,
+  glossaries,
+  ...
+}@libs:
 let
-  inherit (core) indentation path list string;
-  libs' = libs
-    // {
+  inherit (core)
+    indentation
+    path
+    list
+    string
+    ;
+  libs' = libs // {
     journal = {
-      formatAuthor = author:
+      formatAuthor =
+        author:
         let
           author' = "${author.forename} ${author.surname}";
           matched = string.match "[BM][.]?[A-Za-z.]+" author.title;
         in
-        if author.title or null != null
-        then
-          if matched != null
-          then
-            "${author'} (${author.title})"
-          else
-            "${author.title} ${author'}"
+        if author.title or null != null then
+          if matched != null then "${author'} (${author.title})" else "${author.title} ${author'}"
         else
           author';
     };
@@ -28,10 +34,16 @@ let
   prelude = path.import ./prelude.nix libs';
   titleMatter = path.import ./titleMatter.nix libs';
 in
-{ configuration, content, dependencies, resources, style, ... } @ document:
+{
+  configuration,
+  content,
+  dependencies,
+  resources,
+  style,
+  ...
+}@document:
 let
-  document' = document
-    // {
+  document' = document // {
     style = (path.import ./styles libs').${style};
   };
   toTex = libs.document.toTex { inherit configuration resources; };
@@ -70,22 +82,32 @@ let
   };
 in
 document'
-  // {
-  content = indentation { initial = ""; tab = "  "; }
-    (
-      [ ]
-      ++ (prelude document' preludeArguments)
-      ++ [ "\\begin{document}" indentation.more ]
-      ++ (beginDocument document' [ ])
-      ++ (titleMatter document' null)
-      ++ (frontMatter document' null)
-      ++ (mainMatter document' (toTex (content.journal  or null)))
-      ++ (appendix document' (toTex (content.appendix or null)))
-      ++ [ "\\directlua{commonFinal()}" ] # ToDo: Remove!
-      ++ [ indentation.less "\\end{document}" ]
-    );
-  dependencies = dependencies
-  ++ [
+// {
+  content =
+    indentation
+      {
+        initial = "";
+        tab = "  ";
+      }
+      (
+        [ ]
+        ++ (prelude document' preludeArguments)
+        ++ [
+          "\\begin{document}"
+          indentation.more
+        ]
+        ++ (beginDocument document' [ ])
+        ++ (titleMatter document' null)
+        ++ (frontMatter document' null)
+        ++ (mainMatter document' (toTex (content.journal or null)))
+        ++ (appendix document' (toTex (content.appendix or null)))
+        ++ [ "\\directlua{commonFinal()}" ] # ToDo: Remove!
+        ++ [
+          indentation.less
+          "\\end{document}"
+        ]
+      );
+  dependencies = dependencies ++ [
     acronyms
     references
     substances

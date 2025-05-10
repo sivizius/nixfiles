@@ -10,17 +10,16 @@
         monospace = [ "Roboto Mono" ];
       };
     };
-    packages = with registries.nix;
-      [
-        dejavu_fonts
-        font-awesome_5
-        liberation_ttf
-        noto-fonts
-        noto-fonts-emoji
-        roboto
-        roboto-mono
-        roboto-slab
-        unifont
-      ];
+    packages = with registries.nix; [
+      dejavu_fonts
+      font-awesome_5
+      liberation_ttf
+      noto-fonts
+      noto-fonts-emoji
+      roboto
+      roboto-mono
+      roboto-slab
+      unifont
+    ];
   };
 }

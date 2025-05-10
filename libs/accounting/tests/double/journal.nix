@@ -1,10 +1,11 @@
-{ Forderung
-, Gesellschaftereinzahlung
-, Gewinnruecklage
-, Kontofuehrungsgebuehr
-, Rechnungsbegleichung
-, Sachanlagen
-, ...
+{
+  Forderung,
+  Gesellschaftereinzahlung,
+  Gewinnruecklage,
+  Kontofuehrungsgebuehr,
+  Rechnungsbegleichung,
+  Sachanlagen,
+  ...
 }:
 [
   (Gesellschaftereinzahlung "2021-03-01" 15000 "Sivizius")

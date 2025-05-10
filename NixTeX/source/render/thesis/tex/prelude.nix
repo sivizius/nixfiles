@@ -24,8 +24,8 @@ let
     UprightFont = "*-Regular";
   };
 
-  defaultFontFeatures = fontName:
-    features:
+  defaultFontFeatures =
+    fontName: features:
     [
       "\\defaultfontfeatures[${fontName}]{"
       indentation.more
@@ -33,10 +33,21 @@ let
       "Extension = .ttf,"
     ]
     ++ (set.mapToList (key: value: "${key} = ${value},") features)
-    ++ [ indentation.less "}" ];
+    ++ [
+      indentation.less
+      "}"
+    ];
 in
 { ... }:
-{ assets, acronyms, packages, references, source, substances, ... }:
+{
+  assets,
+  acronyms,
+  packages,
+  references,
+  source,
+  substances,
+  ...
+}:
 (
   [
     ''
@@ -130,7 +141,7 @@ in
     #"\\babelfont[japanese]{sf}{Noto Sans Japanese}"
     #"\\babelfont[japanese]{tt}{Noto Sans Japanese}"
     "\\renewcommand{\\familydefault}{\\sfdefault}"
-    "\\pdfvariable suppressoptionalinfo ${string ( 32 + 64 + 512 )}" # Makes the PDF constant
+    "\\pdfvariable suppressoptionalinfo ${string (32 + 64 + 512)}" # Makes the PDF constant
     "\\setstretch{1.433}" # 1/2-spacing
 
     "\\DeclareFloatingEnvironment["
@@ -190,9 +201,12 @@ in
     "\\ofoot[\\pagemark]{\\pagemark}"
   ]
   ++ (
-    if substances != null
-    then
-      [ "\\directlua{substances.load(source..\"${string.slice 0 ((string.length substances) - 4) substances}\")}%" ]
+    if substances != null then
+      [
+        "\\directlua{substances.load(source..\"${
+          string.slice 0 ((string.length substances) - 4) substances
+        }\")}%"
+      ]
     else
       [ ]
   )

@@ -1,39 +1,34 @@
 { core, ... }:
 let
   inherit (core) list string;
-  formatMeters = side:
-    meters:
-    {
-      "${side}_meters" = list.map ({ name, ... }: name) meters;
-      "${side}_meter_modes" = list.map ({ mode, ... }: mode) meters;
-    };
+  formatMeters = side: meters: {
+    "${side}_meters" = list.map ({ name, ... }: name) meters;
+    "${side}_meter_modes" = list.map ({ mode, ... }: mode) meters;
+  };
 
   leftMeters = formatMeters "left";
   rightMeters = formatMeters "right";
 
   getNames = column: string.concatWords (list.map ({ name, ... }: name) column);
   getModes = column: string.concatWords (list.map ({ mode, ... }: string mode) column);
-  toMeters = header_layout:
-    columns:
-    (
-      list.fold
-        (
-          { index, result }:
-          column:
-          {
-            index = index + 1;
-            result = result
-              // {
-              "column_meters_${string index}" = getNames column;
-              "column_meter_modes_${string index}" = getModes column;
-            };
-          }
-        )
-        {
-          index = 0;
-          result = { inherit header_layout; };
+  toMeters =
+    header_layout: columns:
+    (list.fold
+      (
+        { index, result }:
+        column: {
+          index = index + 1;
+          result = result // {
+            "column_meters_${string index}" = getNames column;
+            "column_meter_modes_${string index}" = getModes column;
+          };
         }
-        columns
+      )
+      {
+        index = 0;
+        result = { inherit header_layout; };
+      }
+      columns
     ).result;
 
   fields = {
@@ -109,25 +104,35 @@ let
   led = meter modes.LED;
   blank = text "Blank";
 
-  layouts = list.mapNamesToSet
-    (
-      name:
-      {
+  layouts =
+    list.mapNamesToSet
+      (name: {
         __functor = { ... }: toMeters name;
-      }
-    )
-    [
-      "two_50_50"
-      "two_33_67"
-      "two_67_33"
-      "three_33_34_33"
-      "three_25_25_50"
-      "three_25_50_25"
-      "three_50_25_25"
-      "three_40_20_40"
-      "four_25_25_25_25"
-    ];
+      })
+      [
+        "two_50_50"
+        "two_33_67"
+        "two_67_33"
+        "three_33_34_33"
+        "three_25_25_50"
+        "three_25_50_25"
+        "three_50_25_25"
+        "three_40_20_40"
+        "four_25_25_25_25"
+      ];
 in
 {
-  inherit fields layouts modes leftMeters rightMeters meter bar text graph led blank;
+  inherit
+    fields
+    layouts
+    modes
+    leftMeters
+    rightMeters
+    meter
+    bar
+    text
+    graph
+    led
+    blank
+    ;
 }

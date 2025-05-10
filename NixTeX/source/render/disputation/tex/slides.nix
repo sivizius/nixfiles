@@ -3,5 +3,4 @@ let
   inherit (core) debug indentation;
 in
 { ... }:
-body:
-body
+body: body

@@ -1,7 +1,13 @@
-{ core, helpers, toTex, ... } @ libs:
-{ highlight ? 3
-, language
-, order ? [
+{
+  core,
+  helpers,
+  toTex,
+  ...
+}@libs:
+{
+  highlight ? 3,
+  language,
+  order ? [
     "summary"
     "education"
     "committees"
@@ -10,76 +16,82 @@
     "languages"
     "publications"
     "motivation"
-  ]
-, ...
-} @ config:
+  ],
+  ...
+}@config:
 let
-  inherit (core) indentation list path string time;
+  inherit (core)
+    indentation
+    list
+    path
+    string
+    time
+    ;
   inherit (helpers) formatDate;
 
   toTex' = body: string.concatWords (toTex body);
 
-  libs' = libs
-    // {
+  libs' = libs // {
     inherit styles;
-    helpers = helpers
-      // {
+    helpers = helpers // {
       inherit formatSection;
 
-      formatEntry = { date, description ? null, place ? null, position, title ? null }:
+      formatEntry =
+        {
+          date,
+          description ? null,
+          place ? null,
+          position,
+          title ? null,
+        }:
         let
           description' = "\\multicolumn{2}{L{\\textwidth}}{${styles.description (toTex' description)}} \\\\%";
-          title' =
-            if title != null
-            then
-              "${styles.entryTitle (toTex' title)} "
-            else
-              "";
-          place' =
-            if place != null
-            then
-              "${styles.entryLocation (toTex' place)}"
-            else
-              "";
+          title' = if title != null then "${styles.entryTitle (toTex' title)} " else "";
+          place' = if place != null then "${styles.entryLocation (toTex' place)}" else "";
         in
         [ ]
-          ++ (list.ifOrEmpty (title != null || place != null) "${title'}& ${place'} \\\\%")
-          ++ [ "${styles.entryPosition (toTex' position)} & ${styles.entryDate (formatDate date language)} \\\\%" ]
-          ++ (list.ifOrEmpty (description != null) description');
+        ++ (list.ifOrEmpty (title != null || place != null) "${title'}& ${place'} \\\\%")
+        ++ [
+          "${styles.entryPosition (toTex' position)} & ${styles.entryDate (formatDate date language)} \\\\%"
+        ]
+        ++ (list.ifOrEmpty (description != null) description');
 
-      formatItems = title:
-        items:
-        formatSection title
-          (
-            [
-              "\\vspace{-1em}%"
-              "\\begin{justify}%"
-              indentation.more
-              "\\begin{itemize}[label=\\bullet, #1, leftmargin=2ex, nosep, noitemsep]%"
-              indentation.more
-              "\\setlength{\\parskip}{0pt}%"
-            ]
-            ++ items
-            ++ [
-              indentation.less
-              "\\end{itemize}%"
-              indentation.less
-              "\\end{justify}%"
-              "\\vspace{-1em}%"
-            ]
-          );
+      formatItems =
+        title: items:
+        formatSection title (
+          [
+            "\\vspace{-1em}%"
+            "\\begin{justify}%"
+            indentation.more
+            "\\begin{itemize}[label=\\bullet, #1, leftmargin=2ex, nosep, noitemsep]%"
+            indentation.more
+            "\\setlength{\\parskip}{0pt}%"
+          ]
+          ++ items
+          ++ [
+            indentation.less
+            "\\end{itemize}%"
+            indentation.less
+            "\\end{justify}%"
+            "\\vspace{-1em}%"
+          ]
+        );
 
-      formatParagraph = title:
-        body:
-        formatSection title
-          (
-            [ "\\\\[0pt]${styles.paragraphOpen}%" indentation.more ]
-              ++ (toTex body)
-              ++ [ indentation.less "\\vspace{1em}${styles.paragraphClose}%" ]
-          );
+      formatParagraph =
+        title: body:
+        formatSection title (
+          [
+            "\\\\[0pt]${styles.paragraphOpen}%"
+            indentation.more
+          ]
+          ++ (toTex body)
+          ++ [
+            indentation.less
+            "\\vspace{1em}${styles.paragraphClose}%"
+          ]
+        );
     };
   };
-
 
   formatCommittees = path.import ./committees.nix libs' config;
   formatteducation = path.import ./education.nix libs' config;
@@ -91,8 +103,8 @@ let
   formatSkills = path.import ./skills.nix libs' config;
   formatSummary = path.import ./summary.nix libs' config;
 
-  formatSection = title:
-    body:
+  formatSection =
+    title: body:
     [
       "\\pagebreak[3]\\phantomsection%"
       "\\addsubsectiontocentry{}{%"
@@ -116,30 +128,34 @@ let
       indentation.more
     ]
     ++ body
-    ++ [ indentation.less styles.sectionBodyClose ];
+    ++ [
+      indentation.less
+      styles.sectionBodyClose
+    ];
 
   styles = path.import ./styles.nix libs';
 in
-{ about ? null
-, birth ? null
-, committees ? null
-, date
-, education ? null
-, honors ? null
-, languages ? null
-, motivation ? null
-, name
-, nationality ? null
-, photo ? null
-, place ? null
-, publications ? null
-, quote ? null
-, skills ? null
-, social ? null
-, summary ? null
-, title
-, ...
-} @ resume:
+{
+  about ? null,
+  birth ? null,
+  committees ? null,
+  date,
+  education ? null,
+  honors ? null,
+  languages ? null,
+  motivation ? null,
+  name,
+  nationality ? null,
+  photo ? null,
+  place ? null,
+  publications ? null,
+  quote ? null,
+  skills ? null,
+  social ? null,
+  summary ? null,
+  title,
+  ...
+}@resume:
 [
   "\\pagestyle{scrheadings}%"
   "\\clearscrheadfoot%"
@@ -162,33 +178,25 @@ in
   "\\sbox\\acvHeaderSocialSepBox{\\textbar}%"
   (
     let
-      args = string.concat
-        (
-          list.generate
-            (index: "#${string (index + 1)}")
-            highlight
-        );
+      args = string.concat (list.generate (index: "#${string (index + 1)}") highlight);
     in
     "\\def\\sectioncolor${args}{${styles.sectionColor args}}%"
   )
 ]
 ++ (formatHeader resume)
 #++  [ "\\vspace{2.5\\normalbaselineskip}%" ]
-++ (
-  list.concatMap
-    (
-      sectionName:
-      {
-        committees = list.ifOrEmpty' (committees != null) (formatCommittees committees);
-        education = list.ifOrEmpty' (education != null) (formatteducation education);
-        honors = list.ifOrEmpty' (honors != null) (formatHonors honors);
-        languages = list.ifOrEmpty' (languages != null) (formatLanguages languages);
-        motivation = list.ifOrEmpty' (motivation != null) (formatMotivation motivation);
-        publications = list.ifOrEmpty' (publications != null) (formatPublications publications);
-        skills = list.ifOrEmpty' (skills != null) (formatSkills skills);
-        summary = list.ifOrEmpty' (summary != null) (formatSummary summary);
-      }.${sectionName}
-    )
-    order
-)
+++ (list.concatMap (
+  sectionName:
+  {
+    committees = list.ifOrEmpty' (committees != null) (formatCommittees committees);
+    education = list.ifOrEmpty' (education != null) (formatteducation education);
+    honors = list.ifOrEmpty' (honors != null) (formatHonors honors);
+    languages = list.ifOrEmpty' (languages != null) (formatLanguages languages);
+    motivation = list.ifOrEmpty' (motivation != null) (formatMotivation motivation);
+    publications = list.ifOrEmpty' (publications != null) (formatPublications publications);
+    skills = list.ifOrEmpty' (skills != null) (formatSkills skills);
+    summary = list.ifOrEmpty' (summary != null) (formatSummary summary);
+  }
+  .${sectionName}
+) order)
 ++ [ "\\vfill%" ]

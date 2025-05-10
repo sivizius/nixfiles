@@ -1,4 +1,9 @@
-{ config, core, foreign, ... } @ libs:
+{
+  config,
+  core,
+  foreign,
+  ...
+}@libs:
 let
   inherit (core) path;
   inherit (config) modules;

@@ -1,33 +1,33 @@
 {
-  wireguard = Peer "Wireguard-Tunnel to …?"
-    {
-      configuration = { secret, ... }:
-        {
-          networking.wg-quick.interfaces."fluepke" = {
-            address = [
-              "45.158.43.132/32"
-            ];
-            autostart = false;
-            peers = [
-              {
-                allowedIPs = [ "0.0.0.0/0" ];
-                endpoint = "45.158.43.1:51213";
-                publicKey = "PZlXawIBMsmOkesNbwSsiufvicbNgKaeyQ560novDHY=";
-              }
-            ];
-            privateKeyFile = secret.decrypt' ./wgToken.asc;
-          };
+  wireguard = Peer "Wireguard-Tunnel to …?" {
+    configuration =
+      { secret, ... }:
+      {
+        networking.wg-quick.interfaces."fluepke" = {
+          address = [
+            "45.158.43.132/32"
+          ];
+          autostart = false;
+          peers = [
+            {
+              allowedIPs = [ "0.0.0.0/0" ];
+              endpoint = "45.158.43.1:51213";
+              publicKey = "PZlXawIBMsmOkesNbwSsiufvicbNgKaeyQ560novDHY=";
+            }
+          ];
+          privateKeyFile = secret.decrypt' ./wgToken.asc;
         };
-    };
-  wireless = Peer "Wireless Lan fluepke"
-    {
-      configuration = { secret, ... }:
-        {
-          networking.wireless.networks = {
-            Paketschleuder.pskRaw = secret.decryptVariable' "wireless" ./Paketschleuder.asc;
-#            Vodafone-F88C.pskRaw = secret.decryptVariable' "wireless" ./Vodafone-F88C.asc;
-#            "wifi.fluep.ke".pskRaw = secret.decryptVariable' "wireless" ./wifi.fluep.ke.asc;
-          };
+      };
+  };
+  wireless = Peer "Wireless Lan fluepke" {
+    configuration =
+      { secret, ... }:
+      {
+        networking.wireless.networks = {
+          Paketschleuder.pskRaw = secret.decryptVariable' "wireless" ./Paketschleuder.asc;
+          #            Vodafone-F88C.pskRaw = secret.decryptVariable' "wireless" ./Vodafone-F88C.asc;
+          #            "wifi.fluep.ke".pskRaw = secret.decryptVariable' "wireless" ./wifi.fluep.ke.asc;
         };
-    };
+      };
+  };
 }

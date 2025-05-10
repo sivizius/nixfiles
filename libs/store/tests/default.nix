@@ -4,6 +4,5 @@ let
   inherit (core) expression;
 in
 {
-  deepSeqAll = { ... }:
-    expression.deepSeq lib lib;
+  deepSeqAll = { ... }: expression.deepSeq lib lib;
 }

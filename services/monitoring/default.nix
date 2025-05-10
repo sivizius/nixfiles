@@ -1,16 +1,24 @@
 { enableACME, forceSSL, ... }:
-Service "Monitoring with grafana and prometheus"
-{
-  configuration = { core, network, secret, ... }:
+Service "Monitoring with grafana and prometheus" {
+  configuration =
+    {
+      core,
+      network,
+      secret,
+      ...
+    }:
     let
       inherit (core) string;
-      inherit (network) domain hostName ips tcp;
+      inherit (network)
+        domain
+        hostName
+        ips
+        tcp
+        ;
       inherit (tcp) ports;
       hostDomain = "${hostName}.${domain}";
 
-      allowedIPs = string.concatMappedLines
-        (ip: "allow ${ip};")
-        ips;
+      allowedIPs = string.concatMappedLines (ip: "allow ${ip};") ips;
 
       extraConfig = ''
         ${allowedIPs}

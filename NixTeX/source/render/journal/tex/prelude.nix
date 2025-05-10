@@ -3,7 +3,15 @@ let
   inherit (core) string;
 in
 { ... }:
-{ assets, acronyms, packages, references, source, substances, ... }:
+{
+  assets,
+  acronyms,
+  packages,
+  references,
+  source,
+  substances,
+  ...
+}:
 (
   [
     ''
@@ -43,7 +51,7 @@ in
   ++ [
     "\\makeatother"
     "\\usepackage{scrlayer-scrpage}"
-    "\\pdfvariable suppressoptionalinfo ${string ( 32 + 64 + 512 )}" # Makes the PDF constant
+    "\\pdfvariable suppressoptionalinfo ${string (32 + 64 + 512)}" # Makes the PDF constant
     "\\setstretch{1.433}" # 1/2-spacing
 
     # Positions, Lengths, Alingments, etc. for TOC
@@ -96,8 +104,7 @@ in
     "\\robkoma"
   ]
   ++ (
-    if substances != null
-    then
+    if substances != null then
       [ "\\loadSubstances{${string.slice 0 ((string.length substances) - 4) substances}}" ]
     else
       [ ]

@@ -42,20 +42,28 @@
     };
     nixpkgs.url = "github:sivizius/nixpkgs/extend-fido2luks-config2";
   };
-  outputs = { libconfig, libcore, ... }:
+  outputs =
+    { libconfig, libcore, ... }:
     let
       context = [ "maintainers" ];
       inherit (libcore.lib) path;
       inherit (libconfig.lib) maintainers;
 
-      import' = directory:
-        path.import
-          directory
-          { inherit (maintainers) GitHub Fingerprint Maintainer Team; }
-          { inherit people teams; };
+      import' =
+        directory:
+        path.import directory {
+          inherit (maintainers)
+            GitHub
+            Fingerprint
+            Maintainer
+            Team
+            ;
+        } { inherit people teams; };
 
       people = maintainers.checkPeople (import' ./people);
       teams = maintainers.checkTeams (import' ./teams);
     in
-    { inherit people teams; };
+    {
+      inherit people teams;
+    };
 }

@@ -86,4 +86,4 @@
                         $exp(i x) = $cos(x) + i$sin(x)
                         $int((dx)/(1+ax)) = 1/a $ln(1+ax) + C
                         e^z = $lim_(n->$inf)(1+z/n)^n
-                      */
+*/

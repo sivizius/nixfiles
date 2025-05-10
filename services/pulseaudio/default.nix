@@ -1,5 +1,4 @@
-Service "PulseAudio: a general purpose sound server"
-{
+Service "PulseAudio: a general purpose sound server" {
   configuration =
     { registries, ... }:
     {

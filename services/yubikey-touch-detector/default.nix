@@ -1,6 +1,6 @@
-Service "YubiKey Touch Detector"
-{
-  configuration = { registries, ... }:
+Service "YubiKey Touch Detector" {
+  configuration =
+    { registries, ... }:
     {
       programs.yubikey-touch-detector = {
         enable = true;

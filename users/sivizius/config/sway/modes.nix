@@ -1,4 +1,11 @@
-{ resizeHeight, resizeWidth, up, down, left, right }:
+{
+  resizeHeight,
+  resizeWidth,
+  up,
+  down,
+  left,
+  right,
+}:
 {
   resize = {
     "Return" = "mode \"default\"";

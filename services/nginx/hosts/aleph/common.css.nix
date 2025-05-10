@@ -3,8 +3,7 @@
 let
   inherit (web.css) CSS;
 in
-CSS
-{
+CSS {
   body = {
     background.color = "#222";
     color = "#f80";

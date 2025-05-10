@@ -1,4 +1,9 @@
-{ core, chemistry, glossaries, ... } @ libs:
+{
+  core,
+  chemistry,
+  glossaries,
+  ...
+}@libs:
 let
   inherit (core) library;
   inherit (chemistry) compound;
@@ -106,8 +111,7 @@ in
       eng = "Self-Assembled Mono\\-layer";
     };
     description = {
-      deu = ''
-        '';
+      deu = '''';
     };
     data = {
       kind = "Default";
@@ -141,4 +145,4 @@ in
 // library.import ./prefixes.nix libs
 // library.import ./quantum.nix libs
 // library.import ./standards.nix libs
-  // library.import ./units.nix libs
+// library.import ./units.nix libs

@@ -1,6 +1,12 @@
-{ peers, profiles, users, ... }:
-Host "bet (from hebrew בית: house) is usually installed on localhost."
 {
+  peers,
+  profiles,
+  users,
+  ...
+}:
+Host "bet (from hebrew בית: house) is usually installed on localhost." {
+  config = [ ./fido.nix ];
+
   devices = {
     "/" = XFS "system" { uuid = "6ec7d726-6ef6-4e86-b382-2b4b6933f3e9"; };
     "/boot" = VFAT "boot" { uuid = "C7DE-E0D7"; };
@@ -12,17 +18,14 @@ Host "bet (from hebrew בית: house) is usually installed on localhost."
       wlp3s0.useDHCP = true;
       # wwp0s20u4i6.useDHCP = true;
     };
-    peers = with peers;
-      [
-        chaos
-        deutsche-bahn
-        eduroam
-        fluepke
-        mum
-        nix-community
-        sivizius
-        tuc
-      ];
+    peers = with peers; [
+      chaos
+      deutsche-bahn
+      fluepke
+      mum
+      nix-community
+      sivizius
+    ];
     tcp.ports = {
       http = 8080;
     };
@@ -35,7 +38,9 @@ Host "bet (from hebrew בית: house) is usually installed on localhost."
   profile = profiles.desktop;
   system = "x86_64-linux";
   users = {
-    sivizius = users.sivizius // { trusted = true; };
+    sivizius = users.sivizius // {
+      trusted = true;
+    };
   };
-  version = "23.05";
+  version = "24.05";
 }

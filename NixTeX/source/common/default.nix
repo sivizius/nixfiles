@@ -1,10 +1,8 @@
-{ core, ... } @ libs:
+{ core, ... }@libs:
 let
   inherit (core.library) Library;
 in
-Library "common"
-  libs
-{
+Library "common" libs {
   bibliography = ./bibliography;
   chemistry = ./chemistry;
   document = ./document;

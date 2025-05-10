@@ -1,4 +1,4 @@
-{ core, ... } @ libs:
+{ core, ... }@libs:
 let
   inherit (core) library;
 in

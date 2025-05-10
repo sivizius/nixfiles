@@ -31,18 +31,29 @@
     };
     nixpkgs.url = "github:sivizius/nixpkgs/extend-fido2luks-config2";
   };
-  outputs = { self, libcore, libsecrets, libstore, libweb, nixpkgs, ... }:
+  outputs =
+    {
+      self,
+      libcore,
+      libsecrets,
+      libstore,
+      libweb,
+      nixpkgs,
+      ...
+    }:
     let
-      core = libcore.lib { inherit self; debug.logLevel = "info"; };
-    in
-    core.path.import ./.
-      {
-        inherit core nixpkgs;
-        secrets = libsecrets.lib { inherit self; };
-        store = libstore.lib;
-        inherit (libsecrets.nixosModules) vault;
-        web = libweb.lib { inherit self; } // {
-          module = libweb.nixosModules.default;
-        };
+      core = libcore.lib {
+        inherit self;
+        debug.logLevel = "info";
       };
+    in
+    core.path.import ./. {
+      inherit core nixpkgs;
+      secrets = libsecrets.lib { inherit self; };
+      store = libstore.lib;
+      inherit (libsecrets.nixosModules) vault;
+      web = libweb.lib { inherit self; } // {
+        module = libweb.nixosModules.default;
+      };
+    };
 }

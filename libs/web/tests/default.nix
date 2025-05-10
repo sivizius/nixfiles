@@ -1,6 +1,6 @@
 { core, ... }:
 lib:
 let
-  inherit (core);
+  inherit (core) ;
 in
 { }

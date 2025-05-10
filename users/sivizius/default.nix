@@ -1,6 +1,5 @@
 extra:
-User "Sebastian Walz"
-{
+User "Sebastian Walz" {
   inherit extra;
   configuration = ./config;
   dates = {

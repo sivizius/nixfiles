@@ -42,7 +42,13 @@
     };
     nixpkgs.url = "github:sivizius/nixpkgs/extend-fido2luks-config2";
   };
-  outputs = { self, libconfig, libweb, ... }:
+  outputs =
+    {
+      self,
+      libconfig,
+      libweb,
+      ...
+    }:
     {
       services =
         let
@@ -82,12 +88,11 @@
             add_header Content-Security-Policy    "default-src 'self'; frame-ancestors 'none'; object-src 'none'" always;
           '';
         in
-        (libconfig.lib { inherit self; }).services.load ./.
-          {
-            inherit commonHeaders commonHttpConfig extraConfig;
-            enableACME = true;
-            forceSSL = true;
-            web = libweb.lib { inherit self; };
-          };
+        (libconfig.lib { inherit self; }).services.load ./. {
+          inherit commonHeaders commonHttpConfig extraConfig;
+          enableACME = true;
+          forceSSL = true;
+          web = libweb.lib { inherit self; };
+        };
     };
 }

@@ -3,7 +3,12 @@ let
   inherit (core) indentation list string;
   inherit (journal) formatAuthor;
 in
-{ authors, title, journal, ... }:
+{
+  authors,
+  title,
+  journal,
+  ...
+}:
 beginDocument:
 [
   "\\hypersetup{"
@@ -21,4 +26,5 @@ beginDocument:
   "\\hfuzz=2pt%"
   "\\vfuzz=2pt%"
   "\\hyphenchar\\font=-1%"
-] ++ beginDocument
+]
+++ beginDocument

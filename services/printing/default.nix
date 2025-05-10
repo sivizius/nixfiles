@@ -1,6 +1,6 @@
-Service "Printing"
-{
-  configuration = { registries, ... }:
+Service "Printing" {
+  configuration =
+    { registries, ... }:
     {
       printing = {
         drivers = [ registries.nix.hplip ];

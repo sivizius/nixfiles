@@ -1,22 +1,44 @@
-{ common, core, helpers, ... }:
+{
+  common,
+  core,
+  helpers,
+  ...
+}:
 let
   inherit (common) Transaction;
   inherit (core) list path string;
   inherit (helpers) parseAmountComma parseGermanDateTime;
 
-  convertTransaction = { lookUpAccount, self, ... }:
-    { amount, client, currency, dateTime, description, ... } @ inner:
+  convertTransaction =
+    { lookUpAccount, self, ... }:
+    {
+      amount,
+      client,
+      currency,
+      dateTime,
+      description,
+      ...
+    }@inner:
     let
       client' = lookUpAccount client;
     in
-    Transaction
-      {
-        inherit currency dateTime description inner;
-        credit = { ${client'.uid} = amount; };
-        debit = { ${self.uid} = amount; };
+    Transaction {
+      inherit
+        currency
+        dateTime
+        description
+        inner
+        ;
+      credit = {
+        ${client'.uid} = amount;
       };
+      debit = {
+        ${self.uid} = amount;
+      };
+    };
 
-  parseLine = line:
+  parseLine =
+    line:
     let
       columns = string.splitAt "(\",\"|^\"|\"$)" line;
       currency = list.get columns 5;
@@ -36,11 +58,7 @@ let
           let
             uid = list.get columns 12;
           in
-          if uid != ""
-          then
-            uid
-          else
-            "PayPal";
+          if uid != "" then uid else "PayPal";
       };
       code = list.get columns 10;
       code' = list.get columns 18;
@@ -51,24 +69,13 @@ let
       vat = parseAmountComma (list.get columns 16) currency;
     };
 
-  parseFile = fileName:
+  parseFile =
+    fileName:
     let
-      lines = list.filter
-        (line: line != "")
-        (string.splitLines (path.readFile fileName));
+      lines = list.filter (line: line != "") (string.splitLines (path.readFile fileName));
     in
-    list.map
-      parseLine
-      (list.tail lines);
+    list.map parseLine (list.tail lines);
 in
 {
-  journal = files:
-    env:
-    list.map
-      (convertTransaction env)
-      (
-        list.concatMap
-          parseFile
-          files
-      );
+  journal = files: env: list.map (convertTransaction env) (list.concatMap parseFile files);
 }

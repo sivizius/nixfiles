@@ -1,4 +1,4 @@
-{ core, ... } @ libs:
+{ core, ... }@libs:
 let
   inherit (core) check library;
   lib = library.load ./lib libs;

@@ -1,4 +1,10 @@
-{ core, profile, registries, version, ... } @ env:
+{
+  core,
+  profile,
+  registries,
+  version,
+  ...
+}@env:
 let
   inherit (core) list path;
   email = path.import ./email.nix env;
@@ -8,7 +14,7 @@ in
   accounts = {
     inherit email;
   };
-  dconf.settings = { };
+  dconf = path.import ./dconf.nix env;
   editorconfig = {
     enable = false;
     settings = { };
@@ -18,7 +24,11 @@ in
     activation = { };
     enableDebugInfo = true;
     enableNixpkgsReleaseCheck = true;
-    extraOutputsToInstall = [ "doc" "info" "devdoc" ];
+    extraOutputsToInstall = [
+      "doc"
+      "info"
+      "devdoc"
+    ];
     file = { };
     # homeDirectory = "/home/sivizius";
     keyboard = {
@@ -41,9 +51,9 @@ in
       telephone = null;
       time = null;
     };
-    packages = packages.common
-      ++ (list.ifOrEmpty' profile.isDesktop packages.desktop);
+    packages = packages.common ++ (list.ifOrEmpty' profile.isDesktop packages.desktop);
     sessionVariables = {
+      GTK_THEME = "Adwaita:dark";
       MOZ_ENABLE_WAYLAND = 1;
       NIX_BUILD_SHELL = "${registries.nix.zsh}/bin/zsh";
       NIX_SSHOPTS = "-t";
@@ -54,17 +64,15 @@ in
     stateVersion = version.version;
   };
   host = {
-    extraGroups = [ "wheel" ]
-      ++ (
-      list.ifOrEmpty' profile.isDesktop
-        [
-          "docker"
-          "lpadmin"
-          "network"
-          "scanner"
-          "video"
-        ]
-    );
+    extraGroups =
+      [ "wheel" ]
+      ++ (list.ifOrEmpty' profile.isDesktop [
+        "docker"
+        "lpadmin"
+        "network"
+        "scanner"
+        "video"
+      ]);
     # Generate with: mkpasswd -m sha-512 $PASSPHRASE
     initialHashedPassword = "$6$mgzs1dRcXi.6t2C4$Uf1be0ppPZwF0iGlxu7im/ff6GzRFeGSrsZfhCSEaQigeuTX6o/1yTYn0Lp2FhY2.LVQRGuy5cGvtIAe3UNbp1";
     shell = registries.nix.zsh;

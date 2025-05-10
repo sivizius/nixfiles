@@ -1,55 +1,100 @@
 {
   description = "Nix builtins/intrinsics.";
   inputs = { }; # No Inputs!
-  outputs = { ... }:
+  outputs =
+    { ... }:
     let
       # Cannot use import, because import is itself an intrinsic function.
       lib = {
-        #!  Abort Nix expression evaluation and print the error message.
-        abort/* :  string -> ! */ = assert builtins ? abort; builtins.abort;
+        /**
+          Abort Nix expression evaluation and print the error message.
+
+          # Type
+
+          ```type
+          abort :: string -> !
+          ```
+        **/
+        abort
+          =
+            assert builtins ? abort;
+            builtins.abort;
 
         #!  Return the sum of two numbers.
-        add/* :  number -> number -> number */ = builtins.add
-          or  (p: q: p + q);
+        add # :  number -> number -> number
+          = builtins.add or (p: q: p + q);
 
         #!  TODO: Documentation
-        addErrorContext/* :  T -> T */ = assert builtins ? addErrorContext; builtins.addErrorContext;
+        addDrvOutputDependencies # : T -> U
+          = assert builtins ? addDrvOutputDependencies;
+            builtins.addDrvOutputDependencies;
+
+        #!  TODO: Documentation
+        addErrorContext # :  T -> T
+          =
+            assert builtins ? addErrorContext;
+            builtins.addErrorContext;
 
         #!  Return `true` if the function returns `true` for all elements of the list, and `false` otherwise.
-        all/* :  (T -> bool) -> [ T ] -> bool */ = assert builtins ? all; builtins.all;
+        all # :  (T -> bool) -> [ T ] -> bool
+          =
+            assert builtins ? all;
+            builtins.all;
 
         #!  Return `true` if the function returns `true` for at least one element of the list, and `false` otherwise.
-        any/* :  (T -> bool) -> [ T ] -> bool */ = assert builtins ? any; builtins.any;
+        any # :  (T -> bool) -> [ T ] -> bool
+          =
+            assert builtins ? any;
+            builtins.any;
 
         #!  TODO: Documentation
-        appendContext/* :  T -> T */ = assert builtins ? appendContext; builtins.appendContext;
+        appendContext # :  T -> T
+          =
+            assert builtins ? appendContext;
+            builtins.appendContext;
 
         #!  Return the names of the attributes in the set in an alphabetically sorted list.
         #!  For instance, `attrNames { y = 1; x = "foo"; }` evaluates to `[ "x" "y" ]`.
-        attrNames/* :  { string -> T } -> [ string ] */ = assert builtins ? attrNames; builtins.attrNames;
+        attrNames # :  { string -> T } -> [ string ]
+          =
+            assert builtins ? attrNames;
+            builtins.attrNames;
 
         #!  Return the values of the attributes in the set in the order corresponding to the sorted attribute names.
-        attrValues/* :  { string -> T } -> [ T ] */ = builtins.attrValues or (s: lib.map (n: s.${n}) (lib.attrNames s));
+        attrValues # :  { string -> T } -> [ T ]
+          = builtins.attrValues or (s: lib.map (n: s.${n}) (lib.attrNames s));
 
         #!  Return the base name of an expression that can be coerced to a string.
         #!  That is, everything following the final slash in the string, or the full string, if no slash is present.
         #!  This is similar to the GNU basename command.
-        baseNameOf/* :  ToString -> string */ = assert builtins ? baseNameOf; builtins.baseNameOf;
+        baseNameOf # :  ToString -> string
+          =
+            assert builtins ? baseNameOf;
+            builtins.baseNameOf;
 
         #!  Return the bitwise conjunction of two integers.
-        bitAnd/* :  integer -> integer -> integer */ = assert builtins ? bitAnd; builtins.bitAnd;
+        bitAnd # :  integer -> integer -> integer
+          =
+            assert builtins ? bitAnd;
+            builtins.bitAnd;
 
         #!  Return the bitwise disjunction of two integers.
-        bitOr/* :  integer -> integer -> integer */ = assert builtins ? bitOr; builtins.bitOr;
+        bitOr # :  integer -> integer -> integer
+          =
+            assert builtins ? bitOr;
+            builtins.bitOr;
 
         #!  Return the bitwise exclusive disjunction of two integers.
-        bitXor/* :  integer -> integer -> integer */ = assert builtins ? bitXor; builtins.bitXor;
+        bitXor # :  integer -> integer -> integer
+          =
+            assert builtins ? bitXor;
+            builtins.bitXor;
 
         #!  In debug mode (enabled using `--debugger`),
         #!    pause Nix expression evaluation and enter the REPL.
         #!  Otherwise, return the argument `v`.
-        break/* :  T -> T */ = builtins.break
-          or  (x: x);
+        break # :  T -> T
+          = builtins.break or (x: x);
 
         #!  Collect each attribute named attr from a list of attribute sets.
         #!  Attrsets that do not contain the named attribute are ignored.
@@ -58,11 +103,17 @@
         #!    catAttrs "a" [{a = 1;} {b = 0;} {a = 2;}]
         #!  ```
         #!  evaluates to `[1 2]`.
-        catAttrs/* :  string -> [ { string -> T } ] -> [ T ] */ = assert builtins ? catAttrs; builtins.catAttrs;
+        catAttrs # :  string -> [ { string -> T } ] -> [ T ]
+          =
+            assert builtins ? catAttrs;
+            builtins.catAttrs;
 
         #!  Converts an IEEE-754 double-precision floating-point number (double) to the next higher integer.
         #!  If the datatype is neither an `integer` nor a `float`, an evaluation error will be thrown.
-        ceil/* :  integer | float -> integer */ = assert builtins ? ceil; builtins.ceil;
+        ceil # :  integer | float -> integer
+          =
+            assert builtins ? ceil;
+            builtins.ceil;
 
         #!  Compare two strings representing versions and return
         #!  * `-1` if the first version is older than the second version,
@@ -70,21 +121,39 @@
         #!  * `1` if the first is newer than the second.
         #!  The version comparison algorithm is the same
         #!    as the one used by `nix-env -u ../command-ref/nix-env.md#operation---upgrade`.
-        compareVersions/* :  string -> string -> integer */ = assert builtins ? compareVersions; builtins.compareVersions;
+        compareVersions # :  string -> string -> integer
+          =
+            assert builtins ? compareVersions;
+            builtins.compareVersions;
 
         #!  Concatenate a list of lists into a single list.
-        concatLists/* :  [ [ T ] ] -> [ T ] */ = assert builtins ? concatLists; builtins.concatLists;
+        concatLists # :  [ [ T ] ] -> [ T ]
+          =
+            assert builtins ? concatLists;
+            builtins.concatLists;
 
         #!  This function is equivalent to `f: list: concatLists (map f list)` but is more efficient.
-        concatMap/* :  (T -> U) -> [ T ] -> U */ = assert builtins ? concatMap; builtins.concatMap;
+        concatMap # :  (T -> U) -> [ T ] -> U
+          =
+            assert builtins ? concatMap;
+            builtins.concatMap;
 
         #!  Concatenate a list of strings with a separator between each element,
         #!    e.g. `concatStringsSep "/" ["usr" "local" "bin"]` returns `"usr/local/bin"`.
-        concatStringsSep/* :  string -> [ string ] -> string */ = assert builtins ? concatStringsSep; builtins.concatStringsSep;
+        concatStringsSep # :  string -> [ string ] -> string
+          =
+            assert builtins ? concatStringsSep;
+            builtins.concatStringsSep;
+
+        #!  TODO: Documentation
+        inherit (builtins) convertHash;
 
         #!  This is like `seq e1 e2`, except that `e1` is evaluated deeply:
         #!    if it is a `list` or `set`, its elements or attributes are also evaluated recursively.
-        deepSeq/* :  T -> T */ = assert builtins ? deepSeq; builtins.deepSeq;
+        deepSeq # :  T -> T
+          =
+            assert builtins ? deepSeq;
+            builtins.deepSeq;
 
         #!  TODO: Documentation
         inherit (builtins) derivation;
@@ -103,11 +172,11 @@
         inherit (builtins) dirOf;
 
         #!  Return the quotient of the numbers e1 and e2.
-        div/* :  number -> number -> number */ = builtins.div
-          or  (p: q: p / q);
+        div # : number -> number -> number
+          = builtins.div or (p: q: p / q);
 
         #!  Return true if a given value occurs in the list, and false otherwise.
-        inherit (builtins) elem;
+        elem = builtins.elem or (x: lib.any (y: x == y));
 
         #!  Return element by index from the list.
         #!  Elements are counted starting from 0.
@@ -115,12 +184,14 @@
         inherit (builtins) elemAt;
 
         #!  Contradiction
-        false/* :  bool */ = builtins.false
-          or  (1 != 1);
+        false # : bool
+          = builtins.false or (1 != 1);
 
-        /*#!  TODO: Documentation
-                fetchClojure
-         = builtins.fetchClojure or (builtins.throw "Not available yet");*/
+        /*
+          #!  TODO: Documentation
+                 fetchClojure
+          = builtins.fetchClojure or (builtins.throw "Not available yet");
+        */
 
         #!  Fetch a path from git.
         #!  Arguments can be a URL, in which case the HEAD of the repo at that URL is fetched.
@@ -243,6 +314,9 @@
         #!  TODO: Documentation
         inherit (builtins) findFile;
 
+        #!  TODO: Documentation
+        inherit (builtins) flakeRefToString;
+
         #!  Converts an IEEE-754 double-precision floating-point number (double) to the next lower integer.
         #!  If the datatype is neither an integer nor a float, an evaluation error will be thrown.
         inherit (builtins) floor;
@@ -336,8 +410,8 @@
 
         #! hasAttr returns true if set has an attribute named s, and false otherwise.
         #!  This is a dynamic version of the ? operator, since s is an expression rather than an identifier.
-        hasAttr/* :  string -> { string -> T } -> bool */ = builtins.hasAttr
-          or  (name: attrs: attrs.${name} or true == attrs.${name} or false);
+        hasAttr # :  string -> { string -> T } -> bool
+          = builtins.hasAttr or (name: attrs: attrs.${name} or true == attrs.${name} or false);
 
         #!  TODO: Documentation
         inherit (builtins) hasContext;
@@ -364,8 +438,8 @@
         inherit (builtins) isAttrs;
 
         #!  Return true if e evaluates to a bool, and false otherwise.
-        isBool/* :  T -> bool */ = builtins.isBool
-          or  (x: x == true || x == false);
+        isBool # :  T -> bool
+          = builtins.isBool or (x: x == true || x == false);
 
         #!  Return true if e evaluates to a float, and false otherwise.
         inherit (builtins) isFloat;
@@ -376,14 +450,17 @@
         #!  Return true if e evaluates to an integer, and false otherwise.
         inherit (builtins) isInt;
 
+        #!  Return true if e evaluates to a lambda, and false otherwise.
+        isLambda = builtins.isLambda or lib.isFunction;
+
         #!  Return true if e evaluates to a list, and false otherwise.
         inherit (builtins) isList;
 
         #!  DEPRECATED:
         #!  Return true if e evaluates to null, and false otherwise.
         #!  Just write e == null instead.
-        isNull/* :  T -> bool */ = builtins.isNull
-          or  (x: x == null);
+        isNull # :  T -> bool
+          = builtins.isNull or (x: x == null);
 
         #!  Return true if e evaluates to a path, and false otherwise.
         inherit (builtins) isPath;
@@ -398,8 +475,8 @@
         inherit (builtins) length;
 
         #!  Return true if the first number is less than the second number, and false otherwise.
-        lessThan/* :  number -> number -> bool */ = builtins.lessThan
-          or  (p: q: p < q);
+        lessThan # :  number -> number -> bool
+          = builtins.lessThan or (p: q: p < q);
 
         #!  Construct a set from a list specifying the names and values of each attribute.
         #!  Each element of the list should be a set consisting of a string-valued attribute name
@@ -434,8 +511,8 @@
         inherit (builtins) match;
 
         #!  Return the product of the two numbers.
-        mul/* :  number -> number -> number */ = builtins.mul
-          or  (p: q: p * q);
+        mul # :  number -> number -> number
+          = builtins.mul or (p: q: p * q);
 
         #!  TODO: Documentation
         inherit (builtins) nixPath;
@@ -452,6 +529,9 @@
         #!  The result is returned in a set `{ name, version }`.
         #!  Thus, `parseDrvName "nix-0.12pre12876"` returns `{ name = "nix"; version = "0.12pre12876"; }`.
         inherit (builtins) parseDrvName;
+
+        #!  TODO: Documentation
+        inherit (builtins) parseFlakeRef;
 
         #!  Given a predicate function,
         #!    this function returns an attrset containing a list named right,
@@ -487,6 +567,9 @@
 
         #!  Return the contents of the file path as a string.
         inherit (builtins) readFile;
+
+        #!  TODO: Documentation
+        inherit (builtins) readFileType;
 
         #!  Remove the attributes listed in list from set. The attributes don’t have to exist in set.
         #!  # Example
@@ -554,8 +637,8 @@
         inherit (builtins) stringLength;
 
         #!  Return the difference between the two numbers.
-        sub/* :  number -> number -> number */ = builtins.sub
-          or  (p: q: p - q);
+        sub # :  number -> number -> number
+          = builtins.sub or (p: q: p - q);
 
         #!  Return the substring of a given string from character zero-based position start up to but not including start + len.
         #!  If start is greater than the length of the string,
@@ -614,12 +697,16 @@
         #!  Evaluate the first expression and print its abstract syntax representation on standard error.
         #!  Then return the second expression.
         #!  This function is useful for debugging.
-        trace/* :  T -> U -> U */ = builtins.trace
-          or  (x: x);
+        trace # :  T -> U -> U
+          = builtins.trace or (_msg: x: x);
+
+        #!  TODO: Documentation
+        traceVerbose # :  T -> U -> U
+          = builtins.traceVerbose or lib.trace;
 
         #!  Tautology
-        true/* :  bool */ = builtins.true
-          or  (1 == 1);
+        true # :  bool
+          = builtins.true or (1 == 1);
 
         #!  Try to shallowly evaluate the expression.
         #!  Return a set containing the attributes
@@ -652,6 +739,10 @@
         #!  TODO: Documentation
         inherit (builtins) unsafeGetAttrPos;
 
+        #!  TODO: Documentation
+        warn # :  T -> U -> U
+          = builtins.warn or (msg: lib.trace "evaluation warning: ${msg}");
+
         #!  Transpose a list of attribute sets into an attribute set of lists, then apply mapAttrs.
         #!  The function receives two arguments:
         #!    The attribute name and
@@ -674,5 +765,7 @@
         inherit (builtins) zipAttrsWith;
       };
     in
-    { inherit lib; };
+    {
+      inherit lib;
+    };
 }

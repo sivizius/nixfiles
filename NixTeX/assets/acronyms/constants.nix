@@ -18,7 +18,13 @@ in
       kind = "Math";
       short = "k_B";
       value = 1.380649e-23;
-      unit = [ "joule" { name = "kelvin"; exp = -1; } ];
+      unit = [
+        "joule"
+        {
+          name = "kelvin";
+          exp = -1;
+        }
+      ];
     };
   };
   elementaryCharge = {
@@ -53,7 +59,13 @@ in
       kind = "Math";
       short = "F";
       value = 9.648533289e4;
-      unit = [ "ampere" { name = "mol"; exp = -1; } ];
+      unit = [
+        "ampere"
+        {
+          name = "mol";
+          exp = -1;
+        }
+      ];
     };
   };
   gasConstant = {
@@ -70,7 +82,17 @@ in
       kind = "Math";
       short = "R";
       value = 8.3144598;
-      unit = [ "joule" { name = "mol"; exp = -1; } { name = "kelvin"; exp = -1; } ];
+      unit = [
+        "joule"
+        {
+          name = "mol";
+          exp = -1;
+        }
+        {
+          name = "kelvin";
+          exp = -1;
+        }
+      ];
     };
   };
   planckConstant = {
@@ -88,7 +110,10 @@ in
       kind = "Math";
       short = "h";
       value = 6.62607015e-34;
-      unit = [ "joule" "second" ];
+      unit = [
+        "joule"
+        "second"
+      ];
     };
   };
   roomTemperature = {
@@ -98,7 +123,12 @@ in
     };
     description = {
       deu = ''
-        Eine unspezifizierte Temperatur von ${formatValue { from = 20; till = 30; } "celsius"},
+        Eine unspezifizierte Temperatur von ${
+          formatValue {
+            from = 20;
+            till = 30;
+          } "celsius"
+        },
           welche bei Reaktionen erreicht wird,
             wenn weder aktiv gekühlt noch aktiv erwärmt wird
       '';
@@ -123,7 +153,13 @@ in
       kind = "Math";
       short = "c";
       value = 299792458;
-      unit = [ "metre" { name = "second"; exp = -1; } ];
+      unit = [
+        "metre"
+        {
+          name = "second";
+          exp = -1;
+        }
+      ];
     };
   };
 }

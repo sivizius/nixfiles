@@ -1,6 +1,6 @@
-Service "Kubernetes Master"
-{
-  configuration = { core, registries, ... }:
+Service "Kubernetes Master" {
+  configuration =
+    { core, registries, ... }:
     {
       kubernetes =
         let
@@ -19,7 +19,10 @@ Service "Kubernetes Master"
           };
           easyCerts = true;
           kubelet.extraOpts = "--fail-swap-on=false";
-          roles = [ "master" "node" ];
+          roles = [
+            "master"
+            "node"
+          ];
         };
     };
 }

@@ -2,10 +2,10 @@
   description = "AES implemented as nix-expressions.";
   inputs = {
     libcore = {
-      url = "git+ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?ref=secunet&dir=libs/core";
+      url = "github:sivizius/nixfiles?ref=secunet&dir=libs/core";
       inputs.libintrinsics.follows = "libintrinsics";
     };
-    libintrinsics.url = "git+ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?ref=secunet&dir=libs/intrinsics";
+    libintrinsics.url = "github:sivizius/nixfiles?ref=secunet&dir=libs/intrinsics";
   };
   outputs =
     { self, libcore, ... }:

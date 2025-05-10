@@ -2,7 +2,7 @@
   description = "Packages";
   inputs = {
     fork-awesome = {
-      url = "git+ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?ref=secunet&dir=packages/fork-awesome";
+      url = "github:sivizius/nixfiles?ref=secunet&dir=packages/fork-awesome";
       inputs = {
         libcore.follows = "libcore";
         libintrinsics.follows = "libintrinsics";
@@ -10,7 +10,7 @@
       };
     };
     libconfig = {
-      url = "git+ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?ref=secunet&dir=libs/config";
+      url = "github:sivizius/nixfiles?ref=secunet&dir=libs/config";
       inputs = {
         libcore.follows = "libcore";
         libintrinsics.follows = "libintrinsics";
@@ -21,12 +21,12 @@
       };
     };
     libcore = {
-      url = "git+ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?ref=secunet&dir=libs/core";
+      url = "github:sivizius/nixfiles?ref=secunet&dir=libs/core";
       inputs.libintrinsics.follows = "libintrinsics";
     };
-    libintrinsics.url = "git+ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?ref=secunet&dir=libs/intrinsics";
+    libintrinsics.url = "github:sivizius/nixfiles?ref=secunet&dir=libs/intrinsics";
     libsecrets = {
-      url = "git+ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?ref=secunet&dir=libs/secrets";
+      url = "github:sivizius/nixfiles?ref=secunet&dir=libs/secrets";
       inputs = {
         libcore.follows = "libcore";
         libintrinsics.follows = "libintrinsics";
@@ -34,14 +34,14 @@
       };
     };
     libstore = {
-      url = "git+ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?ref=secunet&dir=libs/store";
+      url = "github:sivizius/nixfiles?ref=secunet&dir=libs/store";
       inputs = {
         libcore.follows = "libcore";
         libintrinsics.follows = "libintrinsics";
       };
     };
     libweb = {
-      url = "git+ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?ref=secunet&dir=libs/web";
+      url = "github:sivizius/nixfiles?ref=secunet&dir=libs/web";
       inputs = {
         libcore.follows = "libcore";
         libintrinsics.follows = "libintrinsics";
@@ -50,7 +50,7 @@
     };
     nixpkgs.url = "github:sivizius/nixpkgs/extend-fido2luks-config2";
     wofi-unpatched = {
-      url = "git+ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?ref=secunet&dir=packages/wofi-unpatched";
+      url = "github:sivizius/nixfiles?ref=secunet&dir=packages/wofi-unpatched";
       inputs = {
         libcore.follows = "libcore";
         libintrinsics.follows = "libintrinsics";

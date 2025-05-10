@@ -3,7 +3,7 @@
   inputs = {
     flake-compat.url = "github:edolstra/flake-compat";
     fork-awesome = {
-      url = "git+ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?ref=secunet&dir=packages/fork-awesome";
+      url = "github:sivizius/nixfiles?ref=secunet&dir=packages/fork-awesome";
       inputs = {
         libcore.follows = "libcore";
         libintrinsics.follows = "libintrinsics";
@@ -23,7 +23,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager-wrapper = {
-      url = "git+ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?ref=secunet&dir=home-manager";
+      url = "github:sivizius/nixfiles?ref=secunet&dir=home-manager";
       inputs = {
         home-manager.follows = "home-manager";
         libcore.follows = "libcore";
@@ -32,8 +32,7 @@
       };
     };
     libconfig = {
-      #url = "git+ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?ref=secunet&dir=libs/config";
-      url = "/home/sivizius/Projects/sivizius/nixfiles/libs/config";
+      url = "github:sivizius/nixfiles?ref=secunet&dir=libs/config";
       inputs = {
         libcore.follows = "libcore";
         libintrinsics.follows = "libintrinsics";
@@ -44,12 +43,12 @@
       };
     };
     libcore = {
-      url = "git+ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?ref=secunet&dir=libs/core";
+      url = "github:sivizius/nixfiles?ref=secunet&dir=libs/core";
       inputs.libintrinsics.follows = "libintrinsics";
     };
-    libintrinsics.url = "git+ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?ref=secunet&dir=libs/intrinsics";
+    libintrinsics.url = "github:sivizius/nixfiles?ref=secunet&dir=libs/intrinsics";
     libsecrets = {
-      url = "git+ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?ref=secunet&dir=libs/secrets";
+      url = "github:sivizius/nixfiles?ref=secunet&dir=libs/secrets";
       inputs = {
         libcore.follows = "libcore";
         libintrinsics.follows = "libintrinsics";
@@ -57,14 +56,14 @@
       };
     };
     libstore = {
-      url = "git+ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?ref=secunet&dir=libs/store";
+      url = "github:sivizius/nixfiles?ref=secunet&dir=libs/store";
       inputs = {
         libcore.follows = "libcore";
         libintrinsics.follows = "libintrinsics";
       };
     };
     libweb = {
-      url = "git+ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?ref=secunet&dir=libs/web";
+      url = "github:sivizius/nixfiles?ref=secunet&dir=libs/web";
       inputs = {
         libcore.follows = "libcore";
         libintrinsics.follows = "libintrinsics";
@@ -72,7 +71,7 @@
       };
     };
     modules = {
-      url = "git+ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?ref=secunet&dir=modules";
+      url = "github:sivizius/nixfiles?ref=secunet&dir=modules";
       inputs = {
         flake-compat.follows = "flake-compat";
         home-manager.follows = "home-manager";
@@ -89,7 +88,7 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     nixpkgs.url = "github:sivizius/nixpkgs/extend-fido2luks-config2";
     peers = {
-      url = "git+ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?ref=secunet&dir=peers";
+      url = "github:sivizius/nixfiles?ref=secunet&dir=peers";
       inputs = {
         libconfig.follows = "libconfig";
         libcore.follows = "libcore";
@@ -101,7 +100,7 @@
       };
     };
     profiles = {
-      url = "git+ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?ref=secunet&dir=profiles";
+      url = "github:sivizius/nixfiles?ref=secunet&dir=profiles";
       inputs = {
         libconfig.follows = "libconfig";
         libcore.follows = "libcore";
@@ -115,7 +114,7 @@
       };
     };
     registries = {
-      url = "git+ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?ref=secunet&dir=registries";
+      url = "github:sivizius/nixfiles?ref=secunet&dir=registries";
       inputs = {
         fork-awesome.follows = "fork-awesome";
         libconfig.follows = "libconfig";
@@ -129,7 +128,7 @@
       };
     };
     services = {
-      url = "git+ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?ref=secunet&dir=services";
+      url = "github:sivizius/nixfiles?ref=secunet&dir=services";
       inputs = {
         libconfig.follows = "libconfig";
         libcore.follows = "libcore";
@@ -149,7 +148,7 @@
       };
     };
     sivizius = {
-      url = "git+ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?ref=secunet&dir=users/sivizius";
+      url = "github:sivizius/nixfiles?ref=secunet&dir=users/sivizius";
       inputs = {
         libconfig.follows = "libconfig";
         libcore.follows = "libcore";
@@ -161,7 +160,7 @@
       };
     };
     wofi-unpatched = {
-      url = "git+ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?ref=secunet&dir=packages/wofi-unpatched";
+      url = "github:sivizius/nixfiles?ref=secunet&dir=packages/wofi-unpatched";
       inputs = {
         libcore.follows = "libcore";
         libintrinsics.follows = "libintrinsics";

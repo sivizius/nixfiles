@@ -1,7 +1,7 @@
 {
   description = "Core library of general-purpose expressions worth implementing as intrinsics";
   inputs = {
-    libintrinsics.url = "git+ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?ref=secunet&dir=libs/intrinsics";
+    libintrinsics.url = "github:sivizius/nixfiles?ref=secunet&dir=libs/intrinsics";
   };
   outputs =
     { self, libintrinsics, ... }:

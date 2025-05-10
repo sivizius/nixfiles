@@ -2,12 +2,12 @@
   description = "Configure and Deploy NixOS";
   inputs = {
     libcore = {
-      url = "git+ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?ref=secunet&dir=libs/core";
+      url = "github:sivizius/nixfiles?ref=secunet&dir=libs/core";
       inputs.libintrinsics.follows = "libintrinsics";
     };
-    libintrinsics.url = "git+ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?ref=secunet&dir=libs/intrinsics";
+    libintrinsics.url = "github:sivizius/nixfiles?ref=secunet&dir=libs/intrinsics";
     libsecrets = {
-      url = "git+ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?ref=secunet&dir=libs/secrets";
+      url = "github:sivizius/nixfiles?ref=secunet&dir=libs/secrets";
       inputs = {
         libcore.follows = "libcore";
         libintrinsics.follows = "libintrinsics";
@@ -15,14 +15,14 @@
       };
     };
     libstore = {
-      url = "git+ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?ref=secunet&dir=libs/store";
+      url = "github:sivizius/nixfiles?ref=secunet&dir=libs/store";
       inputs = {
         libcore.follows = "libcore";
         libintrinsics.follows = "libintrinsics";
       };
     };
     libweb = {
-      url = "git+ssh://git@git.seven.secucloud.secunet.com/sebastian.walz/nixfiles?ref=secunet&dir=libs/web";
+      url = "github:sivizius/nixfiles?ref=secunet&dir=libs/web";
       inputs = {
         libcore.follows = "libcore";
         libintrinsics.follows = "libintrinsics";
